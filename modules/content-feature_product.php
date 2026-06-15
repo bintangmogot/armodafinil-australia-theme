@@ -2,51 +2,57 @@
 /**
  * Layout: Feature Product
  * Fields: heading (text), feature_product (relationship, return=object, post_type=product)
+ * Design: White bg, heading centered, product cards in 4-column grid with rounded corners and shadow
  */
 $heading  = get_sub_field('heading');
-$products = get_sub_field('feature_product'); // Returns array of WP_Post objects
+$products = get_sub_field('feature_product');
 ?>
 
-<div class="module-feature-product py-12 px-4 max-w-7xl mx-auto">
-    <?php if ( $heading ) : ?>
-        <h2 class="text-3xl font-bold text-center mb-8 text-gray-900"><?php echo esc_html( $heading ); ?></h2>
-    <?php endif; ?>
+<section class="py-10 lg:py-14 px-6 lg:px-12 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <?php if ( $heading ) : ?>
+            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-2 text-[#0a1045]"><?php echo esc_html( $heading ); ?></h2>
+        <?php endif; ?>
 
-    <?php if ( $products && is_array($products) ) : ?>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <?php 
-            foreach ( $products as $product ) : 
-                $post_id = is_object( $product ) ? $product->ID : $product;
-                $wc_product = wc_get_product( $post_id );
-                
-                if ( $wc_product ) :
-                    $permalink  = esc_url( get_permalink( $post_id ) );
-                    $name       = esc_html( $wc_product->get_name() );
-                    $price_html = $wc_product->get_price_html();
-                    $image_html = $wc_product->get_image('woocommerce_thumbnail', array(
-                        'class' => 'w-full h-auto object-cover rounded-md mb-4'
-                    ));
-                    ?>
-                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-lg transition-shadow text-center">
-                        <a href="<?php echo $permalink; ?>" class="block no-underline text-inherit">
-                            <?php echo $image_html; ?>
-                            <h3 class="text-base font-semibold text-gray-900 mb-2 min-h-[44px] flex items-center justify-center leading-tight">
-                                <?php echo $name; ?>
-                            </h3>
-                            <div class="text-lg font-bold text-blue-600 mb-4">
-                                <?php echo $price_html; ?>
-                            </div>
-                        </a>
-                        <a href="<?php echo $permalink; ?>" class="block w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold text-sm hover:bg-blue-700 transition-colors no-underline">
-                            View Options
-                        </a>
-                    </div>
+        <?php if ( $products && is_array($products) ) : ?>
+            <!-- Horizontal scroll on mobile, grid on desktop -->
+            <div class="flex overflow-x-auto gap-4 lg:gap-6 pb-4 mt-8 lg:mt-10 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-4 lg:overflow-visible">
                 <?php 
-                endif; 
-            endforeach; 
-            ?>
-        </div>
-    <?php else : ?>
-        <p class="text-center text-gray-400 italic">No products selected.</p>
-    <?php endif; ?>
-</div>
+                foreach ( $products as $product ) : 
+                    $post_id = is_object( $product ) ? $product->ID : $product;
+                    $wc_product = wc_get_product( $post_id );
+                    
+                    if ( $wc_product ) :
+                        $permalink  = esc_url( get_permalink( $post_id ) );
+                        $name       = esc_html( $wc_product->get_name() );
+                        $price_html = $wc_product->get_price_html();
+                        $image_html = $wc_product->get_image('woocommerce_thumbnail', array(
+                            'class' => 'w-full h-auto object-contain'
+                        ));
+                        ?>
+                        <div class="min-w-[260px] lg:min-w-0 snap-start bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                            <a href="<?php echo $permalink; ?>" class="block no-underline text-inherit flex-grow">
+                                <div class="bg-gray-50 rounded-xl p-4 mb-4 flex items-center justify-center min-h-[160px]">
+                                    <?php echo $image_html; ?>
+                                </div>
+                                <h3 class="text-sm lg:text-base font-bold text-[#0a1045] mb-2 min-h-[40px] leading-tight">
+                                    <?php echo $name; ?>
+                                </h3>
+                                <div class="text-lg font-extrabold text-[#0a1045] mb-4">
+                                    <?php echo $price_html; ?>
+                                </div>
+                            </a>
+                            <a href="<?php echo $permalink; ?>" class="block w-full bg-[#0a1045] text-white py-3 rounded-xl font-bold text-sm text-center hover:bg-[#1a2a6c] transition-colors no-underline mt-auto">
+                                View Options
+                            </a>
+                        </div>
+                    <?php 
+                    endif; 
+                endforeach; 
+                ?>
+            </div>
+        <?php else : ?>
+            <p class="text-center text-gray-400 italic mt-6">No products selected.</p>
+        <?php endif; ?>
+    </div>
+</section>

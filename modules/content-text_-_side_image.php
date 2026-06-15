@@ -2,20 +2,32 @@
 /**
  * Layout: Text - Side Image
  * Fields: image (image, return_format=id), content (wysiwyg)
+ * Design: Navy/dark blue gradient background, text left, image right
  */
 $image   = get_sub_field('image');
 $content = get_sub_field('content');
 ?>
-<section class="py-12 px-4">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-        <div class="prose prose-lg">
-            <?php echo $content ? wp_kses_post($content) : '<p class="text-gray-400 italic">[ Text content — add in ACF ]</p>'; ?>
-        </div>
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-gradient-to-br from-[#0a1045] via-[#0f1a5e] to-[#162070] text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <!-- Text Content -->
         <div>
-            <?php if ($image) : ?>
-                <?php echo wp_get_attachment_image($image, 'large', false, array('class' => 'w-full rounded-lg')); ?>
+            <?php if ($content) : ?>
+                <div class="module-side-image-content">
+                    <?php echo wp_kses_post($content); ?>
+                </div>
             <?php else : ?>
-                <div class="bg-gray-100 rounded-lg h-64 flex items-center justify-center text-gray-400 italic">[ Image — add in ACF ]</div>
+                <p class="text-white/50 italic">[ Text content — add in ACF ]</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Image -->
+        <div class="relative">
+            <?php if ($image) : ?>
+                <div class="rounded-2xl overflow-hidden shadow-2xl shadow-black/30">
+                    <?php echo wp_get_attachment_image($image, 'large', false, array('class' => 'w-full h-auto object-cover')); ?>
+                </div>
+            <?php else : ?>
+                <div class="bg-white/10 rounded-2xl h-80 flex items-center justify-center text-white/30 italic backdrop-blur-sm">[ Image — add in ACF ]</div>
             <?php endif; ?>
         </div>
     </div>

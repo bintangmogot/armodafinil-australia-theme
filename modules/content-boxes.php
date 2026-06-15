@@ -2,24 +2,27 @@
 /**
  * Layout: Boxes
  * Fields: boxes (repeater: image (image, return=id), content (wysiwyg))
+ * Design: White bg, 3x2 grid of feature cards with icons, titles, descriptions
  */
 ?>
-<section class="py-12 px-4">
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-white">
     <div class="max-w-7xl mx-auto">
         <?php if (have_rows('boxes')) : ?>
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <?php while (have_rows('boxes')) : the_row();
-                    $image   = get_sub_field('image');   // Returns ID
-                    $content = get_sub_field('content');  // Returns wysiwyg HTML
+                    $image   = get_sub_field('image');
+                    $content = get_sub_field('content');
                 ?>
-                    <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="bg-[#f5f7fb] rounded-2xl p-6 lg:p-8 hover:shadow-lg hover:shadow-[#0a1045]/5 transition-all duration-300 border border-transparent hover:border-[#0a1045]/10">
                         <?php if ($image) : ?>
-                            <div class="aspect-video">
-                                <?php echo wp_get_attachment_image($image, 'medium_large', false, array('class' => 'w-full h-full object-cover')); ?>
+                            <div class="mb-5">
+                                <?php echo wp_get_attachment_image($image, 'thumbnail', false, array('class' => 'w-12 h-12 lg:w-14 lg:h-14')); ?>
                             </div>
                         <?php endif; ?>
                         <?php if ($content) : ?>
-                            <div class="p-5 prose prose-sm"><?php echo wp_kses_post($content); ?></div>
+                            <div class="module-boxes-content">
+                                <?php echo wp_kses_post($content); ?>
+                            </div>
                         <?php endif; ?>
                     </div>
                 <?php endwhile; ?>

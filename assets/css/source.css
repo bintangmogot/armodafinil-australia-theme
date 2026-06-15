@@ -143,6 +143,92 @@
     .prose td {
         @apply px-4 py-3 text-sm text-gray-700 border-b border-gray-100;
     }
+
+    /* ─── Module: Full Width Text ─── */
+    .module-fulltext-content h2,
+    .module-fulltext-content h3 {
+        @apply text-2xl lg:text-3xl font-bold text-[#0a1045] mb-4;
+    }
+    .module-fulltext-content p {
+        @apply text-sm lg:text-base text-[#0a1045]/70 leading-relaxed mb-4;
+    }
+    .module-fulltext-content a {
+        @apply text-red-600 font-semibold hover:text-red-700 underline;
+    }
+
+    /* ─── Module: Side Image (dark bg) ─── */
+    .module-side-image-content h2,
+    .module-side-image-content h3 {
+        @apply text-2xl lg:text-3xl font-bold text-white mb-4;
+    }
+    .module-side-image-content p {
+        @apply text-sm lg:text-base text-white/80 leading-relaxed mb-4;
+    }
+    .module-side-image-content a {
+        @apply inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-[#0a1045] font-bold text-sm px-6 py-3 rounded-full no-underline transition-all mt-2;
+    }
+    .module-side-image-content ul {
+        @apply list-disc list-inside mb-4 text-white/80 space-y-1;
+    }
+
+    /* ─── Module: Benefit (dark bg) ─── */
+    .module-benefit-intro h2,
+    .module-benefit-intro h3 {
+        @apply text-2xl lg:text-4xl font-bold text-white mb-4;
+    }
+    .module-benefit-intro p {
+        @apply text-white/70 text-sm lg:text-base;
+    }
+    .module-benefit-content h3,
+    .module-benefit-content h4 {
+        @apply text-lg font-bold text-white mb-1;
+    }
+    .module-benefit-content p {
+        @apply text-sm text-white/70 leading-relaxed;
+    }
+    .module-benefit-content a {
+        @apply inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-[#0a1045] font-bold text-sm px-6 py-3 rounded-full no-underline transition-all mt-4;
+    }
+
+    /* ─── Module: Boxes ─── */
+    .module-boxes-content h3,
+    .module-boxes-content h4 {
+        @apply text-base lg:text-lg font-bold text-[#0a1045] mb-2;
+    }
+    .module-boxes-content p {
+        @apply text-sm text-[#0a1045]/60 leading-relaxed;
+    }
+
+    /* ─── Module: Tips ─── */
+    .module-tips-content p {
+        @apply text-sm lg:text-base text-[#0a1045]/70 leading-relaxed mb-4;
+    }
+    .module-tips-content img {
+        @apply rounded-xl my-4;
+    }
+    .module-tips-content ul {
+        @apply list-disc list-inside space-y-1 text-[#0a1045]/70 text-sm;
+    }
+
+    /* ─── Module: CTA (dark bg) ─── */
+    .module-cta-content h2,
+    .module-cta-content h3 {
+        @apply text-2xl lg:text-3xl font-bold text-white mb-4;
+    }
+    .module-cta-content p {
+        @apply text-sm lg:text-base text-white/80 leading-relaxed mb-4;
+    }
+    .module-cta-content a {
+        @apply inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-[#0a1045] font-bold text-sm px-6 py-3 rounded-full no-underline transition-all;
+    }
+
+    /* ─── Module: How to Order ─── */
+    .module-howto-intro h2 {
+        @apply text-2xl lg:text-3xl font-bold text-[#0a1045] mb-4;
+    }
+    .module-howto-intro p {
+        @apply text-sm lg:text-base text-[#0a1045]/70;
+    }
 }
 
 @layer utilities {
