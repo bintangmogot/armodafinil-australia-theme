@@ -67,8 +67,10 @@ if ( ! function_exists( 'armo_theme_setup' ) ) :
          * 'footer'  → the footer navigation
          */
         register_nav_menus( array(
-            'primary' => __( 'Primary Menu (Header)', 'armodafinil-australia' ),
-            'footer'  => __( 'Footer Menu', 'armodafinil-australia' ),
+            'primary'          => __( 'Primary Menu (Header)', 'armodafinil-australia' ),
+            'footer'           => __( 'Footer Category Menu', 'armodafinil-australia' ),
+            'footer-quick'     => __( 'Footer Quick Links', 'armodafinil-australia' ),
+            'footer-important' => __( 'Footer Important Links', 'armodafinil-australia' ),
         ) );
 
         /*
