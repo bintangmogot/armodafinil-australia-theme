@@ -1,0 +1,14 @@
+{
+  "name": "armodafinil-australia-theme",
+  "version": "2.0.0",
+  "description": "Armodafinil Australia - Custom WordPress Theme",
+  "private": true,
+  "scripts": {
+    "build": "npx tailwindcss -i ./assets/css/source.css -o ./assets/css/main.css --minify",
+    "watch": "npx tailwindcss -i ./assets/css/source.css -o ./assets/css/main.css --watch",
+    "dev": "npx tailwindcss -i ./assets/css/source.css -o ./assets/css/main.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
