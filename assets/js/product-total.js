@@ -29,6 +29,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // Listen to plus/minus buttons if they trigger a click
         document.addEventListener('click', function(e) {
             if (e.target.closest('.qty-btn')) {
+                const btn = e.target.closest('.qty-btn');
+                const isPlus = btn.classList.contains('plus');
+                let val = parseInt(qtyInput.value) || 1;
+                let min = parseInt(qtyInput.min) || 1;
+                let max = parseInt(qtyInput.max) || 9999;
+                
+                if (isPlus && val < max) {
+                    qtyInput.value = val + 1;
+                } else if (!isPlus && val > min) {
+                    qtyInput.value = val - 1;
+                }
+                
+                // Trigger change event for WooCommerce and our total calculator
+                qtyInput.dispatchEvent(new Event('change', { bubbles: true }));
+                
                 setTimeout(updateTotal, 50); // wait for value to update
             }
         });

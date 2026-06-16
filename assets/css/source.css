@@ -350,6 +350,35 @@
         from { opacity: 0; }
         to { opacity: 1; }
     }
+    
+    /* Description Checkmarks */
+    .tab-pane.prose ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .tab-pane.prose ul li {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .tab-pane.prose ul li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.25rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        background-color: #22c55e;
+        border-radius: 0.25rem;
+        mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3e%3cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3e%3c/svg%3e");
+        -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3e%3cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3e%3c/svg%3e");
+        mask-size: contain;
+        -webkit-mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-position: center;
+    }
 }
 
 @layer utilities {

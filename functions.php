@@ -838,3 +838,11 @@ add_filter('acf/get_field_group', function($group) {
     }
     return $group;
 });
+
+/**
+ * Change WooCommerce Add to Cart button text on single product pages
+ */
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'armo_custom_add_to_cart_text' );
+function armo_custom_add_to_cart_text() {
+    return __( 'Buy Now 🛒', 'woocommerce' );
+}

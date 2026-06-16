@@ -48,17 +48,20 @@ function armo_custom_total_price_box() {
     <div class="grid grid-cols-1 lg:grid-cols-[45%_55%] xl:grid-cols-[50%_50%] gap-10 lg:gap-16 mb-16">
         
         <!-- Left Column: Images & Features -->
-        <div class="product-gallery-column">
-            <?php
-            /**
-             * Hook: woocommerce_before_single_product_summary.
-             * Outputs Product Images
-             */
-            do_action( 'woocommerce_before_single_product_summary' );
-            ?>
+        <div class="product-gallery-column flex flex-col w-full">
+            <div class="w-full">
+                <?php
+                /**
+                 * Hook: woocommerce_before_single_product_summary.
+                 * Outputs Product Images
+                 */
+                do_action( 'woocommerce_before_single_product_summary' );
+                ?>
+            </div>
+            <div style="clear: both; width: 100%;"></div>
             
             <!-- Feature Pills under the image -->
-            <div class="grid grid-cols-2 gap-3 mt-6">
+            <div class="grid grid-cols-2 gap-3 mt-4 w-full">
                 <div class="flex items-center justify-center gap-2 bg-[#E1EDFF] border border-[#B3D4FF] text-[#00125E] font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
                     <svg class="w-4 h-4 text-green-500 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     100% Genuine
