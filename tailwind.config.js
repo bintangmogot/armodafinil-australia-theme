@@ -7,6 +7,7 @@ module.exports = {
    * This keeps the final CSS file tiny!
    */
   content: [
+    './*.php',                 // Root PHP files (header.php, footer.php, etc.)
     './**/*.php',              // All PHP template files
     './assets/js/**/*.js',     // JavaScript files (in case you add classes dynamically)
   ],
