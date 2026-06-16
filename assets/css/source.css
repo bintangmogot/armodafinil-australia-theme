@@ -268,6 +268,8 @@
     /* ─── WooCommerce Single Product Customization ─── */
     .woocommerce-product-gallery {
         @apply mb-8;
+        width: 100% !important;
+        float: none !important;
     }
     
     .woocommerce-product-gallery__trigger {
@@ -316,30 +318,22 @@
         @apply flex flex-col gap-4 mt-6;
     }
     
-    .quantity {
-        @apply inline-flex items-center;
-    }
-    .quantity .qty {
-        @apply w-16 text-center border-y border-gray-300 py-3 appearance-none m-0 focus:outline-none h-[46px];
-        -moz-appearance: textfield;
-    }
-    .quantity .qty::-webkit-outer-spin-button,
-    .quantity .qty::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    .qty-btn {
-        @apply bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-300 w-10 h-[46px] flex items-center justify-center cursor-pointer transition-colors font-bold;
-    }
-    .qty-btn.minus {
-        @apply rounded-l-md border-r-0;
-    }
-    .qty-btn.plus {
-        @apply rounded-r-md border-l-0;
+    .woocommerce div.product form.cart {
+        @apply flex flex-col gap-4 !important;
     }
 
-    .single_add_to_cart_button {
-        @apply w-full bg-[#ff0000] hover:bg-[#d60000] text-white font-bold text-lg py-4 px-8 rounded-md transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer;
+    .woocommerce div.product form.cart .quantity {
+        @apply flex items-center justify-start mb-0 float-none w-auto;
+    }
+    .woocommerce div.product form.cart .quantity .qty {
+        @apply w-16 text-center border border-gray-300 py-3 appearance-none m-0 focus:outline-none h-[46px] rounded-md;
+        -moz-appearance: textfield;
+    }
+
+    .woocommerce div.product form.cart .button.single_add_to_cart_button {
+        @apply w-full bg-[#ff0000] hover:bg-[#d60000] text-white font-bold text-lg py-4 px-8 rounded-md transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer float-none mt-4;
+        background-color: #ff0000 !important;
+        color: #ffffff !important;
     }
     
     /* Remove default clear button to clean UI */
