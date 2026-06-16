@@ -10,7 +10,10 @@
 <body <?php body_class('antialiased bg-white text-gray-900'); ?>>
 <?php wp_body_open(); ?>
 
-<header id="site-header" class="absolute top-6 lg:top-9 left-0 right-0 z-50">
+<?php 
+$header_class = is_front_page() ? 'absolute top-6 lg:top-9 left-0 right-0 z-50' : 'bg-[#073980] py-2 lg:py-4 relative z-50'; 
+?>
+<header id="site-header" class="<?php echo esc_attr($header_class); ?>">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
         <div class="flex items-center justify-between bg-white/55 border border-white/25 backdrop-blur-md rounded-full shadow-lg px-6 py-2.5 lg:px-10 lg:py-3">
 
