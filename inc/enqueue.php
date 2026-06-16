@@ -67,5 +67,16 @@ function armo_enqueue_assets() {
         true                                                               // load in footer (better performance)
     );
 
+    // Product Total calculation (only on single product pages)
+    if ( is_product() ) {
+        wp_enqueue_script(
+            'armo-product-total',
+            get_stylesheet_directory_uri() . '/assets/js/product-total.js',
+            array('jquery'),
+            $theme_version,
+            true
+        );
+    }
+
 }
 add_action( 'wp_enqueue_scripts', 'armo_enqueue_assets' );
