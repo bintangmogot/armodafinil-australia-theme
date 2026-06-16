@@ -612,6 +612,150 @@ function armo_add_why_buy_layout_to_modules( $field ) {
 add_filter( 'acf/load_field/name=modules', 'armo_add_why_buy_layout_to_modules' );
 
 
+/**
+ * Dynamically register the City Header layout inside the ACF Modules flexible content field.
+ */
+function armo_add_city_header_layout_to_modules( $field ) {
+    if ( isset( $field['layouts'] ) ) {
+        foreach ( $field['layouts'] as &$layout ) {
+            if ( isset( $layout['name'] ) && $layout['name'] === 'city_header' ) {
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_city_header_heading',
+                        'label' => 'Heading',
+                        'name' => 'heading',
+                        'type' => 'text',
+                        'default_value' => 'Buy Armodafinil Online Sydney',
+                    ),
+                    array(
+                        'key' => 'field_city_header_subheading',
+                        'label' => 'Subheading',
+                        'name' => 'subheading',
+                        'type' => 'text',
+                        'default_value' => 'Premium Armodafinil Delivered Across Sydney',
+                    ),
+                    array(
+                        'key' => 'field_city_header_content',
+                        'label' => 'Content',
+                        'name' => 'content',
+                        'type' => 'wysiwyg',
+                    ),
+                    array(
+                        'key' => 'field_city_header_delivery_text',
+                        'label' => 'Delivery Text',
+                        'name' => 'delivery_text',
+                        'type' => 'text',
+                        'default_value' => '5-10 business days delivery',
+                    ),
+                    array(
+                        'key' => 'field_city_header_button_text',
+                        'label' => 'Button Text',
+                        'name' => 'button_text',
+                        'type' => 'text',
+                        'default_value' => 'View Available Options',
+                    ),
+                    array(
+                        'key' => 'field_city_header_button_link',
+                        'label' => 'Button Link',
+                        'name' => 'button_link',
+                        'type' => 'text',
+                        'default_value' => '/shop/',
+                    ),
+                );
+                return $field;
+            }
+        }
+    }
 
+    $field['layouts']['layout_city_header_layout'] = array(
+        'key' => 'layout_city_header_layout',
+        'name' => 'city_header',
+        'label' => 'City Header',
+        'display' => 'block',
+        'sub_fields' => array(
+            array(
+                'key' => 'field_city_header_heading',
+                'label' => 'Heading',
+                'name' => 'heading',
+                'type' => 'text',
+                'default_value' => 'Buy Armodafinil Online Sydney',
+            ),
+            array(
+                'key' => 'field_city_header_subheading',
+                'label' => 'Subheading',
+                'name' => 'subheading',
+                'type' => 'text',
+                'default_value' => 'Premium Armodafinil Delivered Across Sydney',
+            ),
+            array(
+                'key' => 'field_city_header_content',
+                'label' => 'Content',
+                'name' => 'content',
+                'type' => 'wysiwyg',
+            ),
+            array(
+                'key' => 'field_city_header_delivery_text',
+                'label' => 'Delivery Text',
+                'name' => 'delivery_text',
+                'type' => 'text',
+                'default_value' => '5-10 business days delivery',
+            ),
+            array(
+                'key' => 'field_city_header_button_text',
+                'label' => 'Button Text',
+                'name' => 'button_text',
+                'type' => 'text',
+                'default_value' => 'View Available Options',
+            ),
+            array(
+                'key' => 'field_city_header_button_link',
+                'label' => 'Button Link',
+                'name' => 'button_link',
+                'type' => 'text',
+                'default_value' => '/shop/',
+            ),
+        ),
+    );
 
+    return $field;
+}
+add_filter( 'acf/load_field/name=modules', 'armo_add_city_header_layout_to_modules' );
 
+/**
+ * Dynamically register the Text Left layout inside the ACF Modules flexible content field.
+ */
+function armo_add_text_left_layout_to_modules( $field ) {
+    if ( isset( $field['layouts'] ) ) {
+        foreach ( $field['layouts'] as &$layout ) {
+            if ( isset( $layout['name'] ) && $layout['name'] === 'text_left' ) {
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_text_left_content',
+                        'label' => 'Content',
+                        'name' => 'content',
+                        'type' => 'wysiwyg',
+                    ),
+                );
+                return $field;
+            }
+        }
+    }
+
+    $field['layouts']['layout_text_left_layout'] = array(
+        'key' => 'layout_text_left_layout',
+        'name' => 'text_left',
+        'label' => 'Text - Left Aligned',
+        'display' => 'block',
+        'sub_fields' => array(
+            array(
+                'key' => 'field_text_left_content',
+                'label' => 'Content',
+                'name' => 'content',
+                'type' => 'wysiwyg',
+            ),
+        ),
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=modules', 'armo_add_text_left_layout_to_modules' );

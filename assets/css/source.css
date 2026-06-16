@@ -233,6 +233,30 @@
     .module-howto-intro p {
         @apply text-sm lg:text-base text-[#0a1045]/70;
     }
+
+    /* ─── Module: City Header ─── */
+    .module-city-header-content p {
+        @apply mb-4;
+    }
+
+    /* ─── Module: Text Left Aligned ─── */
+    .module-text-left-content h2,
+    .module-text-left-content h3 {
+        @apply text-xl lg:text-2xl font-bold text-[#00125E] mb-4 mt-8;
+    }
+    .module-text-left-content h2:first-child,
+    .module-text-left-content h3:first-child {
+        @apply mt-0;
+    }
+    .module-text-left-content p {
+        @apply mb-4 text-[#1E1E1E];
+    }
+    .module-text-left-content ul {
+        @apply space-y-2 mb-6;
+    }
+    .module-text-left-content hr {
+        @apply border-t border-gray-300 my-8;
+    }
 }
 
 @layer utilities {
