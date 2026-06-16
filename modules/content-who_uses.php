@@ -24,7 +24,7 @@ $intro   = get_sub_field('intro');
             <?php endif; ?>
 
             <?php if ($intro) : ?>
-                <div class="prose prose-lg text-white text-opacity-90 leading-relaxed max-w-none">
+                <div class="prose prose-invert prose-lg text-white text-opacity-90 leading-relaxed max-w-none">
                     <?php echo wp_kses_post($intro); ?>
                 </div>
             <?php else : ?>
