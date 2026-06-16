@@ -730,10 +730,20 @@ function armo_add_text_left_layout_to_modules( $field ) {
             if ( isset( $layout['name'] ) && $layout['name'] === 'text_left' ) {
                 $layout['sub_fields'] = array(
                     array(
-                        'key' => 'field_text_left_content',
-                        'label' => 'Content',
-                        'name' => 'content',
-                        'type' => 'wysiwyg',
+                        'key' => 'field_text_left_sections',
+                        'label' => 'Sections',
+                        'name' => 'sections',
+                        'type' => 'repeater',
+                        'layout' => 'block',
+                        'button_label' => 'Add Section',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_text_left_content',
+                                'label' => 'Content',
+                                'name' => 'content',
+                                'type' => 'wysiwyg',
+                            ),
+                        ),
                     ),
                 );
                 return $field;
@@ -748,10 +758,20 @@ function armo_add_text_left_layout_to_modules( $field ) {
         'display' => 'block',
         'sub_fields' => array(
             array(
-                'key' => 'field_text_left_content',
-                'label' => 'Content',
-                'name' => 'content',
-                'type' => 'wysiwyg',
+                'key' => 'field_text_left_sections',
+                'label' => 'Sections',
+                'name' => 'sections',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Section',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_text_left_content',
+                        'label' => 'Content',
+                        'name' => 'content',
+                        'type' => 'wysiwyg',
+                    ),
+                ),
             ),
         ),
     );
