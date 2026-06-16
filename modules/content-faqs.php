@@ -2,31 +2,38 @@
 /**
  * Layout: FAQs
  * Fields: faq_title (text), faqs (repeater: question (text), answer (wysiwyg))
- * Design: Light background, centered heading, accordion cards with chevron icons
+ * Design: White background, centered heading, dark blue accordion cards with plus/minus icons
  */
 $faq_title = get_sub_field('faq_title');
 $faq_id = 'faq-' . uniqid();
 ?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-[#f5f7fb]">
-    <div class="max-w-3xl mx-auto">
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-white">
+    <div class="max-w-4xl mx-auto">
         <?php if ($faq_title) : ?>
-            <h2 class="text-2xl lg:text-3xl font-bold text-center text-[#0a1045] mb-10"><?php echo esc_html($faq_title); ?></h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-center text-[#00125E] mb-10"><?php echo esc_html($faq_title); ?></h2>
         <?php endif; ?>
 
         <?php if (have_rows('faqs')) : ?>
-            <div class="space-y-3" id="<?php echo esc_attr($faq_id); ?>">
+            <div class="space-y-4" id="<?php echo esc_attr($faq_id); ?>">
                 <?php $i = 0; while (have_rows('faqs')) : the_row(); 
                     $question = get_sub_field('question');
                     $answer   = get_sub_field('answer');
                 ?>
-                    <details class="bg-white rounded-xl shadow-sm border border-[#0a1045]/5 group overflow-hidden" <?php echo $i === 0 ? 'open' : ''; ?>>
-                        <summary class="font-semibold text-[#0a1045] cursor-pointer list-none flex justify-between items-center px-6 py-4 hover:bg-[#f5f7fb] transition-colors">
+                    <details class="bg-[#174A96] rounded-xl shadow-sm group overflow-hidden" <?php echo $i === 0 ? 'open' : ''; ?>>
+                        <summary class="font-semibold md:text-lg text-white cursor-pointer list-none flex justify-between items-center px-6 md:px-8 py-5 hover:bg-[#1a51a3] transition-colors">
                             <span class="pr-4"><?php echo esc_html($question); ?></span>
-                            <svg class="w-5 h-5 text-[#0a1045]/40 group-open:rotate-180 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            
+                            <!-- Plus icon (shown when closed) -->
+                            <svg class="w-6 h-6 text-white block group-open:hidden flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            
+                            <!-- Minus icon (shown when open) -->
+                            <svg class="w-6 h-6 text-white hidden group-open:block flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </summary>
-                        <div class="px-6 pb-5 text-sm text-[#0a1045]/70 leading-relaxed border-t border-[#0a1045]/5 pt-4">
+                        <div class="px-6 md:px-8 pb-6 text-white/90 leading-relaxed text-sm md:text-base">
                             <?php echo wp_kses_post($answer); ?>
                         </div>
                     </details>

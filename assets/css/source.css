@@ -5,11 +5,13 @@
 @layer base {
     html {
         scroll-behavior: smooth;
+        overflow-x: hidden;
     }
     body {
         @apply text-gray-900 bg-white;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
     }
     a {
         @apply transition-colors duration-200;
@@ -147,10 +149,10 @@
     /* ─── Module: Full Width Text ─── */
     .module-fulltext-content h2,
     .module-fulltext-content h3 {
-        @apply text-2xl lg:text-3xl font-bold text-[#0a1045] mb-4;
+        @apply text-2xl lg:text-3xl font-bold text-[#00125E] mb-4;
     }
     .module-fulltext-content p {
-        @apply text-sm lg:text-base text-[#0a1045]/70 leading-relaxed mb-4;
+        @apply text-sm lg:text-base text-[#1E1E1E] leading-relaxed mb-4;
     }
     .module-fulltext-content a {
         @apply text-red-600 font-semibold hover:text-red-700 underline;

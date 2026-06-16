@@ -80,10 +80,78 @@ add_filter( 'acf/location/match_rule', 'armo_acf_modules_on_all_pages', 10, 4 );
  * Dynamically register the Hero Section (Split Fields) layout inside the ACF Modules flexible content field.
  */
 function armo_add_hero_section_layout_to_modules( $field ) {
-    // Check if layout is already registered
+    // Ensure Hero Section (Split Fields) layout has all its sub-fields
     if ( isset( $field['layouts'] ) ) {
-        foreach ( $field['layouts'] as $layout ) {
+        foreach ( $field['layouts'] as &$layout ) {
             if ( isset( $layout['name'] ) && $layout['name'] === 'hero_section' ) {
+                // Force inject the sub-fields so they never disappear
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_hero_section_image',
+                        'label' => 'Background Image',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                        'wrapper' => array('width' => '50'),
+                    ),
+                    array(
+                        'key' => 'field_hero_section_title',
+                        'label' => 'Title',
+                        'name' => 'title',
+                        'type' => 'text',
+                        'wrapper' => array('width' => '50'),
+                        'default_value' => 'Armodafinil Australia',
+                    ),
+                    array(
+                        'key' => 'field_hero_section_subtitle',
+                        'label' => 'Subtitle',
+                        'name' => 'subtitle',
+                        'type' => 'text',
+                        'wrapper' => array('width' => '50'),
+                        'default_value' => 'Trusted Armodafinil Supplier with Fast Australia-Wide Delivery',
+                    ),
+                    array(
+                        'key' => 'field_hero_section_tagline',
+                        'label' => 'Yellow Tagline',
+                        'name' => 'tagline',
+                        'type' => 'text',
+                        'wrapper' => array('width' => '50'),
+                        'default_value' => 'Wake up sharper, stay focused longer',
+                    ),
+                    array(
+                        'key' => 'field_hero_section_features',
+                        'label' => 'Features List',
+                        'name' => 'features',
+                        'type' => 'repeater',
+                        'layout' => 'table',
+                        'button_label' => 'Add Feature',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_hero_section_feature_text',
+                                'label' => 'Feature Text',
+                                'name' => 'feature_text',
+                                'type' => 'text',
+                                'required' => 1,
+                            )
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_hero_section_button_text',
+                        'label' => 'Button Text',
+                        'name' => 'button_text',
+                        'type' => 'text',
+                        'wrapper' => array('width' => '50'),
+                        'default_value' => 'Shop Armodafinil Now',
+                    ),
+                    array(
+                        'key' => 'field_hero_section_button_link',
+                        'label' => 'Button Link (URL)',
+                        'name' => 'button_link',
+                        'type' => 'text',
+                        'wrapper' => array('width' => '50'),
+                        'default_value' => '/shop/',
+                    ),
+                );
                 return $field;
             }
         }
@@ -167,4 +235,263 @@ function armo_add_hero_section_layout_to_modules( $field ) {
     return $field;
 }
 add_filter( 'acf/load_field/name=modules', 'armo_add_hero_section_layout_to_modules' );
+
+/**
+ * Dynamically register the Reviews Carousel layout inside the ACF Modules flexible content field.
+ */
+function armo_add_reviews_carousel_layout_to_modules( $field ) {
+    if ( isset( $field['layouts'] ) ) {
+        foreach ( $field['layouts'] as &$layout ) {
+            if ( isset( $layout['name'] ) && $layout['name'] === 'reviews_carousel' ) {
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_reviews_carousel_heading',
+                        'label' => 'Heading',
+                        'name' => 'heading',
+                        'type' => 'text',
+                        'default_value' => 'What Our Customers Say',
+                    ),
+                );
+                return $field;
+            }
+        }
+    }
+
+    $field['layouts']['layout_reviews_carousel_layout'] = array(
+        'key' => 'layout_reviews_carousel_layout',
+        'name' => 'reviews_carousel',
+        'label' => 'Reviews Carousel',
+        'display' => 'block',
+        'sub_fields' => array(
+            array(
+                'key' => 'field_reviews_carousel_heading',
+                'label' => 'Heading',
+                'name' => 'heading',
+                'type' => 'text',
+                'default_value' => 'What Our Customers Say',
+            ),
+        ),
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=modules', 'armo_add_reviews_carousel_layout_to_modules' );
+
+/**
+ * Dynamically register the Review Page layout inside the ACF Modules flexible content field.
+ */
+function armo_add_review_page_layout_to_modules( $field ) {
+    if ( isset( $field['layouts'] ) ) {
+        foreach ( $field['layouts'] as &$layout ) {
+            if ( isset( $layout['name'] ) && $layout['name'] === 'review_page' ) {
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_review_page_heading',
+                        'label' => 'Heading',
+                        'name' => 'heading',
+                        'type' => 'text',
+                        'default_value' => 'Customer Reviews',
+                    ),
+                );
+                return $field;
+            }
+        }
+    }
+
+    $field['layouts']['layout_review_page_layout'] = array(
+        'key' => 'layout_review_page_layout',
+        'name' => 'review_page',
+        'label' => 'Review Page',
+        'display' => 'block',
+        'sub_fields' => array(
+            array(
+                'key' => 'field_review_page_heading',
+                'label' => 'Heading',
+                'name' => 'heading',
+                'type' => 'text',
+                'default_value' => 'Customer Reviews',
+            ),
+        ),
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=modules', 'armo_add_review_page_layout_to_modules' );
+
+/**
+ * Dynamically register the Review Form layout inside the ACF Modules flexible content field.
+ */
+function armo_add_review_form_layout_to_modules( $field ) {
+    if ( isset( $field['layouts'] ) ) {
+        foreach ( $field['layouts'] as &$layout ) {
+            if ( isset( $layout['name'] ) && $layout['name'] === 'review_form' ) {
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_review_form_heading',
+                        'label' => 'Heading',
+                        'name' => 'heading',
+                        'type' => 'text',
+                        'default_value' => 'Leave us a review 🙏',
+                    ),
+                );
+                return $field;
+            }
+        }
+    }
+
+    $field['layouts']['layout_review_form_layout'] = array(
+        'key' => 'layout_review_form_layout',
+        'name' => 'review_form',
+        'label' => 'Review Form',
+        'display' => 'block',
+        'sub_fields' => array(
+            array(
+                'key' => 'field_review_form_heading',
+                'label' => 'Heading',
+                'name' => 'heading',
+                'type' => 'text',
+                'default_value' => 'Leave us a review 🙏',
+            ),
+        ),
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=modules', 'armo_add_review_form_layout_to_modules' );
+
+/**
+ * Dynamically register the Why Choose Us layout inside the ACF Modules flexible content field.
+ */
+function armo_add_why_choose_us_layout_to_modules( $field ) {
+    if ( isset( $field['layouts'] ) ) {
+        foreach ( $field['layouts'] as &$layout ) {
+            if ( isset( $layout['name'] ) && $layout['name'] === 'why_choose_us' ) {
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_why_choose_us_heading',
+                        'label' => 'Heading',
+                        'name' => 'heading',
+                        'type' => 'text',
+                        'default_value' => 'Why Australians Choose Armodafinil 👍',
+                    ),
+                    array(
+                        'key' => 'field_why_choose_us_features',
+                        'label' => 'Features List',
+                        'name' => 'features',
+                        'type' => 'repeater',
+                        'layout' => 'block',
+                        'button_label' => 'Add Feature',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_why_choose_us_feature_title',
+                                'label' => 'Feature Title',
+                                'name' => 'title',
+                                'type' => 'text',
+                                'required' => 1,
+                            ),
+                            array(
+                                'key' => 'field_why_choose_us_feature_content',
+                                'label' => 'Feature Description',
+                                'name' => 'content',
+                                'type' => 'textarea',
+                                'rows' => 3,
+                                'required' => 1,
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_why_choose_us_image',
+                        'label' => 'Side Image',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                    ),
+                    array(
+                        'key' => 'field_why_choose_us_button_text',
+                        'label' => 'Button Text',
+                        'name' => 'button_text',
+                        'type' => 'text',
+                        'default_value' => 'Shop Now',
+                    ),
+                    array(
+                        'key' => 'field_why_choose_us_button_link',
+                        'label' => 'Button Link',
+                        'name' => 'button_link',
+                        'type' => 'text',
+                        'default_value' => '/shop/',
+                    ),
+                );
+                return $field;
+            }
+        }
+    }
+
+    $field['layouts']['layout_why_choose_us_layout'] = array(
+        'key' => 'layout_why_choose_us_layout',
+        'name' => 'why_choose_us',
+        'label' => 'Why Choose Us',
+        'display' => 'block',
+        'sub_fields' => array(
+            array(
+                'key' => 'field_why_choose_us_heading',
+                'label' => 'Heading',
+                'name' => 'heading',
+                'type' => 'text',
+                'default_value' => 'Why Australians Choose Armodafinil 👍',
+            ),
+            array(
+                'key' => 'field_why_choose_us_features',
+                'label' => 'Features List',
+                'name' => 'features',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Feature',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_why_choose_us_feature_title',
+                        'label' => 'Feature Title',
+                        'name' => 'title',
+                        'type' => 'text',
+                        'required' => 1,
+                    ),
+                    array(
+                        'key' => 'field_why_choose_us_feature_content',
+                        'label' => 'Feature Description',
+                        'name' => 'content',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'required' => 1,
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_why_choose_us_image',
+                'label' => 'Side Image',
+                'name' => 'image',
+                'type' => 'image',
+                'return_format' => 'array',
+            ),
+            array(
+                'key' => 'field_why_choose_us_button_text',
+                'label' => 'Button Text',
+                'name' => 'button_text',
+                'type' => 'text',
+                'default_value' => 'Shop Now',
+            ),
+            array(
+                'key' => 'field_why_choose_us_button_link',
+                'label' => 'Button Link',
+                'name' => 'button_link',
+                'type' => 'text',
+                'default_value' => '/shop/',
+            ),
+        ),
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=modules', 'armo_add_why_choose_us_layout_to_modules' );
+
+
+
 

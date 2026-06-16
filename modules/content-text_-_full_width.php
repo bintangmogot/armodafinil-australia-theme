@@ -6,14 +6,14 @@
  */
 $content = get_sub_field('content');
 ?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-white">
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-gradient-to-b from-[#EAF8FF] to-[#B2DBFF]">
     <div class="max-w-4xl mx-auto text-center">
         <?php if ($content) : ?>
             <div class="module-fulltext-content">
                 <?php echo wp_kses_post($content); ?>
             </div>
         <?php else : ?>
-            <p class="text-gray-400 text-center italic">[ Text Full Width module — add content in ACF ]</p>
+            <p class="text-[#1E1E1E] text-center italic">[ Text Full Width module — add content in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

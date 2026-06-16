@@ -2,16 +2,16 @@
 /**
  * Layout: Feature Product
  * Fields: heading (text), feature_product (relationship, return=object, post_type=product)
- * Design: White bg, heading centered, product cards in 4-column grid with rounded corners and shadow
+ * Design: White bg, heading centered, product cards in 4-column grid with rounded corners, navy border around images only, "IN STOCK" badge
  */
 $heading  = get_sub_field('heading');
 $products = get_sub_field('feature_product');
 ?>
 
-<section class="py-10 lg:py-14 px-6 lg:px-12 bg-white">
+<section class="py-10 lg:py-14 px-6 lg:px-16 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto">
         <?php if ( $heading ) : ?>
-            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-2 text-[#0a1045]"><?php echo esc_html( $heading ); ?></h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-10 text-[#00125E]"><?php echo esc_html( $heading ); ?></h2>
         <?php endif; ?>
 
         <?php if ( $products && is_array($products) ) : ?>
@@ -24,26 +24,39 @@ $products = get_sub_field('feature_product');
                     
                     if ( $wc_product ) :
                         $permalink  = esc_url( get_permalink( $post_id ) );
-                        $name       = esc_html( $wc_product->get_name() );
+                        $name       = wp_kses_post( $wc_product->get_name() );
                         $price_html = $wc_product->get_price_html();
                         $image_html = $wc_product->get_image('woocommerce_thumbnail', array(
-                            'class' => 'w-full h-auto object-contain'
+                            'class' => 'w-full h-auto object-contain max-h-[140px]'
                         ));
+                        
+                        $in_stock = $wc_product->is_in_stock();
                         ?>
-                        <div class="min-w-[260px] lg:min-w-0 snap-start bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                            <a href="<?php echo $permalink; ?>" class="block no-underline text-inherit flex-grow">
-                                <div class="bg-gray-50 rounded-xl p-4 mb-4 flex items-center justify-center min-h-[160px]">
+                        <div class="min-w-[200px] lg:min-w-0 flex-shrink-0 lg:flex-shrink snap-start flex flex-col">
+                            <a href="<?php echo $permalink; ?>" class="block w-full no-underline text-inherit flex-grow flex flex-col">
+                                <div class="bg-white border border-[#00125E] rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px]">
+                                    <?php if ( $in_stock ) : ?>
+                                        <div class="absolute top-2 left-2 bg-[#1e7e34] text-white text-[10px] font-bold px-2 py-1 rounded">
+                                            IN STOCK
+                                        </div>
+                                    <?php endif; ?>
                                     <?php echo $image_html; ?>
                                 </div>
-                                <h3 class="text-sm lg:text-base font-bold text-[#0a1045] mb-2 min-h-[40px] leading-tight">
-                                    <?php echo $name; ?>
-                                </h3>
-                                <div class="text-lg font-extrabold text-[#0a1045] mb-4">
-                                    <?php echo $price_html; ?>
+                                
+                                <div class="text-center px-1 flex-grow flex flex-col">
+                                    <h3 class="text-sm md:text-base font-bold text-[#1E1E1E] mb-1 leading-snug">
+                                        <?php echo $name; ?>
+                                    </h3>
+                                    <div class="text-sm md:text-base font-extrabold text-[#00125E] mb-3">
+                                        <?php echo $price_html; ?>
+                                    </div>
+                                    <div class="mt-auto">
+                                        <span class="inline-flex items-center justify-center gap-2 bg-[#ff0000] text-white py-2 px-6 rounded shadow-md font-bold text-sm text-center hover:bg-red-700 transition-colors">
+                                            Buy Now 
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                                        </span>
+                                    </div>
                                 </div>
-                            </a>
-                            <a href="<?php echo $permalink; ?>" class="block w-full bg-[#0a1045] text-white py-3 rounded-xl font-bold text-sm text-center hover:bg-[#1a2a6c] transition-colors no-underline mt-auto">
-                                View Options
                             </a>
                         </div>
                     <?php 
