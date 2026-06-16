@@ -26,7 +26,7 @@ if ($image) {
 <section class="relative overflow-hidden bg-[#1b4f93]">
     <div class="flex flex-col md:flex-row min-h-[580px]">
         <!-- Image Side (Top on mobile, Right on desktop) -->
-        <div class="w-full md:w-1/2 relative h-[320px] md:h-auto order-1 md:order-2">
+        <div class="w-full md:w-1/2 relative h-[400px] md:h-auto order-1 md:order-2">
             <?php if ($image_url) : ?>
                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($heading); ?>" class="absolute inset-0 w-full h-full object-cover">
             <?php else : ?>

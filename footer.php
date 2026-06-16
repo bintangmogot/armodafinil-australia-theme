@@ -2,7 +2,7 @@
 
     </main>
 
-    <footer id="site-footer" class="bg-[#e8edf5] text-[#0a1045] mt-auto">
+    <footer id="site-footer" class="bg-[#E1EDFF] text-[#0a1045] mt-auto">
 
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-12 lg:pt-16 pb-6">
 

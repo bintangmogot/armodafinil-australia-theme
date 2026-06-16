@@ -67,7 +67,7 @@
     </div>
 
     <div id="mobile-menu" class="hidden lg:hidden mx-4 mt-1">
-        <div class="bg-white/15 backdrop-blur-md rounded-2xl px-4 py-4 space-y-1">
+        <div class="bg-white/90 backdrop-blur-md rounded-2xl px-4 py-4 space-y-1">
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'primary',
@@ -80,6 +80,7 @@
         </div>
     </div>
 </header>
+
 
 <div id="page" class="min-h-screen flex flex-col">
     <main id="main-content" class="flex-grow">

@@ -1,48 +1,70 @@
 <?php
 /**
  * Layout: How to Order
- * Fields: intro (wysiwyg), how_to_order (repeater: icon (image, return=url), content (text))
- * Design: White bg, heading centered, 3 steps with numbered yellow circles and connecting dotted lines
+ * Fields: heading (text), steps (repeater: title, description), safety_title (text), safety_text (wysiwyg)
  */
-$intro = get_sub_field('intro');
-?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-white">
-    <div class="max-w-5xl mx-auto">
-        <?php if ($intro) : ?>
-            <div class="module-howto-intro text-center mb-12 lg:mb-16 max-w-3xl mx-auto">
-                <?php echo wp_kses_post($intro); ?>
-            </div>
-        <?php endif; ?>
-        
-        <?php if (have_rows('how_to_order')) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 relative">
-                <!-- Connecting line (desktop only) -->
-                <div class="hidden md:block absolute top-10 left-[20%] right-[20%] h-0.5 border-t-2 border-dashed border-[#0a1045]/20"></div>
 
-                <?php $step = 1; while (have_rows('how_to_order')) : the_row();
-                    $icon    = get_sub_field('icon');
-                    $content = get_sub_field('content');
-                ?>
-                    <div class="text-center relative z-10">
-                        <!-- Step number circle -->
-                        <?php if ($icon) : ?>
-                            <div class="w-20 h-20 mx-auto mb-5 rounded-full overflow-hidden bg-yellow-400 flex items-center justify-center shadow-lg shadow-yellow-400/30">
-                                <img src="<?php echo esc_url($icon); ?>" alt="Step <?php echo $step; ?>" class="w-10 h-10 object-contain">
-                            </div>
-                        <?php else : ?>
-                            <div class="w-20 h-20 mx-auto mb-5 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg shadow-yellow-400/30">
-                                <span class="text-2xl font-extrabold text-[#0a1045]"><?php echo $step; ?></span>
-                            </div>
-                        <?php endif; ?>
-                        
-                        <?php if ($content) : ?>
-                            <p class="text-sm lg:text-base text-[#0a1045]/80 leading-relaxed max-w-[240px] mx-auto"><?php echo esc_html($content); ?></p>
-                        <?php endif; ?>
-                    </div>
-                <?php $step++; endwhile; ?>
-            </div>
-        <?php else : ?>
-            <p class="text-gray-400 text-center italic">[ How to Order module — add steps in ACF ]</p>
+$heading = get_sub_field('heading');
+$safety_title = get_sub_field('safety_title');
+$safety_text = get_sub_field('safety_text');
+?>
+<?php if (have_rows('steps') || $heading || $safety_text) : ?>
+<section class="pt-12 lg:pt-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 pb-12 lg:pb-20">
+        
+        <?php if ($heading) : ?>
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#00125E] mb-16">
+                <?php echo esc_html($heading); ?>
+            </h2>
         <?php endif; ?>
+
+        <?php if (have_rows('steps')) : ?>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+                <?php 
+                $count = 1;
+                while (have_rows('steps')) : the_row(); 
+                    $title = get_sub_field('title');
+                    $description = get_sub_field('description');
+                    if (!$title && !$description) continue;
+                ?>
+                    <div class="relative bg-[#1b4f93] rounded-xl shadow-lg pt-10 pb-6 px-4 text-center">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#ffcc00] rounded-full flex items-center justify-center text-[#00125E] text-xl font-bold shadow-md">
+                            <?php echo $count; ?>
+                        </div>
+                        <h3 class="text-white text-lg md:text-xl font-semibold mb-3">
+                            <?php echo esc_html($title); ?>
+                        </h3>
+                        <p class="text-white/90 text-[15px] leading-relaxed">
+                            <?php echo esc_html($description); ?>
+                        </p>
+                    </div>
+                <?php 
+                $count++;
+                endwhile; ?>
+            </div>
+        <?php endif; ?>
+
     </div>
+
+    <?php if ($safety_title || $safety_text) : ?>
+        <div class="bg-[#eef4fa] py-10 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-col items-start gap-1 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-7 h-7 mb-1">
+                        <path fill="#ffcc00" d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32z"/>
+                        <path fill="#00125E" d="M232 184v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24s-24 10.7-24 24zm24 232a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"/>
+                    </svg>
+                    <?php if ($safety_title) : ?>
+                        <h3 class="text-lg md:text-xl font-bold text-[#00125E]"><?php echo esc_html($safety_title); ?></h3>
+                    <?php endif; ?>
+                </div>
+                <?php if ($safety_text) : ?>
+                    <div class="text-[#00125E] text-[15px] md:text-base leading-relaxed max-w-4xl">
+                        <?php echo wp_kses_post($safety_text); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
 </section>
+<?php endif; ?>
