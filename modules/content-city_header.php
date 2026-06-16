@@ -10,7 +10,7 @@ $delivery_text = get_sub_field('delivery_text');
 $button_text = get_sub_field('button_text');
 $button_link = get_sub_field('button_link');
 ?>
-<section class="py-12 lg:py-16 px-6 lg:px-12 bg-[#E1EDFF]">
+<section class="py-12 lg:py-16 px-6 lg:px-12 bg-[#E1EDFF] overflow-hidden">
     <div class="max-w-4xl mx-auto text-center">
         <?php if ($heading) : ?>
             <h1 class="text-2xl md:text-3xl font-bold text-[#00125E] mb-2"><?php echo esc_html($heading); ?></h1>

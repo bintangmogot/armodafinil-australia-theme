@@ -7,7 +7,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('antialiased bg-white text-gray-900'); ?>>
+<body <?php body_class('antialiased bg-white text-gray-900 overflow-x-hidden'); ?>>
 <?php wp_body_open(); ?>
 
 <?php 
