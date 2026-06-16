@@ -492,6 +492,126 @@ function armo_add_why_choose_us_layout_to_modules( $field ) {
 }
 add_filter( 'acf/load_field/name=modules', 'armo_add_why_choose_us_layout_to_modules' );
 
+/**
+ * Dynamically register the Why Buy layout inside the ACF Modules flexible content field.
+ */
+function armo_add_why_buy_layout_to_modules( $field ) {
+    if ( isset( $field['layouts'] ) ) {
+        foreach ( $field['layouts'] as &$layout ) {
+            if ( isset( $layout['name'] ) && $layout['name'] === 'why_buy' ) {
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_why_buy_heading',
+                        'label' => 'Heading',
+                        'name' => 'heading',
+                        'type' => 'text',
+                        'default_value' => 'Why Buy From Armodafinil Australia?',
+                    ),
+                    array(
+                        'key' => 'field_why_buy_intro',
+                        'label' => 'Intro Text',
+                        'name' => 'intro',
+                        'type' => 'wysiwyg',
+                        'default_value' => 'Looking to buy Armodafinil online in Australia without the stress?',
+                    ),
+                    array(
+                        'key' => 'field_why_buy_features',
+                        'label' => 'Features Grid',
+                        'name' => 'features',
+                        'type' => 'repeater',
+                        'layout' => 'block',
+                        'button_label' => 'Add Feature Card',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_why_buy_feature_icon',
+                                'label' => 'Icon (Image)',
+                                'name' => 'icon',
+                                'type' => 'image',
+                                'return_format' => 'array',
+                            ),
+                            array(
+                                'key' => 'field_why_buy_feature_title',
+                                'label' => 'Title',
+                                'name' => 'title',
+                                'type' => 'text',
+                                'required' => 1,
+                            ),
+                            array(
+                                'key' => 'field_why_buy_feature_content',
+                                'label' => 'Description',
+                                'name' => 'content',
+                                'type' => 'textarea',
+                                'rows' => 4,
+                                'required' => 1,
+                            ),
+                        ),
+                    ),
+                );
+                return $field;
+            }
+        }
+    }
+
+    $field['layouts']['layout_why_buy_layout'] = array(
+        'key' => 'layout_why_buy_layout',
+        'name' => 'why_buy',
+        'label' => 'Why Buy From Us',
+        'display' => 'block',
+        'sub_fields' => array(
+            array(
+                'key' => 'field_why_buy_heading',
+                'label' => 'Heading',
+                'name' => 'heading',
+                'type' => 'text',
+                'default_value' => 'Why Buy From Armodafinil Australia?',
+            ),
+            array(
+                'key' => 'field_why_buy_intro',
+                'label' => 'Intro Text',
+                'name' => 'intro',
+                'type' => 'wysiwyg',
+                'default_value' => 'Looking to buy Armodafinil online in Australia without the stress?',
+            ),
+            array(
+                'key' => 'field_why_buy_features',
+                'label' => 'Features Grid',
+                'name' => 'features',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Feature Card',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_why_buy_feature_icon',
+                        'label' => 'Icon (Image)',
+                        'name' => 'icon',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                    ),
+                    array(
+                        'key' => 'field_why_buy_feature_title',
+                        'label' => 'Title',
+                        'name' => 'title',
+                        'type' => 'text',
+                        'required' => 1,
+                    ),
+                    array(
+                        'key' => 'field_why_buy_feature_content',
+                        'label' => 'Description',
+                        'name' => 'content',
+                        'type' => 'textarea',
+                        'rows' => 4,
+                        'required' => 1,
+                    ),
+                ),
+            ),
+        ),
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=modules', 'armo_add_why_buy_layout_to_modules' );
+
+
 
 
 
