@@ -3,16 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+    html, body {
+        @apply max-w-full overflow-x-hidden;
+        width: 100%;
+        position: relative;
+    }
+    
+    body {
+        @apply antialiased text-gray-900 bg-[#FAFAFA];
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    
     html {
         scroll-behavior: smooth;
-        overflow-x: hidden;
     }
-    body {
-        @apply text-gray-900 bg-white;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        overflow-x: hidden;
-    }
+    
     a {
         @apply transition-colors duration-200;
     }

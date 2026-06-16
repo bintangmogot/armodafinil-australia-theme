@@ -1,6 +1,6 @@
 <?php ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="overflow-x-hidden">
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,5 +86,5 @@ $header_class = is_front_page() ? 'absolute top-6 lg:top-9 left-0 right-0 z-50' 
 </header>
 
 
-<div id="page" class="min-h-screen flex flex-col">
-    <main id="main-content" class="flex-grow">
+<div id="page" class="min-h-screen flex flex-col min-w-0 overflow-hidden">
+    <main id="main-content" class="flex-grow min-w-0 w-full">
