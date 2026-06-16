@@ -24,11 +24,11 @@ $intro   = get_sub_field('intro');
             <?php endif; ?>
 
             <?php if ($intro) : ?>
-                <div class="prose prose-lg text-white/90 leading-relaxed max-w-none">
+                <div class="prose prose-lg text-white text-opacity-90 leading-relaxed max-w-none">
                     <?php echo wp_kses_post($intro); ?>
                 </div>
             <?php else : ?>
-                <p class="text-white/90 text-base md:text-lg leading-relaxed">
+                <p class="text-white text-opacity-90 text-base md:text-lg leading-relaxed">
                     Armodafinil is commonly used by Australians with demanding schedules, including:
                 </p>
             <?php endif; ?>
