@@ -11,6 +11,12 @@ module.exports = {
     './**/*.php',              // All PHP template files
     './assets/js/**/*.js',     // JavaScript files (in case you add classes dynamically)
   ],
+  safelist: [
+    {
+      pattern: /^(top|bottom|mt|mb|py|pt|pb|h)-(0|1|2|3|4|5|6|8|10|12|14|16|20|24|32|40|48|64)$/,
+      variants: ['sm', 'md', 'lg'],
+    }
+  ],
 
   theme: {
     extend: {
@@ -42,6 +48,22 @@ module.exports = {
        */
       fontFamily: {
         // sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      
+      /*
+       * ── SPACING ──
+       * Tailwind skips some numbers by default (e.g., 18, 22). 
+       * Let's add them so all variations work perfectly!
+       */
+      spacing: {
+        '13': '3.25rem', // 52px
+        '15': '3.75rem', // 60px
+        '17': '4.25rem', // 68px
+        '18': '4.5rem',  // 72px
+        '19': '4.75rem', // 76px
+        '21': '5.25rem', // 84px
+        '22': '5.5rem',  // 88px
+        '23': '5.75rem', // 92px
       },
     },
   },

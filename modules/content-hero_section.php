@@ -18,9 +18,9 @@ if ( $title ) {
     }
 }
 ?>
-<section class="hero relative overflow-hidden md:min-h-[600px] lg:h-[100vh] max-h-[964px]">
+<section class="hero relative overflow-hidden md:min-h-[600px] lg:h-[90vh] max-h-[964px]">
     <?php if ($image) : ?>
-        <img src="<?php echo esc_url($image); ?>" alt="" class="absolute inset-0 w-full h-full object-cover object-right">
+        <img src="<?php echo esc_url($image); ?>" alt="" class="absolute inset-0 w-full h-full object-cover object-bottom">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0a1045]/90 via-[#0a1045]/20 to-transparent lg:hidden"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#0a1045]/20 to-transparent lg:hidden"></div>
     <?php endif; ?>
@@ -51,10 +51,7 @@ if ( $title ) {
                         <?php $feature_text = get_sub_field('feature_text'); ?>
                         <?php if ( $feature_text ) : ?>
                             <li class="flex items-center gap-3 text-sm lg:text-base text-white/90">
-                                <svg class="w-5 h-5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 100 100">
-                                    <path d="M62,16.7 C48,12.5 31.8,17 21.8,28.2 C10,41.4 10.9,61.8 23.8,73.8 C36.8,85.8 57.2,85.2 69.4,72.4 C78.2,63.2 81.3,50.2 78.4,38.2 C77.8,35.8 74.8,34.8 73,36.6 C71.2,38.4 71.5,41.4 72.4,43.6 C74.6,49.2 74,55.6 70.4,60.8 C61,74.2 42.4,77 29.4,67 C16.4,57 14,38.4 24,25.4 C32,15 46,11.4 57.6,16 C60,17 63,15.6 63.8,13 C64.6,10.4 63.2,7.4 60.6,6.6" />
-                                    <path d="M35.4,48 C33,45.4 29,45.4 26.4,48 C23.8,50.6 23.8,54.6 26.4,57.2 L41.2,72 C42.6,73.4 44.4,74 46.2,74 C48,74 49.8,73.4 51.2,72 L83.2,40 C85.8,37.4 85.8,33.4 83.2,30.8 C80.6,28.2 76.6,28.2 74,30.8 L46.2,58.6 L35.4,48 Z" />
-                                </svg>
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/images/check.png" alt="Check" class="w-6 h-6 flex-shrink-0 object-contain">
                                 <span><?php echo esc_html($feature_text); ?></span>
                             </li>
                         <?php endif; ?>
