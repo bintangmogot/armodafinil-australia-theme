@@ -10,7 +10,7 @@ $products = get_sub_field('feature_product');
 $carousel_id = 'carousel-' . uniqid();
 ?>
 
-<section class="py-10 lg:py-14 bg-white relative overflow-hidden">
+<section class="py-10 lg:py-14 pb-0 lg:pb-0 bg-white relative overflow-hidden">
     <!-- overflow-hidden on the section prevents horizontal scrollbar issues -->
     <div class="max-w-[1100px] mx-auto px-6 md:px-12 relative">
         <?php if ( $heading ) : ?>
@@ -25,7 +25,7 @@ $carousel_id = 'carousel-' . uniqid();
                 </button>
 
                 <!-- Carousel Container -->
-                <div id="<?php echo $carousel_id; ?>-container" class="flex overflow-x-auto gap-4 md:gap-6 pb-6 snap-x snap-mandatory hide-scrollbar w-full scroll-smooth">
+                <div id="<?php echo $carousel_id; ?>-container" class="flex overflow-x-auto gap-4 md:gap-6 pb-4 snap-x snap-mandatory w-full scroll-smooth">
                     <?php 
                     foreach ( $products as $product ) : 
                         $post_id = is_object( $product ) ? $product->ID : $product;
@@ -41,7 +41,7 @@ $carousel_id = 'carousel-' . uniqid();
                             
                             $in_stock = $wc_product->is_in_stock();
                             ?>
-                            <div class="w-[200px] md:w-[calc(25%-18px)] flex-shrink-0 snap-start flex flex-col">
+                            <div class="w-[200px] md:w-[calc(25%-18px)] flex-shrink-0 snap-start flex flex-col hover:bg-gray-100 pb-6">
                                 <a href="<?php echo $permalink; ?>" class="block w-full no-underline text-inherit flex-grow flex flex-col">
                                     <div class="bg-white border border-[#00125E] rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px]">
                                         <?php if ( $in_stock ) : ?>
@@ -60,7 +60,7 @@ $carousel_id = 'carousel-' . uniqid();
                                             <?php echo $price_html; ?>
                                         </div>
                                         <div class="mt-auto">
-                                            <span class="inline-flex items-center justify-center gap-2 bg-[#ff0000] text-white py-2 px-6 rounded shadow-md font-bold text-sm text-center hover:bg-red-700 transition-colors">
+                                            <span class="inline-flex items-center justify-center gap-2 bg-[#ff0000] text-white py-2 px-6 rounded shadow-md font-bold text-sm text-center hover:bg-red-600 transition-colors">
                                                 Buy Now 
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                                             </span>
@@ -99,20 +99,41 @@ $carousel_id = 'carousel-' . uniqid();
                             const cardWidth = container.children[0].offsetWidth;
                             const gap = 24;
                             const scrollAmount = cardWidth + gap;
-                            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                            
+                            // Loop back to start if at the end
+                            if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+                                container.scrollTo({ left: 0, behavior: 'smooth' });
+                            } else {
+                                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                            }
                         });
+
+                        // Auto-scroll every 5 seconds
+                        let autoScroll = setInterval(() => {
+                            nextBtn.click();
+                        }, 5000);
+
+                        // Pause auto-scroll when interacting
+                        container.addEventListener('mouseenter', () => clearInterval(autoScroll));
+                        container.addEventListener('mouseleave', () => {
+                            autoScroll = setInterval(() => {
+                                nextBtn.click();
+                            }, 5000);
+                        });
+                        container.addEventListener('touchstart', () => clearInterval(autoScroll), {passive: true});
                     }
                 });
             </script>
             <style>
-                /* Hide scrollbar for Chrome, Safari and Opera */
-                .hide-scrollbar::-webkit-scrollbar {
-                    display: none;
-                }
-                /* Hide scrollbar for IE, Edge and Firefox */
-                .hide-scrollbar {
-                    -ms-overflow-style: none;  /* IE and Edge */
-                    scrollbar-width: none;  /* Firefox */
+                /* Desktop: Hide completely */
+                @media (min-width: 768px) {
+                    #<?php echo $carousel_id; ?>-container::-webkit-scrollbar {
+                        display: none;
+                    }
+                    #<?php echo $carousel_id; ?>-container {
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                    }
                 }
             </style>
         <?php else : ?>

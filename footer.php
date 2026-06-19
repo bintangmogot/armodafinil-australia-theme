@@ -145,14 +145,14 @@
                 <div>
                     <h3 class="text-sm font-semibold text-[#0a1045]/60 mb-3">Payments Accepted</h3>
                     <div class="flex items-center gap-4">
-                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                            <span class="text-xs font-bold text-[#0a1045]">Commonwealth<br>Bank</span>
+                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/commonwealth.png'); ?>" alt="Commonwealth Bank" class="h-6 md:h-7 w-auto object-contain">
                         </div>
-                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                            <span class="text-sm font-extrabold text-[#0a1045]">Osko</span>
+                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/osko-1.jpg'); ?>" alt="Osko" class="h-6 md:h-7 w-auto object-contain">
                         </div>
-                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                            <span class="text-sm font-extrabold text-[#0a1045]">PayID</span>
+                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/pay-idi.png'); ?>" alt="PayID" class="h-6 md:h-7 w-auto object-contain">
                         </div>
                     </div>
                 </div>
@@ -161,8 +161,8 @@
                 <div>
                     <h3 class="text-sm font-semibold text-[#0a1045]/60 mb-3">Shipping Partner</h3>
                     <div class="flex items-center gap-3">
-                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                            <span class="text-xs font-bold text-red-600">Australia<br>Post</span>
+                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/Australia_Post_Logo 1.png'); ?>" alt="Australia Post" class="h-6 md:h-7 w-auto object-contain">
                         </div>
                     </div>
                 </div>
@@ -174,22 +174,22 @@
                 <div>
                     <h3 class="text-sm font-semibold text-[#0a1045]/60 mb-3">Payments Accepted</h3>
                     <div class="flex items-center gap-4">
-                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                            <span class="text-xs font-bold text-[#0a1045]">Commonwealth<br>Bank</span>
+                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/commonwealth.png'); ?>" alt="Commonwealth Bank" class="h-6 md:h-7 w-auto object-contain">
                         </div>
-                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                            <span class="text-sm font-extrabold text-[#0a1045]">Osko</span>
+                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/osko-1.jpg'); ?>" alt="Osko" class="h-6 md:h-7 w-auto object-contain">
                         </div>
-                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                            <span class="text-sm font-extrabold text-[#0a1045]">PayID</span>
+                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/pay-idi.png'); ?>" alt="PayID" class="h-6 md:h-7 w-auto object-contain">
                         </div>
                     </div>
                 </div>
                 <div>
                     <h3 class="text-sm font-semibold text-[#0a1045]/60 mb-3">Shipping Partner</h3>
                     <div class="flex items-center gap-3">
-                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                            <span class="text-xs font-bold text-red-600">Australia<br>Post</span>
+                        <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/Australia_Post_Logo 1.png'); ?>" alt="Australia Post" class="h-6 md:h-7 w-auto object-contain">
                         </div>
                     </div>
                 </div>

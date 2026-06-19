@@ -7,12 +7,12 @@
 $image   = get_sub_field('image');
 $content = get_sub_field('content');
 ?>
-<section class="py-16 lg:py-24 relative overflow-hidden bg-white">
+<section class="py-5 lg:py-16 relative overflow-hidden bg-white">
     <!-- Light Blue Background extending to the right edge of the screen -->
     <div class="absolute bottom-0 left-0 right-0 top-32 md:top-0 md:bottom-0 md:left-auto md:right-0 md:w-5/6 lg:w-3/4 bg-[#EAF8FF] z-0"></div>
     
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-20">
+        <div class="flex flex-col md:flex-row items-start gap-6 lg:gap-12">
             
             <!-- Image Side -->
             <div class="w-full md:w-1/2 lg:w-5/12">
@@ -38,12 +38,12 @@ $content = get_sub_field('content');
             </div>
             
             <!-- Text Content Side -->
-            <div class="w-full md:w-1/2 lg:w-7/12 py-10 md:py-0">
-                <div class="module-info-content prose prose-lg md:prose-xl text-[#2A3342] max-w-none leading-relaxed">
+            <div class="w-full md:w-1/2 lg:w-7/12 py-6 pb-3 md:py-0">
+                <div class="module-info-content prose prose-lg md:prose-xl text-[#2A3342] max-w-none leading-relaxed text-lg [&_h1]:text-3xl [&_h2]:text-3xl [&_h3]:text-3xl">
                     <?php if ($content) : ?>
                         <?php echo wp_kses_post($content); ?>
                     <?php else : ?>
-                        <h2 class="text-[#00125E] font-bold text-3xl">What Is Armodafinil?</h2>
+                        <h2 class="text-[#00125E] font-bold text-4xl">What Is Armodafinil?</h2>
                         <p>Armodafinil is a popular wakefulness-support medication commonly used by adults looking to improve alertness, focus, concentration, and mental performance during long working hours or demanding schedules.</p>
                         <p>Many Australians choose Armodafinil because it is known for:</p>
                         <ul>

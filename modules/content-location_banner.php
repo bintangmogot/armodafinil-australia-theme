@@ -9,7 +9,7 @@ $content     = get_sub_field('content') ?: '<p class="mb-4">Order premium Armoda
 $button_text = get_sub_field('button_text') ?: 'Shop Now ➔';
 $button_link = get_sub_field('button_link') ?: '/shop/';
 ?>
-<section class="py-12 lg:py-16 px-6 lg:px-12 bg-[#183a6b] text-white">
+<section class="py-12 px-6 lg:px-12 bg-[#183a6b] text-white">
     <div class="max-w-6xl mx-auto">
         <?php if ($title) : ?>
             <h2 class="text-xl md:text-2xl font-bold mb-4"><?php echo esc_html($title); ?></h2>

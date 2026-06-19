@@ -8,7 +8,7 @@
 $heading = get_sub_field('heading');
 $intro   = get_sub_field('intro');
 ?>
-<section class="py-16 lg:py-24 px-6 lg:px-12 bg-[#1b4f93] text-white">
+<section class="py-16 px-6 lg:px-12 bg-[#1b4f93] text-white">
     <div class="max-w-7xl mx-auto">
         
         <!-- Section Header -->

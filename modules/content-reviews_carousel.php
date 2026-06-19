@@ -14,10 +14,10 @@ $reviews = new WP_Query(array(
 // Generate a unique ID for this carousel instance
 $carousel_id = 'reviews-carousel-' . uniqid();
 ?>
-<section class="py-10 lg:py-14 bg-white relative overflow-hidden">
+<section class="py-3 lg:py-6 bg-white relative overflow-hidden">
     <div class="max-w-[1000px] mx-auto px-6 md:px-16 relative">
         <?php if ($heading) : ?>
-            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-10 text-[#00125E]"><?php echo esc_html($heading); ?></h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-5 lg:mb-7 text-[#00125E]"><?php echo esc_html($heading); ?></h2>
         <?php endif; ?>
 
         <?php if ($reviews->have_posts()) : ?>

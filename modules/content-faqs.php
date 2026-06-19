@@ -7,7 +7,7 @@
 $faq_title = get_sub_field('faq_title');
 $faq_id = 'faq-' . uniqid();
 ?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-white">
+<section class="py-14 lg:py-16 px-6 lg:px-12 bg-white">
     <div class="max-w-4xl mx-auto">
         <?php if ($faq_title) : ?>
             <h2 class="text-2xl lg:text-3xl font-bold text-center text-[#00125E] mb-10"><?php echo esc_html($faq_title); ?></h2>
@@ -19,7 +19,7 @@ $faq_id = 'faq-' . uniqid();
                     $question = get_sub_field('question');
                     $answer   = get_sub_field('answer');
                 ?>
-                    <details class="bg-[#174A96] rounded-xl shadow-sm group overflow-hidden" <?php echo $i === 0 ? 'open' : ''; ?>>
+                    <details class="bg-[#174A96] rounded-xl shadow-sm group overflow-hidden" open>
                         <summary class="font-semibold md:text-lg text-white cursor-pointer list-none flex justify-between items-center px-6 md:px-8 py-5 hover:bg-[#1a51a3] transition-colors">
                             <span class="pr-4"><?php echo esc_html($question); ?></span>
                             

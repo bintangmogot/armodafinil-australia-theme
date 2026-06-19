@@ -69,11 +69,11 @@ if ($image) {
                                 </div>
                                 <div>
                                     <?php if ($title): ?>
-                                        <h3 class="text-lg font-bold text-white mb-1.5 leading-snug"><?php echo esc_html($title); ?>
+                                        <h3 class="text-xl font-bold text-white mb-1.5 leading-snug"><?php echo esc_html($title); ?>
                                         </h3>
                                     <?php endif; ?>
                                     <?php if ($content): ?>
-                                        <p class="text-white/85 text-sm md:text-base leading-relaxed">
+                                        <p class="text-white/85 text-base md:text-lg leading-relaxed">
                                             <?php echo esc_html($content); ?></p>
                                     <?php endif; ?>
                                 </div>

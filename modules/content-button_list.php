@@ -8,7 +8,7 @@ $heading = get_sub_field('heading');
 $subheading = get_sub_field('subheading');
 ?>
 <?php if (have_rows('buttons') || $heading) : ?>
-<section class="py-12 lg:py-16 px-6 lg:px-12 bg-white">
+<section class="py-12 px-6 lg:px-12 bg-white">
     <div class="max-w-4xl mx-auto text-center">
         
         <?php if ($heading) : ?>

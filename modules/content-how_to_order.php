@@ -9,11 +9,11 @@ $safety_title = get_sub_field('safety_title');
 $safety_text = get_sub_field('safety_text');
 ?>
 <?php if (have_rows('steps') || $heading || $safety_text) : ?>
-<section class="pt-12 lg:pt-20 bg-white">
+<section class="bg-white">
     <div class="max-w-7xl mx-auto px-6 pb-12 lg:pb-20">
         
         <?php if ($heading) : ?>
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#00125E] mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#00125E] mb-12">
                 <?php echo esc_html($heading); ?>
             </h2>
         <?php endif; ?>
