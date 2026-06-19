@@ -14,7 +14,7 @@ module.exports = {
   safelist: [
     {
       pattern: /^(top|bottom|mt|mb|py|pt|pb|h)-(0|1|2|3|4|5|6|8|10|12|14|16|20|24|32|40|48|64)$/,
-      variants: ['sm', 'md', 'lg'],
+      variants: ['sm', 'md', 'lg', 'xl', '2xl'],
     }
   ],
 

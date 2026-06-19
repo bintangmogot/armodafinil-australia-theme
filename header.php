@@ -48,7 +48,7 @@
     <header id="site-header" class="<?php echo esc_attr($header_class); ?>">
         <div class="w-full px-4 sm:px-6 lg:px-[72px] py-2">
             <div
-                class="flex items-center justify-between bg-white/55 border border-white/25 backdrop-blur-md rounded-full shadow-lg px-6 py-2.5 lg:px-8 xl:px-24 lg:py-1">
+                class="flex items-center justify-between bg-white/55 border border-white/25 backdrop-blur-md rounded-full shadow-lg px-6 py-2.5 lg:px-12 xl:px-24 lg:py-1">
 
                 <div class="flex-shrink-0">
                     <?php if (has_custom_logo()): ?>
