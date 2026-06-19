@@ -32,6 +32,7 @@ $reviews = new WP_Query(array(
                                 <?php endfor; ?>
                             </div>
                         <?php endif; ?>
+                        <h4 class="text-sm font-bold text-[#0a1045] mb-2"><?php echo esc_html( get_the_title() ); ?></h4>
                         <div class="text-sm text-[#0a1045]/70 leading-relaxed mb-4"><?php the_content(); ?></div>
                         <?php if ($name) : ?>
                             <p class="text-sm font-bold text-[#0a1045]">— <?php echo esc_html($name); ?></p>

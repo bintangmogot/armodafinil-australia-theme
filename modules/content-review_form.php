@@ -3,6 +3,10 @@
  * Layout: Review Form
  * Fields: heading (text)
  * Design: Dark blue background section, white/light form card in center.
+ * 
+ * This form submits reviews via AJAX. Submitted reviews are saved as
+ * 'pending' status in the Reviews CPT — the admin must approve them
+ * before they appear on the frontend.
  */
 
 $heading = get_sub_field('heading');
@@ -17,13 +21,17 @@ if ( ! $heading ) {
         </h2>
 
         <div class="bg-[#f5f7fb] rounded-2xl p-8 lg:p-12 text-left shadow-xl max-w-2xl mx-auto">
-            <form action="#" method="POST" class="flex flex-col gap-6">
+            <form id="armo-review-form" method="POST" class="flex flex-col gap-6">
+                <?php wp_nonce_field( 'armo_submit_review', 'armo_review_nonce' ); ?>
+                <input type="hidden" name="action" value="armo_submit_review">
+                <input type="hidden" name="review_rating" id="review-rating-value" value="5">
+
                 <!-- Rating -->
                 <div>
                     <label class="block text-sm font-bold text-[#00125E] mb-2">Your overall rating *</label>
-                    <div class="flex gap-2">
+                    <div class="flex gap-2" id="star-rating-selector">
                         <?php for ($i = 1; $i <= 5; $i++) : ?>
-                            <svg class="w-8 h-8 text-gray-300 hover:text-[#EAA800] cursor-pointer transition-colors fill-current" viewBox="0 0 20 20">
+                            <svg data-rating="<?php echo $i; ?>" class="star-icon w-8 h-8 text-[#EAA800] cursor-pointer transition-colors fill-current" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                             </svg>
                         <?php endfor; ?>
@@ -33,13 +41,13 @@ if ( ! $heading ) {
                 <!-- Title -->
                 <div>
                     <label class="block text-sm font-bold text-[#00125E] mb-2">Title of your review *</label>
-                    <input type="text" placeholder="Enter your title" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
+                    <input type="text" name="review_title" placeholder="Enter your title" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
                 </div>
 
                 <!-- Review Content -->
                 <div>
                     <label class="block text-sm font-bold text-[#00125E] mb-2">Your review *</label>
-                    <textarea placeholder="Write your review" rows="4" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors resize-none" required></textarea>
+                    <textarea name="review_content" placeholder="Write your review" rows="4" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors resize-none" required></textarea>
                 </div>
 
                 <!-- Grid for Name and Email -->
@@ -47,19 +55,22 @@ if ( ! $heading ) {
                     <!-- Name -->
                     <div>
                         <label class="block text-sm font-bold text-[#00125E] mb-2">Your name *</label>
-                        <input type="text" placeholder="Enter your name" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
+                        <input type="text" name="review_name" placeholder="Enter your name" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
                     </div>
 
                     <!-- Email -->
                     <div>
                         <label class="block text-sm font-bold text-[#00125E] mb-2">Your email address *</label>
-                        <input type="email" placeholder="Enter your email" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
+                        <input type="email" name="review_email" placeholder="Enter your email" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
                     </div>
                 </div>
 
+                <!-- Success / Error Messages -->
+                <div id="review-form-message" class="hidden rounded-lg p-4 text-sm font-medium text-center"></div>
+
                 <!-- Submit Button -->
                 <div class="mt-4 text-center">
-                    <button type="submit" class="bg-[#d61e1e] text-white font-bold py-4 px-10 rounded-full hover:bg-red-700 transition-colors w-full md:w-auto">
+                    <button type="submit" id="review-submit-btn" class="bg-[#d61e1e] text-white font-bold py-4 px-10 rounded-full hover:bg-red-700 transition-colors w-full md:w-auto">
                         Submit your review
                     </button>
                 </div>
@@ -67,3 +78,86 @@ if ( ! $heading ) {
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ── Star Rating Selector ──
+    const stars = document.querySelectorAll('#star-rating-selector .star-icon');
+    const ratingInput = document.getElementById('review-rating-value');
+    let currentRating = 5;
+
+    function updateStars(rating) {
+        stars.forEach(function(star) {
+            const starRating = parseInt(star.getAttribute('data-rating'));
+            if (starRating <= rating) {
+                star.classList.add('text-[#EAA800]');
+                star.classList.remove('text-gray-300');
+            } else {
+                star.classList.remove('text-[#EAA800]');
+                star.classList.add('text-gray-300');
+            }
+        });
+    }
+
+    stars.forEach(function(star) {
+        star.addEventListener('click', function() {
+            currentRating = parseInt(this.getAttribute('data-rating'));
+            ratingInput.value = currentRating;
+            updateStars(currentRating);
+        });
+
+        star.addEventListener('mouseenter', function() {
+            updateStars(parseInt(this.getAttribute('data-rating')));
+        });
+
+        star.addEventListener('mouseleave', function() {
+            updateStars(currentRating);
+        });
+    });
+
+    // ── Form Submission via AJAX ──
+    const form = document.getElementById('armo-review-form');
+    const submitBtn = document.getElementById('review-submit-btn');
+    const messageDiv = document.getElementById('review-form-message');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Disable button & show loading
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        messageDiv.classList.add('hidden');
+
+        const formData = new FormData(form);
+
+        fetch('<?php echo esc_url( admin_url( "admin-ajax.php" ) ); ?>', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+            messageDiv.classList.remove('hidden');
+            if (data.success) {
+                messageDiv.className = 'rounded-lg p-4 text-sm font-medium text-center bg-green-100 text-green-800 border border-green-200';
+                messageDiv.textContent = data.data.message;
+                form.reset();
+                currentRating = 5;
+                updateStars(5);
+                ratingInput.value = 5;
+            } else {
+                messageDiv.className = 'rounded-lg p-4 text-sm font-medium text-center bg-red-100 text-red-800 border border-red-200';
+                messageDiv.textContent = data.data.message || 'Something went wrong. Please try again.';
+            }
+        })
+        .catch(function() {
+            messageDiv.classList.remove('hidden');
+            messageDiv.className = 'rounded-lg p-4 text-sm font-medium text-center bg-red-100 text-red-800 border border-red-200';
+            messageDiv.textContent = 'Connection error. Please try again.';
+        })
+        .finally(function() {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit your review';
+        });
+    });
+});
+</script>

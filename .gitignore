@@ -1,4 +1,27 @@
-node_modules/
+# =============================================================================
+# WordPress Theme .gitignore
+# =============================================================================
+
+# ── OS & IDE files ──
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# ── Composer & Node ──
+vendor/
+node_modules/
+
+# ── Cache & compiled files ──
+*.cache
 *.log
+
+# ── Misc ──
+*.sql
+*.sql.gz
+*.tar.gz
+*.zip
