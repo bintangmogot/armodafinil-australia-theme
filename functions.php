@@ -846,3 +846,13 @@ add_filter( 'woocommerce_product_single_add_to_cart_text', 'armo_custom_add_to_c
 function armo_custom_add_to_cart_text() {
     return __( 'Buy Now 🛒', 'woocommerce' );
 }
+
+/**
+ * Enable SVG Uploads in Media Library
+ */
+add_filter( 'upload_mimes', 'armo_allow_svg_uploads' );
+function armo_allow_svg_uploads( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+    return $mimes;
+}
