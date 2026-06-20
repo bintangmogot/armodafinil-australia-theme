@@ -30,7 +30,7 @@ $intro = get_sub_field('intro');
                             <p class="text-blue-600 font-medium mb-2"><?php echo esc_html($amount); ?></p>
                         <?php endif; ?>
                         <?php if ($content) : ?>
-                            <p class="text-gray-600 text-sm"><?php echo esc_html($content); ?></p>
+                            <p class="text-gray-600 text-base"><?php echo esc_html($content); ?></p>
                         <?php endif; ?>
                     </div>
                 <?php endwhile; ?>

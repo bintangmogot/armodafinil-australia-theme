@@ -561,6 +561,33 @@ html, body {
   position: relative;
 }
 
+/* 
+     * Global font-size bump — makes all text larger for readability.
+     * Default browser = 16px. Mobile gets 20px (~25% bigger),
+     * tablet 18px, desktop stays at 16px.
+     * Since Tailwind uses rem, this proportionally scales ALL text.
+     */
+
+html {
+  font-size: 20px;
+  /* mobile: ~25% bigger */
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+    /* tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+    /* desktop: 18px */
+  }
+}
+
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
@@ -569,10 +596,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 a {
@@ -814,8 +837,8 @@ img {
   position: relative;
   margin-bottom: 0.25rem;
   padding-left: 1.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: rgb(255 255 255 / 0.9);
 }
 
@@ -823,8 +846,8 @@ img {
   .hero-content p:nth-child(4),
     .hero-content p:nth-child(5) {
     padding-left: 1.75rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -863,8 +886,8 @@ img {
   padding-right: 1.5rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -890,8 +913,8 @@ img {
     padding-right: 2rem;
     padding-top: 0.875rem;
     padding-bottom: 0.875rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -906,8 +929,8 @@ img {
   display: block;
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: rgb(10 16 69 / 0.8);
   text-decoration-line: none;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
@@ -1137,8 +1160,8 @@ img {
 
 .module-fulltext-content p {
   margin-bottom: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   line-height: 1.625;
   --tw-text-opacity: 1;
   color: rgb(30 30 30 / var(--tw-text-opacity, 1));
@@ -1146,8 +1169,8 @@ img {
 
 @media (min-width: 1024px) {
   .module-fulltext-content p {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1185,16 +1208,16 @@ img {
 
 .module-side-image-content p {
   margin-bottom: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   line-height: 1.625;
   color: rgb(255 255 255 / 0.8);
 }
 
 @media (min-width: 1024px) {
   .module-side-image-content p {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1210,8 +1233,8 @@ img {
   padding-right: 1.5rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(10 16 69 / var(--tw-text-opacity, 1));
@@ -1263,15 +1286,15 @@ img {
 }
 
 .module-benefit-intro p {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: rgb(255 255 255 / 0.7);
 }
 
 @media (min-width: 1024px) {
   .module-benefit-intro p {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1286,8 +1309,8 @@ img {
 }
 
 .module-benefit-content p {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   line-height: 1.625;
   color: rgb(255 255 255 / 0.7);
 }
@@ -1304,8 +1327,8 @@ img {
   padding-right: 1.5rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(10 16 69 / var(--tw-text-opacity, 1));
@@ -1341,8 +1364,8 @@ img {
 }
 
 .module-boxes-content p {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   line-height: 1.625;
   color: rgb(10 16 69 / 0.6);
 }
@@ -1351,16 +1374,16 @@ img {
 
 .module-tips-content p {
   margin-bottom: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   line-height: 1.625;
   color: rgb(10 16 69 / 0.7);
 }
 
 @media (min-width: 1024px) {
   .module-tips-content p {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1382,8 +1405,8 @@ img {
 }
 
 .module-tips-content ul {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: rgb(10 16 69 / 0.7);
 }
 
@@ -1409,16 +1432,16 @@ img {
 
 .module-cta-content p {
   margin-bottom: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   line-height: 1.625;
   color: rgb(255 255 255 / 0.8);
 }
 
 @media (min-width: 1024px) {
   .module-cta-content p {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1433,8 +1456,8 @@ img {
   padding-right: 1.5rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(10 16 69 / var(--tw-text-opacity, 1));
@@ -3651,6 +3674,10 @@ img {
   --tw-text-opacity: 0.9;
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .no-underline {
   text-decoration-line: none;
 }
@@ -5093,6 +5120,10 @@ img {
     flex-direction: row;
   }
 
+  .md\:flex-wrap {
+    flex-wrap: wrap;
+  }
+
   .md\:items-start {
     align-items: flex-start;
   }
@@ -5103,6 +5134,10 @@ img {
 
   .md\:gap-8 {
     gap: 2rem;
+  }
+
+  .md\:gap-4 {
+    gap: 1rem;
   }
 
   .md\:p-8 {
@@ -5212,6 +5247,11 @@ img {
   .md\:py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  .md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .md\:pb-0 {
@@ -5559,6 +5599,10 @@ img {
     order: 4;
   }
 
+  .lg\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .lg\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -5874,6 +5918,10 @@ img {
 
   .lg\:grid-cols-\[45\%_55\%\] {
     grid-template-columns: 45% 55%;
+  }
+
+  .lg\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .lg\:flex-row {
@@ -6204,6 +6252,10 @@ img {
     padding-top: 2rem;
   }
 
+  .lg\:pr-8 {
+    padding-right: 2rem;
+  }
+
   .lg\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -6236,6 +6288,11 @@ img {
 
   .lg\:text-xl {
     font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
     line-height: 1.75rem;
   }
 }
@@ -7456,12 +7513,12 @@ img {
   line-height: 2.25rem;
 }
 
-.\[\&_img\]\:h-10 img {
-  height: 2.5rem;
-}
-
 .\[\&_img\]\:h-14 img {
   height: 3.5rem;
+}
+
+.\[\&_img\]\:h-16 img {
+  height: 4rem;
 }
 
 .\[\&_img\]\:w-auto img {
@@ -7469,11 +7526,11 @@ img {
 }
 
 @media (min-width: 1024px) {
-  .lg\:\[\&_img\]\:h-14 img {
-    height: 3.5rem;
-  }
-
   .lg\:\[\&_img\]\:h-18 img {
     height: 4.5rem;
+  }
+
+  .lg\:\[\&_img\]\:h-19 img {
+    height: 4.75rem;
   }
 }

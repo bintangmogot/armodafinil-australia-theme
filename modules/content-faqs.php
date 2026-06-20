@@ -33,7 +33,7 @@ $faq_id = 'faq-' . uniqid();
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </summary>
-                        <div class="px-6 md:px-8 pb-6 text-white/90 leading-relaxed text-sm md:text-base">
+                        <div class="px-6 md:px-8 pb-6 text-white/90 leading-relaxed text-base md:text-lg">
                             <?php echo wp_kses_post($answer); ?>
                         </div>
                     </details>

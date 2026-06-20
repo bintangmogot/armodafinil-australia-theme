@@ -8,14 +8,31 @@
         width: 100%;
         position: relative;
     }
+
+    /* 
+     * Global font-size bump — makes all text larger for readability.
+     * Default browser = 16px. Mobile gets 20px (~25% bigger),
+     * tablet 18px, desktop stays at 16px.
+     * Since Tailwind uses rem, this proportionally scales ALL text.
+     */
+    html {
+        font-size: 20px; /* mobile: ~25% bigger */
+        scroll-behavior: smooth;
+    }
+    @media (min-width: 768px) {
+        html {
+            font-size: 18px; /* tablet */
+        }
+    }
+    @media (min-width: 1024px) {
+        html {
+            font-size: 18px; /* desktop: 18px */
+        }
+    }
     
     body {
         @apply antialiased text-gray-900 bg-[#FAFAFA];
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-    
-    html {
-        scroll-behavior: smooth;
     }
     
     a {
@@ -79,7 +96,7 @@
     }
     .hero-content p:nth-child(4),
     .hero-content p:nth-child(5) {
-        @apply text-sm lg:text-base text-white/90 mb-1 pl-6 lg:pl-7 relative;
+        @apply text-base lg:text-lg text-white/90 mb-1 pl-6 lg:pl-7 relative;
     }
     .hero-content p:nth-child(4)::before,
     .hero-content p:nth-child(5)::before {
@@ -97,7 +114,7 @@
         @apply mt-5 lg:mt-6 text-white;
     }
     .hero-content a {
-        @apply inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-sm lg:text-base px-6 lg:px-8 py-3 lg:py-3.5 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-red-600/30;
+        @apply inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-3.5 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-red-600/30;
     }
     .hero-content a::after {
         content: ' →';
@@ -106,7 +123,7 @@
     /* Footer */
     .footer-links > li > a,
     #site-footer ul > li > a {
-        @apply block text-sm text-primary-dark/80 hover:text-red-600 transition-colors py-0.5 no-underline;
+        @apply block text-base text-primary-dark/80 hover:text-red-600 transition-colors py-0.5 no-underline;
     }
 
     /* Pagination */
@@ -165,7 +182,7 @@
         @apply text-2xl lg:text-3xl font-bold text-primary mb-4;
     }
     .module-fulltext-content p {
-        @apply text-sm lg:text-base text-[#1E1E1E] leading-relaxed mb-4;
+        @apply text-base lg:text-lg text-[#1E1E1E] leading-relaxed mb-4;
     }
     .module-fulltext-content a {
         @apply text-red-600 font-semibold hover:text-red-700 underline;
@@ -177,10 +194,10 @@
         @apply text-2xl lg:text-3xl font-bold text-white mb-4;
     }
     .module-side-image-content p {
-        @apply text-sm lg:text-base text-white/80 leading-relaxed mb-4;
+        @apply text-base lg:text-lg text-white/80 leading-relaxed mb-4;
     }
     .module-side-image-content a {
-        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-sm px-6 py-3 rounded-full no-underline transition-all mt-2;
+        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-base px-6 py-3 rounded-full no-underline transition-all mt-2;
     }
     .module-side-image-content ul {
         @apply list-disc list-inside mb-4 text-white/80 space-y-1;
@@ -192,17 +209,17 @@
         @apply text-2xl lg:text-4xl font-bold text-white mb-4;
     }
     .module-benefit-intro p {
-        @apply text-white/70 text-sm lg:text-base;
+        @apply text-white/70 text-base lg:text-lg;
     }
     .module-benefit-content h3,
     .module-benefit-content h4 {
         @apply text-lg font-bold text-white mb-1;
     }
     .module-benefit-content p {
-        @apply text-sm text-white/70 leading-relaxed;
+        @apply text-base text-white/70 leading-relaxed;
     }
     .module-benefit-content a {
-        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-sm px-6 py-3 rounded-full no-underline transition-all mt-4;
+        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-base px-6 py-3 rounded-full no-underline transition-all mt-4;
     }
 
     /* ─── Module: Boxes ─── */
@@ -211,18 +228,18 @@
         @apply text-base lg:text-lg font-bold text-primary-dark mb-2;
     }
     .module-boxes-content p {
-        @apply text-sm text-primary-dark/60 leading-relaxed;
+        @apply text-base text-primary-dark/60 leading-relaxed;
     }
 
     /* ─── Module: Tips ─── */
     .module-tips-content p {
-        @apply text-sm lg:text-base text-primary-dark/70 leading-relaxed mb-4;
+        @apply text-base lg:text-lg text-primary-dark/70 leading-relaxed mb-4;
     }
     .module-tips-content img {
         @apply rounded-xl my-4;
     }
     .module-tips-content ul {
-        @apply list-disc list-inside space-y-1 text-primary-dark/70 text-sm;
+        @apply list-disc list-inside space-y-1 text-primary-dark/70 text-base;
     }
 
     /* ─── Module: CTA (dark bg) ─── */
@@ -231,10 +248,10 @@
         @apply text-2xl lg:text-3xl font-bold text-white mb-4;
     }
     .module-cta-content p {
-        @apply text-sm lg:text-base text-white/80 leading-relaxed mb-4;
+        @apply text-base lg:text-lg text-white/80 leading-relaxed mb-4;
     }
     .module-cta-content a {
-        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-sm px-6 py-3 rounded-full no-underline transition-all;
+        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-base px-6 py-3 rounded-full no-underline transition-all;
     }
 
     /* ─── Module: How to Order ─── */
@@ -242,7 +259,7 @@
         @apply text-2xl lg:text-3xl font-bold text-primary-dark mb-4;
     }
     .module-howto-intro p {
-        @apply text-sm lg:text-base text-primary-dark/70;
+        @apply text-base lg:text-lg text-primary-dark/70;
     }
 
     /* ─── Custom Palettes & Gradients ─── */
@@ -292,7 +309,7 @@
     }
 
     .woocommerce-product-details__short-description {
-        @apply text-sm text-gray-700 my-4 leading-relaxed;
+        @apply text-base text-gray-700 my-4 leading-relaxed;
     }
 
     /* Price Styling */

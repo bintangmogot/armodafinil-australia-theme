@@ -16,13 +16,13 @@ $button_link = get_sub_field('button_link') ?: '/shop/';
         <?php endif; ?>
 
         <?php if ($content) : ?>
-            <div class="text-[15px] md:text-base leading-relaxed mb-6 opacity-90">
+            <div class="text-base md:text-lg leading-relaxed mb-6 opacity-90">
                 <?php echo wp_kses_post($content); ?>
             </div>
         <?php endif; ?>
 
         <?php if ($button_text && $button_link) : ?>
-            <a href="<?php echo esc_url($button_link); ?>" class="inline-flex items-center justify-center bg-accent hover:bg-[#e6b800] text-primary-dark font-bold text-[17px] py-3 px-6 rounded transition-colors duration-300">
+            <a href="<?php echo esc_url($button_link); ?>" class="inline-flex items-center justify-center bg-accent hover:bg-[#e6b800] text-primary-dark font-bold text-lg py-3 px-6 rounded transition-colors duration-300">
                 <?php echo esc_html($button_text); ?>
             </a>
         <?php endif; ?>

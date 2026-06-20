@@ -53,7 +53,7 @@ if ( $title ) {
                     <?php while ( have_rows('features') ) : the_row(); ?>
                         <?php $feature_text = get_sub_field('feature_text'); ?>
                         <?php if ( $feature_text ) : ?>
-                            <li class="flex items-center gap-3 text-sm lg:text-xl text-white/90">
+                            <li class="flex items-center gap-3 text-base lg:text-xl text-white/90">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/images/check.png" alt="Check" class="w-6 h-6 flex-shrink-0 object-contain">
                                 <span><?php echo esc_html($feature_text); ?></span>
                             </li>
@@ -64,7 +64,7 @@ if ( $title ) {
 
             <?php if ($button_text && $button_link) : ?>
                 <div class="mt-5 lg:mt-6">
-                    <a href="<?php echo esc_url($button_link); ?>" class="inline-flex items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-sm lg:text-base px-6 lg:px-8 py-3 lg:py-3.5 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
+                    <a href="<?php echo esc_url($button_link); ?>" class="inline-flex items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-3.5 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
                         <span><?php echo esc_html($button_text); ?></span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>

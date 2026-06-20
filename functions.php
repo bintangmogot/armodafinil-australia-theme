@@ -58,6 +58,13 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /*
+ * ── Load Theme Options (ACF Options Page) ──
+ * Registers: Options page in WP Admin for editable footer, contact info, etc.
+ * File: inc/theme-options.php
+ */
+require_once ARMO_THEME_DIR . '/inc/theme-options.php';
+
+/*
  * ── Fix: Make ACF "Modules" field group show on ALL page templates ──
  * The ACF field group was set to only show on "Default Template".
  * This overrides that rule so modules appear no matter which

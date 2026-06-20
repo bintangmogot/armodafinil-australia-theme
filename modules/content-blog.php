@@ -17,7 +17,7 @@ $recent = new WP_Query(array('posts_per_page' => 6, 'post_type' => 'post', 'post
                         <div class="p-5">
                             <p class="text-xs text-gray-400 mb-1"><?php echo get_the_date(); ?></p>
                             <h3 class="font-semibold text-gray-900 mb-2"><a href="<?php the_permalink(); ?>" class="hover:text-blue-600"><?php the_title(); ?></a></h3>
-                            <p class="text-sm text-gray-600 line-clamp-3"><?php echo get_the_excerpt(); ?></p>
+                            <p class="text-base text-gray-600 line-clamp-3"><?php echo get_the_excerpt(); ?></p>
                         </div>
                     </article>
                 <?php endwhile; ?>

@@ -21,7 +21,7 @@ $button_link = get_sub_field('button_link');
         <?php endif; ?>
 
         <?php if ($content) : ?>
-            <div class="module-city-header-content text-primary text-[15px] md:text-base leading-relaxed space-y-4 mb-8">
+            <div class="module-city-header-content text-primary text-base md:text-lg leading-relaxed space-y-4 mb-8">
                 <?php echo wp_kses_post($content); ?>
             </div>
         <?php endif; ?>
@@ -34,7 +34,7 @@ $button_link = get_sub_field('button_link');
         <?php endif; ?>
 
         <?php if ($button_text && $button_link) : ?>
-            <a href="<?php echo esc_url($button_link); ?>" class="inline-flex items-center justify-center gap-2 bg-[#ff0000] hover:bg-red-700 text-white font-bold text-sm md:text-base px-6 md:px-8 py-3 rounded-md transition-colors shadow-md no-underline">
+            <a href="<?php echo esc_url($button_link); ?>" class="inline-flex items-center justify-center gap-2 bg-[#ff0000] hover:bg-red-700 text-white font-bold text-base md:text-lg px-6 md:px-8 py-3 rounded-md transition-colors shadow-md no-underline">
                 <?php echo esc_html($button_text); ?>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>

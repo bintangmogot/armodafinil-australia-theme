@@ -34,7 +34,7 @@ $safety_text = get_sub_field('safety_text');
                         <h3 class="text-white text-lg md:text-xl font-semibold mb-3">
                             <?php echo esc_html($title); ?>
                         </h3>
-                        <p class="text-white/90 text-[15px] leading-relaxed">
+                        <p class="text-white/90 text-base md:text-lg leading-relaxed">
                             <?php echo esc_html($description); ?>
                         </p>
                     </div>
@@ -59,7 +59,7 @@ $safety_text = get_sub_field('safety_text');
                     <?php endif; ?>
                 </div>
                 <?php if ($safety_text) : ?>
-                    <div class="text-primary text-[15px] md:text-base leading-relaxed max-w-4xl">
+                    <div class="text-primary text-base md:text-lg leading-relaxed max-w-4xl">
                         <?php echo wp_kses_post($safety_text); ?>
                     </div>
                 <?php endif; ?>

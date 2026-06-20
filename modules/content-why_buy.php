@@ -71,7 +71,7 @@ $intro = get_sub_field('intro');
                             <?php endif; ?>
 
                             <?php if ($content): ?>
-                                <p class="text-primary/80 text-sm md:text-base leading-relaxed">
+                                <p class="text-primary/80 text-base md:text-lg leading-relaxed">
                                     <?php echo esc_html($content); ?>
                                 </p>
                             <?php endif; ?>
@@ -92,7 +92,7 @@ $intro = get_sub_field('intro');
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-primary mb-2 leading-snug">Australia-Focused Service
                         </h3>
-                        <p class="text-primary/80 text-sm md:text-base leading-relaxed">We built our platform specifically
+                        <p class="text-primary/80 text-base md:text-lg leading-relaxed">We built our platform specifically
                             for Australian customers. Pricing, support, shipping, and product selections are tailored for
                             Australia-wide delivery.</p>
                     </div>
@@ -106,7 +106,7 @@ $intro = get_sub_field('intro');
                     </div>
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-primary mb-2 leading-snug">Discreet Shipping</h3>
-                        <p class="text-primary/80 text-sm md:text-base leading-relaxed">All orders are packed discreetly
+                        <p class="text-primary/80 text-base md:text-lg leading-relaxed">All orders are packed discreetly
                             for privacy and convenience.</p>
                     </div>
                 </div>
@@ -120,7 +120,7 @@ $intro = get_sub_field('intro');
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-primary mb-2 leading-snug">Premium Quality Products
                         </h3>
-                        <p class="text-primary/80 text-sm md:text-base leading-relaxed">We stock trusted Armodafinil
+                        <p class="text-primary/80 text-base md:text-lg leading-relaxed">We stock trusted Armodafinil
                             brands sourced from reputable manufacturers with strong global reputations.</p>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ $intro = get_sub_field('intro');
                     </div>
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-primary mb-2 leading-snug">Fast Dispatch</h3>
-                        <p class="text-primary/80 text-sm md:text-base leading-relaxed">Orders are processed quickly to
+                        <p class="text-primary/80 text-base md:text-lg leading-relaxed">Orders are processed quickly to
                             minimise delays and keep delivery times consistent.</p>
                     </div>
                 </div>
@@ -147,7 +147,7 @@ $intro = get_sub_field('intro');
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-primary mb-2 leading-snug">Secure Ordering Process
                         </h3>
-                        <p class="text-primary/80 text-sm md:text-base leading-relaxed">Our checkout process is simple,
+                        <p class="text-primary/80 text-base md:text-lg leading-relaxed">Our checkout process is simple,
                             secure, and designed to make ordering stress-free.</p>
                     </div>
                 </div>
@@ -161,7 +161,7 @@ $intro = get_sub_field('intro');
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-primary mb-2 leading-snug">Responsive Support Team
                         </h3>
-                        <p class="text-primary/80 text-sm md:text-base leading-relaxed">We stock trusted Armodafinil
+                        <p class="text-primary/80 text-base md:text-lg leading-relaxed">We stock trusted Armodafinil
                             brands sourced from reputable manufacturers with strong global reputations.</p>
                     </div>
                 </div>

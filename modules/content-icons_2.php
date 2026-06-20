@@ -19,7 +19,7 @@
                             </div>
                         <?php endif; ?>
                         <?php if ($content) : ?>
-                            <p class="text-sm font-medium text-gray-900"><?php echo esc_html($content); ?></p>
+                            <p class="text-base font-medium text-gray-900"><?php echo esc_html($content); ?></p>
                         <?php endif; ?>
                     </div>
                 <?php endwhile; ?>

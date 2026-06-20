@@ -69,7 +69,7 @@ $end_count   = min( $start_count + 20 - 1, $total_reviews );
                                 </svg>
                             <?php endfor; ?>
                         </div>
-                        <div class="text-sm font-medium text-gray-600">
+                        <div class="text-base font-medium text-gray-600">
                             From <?php echo esc_html( $total_reviews ); ?> reviews
                         </div>
                     </div>
@@ -113,7 +113,7 @@ $end_count   = min( $start_count + 20 - 1, $total_reviews );
                                 <div class="md:hidden w-full h-[1px] bg-white/20"></div>
 
                                 <!-- Right side: Title + Content -->
-                                <div class="text-white text-sm md:text-base leading-relaxed text-center md:text-left">
+                                <div class="text-white text-base md:text-lg leading-relaxed text-center md:text-left">
                                     <h4 class="text-base md:text-lg font-bold text-white mb-2"><?php echo esc_html( get_the_title() ); ?></h4>
                                     <?php echo wp_kses_post(wpautop($content)); ?>
                                 </div>
@@ -123,7 +123,7 @@ $end_count   = min( $start_count + 20 - 1, $total_reviews );
 
                     <!-- Pagination / Load More -->
                     <div class="mt-8 flex flex-col items-center">
-                        <div class="text-sm text-gray-500 mb-4 font-semibold">
+                        <div class="text-base text-gray-500 mb-4 font-semibold">
                             <?php echo esc_html( $start_count ); ?> TO <?php echo esc_html( $end_count ); ?> FROM <?php echo esc_html( $total_reviews ); ?>
                         </div>
                         <?php if ( $reviews->max_num_pages > $paged ) : ?>

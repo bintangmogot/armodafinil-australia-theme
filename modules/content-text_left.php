@@ -8,7 +8,7 @@
 <section class="py-14 lg:py-20 px-6 lg:px-12 bg-white overflow-hidden">
     <div class="max-w-4xl mx-auto">
         <?php if (have_rows('sections')) : ?>
-            <div class="module-text-left-content text-left text-[15px] lg:text-base text-[#1E1E1E] leading-relaxed">
+            <div class="module-text-left-content text-left text-base lg:text-lg text-[#1E1E1E] leading-relaxed">
                 <?php while (have_rows('sections')) : the_row(); ?>
                     
                     <hr class="border-t border-gray-300 my-10">

@@ -95,7 +95,7 @@ if ($image) {
                             <div>
                                 <h3 class="text-lg font-bold text-white mb-1.5 leading-snug">Longer Lasting Mental Clarity
                                 </h3>
-                                <p class="text-white/85 text-sm md:text-base leading-relaxed">Armodafinil is widely known
+                                <p class="text-white/85 text-base md:text-lg leading-relaxed">Armodafinil is widely known
                                     for its extended duration compared to standard Modafinil. Many users report feeling
                                     focused and mentally switched on for longer periods throughout the day.</p>
                             </div>
@@ -113,7 +113,7 @@ if ($image) {
                             <div>
                                 <h3 class="text-lg font-bold text-white mb-1.5 leading-snug">Ideal for Busy Australian
                                     Lifestyles</h3>
-                                <p class="text-white/85 text-sm md:text-base leading-relaxed">Whether you’re balancing work,
+                                <p class="text-white/85 text-base md:text-lg leading-relaxed">Whether you’re balancing work,
                                     study, business, travel, or demanding schedules, Armodafinil has become increasingly
                                     popular among Australians who need reliable daytime alertness.</p>
                             </div>
@@ -131,7 +131,7 @@ if ($image) {
                             <div>
                                 <h3 class="text-lg font-bold text-white mb-1.5 leading-snug">Trusted by Professionals &
                                     Students</h3>
-                                <p class="text-white/85 text-sm md:text-base leading-relaxed">From office workers and
+                                <p class="text-white/85 text-base md:text-lg leading-relaxed">From office workers and
                                     tradies working long shifts to university students preparing for exams, Armodafinil is
                                     often chosen for improved focus and productivity.</p>
                             </div>

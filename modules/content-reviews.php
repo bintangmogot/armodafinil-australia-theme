@@ -32,10 +32,10 @@ $reviews = new WP_Query(array(
                                 <?php endfor; ?>
                             </div>
                         <?php endif; ?>
-                        <h4 class="text-sm font-bold text-primary-dark mb-2"><?php echo esc_html( get_the_title() ); ?></h4>
-                        <div class="text-sm text-primary-dark/70 leading-relaxed mb-4"><?php the_content(); ?></div>
+                        <h4 class="text-base font-bold text-primary-dark mb-2"><?php echo esc_html( get_the_title() ); ?></h4>
+                        <div class="text-base text-primary-dark/70 leading-relaxed mb-4"><?php the_content(); ?></div>
                         <?php if ($name) : ?>
-                            <p class="text-sm font-bold text-primary-dark">— <?php echo esc_html($name); ?></p>
+                            <p class="text-base font-bold text-primary-dark">— <?php echo esc_html($name); ?></p>
                         <?php endif; ?>
                     </div>
                 <?php endwhile; ?>
