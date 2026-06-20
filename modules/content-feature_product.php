@@ -11,7 +11,7 @@ $products = get_sub_field('feature_product');
 <section class="py-10 lg:py-14 px-6 lg:px-16 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto">
         <?php if ( $heading ) : ?>
-            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-10 text-[#00125E]"><?php echo esc_html( $heading ); ?></h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-10 text-primary"><?php echo esc_html( $heading ); ?></h2>
         <?php endif; ?>
 
         <?php if ( $products && is_array($products) ) : ?>
@@ -34,7 +34,7 @@ $products = get_sub_field('feature_product');
                         ?>
                         <div class="min-w-[200px] lg:min-w-0 flex-shrink-0 lg:flex-shrink snap-start flex flex-col">
                             <a href="<?php echo $permalink; ?>" class="block w-full no-underline text-inherit flex-grow flex flex-col">
-                                <div class="bg-white border border-[#00125E] rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px]">
+                                <div class="bg-white border border-primary rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px]">
                                     <?php if ( $in_stock ) : ?>
                                         <div class="absolute top-2 left-2 bg-[#1e7e34] text-white text-[10px] font-bold px-2 py-1 rounded">
                                             IN STOCK
@@ -47,7 +47,7 @@ $products = get_sub_field('feature_product');
                                     <h3 class="text-sm md:text-base font-bold text-[#1E1E1E] mb-1 leading-snug">
                                         <?php echo $name; ?>
                                     </h3>
-                                    <div class="text-sm md:text-base font-extrabold text-[#00125E] mb-3">
+                                    <div class="text-sm md:text-base font-extrabold text-primary mb-3">
                                         <?php echo $price_html; ?>
                                     </div>
                                     <div class="mt-auto">

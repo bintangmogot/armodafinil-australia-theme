@@ -5,8 +5,8 @@ $content = get_sub_field('content');
 <section class="hero relative overflow-hidden md:min-h-[600px] lg:min-h-[800px]">
     <?php if ($image) : ?>
         <img src="<?php echo esc_url($image); ?>" alt="" class="absolute inset-0 w-full h-full object-cover object-right">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0a1045]/90 via-[#0a1045]/20 to-transparent lg:hidden"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0a1045]/20 to-transparent lg:hidden"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary-dark/20 to-transparent lg:hidden"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-dark/20 to-transparent lg:hidden"></div>
     <?php endif; ?>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-end lg:items-center min-h-[inherit]">

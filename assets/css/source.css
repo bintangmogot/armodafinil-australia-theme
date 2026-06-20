@@ -52,7 +52,7 @@
 
     /* Mobile nav */
     #mobile-menu ul > li > a {
-        @apply block px-4 py-3 text-2xl font-bold text-[#00125E] text-right;
+        @apply block px-4 py-3 text-2xl font-bold text-primary text-right;
         @apply hover:text-red-600 transition-colors duration-150;
     }
     #mobile-menu ul > li.current-menu-item > a,
@@ -63,7 +63,7 @@
         @apply pr-4;
     }
     #mobile-menu ul > li > ul > li > a {
-        @apply block px-4 py-2 text-lg text-[#00125E]/70 text-right;
+        @apply block px-4 py-2 text-lg text-primary/70 text-right;
         @apply hover:text-red-600 transition-colors duration-150;
     }
 
@@ -75,7 +75,7 @@
         @apply text-lg md:text-xl lg:text-2xl font-semibold text-white/90 leading-snug mb-2 lg:mb-3;
     }
     .hero-content p:nth-child(3) {
-        @apply text-base lg:text-lg text-yellow-400 italic mb-6 lg:mb-8;
+        @apply text-base lg:text-lg text-accent italic mb-6 lg:mb-8;
     }
     .hero-content p:nth-child(4),
     .hero-content p:nth-child(5) {
@@ -106,7 +106,7 @@
     /* Footer */
     .footer-links > li > a,
     #site-footer ul > li > a {
-        @apply block text-sm text-[#0a1045]/80 hover:text-red-600 transition-colors py-0.5 no-underline;
+        @apply block text-sm text-primary-dark/80 hover:text-red-600 transition-colors py-0.5 no-underline;
     }
 
     /* Pagination */
@@ -162,7 +162,7 @@
     /* ─── Module: Full Width Text ─── */
     .module-fulltext-content h2,
     .module-fulltext-content h3 {
-        @apply text-2xl lg:text-3xl font-bold text-[#00125E] mb-4;
+        @apply text-2xl lg:text-3xl font-bold text-primary mb-4;
     }
     .module-fulltext-content p {
         @apply text-sm lg:text-base text-[#1E1E1E] leading-relaxed mb-4;
@@ -180,7 +180,7 @@
         @apply text-sm lg:text-base text-white/80 leading-relaxed mb-4;
     }
     .module-side-image-content a {
-        @apply inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-[#0a1045] font-bold text-sm px-6 py-3 rounded-full no-underline transition-all mt-2;
+        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-sm px-6 py-3 rounded-full no-underline transition-all mt-2;
     }
     .module-side-image-content ul {
         @apply list-disc list-inside mb-4 text-white/80 space-y-1;
@@ -202,27 +202,27 @@
         @apply text-sm text-white/70 leading-relaxed;
     }
     .module-benefit-content a {
-        @apply inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-[#0a1045] font-bold text-sm px-6 py-3 rounded-full no-underline transition-all mt-4;
+        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-sm px-6 py-3 rounded-full no-underline transition-all mt-4;
     }
 
     /* ─── Module: Boxes ─── */
     .module-boxes-content h3,
     .module-boxes-content h4 {
-        @apply text-base lg:text-lg font-bold text-[#0a1045] mb-2;
+        @apply text-base lg:text-lg font-bold text-primary-dark mb-2;
     }
     .module-boxes-content p {
-        @apply text-sm text-[#0a1045]/60 leading-relaxed;
+        @apply text-sm text-primary-dark/60 leading-relaxed;
     }
 
     /* ─── Module: Tips ─── */
     .module-tips-content p {
-        @apply text-sm lg:text-base text-[#0a1045]/70 leading-relaxed mb-4;
+        @apply text-sm lg:text-base text-primary-dark/70 leading-relaxed mb-4;
     }
     .module-tips-content img {
         @apply rounded-xl my-4;
     }
     .module-tips-content ul {
-        @apply list-disc list-inside space-y-1 text-[#0a1045]/70 text-sm;
+        @apply list-disc list-inside space-y-1 text-primary-dark/70 text-sm;
     }
 
     /* ─── Module: CTA (dark bg) ─── */
@@ -234,15 +234,20 @@
         @apply text-sm lg:text-base text-white/80 leading-relaxed mb-4;
     }
     .module-cta-content a {
-        @apply inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-[#0a1045] font-bold text-sm px-6 py-3 rounded-full no-underline transition-all;
+        @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-primary-dark font-bold text-sm px-6 py-3 rounded-full no-underline transition-all;
     }
 
     /* ─── Module: How to Order ─── */
     .module-howto-intro h2 {
-        @apply text-2xl lg:text-3xl font-bold text-[#0a1045] mb-4;
+        @apply text-2xl lg:text-3xl font-bold text-primary-dark mb-4;
     }
     .module-howto-intro p {
-        @apply text-sm lg:text-base text-[#0a1045]/70;
+        @apply text-sm lg:text-base text-primary-dark/70;
+    }
+
+    /* ─── Custom Palettes & Gradients ─── */
+    .bg-gradient-review {
+        background: linear-gradient(90deg, #073980E3 0%, #2056A2E3 100%), #00125E;
     }
 
     /* ─── Module: City Header ─── */
@@ -253,7 +258,7 @@
     /* ─── Module: Text Left Aligned ─── */
     .module-text-left-content h2,
     .module-text-left-content h3 {
-        @apply text-xl lg:text-2xl font-bold text-[#00125E] mb-4 mt-8;
+        @apply text-xl lg:text-2xl font-bold text-primary mb-4 mt-8;
     }
     .module-text-left-content h2:first-child,
     .module-text-left-content h3:first-child {
@@ -283,7 +288,7 @@
     }
 
     .product_title.entry-title {
-        @apply text-2xl lg:text-3xl font-bold text-[#00125E] mb-2;
+        @apply text-2xl lg:text-3xl font-bold text-primary mb-2;
     }
 
     .woocommerce-product-details__short-description {
@@ -292,13 +297,13 @@
 
     /* Price Styling */
     .price {
-        @apply text-xl font-bold text-[#00125E] mb-4 block;
+        @apply text-xl font-bold text-primary mb-4 block;
     }
     .price del {
         @apply text-gray-400 font-normal mr-2;
     }
     .price ins {
-        @apply no-underline text-[#00125E];
+        @apply no-underline text-primary;
     }
 
     /* Variations Form */
@@ -312,7 +317,7 @@
         @apply text-sm font-semibold text-gray-700 pb-2 block;
     }
     .variations td.value select {
-        @apply w-full border border-gray-300 rounded-md px-4 py-3 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#00125E]/20 focus:border-[#00125E] appearance-none;
+        @apply w-full border border-gray-300 rounded-md px-4 py-3 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary appearance-none;
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
         background-position: right 0.5rem center;
         background-repeat: no-repeat;

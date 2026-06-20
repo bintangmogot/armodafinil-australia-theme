@@ -39,6 +39,24 @@ module.exports = {
           900: '#0c4a6e',
           950: '#082f49',
         },
+        primary: {
+          DEFAULT: '#00125E', // Dark Navy (Text & Primary Branding)
+          light: '#073980',   // Header bg & Gradient start
+          dark: '#0a1045',    // Very dark navy
+        },
+        secondary: {
+          DEFAULT: '#1b4f93', // Medium Blue (Backgrounds)
+          dark: '#2056A2',    // Gradient end
+        },
+        accent: {
+          DEFAULT: '#FFD000', // Yellow (Tagline/Buttons)
+          hover: '#e6bb00',
+        },
+        surface: {
+          DEFAULT: '#E1EDFF', // Light Blue (Cards)
+          light: '#EAF2FF',   // Lighter Blue (Cards)
+          dark: '#b9cee8',    // Light Slate Blue (Who Uses Cards)
+        }
       },
 
       /*
@@ -47,7 +65,7 @@ module.exports = {
        * Example: font-sans will use Inter instead of the browser default.
        */
       fontFamily: {
-        // sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       
       /*

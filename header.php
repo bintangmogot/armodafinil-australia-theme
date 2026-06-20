@@ -13,10 +13,10 @@
 
     <?php
     // Top bar is approx 56px on mobile.
-    $header_class = is_front_page() ? 'absolute top-[72px] lg:top-5 left-0 right-0 z-40' : 'bg-[#073980] py-2 lg:py-4 relative z-40';
+    $header_class = is_front_page() ? 'absolute top-[72px] lg:top-5 left-0 right-0 z-40' : 'bg-primary-light py-2 lg:py-4 relative z-40';
     ?>
     <!-- Mobile Top Bar (Cart & WhatsApp) - Hidden on Desktop -->
-    <div class="bg-[#073980] w-full px-10 sm:px-12 py-3 flex justify-between items-center relative z-50 lg:hidden">
+    <div class="bg-primary-light w-full px-10 sm:px-12 py-3 flex justify-between items-center relative z-50 lg:hidden">
         <?php if (class_exists('WooCommerce')): ?>
             <a href="<?php echo esc_url(wc_get_cart_url()); ?>"
                 class="text-white hover:text-gray-200 transition-colors relative flex items-center" aria-label="Cart">
@@ -44,7 +44,7 @@
         </a>
     </div>
 
-    <!-- Tailwind scanner hook: bg-[#073980] py-2 lg:py-4 relative z-40 -->
+    <!-- Tailwind scanner hook: bg-primary-light py-2 lg:py-4 relative z-40 -->
     <header id="site-header" class="<?php echo esc_attr($header_class); ?>">
         <div class="w-full px-4 sm:px-6 lg:px-[72px] py-2">
             <div
@@ -57,7 +57,7 @@
                         </div>
                     <?php else: ?>
                         <a href="<?php echo esc_url(home_url('/')); ?>"
-                            class="text-lg lg:text-xl font-bold text-[#0a1045] no-underline hover:text-[#0a1045]/80">
+                            class="text-lg lg:text-xl font-bold text-primary-dark no-underline hover:text-primary-dark/80">
                             <?php bloginfo('name'); ?>
                         </a>
                     <?php endif; ?>
@@ -98,7 +98,7 @@
                             alt="WhatsApp" class="w-8 h-8 object-contain">
                     </a>
 
-                    <button id="mobile-menu-toggle" class="lg:hidden p-2 text-[#0a1045]" aria-expanded="false"
+                    <button id="mobile-menu-toggle" class="lg:hidden p-2 text-primary-dark" aria-expanded="false"
                         aria-controls="mobile-menu" aria-label="Menu">
                         <svg id="icon-hamburger" class="w-10 h-10" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">

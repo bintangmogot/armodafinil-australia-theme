@@ -6,7 +6,7 @@
  */
 $content = get_sub_field('content');
 ?>
-<section class="py-6 lg:py-12 px-6 lg:px-12 bg-[#E1EDFF]">
+<section class="py-6 lg:py-12 px-6 lg:px-12 bg-surface">
     <div class="max-w-4xl mx-auto text-center">
         <?php if ($content) : ?>
             <div class="module-fulltext-content">

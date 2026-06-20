@@ -15,10 +15,10 @@ $right       = get_sub_field('content_right');
             <!-- Left Column -->
             <div>
                 <?php if ($left_title) : ?>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-[#0a1045] mb-5"><?php echo esc_html($left_title); ?></h2>
+                    <h2 class="text-2xl lg:text-3xl font-bold text-primary-dark mb-5"><?php echo esc_html($left_title); ?></h2>
                 <?php endif; ?>
                 <?php if ($left) : ?>
-                    <div class="module-tips-content text-[#0a1045]/80 leading-relaxed">
+                    <div class="module-tips-content text-primary-dark/80 leading-relaxed">
                         <?php echo wp_kses_post($left); ?>
                     </div>
                 <?php endif; ?>
@@ -27,10 +27,10 @@ $right       = get_sub_field('content_right');
             <!-- Right Column -->
             <div>
                 <?php if ($right_title) : ?>
-                    <h2 class="text-2xl lg:text-3xl font-bold text-[#0a1045] mb-5"><?php echo esc_html($right_title); ?></h2>
+                    <h2 class="text-2xl lg:text-3xl font-bold text-primary-dark mb-5"><?php echo esc_html($right_title); ?></h2>
                 <?php endif; ?>
                 <?php if ($right) : ?>
-                    <div class="module-tips-content text-[#0a1045]/80 leading-relaxed">
+                    <div class="module-tips-content text-primary-dark/80 leading-relaxed">
                         <?php echo wp_kses_post($right); ?>
                     </div>
                 <?php endif; ?>

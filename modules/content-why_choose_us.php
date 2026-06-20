@@ -23,7 +23,7 @@ if ($image) {
     }
 }
 ?>
-<section class="relative overflow-hidden bg-[#1b4f93]">
+<section class="relative overflow-hidden bg-secondary">
     <div class="flex flex-col md:flex-row min-h-[580px]">
         <!-- Image Side (Top on mobile, Right on desktop) -->
         <div class="w-full md:w-1/2 relative h-[400px] md:h-auto order-1 md:order-2">
@@ -31,13 +31,13 @@ if ($image) {
                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($heading); ?>"
                     class="absolute inset-0 w-full h-full object-cover">
             <?php else: ?>
-                <div class="absolute inset-0 bg-[#0a1045]/20 flex items-center justify-center text-white italic">[ Side
+                <div class="absolute inset-0 bg-primary-dark/20 flex items-center justify-center text-white italic">[ Side
                     Image ]</div>
             <?php endif; ?>
         </div>
 
         <!-- Text Content Side (Bottom on mobile, Left on desktop) -->
-        <div class="w-full md:w-1/2 bg-[#1b4f93] flex items-center justify-end px-6 py-14 lg:py-20 order-2 md:order-1">
+        <div class="w-full md:w-1/2 bg-gradient-review flex items-center justify-end px-6 py-14 lg:py-20 order-2 md:order-1">
             <div class="max-w-xl w-full md:pr-10 lg:pr-16 text-white flex flex-col items-start">
 
                 <?php if ($heading): ?>
@@ -61,7 +61,7 @@ if ($image) {
                                 <!-- Yellow circle with white checkmark -->
                                 <div class="flex-shrink-0 mt-1">
                                     <div class="w-6 h-6 bg-[#FFC700] rounded-full flex items-center justify-center">
-                                        <svg class="w-3.5 h-3.5 text-[#1b4f93]" fill="none" stroke="currentColor"
+                                        <svg class="w-3.5 h-3.5 text-secondary" fill="none" stroke="currentColor"
                                             stroke-width="4.5" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                         </svg>
@@ -86,7 +86,7 @@ if ($image) {
                         <div class="flex gap-4 items-start">
                             <div class="flex-shrink-0 mt-1">
                                 <div class="w-6 h-6 bg-[#FFC700] rounded-full flex items-center justify-center">
-                                    <svg class="w-3.5 h-3.5 text-[#1b4f93]" fill="none" stroke="currentColor"
+                                    <svg class="w-3.5 h-3.5 text-secondary" fill="none" stroke="currentColor"
                                         stroke-width="4.5" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                     </svg>
@@ -104,7 +104,7 @@ if ($image) {
                         <div class="flex gap-4 items-start">
                             <div class="flex-shrink-0 mt-1">
                                 <div class="w-6 h-6 bg-[#FFC700] rounded-full flex items-center justify-center">
-                                    <svg class="w-3.5 h-3.5 text-[#1b4f93]" fill="none" stroke="currentColor"
+                                    <svg class="w-3.5 h-3.5 text-secondary" fill="none" stroke="currentColor"
                                         stroke-width="4.5" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                     </svg>
@@ -122,7 +122,7 @@ if ($image) {
                         <div class="flex gap-4 items-start">
                             <div class="flex-shrink-0 mt-1">
                                 <div class="w-6 h-6 bg-[#FFC700] rounded-full flex items-center justify-center">
-                                    <svg class="w-3.5 h-3.5 text-[#1b4f93]" fill="none" stroke="currentColor"
+                                    <svg class="w-3.5 h-3.5 text-secondary" fill="none" stroke="currentColor"
                                         stroke-width="4.5" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                     </svg>
@@ -145,7 +145,7 @@ if ($image) {
                 $btn_link = $button_link ? $button_link : '/shop/';
                 ?>
                 <a href="<?php echo esc_url($btn_link); ?>"
-                    class="inline-flex items-center gap-3 bg-[#FFC700] text-[#00125E] font-bold py-4 px-8 rounded-lg hover:bg-[#EAA800] transition-colors group shadow-md">
+                    class="inline-flex items-center gap-3 bg-[#FFC700] text-primary font-bold py-4 px-8 rounded-lg hover:bg-[#EAA800] transition-colors group shadow-md">
                     <span><?php echo esc_html($btn_text); ?></span>
                     <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none"
                         stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">

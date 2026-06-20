@@ -6,7 +6,7 @@
  */
 $content = get_sub_field('content');
 ?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-gradient-to-r from-[#0a1045] to-[#162070] text-white">
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-gradient-to-r from-primary-dark to-[#162070] text-white">
     <div class="max-w-4xl mx-auto text-center">
         <?php if ($content) : ?>
             <div class="module-cta-content"><?php echo wp_kses_post($content); ?></div>

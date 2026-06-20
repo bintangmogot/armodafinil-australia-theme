@@ -14,7 +14,7 @@ if ( ! $heading ) {
     $heading = 'Leave us a review 🙏';
 }
 ?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-[#00125E]">
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-primary">
     <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-3xl lg:text-4xl font-bold text-white mb-10">
             <?php echo esc_html( $heading ); ?>
@@ -28,7 +28,7 @@ if ( ! $heading ) {
 
                 <!-- Rating -->
                 <div>
-                    <label class="block text-sm font-bold text-[#00125E] mb-2">Your overall rating *</label>
+                    <label class="block text-sm font-bold text-primary mb-2">Your overall rating *</label>
                     <div class="flex gap-2" id="star-rating-selector">
                         <?php for ($i = 1; $i <= 5; $i++) : ?>
                             <svg data-rating="<?php echo $i; ?>" class="star-icon w-8 h-8 text-[#EAA800] cursor-pointer transition-colors fill-current" viewBox="0 0 20 20">
@@ -40,28 +40,28 @@ if ( ! $heading ) {
 
                 <!-- Title -->
                 <div>
-                    <label class="block text-sm font-bold text-[#00125E] mb-2">Title of your review *</label>
-                    <input type="text" name="review_title" placeholder="Enter your title" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
+                    <label class="block text-sm font-bold text-primary mb-2">Title of your review *</label>
+                    <input type="text" name="review_title" placeholder="Enter your title" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
                 </div>
 
                 <!-- Review Content -->
                 <div>
-                    <label class="block text-sm font-bold text-[#00125E] mb-2">Your review *</label>
-                    <textarea name="review_content" placeholder="Write your review" rows="4" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors resize-none" required></textarea>
+                    <label class="block text-sm font-bold text-primary mb-2">Your review *</label>
+                    <textarea name="review_content" placeholder="Write your review" rows="4" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-primary transition-colors resize-none" required></textarea>
                 </div>
 
                 <!-- Grid for Name and Email -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Name -->
                     <div>
-                        <label class="block text-sm font-bold text-[#00125E] mb-2">Your name *</label>
-                        <input type="text" name="review_name" placeholder="Enter your name" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
+                        <label class="block text-sm font-bold text-primary mb-2">Your name *</label>
+                        <input type="text" name="review_name" placeholder="Enter your name" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
                     </div>
 
                     <!-- Email -->
                     <div>
-                        <label class="block text-sm font-bold text-[#00125E] mb-2">Your email address *</label>
-                        <input type="email" name="review_email" placeholder="Enter your email" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-[#00125E] transition-colors" required>
+                        <label class="block text-sm font-bold text-primary mb-2">Your email address *</label>
+                        <input type="email" name="review_email" placeholder="Enter your email" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
                     </div>
                 </div>
 

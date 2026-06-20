@@ -13,7 +13,7 @@
                     $image   = get_sub_field('image');
                     $content = get_sub_field('content');
                 ?>
-                    <div class="bg-[#f5f7fb] rounded-2xl p-6 lg:p-8 hover:shadow-lg hover:shadow-[#0a1045]/5 transition-all duration-300 border border-transparent hover:border-[#0a1045]/10">
+                    <div class="bg-[#f5f7fb] rounded-2xl p-6 lg:p-8 hover:shadow-lg hover:shadow-primary-dark/5 transition-all duration-300 border border-transparent hover:border-primary-dark/10">
                         <?php if ($image) : ?>
                             <div class="mb-5">
                                 <?php echo wp_get_attachment_image($image, 'thumbnail', false, array('class' => 'w-12 h-12 lg:w-14 lg:h-14')); ?>

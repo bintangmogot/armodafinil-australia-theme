@@ -6,7 +6,7 @@
  */
 $intro_content = get_sub_field('intro_content');
 ?>
-<section class="py-6 lg:py-8 px-6 lg:px-12 bg-[#0a1045]">
+<section class="py-6 lg:py-8 px-6 lg:px-12 bg-primary-dark">
     <div class="max-w-7xl mx-auto">
         <?php if ($intro_content) : ?>
             <div class="text-center text-white/80 mb-6 text-sm"><?php echo wp_kses_post($intro_content); ?></div>

@@ -14,13 +14,13 @@ $carousel_id = 'carousel-' . uniqid();
     <!-- overflow-hidden on the section prevents horizontal scrollbar issues -->
     <div class="max-w-[1100px] mx-auto px-6 md:px-12 relative">
         <?php if ( $heading ) : ?>
-            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-10 text-[#00125E]"><?php echo esc_html( $heading ); ?></h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-10 text-primary"><?php echo esc_html( $heading ); ?></h2>
         <?php endif; ?>
 
         <?php if ( $products && is_array($products) ) : ?>
             <div class="relative group">
                 <!-- Left Arrow -->
-                <button id="<?php echo $carousel_id; ?>-prev" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -ml-12 z-10 w-10 h-10 items-center justify-center text-[#00125E] hover:text-red-600 transition-colors" aria-label="Previous">
+                <button id="<?php echo $carousel_id; ?>-prev" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -ml-12 z-10 w-10 h-10 items-center justify-center text-primary hover:text-red-600 transition-colors" aria-label="Previous">
                     <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
 
@@ -43,7 +43,7 @@ $carousel_id = 'carousel-' . uniqid();
                             ?>
                             <div class="w-[200px] md:w-[calc(25%-18px)] flex-shrink-0 snap-start flex flex-col hover:bg-gray-100 pb-6">
                                 <a href="<?php echo $permalink; ?>" class="block w-full no-underline text-inherit flex-grow flex flex-col">
-                                    <div class="bg-white border border-[#00125E] rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px]">
+                                    <div class="bg-white border border-primary rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px]">
                                         <?php if ( $in_stock ) : ?>
                                             <div class="absolute top-2 left-2 bg-[#1e7e34] text-white text-[10px] font-bold px-2 py-1 rounded">
                                                 IN STOCK
@@ -56,7 +56,7 @@ $carousel_id = 'carousel-' . uniqid();
                                         <h3 class="text-sm md:text-base font-bold text-[#1E1E1E] mb-1 leading-snug">
                                             <?php echo $name; ?>
                                         </h3>
-                                        <div class="text-sm md:text-base font-extrabold text-[#00125E] mb-3">
+                                        <div class="text-sm md:text-base font-extrabold text-primary mb-3">
                                             <?php echo $price_html; ?>
                                         </div>
                                         <div class="mt-auto">
@@ -75,7 +75,7 @@ $carousel_id = 'carousel-' . uniqid();
                 </div>
 
                 <!-- Right Arrow -->
-                <button id="<?php echo $carousel_id; ?>-next" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 -mr-12 z-10 w-10 h-10 items-center justify-center text-[#00125E] hover:text-red-600 transition-colors" aria-label="Next">
+                <button id="<?php echo $carousel_id; ?>-next" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 -mr-12 z-10 w-10 h-10 items-center justify-center text-primary hover:text-red-600 transition-colors" aria-label="Next">
                     <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
                 </button>
             </div>

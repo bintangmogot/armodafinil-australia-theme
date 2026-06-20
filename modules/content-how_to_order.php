@@ -13,7 +13,7 @@ $safety_text = get_sub_field('safety_text');
     <div class="max-w-7xl mx-auto px-6 pb-12 lg:pb-20">
         
         <?php if ($heading) : ?>
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#00125E] mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-12">
                 <?php echo esc_html($heading); ?>
             </h2>
         <?php endif; ?>
@@ -27,8 +27,8 @@ $safety_text = get_sub_field('safety_text');
                     $description = get_sub_field('description');
                     if (!$title && !$description) continue;
                 ?>
-                    <div class="relative bg-[#1b4f93] rounded-xl shadow-lg pt-10 pb-6 px-4 text-center">
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#ffcc00] rounded-full flex items-center justify-center text-[#00125E] text-xl font-bold shadow-md">
+                    <div class="relative bg-gradient-review rounded-xl shadow-lg pt-10 pb-6 px-4 text-center">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-accent rounded-full flex items-center justify-center text-primary text-xl font-bold shadow-md">
                             <?php echo $count; ?>
                         </div>
                         <h3 class="text-white text-lg md:text-xl font-semibold mb-3">
@@ -55,11 +55,11 @@ $safety_text = get_sub_field('safety_text');
                         <path fill="#00125E" d="M232 184v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24s-24 10.7-24 24zm24 232a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"/>
                     </svg>
                     <?php if ($safety_title) : ?>
-                        <h3 class="text-lg md:text-xl font-bold text-[#00125E]"><?php echo esc_html($safety_title); ?></h3>
+                        <h3 class="text-lg md:text-xl font-bold text-primary"><?php echo esc_html($safety_title); ?></h3>
                     <?php endif; ?>
                 </div>
                 <?php if ($safety_text) : ?>
-                    <div class="text-[#00125E] text-[15px] md:text-base leading-relaxed max-w-4xl">
+                    <div class="text-primary text-[15px] md:text-base leading-relaxed max-w-4xl">
                         <?php echo wp_kses_post($safety_text); ?>
                     </div>
                 <?php endif; ?>

@@ -11,24 +11,24 @@ $title_html = '';
 if ( $title ) {
     $words = explode( ' ', $title );
     if ( !empty( $words ) ) {
-        $words[0] = '<span class="text-[#FFD000]">' . esc_html($words[0]) . '</span>';
+        $words[0] = '<span class="text-accent">' . esc_html($words[0]) . '</span>';
         $title_html = implode( ' ', $words );
     } else {
         $title_html = esc_html($title);
     }
 }
 ?>
-<section class="hero relative overflow-hidden md:min-h-[600px] lg:h-[90vh] max-h-[964px]">
+<section class="hero relative overflow-hidden md:min-h-[600px] lg:h-[80vh] max-h-[964px]">
     <?php if ($image) : ?>
         <!-- Desktop Image -->
         <img src="<?php echo esc_url($image); ?>" alt="" class="hidden md:block absolute inset-0 w-full h-full object-cover object-bottom">
         <!-- Mobile Image -->
         <img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/images/mobile-hero-image.png" alt="" class="block md:hidden absolute inset-0 w-full h-full object-cover object-right">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0a1045]/90 via-[#0a1045]/20 to-transparent lg:hidden"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0a1045]/20 to-transparent lg:hidden"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary-dark/20 to-transparent lg:hidden"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-dark/20 to-transparent lg:hidden"></div>
     <?php endif; ?>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-end lg:items-center min-h-[inherit]">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-start lg:items-center min-h-[inherit]">
         <div class="w-[70%] md:w-full pt-28 pb-6 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20 text-white">
             <?php if ($title_html) : ?>
                 <h1 class="max-w-5xl text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-[1.2] mb-3 lg:mb-4">
@@ -37,13 +37,13 @@ if ( $title ) {
             <?php endif; ?>
 
             <?php if ($subtitle) : ?>
-                <p class="lg:w-[50%] text-lg md:text-2xl lg:text-3xl font-semibold text-white/90 leading-snug mb-2 lg:mb-3">
+                <p class="md:w-[70%] lg:w-[50%] text-lg md:text-2xl lg:text-3xl font-semibold text-white/90 leading-snug mb-2 lg:mb-3">
                     <?php echo esc_html($subtitle); ?>
                 </p>
             <?php endif; ?>
 
             <?php if ($tagline) : ?>
-                <p class="text-base lg:text-xl text-[#FFD000] italic mb-6 lg:mb-8">
+                <p class="text-base lg:text-xl text-accent italic mb-6 lg:mb-8">
                     <?php echo esc_html($tagline); ?>
                 </p>
             <?php endif; ?>

@@ -12,13 +12,13 @@ $subheading = get_sub_field('subheading');
     <div class="max-w-4xl mx-auto text-center">
         
         <?php if ($heading) : ?>
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#00125E] mb-4">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
                 <?php echo wp_kses_post($heading); ?>
             </h2>
         <?php endif; ?>
 
         <?php if ($subheading) : ?>
-            <div class="text-lg md:text-xl text-[#00125E] mb-10 opacity-90">
+            <div class="text-lg md:text-xl text-primary mb-10 opacity-90">
                 <?php echo wp_kses_post($subheading); ?>
             </div>
         <?php endif; ?>
@@ -34,9 +34,9 @@ $subheading = get_sub_field('subheading');
 
                     // Set colors based on selection. Default to yellow if not set.
                     if ($button_color === 'blue') {
-                        $btn_bg = 'bg-gradient-to-r from-[#073980] to-[#2056A2] text-white hover:from-[#ffcc00] hover:to-[#ffcc00] hover:text-[#00125E]';
+                        $btn_bg = 'bg-gradient-to-r from-primary-light to-secondary-dark text-white hover:from-accent hover:to-accent hover:text-primary';
                     } else {
-                        $btn_bg = 'bg-[#ffcc00] text-[#00125E] hover:bg-gradient-to-r hover:from-[#073980] hover:to-[#2056A2] hover:text-white';
+                        $btn_bg = 'bg-accent text-primary hover:bg-gradient-to-r hover:from-primary-light hover:to-secondary-dark hover:text-white';
                     }
                 ?>
                     <a href="<?php echo esc_url($button_link); ?>" class="inline-flex items-center justify-center <?php echo $btn_bg; ?> font-bold text-[17px] py-3 px-6 rounded-xl transition-all duration-300 shadow hover:-translate-y-1 hover:shadow-lg">

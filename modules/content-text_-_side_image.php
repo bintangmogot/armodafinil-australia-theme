@@ -7,7 +7,7 @@
 $image   = get_sub_field('image');
 $content = get_sub_field('content');
 ?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-gradient-to-br from-[#0a1045] via-[#0f1a5e] to-[#162070] text-white overflow-hidden">
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-gradient-to-br from-primary-dark via-[#0f1a5e] to-[#162070] text-white overflow-hidden">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
         <!-- Text Content -->
         <div>

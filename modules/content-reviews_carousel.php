@@ -17,13 +17,13 @@ $carousel_id = 'reviews-carousel-' . uniqid();
 <section class="py-3 lg:py-6 bg-white relative overflow-hidden">
     <div class="max-w-[1000px] mx-auto px-6 md:px-16 relative">
         <?php if ($heading) : ?>
-            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-5 lg:mb-7 text-[#00125E]"><?php echo esc_html($heading); ?></h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-5 lg:mb-7 text-primary"><?php echo esc_html($heading); ?></h2>
         <?php endif; ?>
 
         <?php if ($reviews->have_posts()) : ?>
             <div class="relative group">
                 <!-- Left Arrow -->
-                <button id="<?php echo $carousel_id; ?>-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-8 md:-ml-12 z-10 w-10 h-10 flex items-center justify-center text-[#00125E] hover:text-red-600 transition-colors" aria-label="Previous">
+                <button id="<?php echo $carousel_id; ?>-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-8 md:-ml-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 transition-colors" aria-label="Previous">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
 
@@ -35,7 +35,7 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                         $content = get_the_content();
                     ?>
                         <div class="w-full flex-shrink-0 snap-start px-2">
-                            <div class="bg-[#174A96] rounded-2xl p-6 md:p-8 shadow-lg text-white">
+                            <div class="bg-gradient-review rounded-2xl p-6 md:p-8 shadow-lg text-white">
                                 <!-- Desktop Grid / Mobile Stack -->
                                 <div class="grid grid-cols-1 md:grid-cols-[1.2fr_auto_2fr] gap-6 md:gap-8 items-center">
                                     <!-- Left side: Name, Verified, Stars -->
@@ -51,7 +51,7 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                                         
                                         <div class="flex gap-1">
                                             <?php for ($i = 1; $i <= 5; $i++) : ?>
-                                                <svg class="w-5 h-5 <?php echo $i <= $rating ? 'text-yellow-400 fill-current' : 'text-white/25 fill-current'; ?>" viewBox="0 0 20 20">
+                                                <svg class="w-5 h-5 <?php echo $i <= $rating ? 'text-accent fill-current' : 'text-white/25 fill-current'; ?>" viewBox="0 0 20 20">
                                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                                                 </svg>
                                             <?php endfor; ?>
@@ -76,7 +76,7 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                 </div>
 
                 <!-- Right Arrow -->
-                <button id="<?php echo $carousel_id; ?>-next" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-8 md:-mr-12 z-10 w-10 h-10 flex items-center justify-center text-[#00125E] hover:text-red-600 transition-colors" aria-label="Next">
+                <button id="<?php echo $carousel_id; ?>-next" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-8 md:-mr-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 transition-colors" aria-label="Next">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
                 </button>
             </div>
@@ -100,7 +100,7 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                         // Create dots
                         slides.forEach((_, index) => {
                             const dot = document.createElement('button');
-                            dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${index === 0 ? 'bg-[#00125E]' : 'bg-[#B0C0D6]'}`;
+                            dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${index === 0 ? 'bg-primary' : 'bg-[#B0C0D6]'}`;
                             dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
                             dot.addEventListener('click', () => {
                                 container.scrollTo({
@@ -121,10 +121,10 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                             
                             dots.forEach((dot, index) => {
                                 if (index === activeIndex) {
-                                    dot.classList.add('bg-[#00125E]');
+                                    dot.classList.add('bg-primary');
                                     dot.classList.remove('bg-[#B0C0D6]');
                                 } else {
-                                    dot.classList.remove('bg-[#00125E]');
+                                    dot.classList.remove('bg-primary');
                                     dot.classList.add('bg-[#B0C0D6]');
                                 }
                             });

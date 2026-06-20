@@ -46,7 +46,7 @@ $end_count   = min( $start_count + 20 - 1, $total_reviews );
 ?>
 <section class="py-14 lg:py-20 px-6 lg:px-12 bg-[#f5f7fb]">
     <div class="max-w-7xl mx-auto">
-        <h1 class="text-3xl lg:text-4xl font-bold text-[#00125E] mb-12 pb-4 border-b border-[#00125E]/10">
+        <h1 class="text-3xl lg:text-4xl font-bold text-primary mb-12 pb-4 border-b border-primary/10">
             <?php echo esc_html( $heading ); ?>
         </h1>
 
@@ -58,7 +58,7 @@ $end_count   = min( $start_count + 20 - 1, $total_reviews );
                 </div>
 
                 <div class="flex flex-row lg:flex-col items-center lg:items-start gap-4">
-                    <div class="text-6xl font-bold text-[#00125E] leading-none">
+                    <div class="text-6xl font-bold text-primary leading-none">
                         <?php echo number_format($average_rating, 1); ?>
                     </div>
                     <div>
@@ -84,7 +84,7 @@ $end_count   = min( $start_count + 20 - 1, $total_reviews );
                         $name   = get_field('name') ? get_field('name') : get_the_title();
                         $content = get_the_content();
                     ?>
-                        <div class="bg-[#00125E] rounded-2xl p-6 md:p-8 shadow-md text-white">
+                        <div class="bg-primary rounded-2xl p-6 md:p-8 shadow-md text-white">
                             <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-6 md:gap-8 items-center">
                                 <!-- Left side: Name, Verified, Stars -->
                                 <div class="flex flex-col items-center md:items-start text-center md:text-left">

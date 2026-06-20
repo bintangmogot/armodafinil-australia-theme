@@ -43,7 +43,7 @@ $content = get_sub_field('content');
                     <?php if ($content) : ?>
                         <?php echo wp_kses_post($content); ?>
                     <?php else : ?>
-                        <h2 class="text-[#00125E] font-bold text-4xl">What Is Armodafinil?</h2>
+                        <h2 class="text-primary font-bold text-4xl">What Is Armodafinil?</h2>
                         <p>Armodafinil is a popular wakefulness-support medication commonly used by adults looking to improve alertness, focus, concentration, and mental performance during long working hours or demanding schedules.</p>
                         <p>Many Australians choose Armodafinil because it is known for:</p>
                         <ul>

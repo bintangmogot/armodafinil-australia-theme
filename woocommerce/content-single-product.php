@@ -34,9 +34,9 @@ function armo_custom_total_price_box() {
     global $product;
     if ( $product->is_type( 'variable' ) ) {
         // We will update this dynamically via JS
-        echo '<div class="armo-total-price-box mt-6 mb-4 bg-[#E1EDFF] border border-[#ff0000] rounded-md p-4">';
-        echo '<div class="text-xs text-[#00125E] font-semibold mb-1">Total Price</div>';
-        echo '<div class="text-2xl font-bold text-[#00125E]" id="armo-dynamic-total">$0.00</div>';
+        echo '<div class="armo-total-price-box mt-6 mb-4 bg-surface border border-[#ff0000] rounded-md p-4">';
+        echo '<div class="text-xs text-primary font-semibold mb-1">Total Price</div>';
+        echo '<div class="text-2xl font-bold text-primary" id="armo-dynamic-total">$0.00</div>';
         echo '</div>';
     }
 }
@@ -62,19 +62,19 @@ function armo_custom_total_price_box() {
             
             <!-- Feature Pills under the image -->
             <div class="grid grid-cols-2 gap-3 mt-4 w-full">
-                <div class="flex items-center justify-center gap-2 bg-[#E1EDFF] border border-[#B3D4FF] text-[#00125E] font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
+                <div class="flex items-center justify-center gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
                     <svg class="w-4 h-4 text-green-500 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     100% Genuine
                 </div>
-                <div class="flex items-center justify-center gap-2 bg-[#E1EDFF] border border-[#B3D4FF] text-[#00125E] font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
+                <div class="flex items-center justify-center gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
                     <svg class="w-4 h-4 text-blue-500 fill-current" viewBox="0 0 20 20"><path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z"/></svg>
                     Easy Returns
                 </div>
-                <div class="flex items-center justify-center gap-2 bg-[#E1EDFF] border border-[#B3D4FF] text-[#00125E] font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
+                <div class="flex items-center justify-center gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
                     <span>🚚</span>
                     Fast Delivery
                 </div>
-                <div class="flex items-center justify-center gap-2 bg-[#E1EDFF] border border-[#B3D4FF] text-[#00125E] font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
+                <div class="flex items-center justify-center gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-sm py-2.5 px-4 rounded-md shadow-sm">
                     <span>🔒</span>
                     Secure Payment
                 </div>
@@ -107,7 +107,7 @@ function armo_custom_total_price_box() {
         <div class="border-b border-gray-200">
             <nav class="-mb-px flex space-x-8 overflow-x-auto hide-scrollbar" aria-label="Tabs" id="product-tabs-nav">
                 <?php if ($description): ?>
-                    <button class="tab-btn active border-[#00125E] text-[#00125E] whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm uppercase tracking-wide" data-target="tab-description">
+                    <button class="tab-btn active border-primary text-primary whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm uppercase tracking-wide" data-target="tab-description">
                         Description
                     </button>
                 <?php endif; ?>
@@ -131,22 +131,22 @@ function armo_custom_total_price_box() {
 
         <div class="tab-content py-10" id="product-tabs-content">
             <?php if ($description): ?>
-                <div class="tab-pane active prose max-w-none text-[#0a1045]" id="tab-description">
+                <div class="tab-pane active prose max-w-none text-primary-dark" id="tab-description">
                     <?php echo apply_filters('the_content', $description); ?>
                 </div>
             <?php endif; ?>
             <?php if ($dosage): ?>
-                <div class="tab-pane hidden prose max-w-none text-[#0a1045]" id="tab-dosage">
+                <div class="tab-pane hidden prose max-w-none text-primary-dark" id="tab-dosage">
                     <?php echo wp_kses_post($dosage); ?>
                 </div>
             <?php endif; ?>
             <?php if ($shipping): ?>
-                <div class="tab-pane hidden prose max-w-none text-[#0a1045]" id="tab-shipping">
+                <div class="tab-pane hidden prose max-w-none text-primary-dark" id="tab-shipping">
                     <?php echo wp_kses_post($shipping); ?>
                 </div>
             <?php endif; ?>
             <?php if ($safety): ?>
-                <div class="tab-pane hidden prose max-w-none text-[#0a1045]" id="tab-safety">
+                <div class="tab-pane hidden prose max-w-none text-primary-dark" id="tab-safety">
                     <?php echo wp_kses_post($safety); ?>
                 </div>
             <?php endif; ?>
@@ -163,7 +163,7 @@ function armo_custom_total_price_box() {
             tab.addEventListener('click', () => {
                 // Remove active from all tabs
                 tabs.forEach(t => {
-                    t.classList.remove('active', 'border-[#00125E]', 'text-[#00125E]');
+                    t.classList.remove('active', 'border-primary', 'text-primary');
                     t.classList.add('border-transparent', 'text-gray-500');
                 });
                 // Hide all panes
@@ -171,7 +171,7 @@ function armo_custom_total_price_box() {
 
                 // Add active to clicked tab
                 tab.classList.remove('border-transparent', 'text-gray-500');
-                tab.classList.add('active', 'border-[#00125E]', 'text-[#00125E]');
+                tab.classList.add('active', 'border-primary', 'text-primary');
                 
                 // Show corresponding pane
                 const targetId = tab.getAttribute('data-target');
