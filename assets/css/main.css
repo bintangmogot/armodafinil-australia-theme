@@ -3499,6 +3499,22 @@ img {
   line-height: 1.25;
 }
 
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-\[1\] {
+  line-height: 1;
+}
+
+.leading-\[1\.1\] {
+  line-height: 1.1;
+}
+
+.leading-\[4\] {
+  line-height: 4;
+}
+
 .tracking-tight {
   letter-spacing: -0.025em;
 }
