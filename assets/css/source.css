@@ -125,6 +125,9 @@
     #site-footer ul > li > a {
         @apply block text-base text-primary-dark/80 hover:text-red-600 transition-colors py-0.5 no-underline;
     }
+    #site-footer .footer-menu-wrapper ul {
+        @apply space-y-2;
+    }
 
     /* Pagination */
     .nav-links {

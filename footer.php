@@ -10,7 +10,7 @@
  */
 
 // Retrieve ACF option values with fallbacks
-$footer_description = get_field( 'footer_description', 'option' );
+$footer_description = get_field( 'footer_text', 'option' );
 if ( ! $footer_description ) {
     $footer_description = 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via Commonwealth Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.';
 }
@@ -98,74 +98,25 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                 <!-- Category -->
                 <div class="order-3 lg:order-2">
                     <h3 class="text-lg font-bold text-primary-dark mb-4">Category</h3>
-                    <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'footer',
-                        'container'      => false,
-                        'menu_class'     => 'space-y-2 footer-links',
-                        'fallback_cb'    => '__return_false',
-                        'depth'          => 1,
-                    ));
-                    ?>
-                    <?php if ( ! has_nav_menu('footer') ) : ?>
-                        <ul class="space-y-2 footer-links">
-                            <li><a href="#">Erectile Dysfunction</a></li>
-                            <li><a href="#">Smart Pills</a></li>
-                            <li><a href="#">Skin care</a></li>
-                            <li><a href="#">Viral care</a></li>
-                            <li><a href="#">Asthma</a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-                    <?php endif; ?>
+                    <div class="footer-menu-wrapper">
+                        <?php the_field('footer_menu', 'option'); ?>
+                    </div>
                 </div>
 
                 <!-- Quick Links -->
                 <div class="order-4 lg:order-3">
                     <h3 class="text-lg font-bold text-primary-dark mb-4">Quick Links</h3>
-                    <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'footer-quick',
-                        'container'      => false,
-                        'menu_class'     => 'space-y-2 footer-links',
-                        'fallback_cb'    => '__return_false',
-                        'depth'          => 1,
-                    ));
-                    ?>
-                    <?php if ( ! has_nav_menu('footer-quick') ) : ?>
-                        <ul class="space-y-2 footer-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">FAQs</a></li>
-                            <li><a href="#">How To Order</a></li>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">Reviews</a></li>
-                        </ul>
-                    <?php endif; ?>
+                    <div class="footer-menu-wrapper">
+                        <?php the_field('footer_menu_2', 'option'); ?>
+                    </div>
                 </div>
 
                 <!-- Important Links -->
                 <div class="order-5 lg:order-4">
                     <h3 class="text-lg font-bold text-primary-dark mb-4">Important Links</h3>
-                    <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'footer-important',
-                        'container'      => false,
-                        'menu_class'     => 'space-y-2 footer-links',
-                        'fallback_cb'    => '__return_false',
-                        'depth'          => 1,
-                    ));
-                    ?>
-                    <?php if ( ! has_nav_menu('footer-important') ) : ?>
-                        <ul class="space-y-2 footer-links">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Drug Policy</a></li>
-                            <li><a href="#">Shipping &amp; payment</a></li>
-                            <li><a href="#">Refund Returns</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Cancellation Policy</a></li>
-                            <li><a href="#">Disclaimer</a></li>
-                        </ul>
-                    <?php endif; ?>
+                    <div class="footer-menu-wrapper">
+                        <?php the_field('footer_menu_3', 'option'); ?>
+                    </div>
                 </div>
 
             </div>
