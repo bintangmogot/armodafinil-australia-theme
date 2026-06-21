@@ -13,7 +13,7 @@ if (!$recent->have_posts()) {
 <section class="py-12 px-4 bg-gray-50">
     <div class="max-w-7xl mx-auto">
         <?php if ($intro_content) : ?>
-            <div class="prose prose-lg max-w-4xl mx-auto mb-10 text-center"><?php echo wp_kses_post($intro_content); ?></div>
+            <div class="prose prose-lg max-w-4xl mx-auto mb-10 text-center"><?php echo armo_content($intro_content); ?></div>
         <?php endif; ?>
         <?php if ($recent->have_posts()) : ?>
             <div class="grid md:grid-cols-3 gap-6">

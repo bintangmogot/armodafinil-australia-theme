@@ -14,7 +14,7 @@
                     <hr class="border-t border-gray-300 my-10">
 
                     <div class="text-left-section">
-                        <?php echo wp_kses_post(get_sub_field('content')); ?>
+                        <?php echo armo_content(get_sub_field('content')); ?>
                     </div>
 
                 <?php endwhile; ?>

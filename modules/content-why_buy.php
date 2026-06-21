@@ -24,7 +24,7 @@ $intro = get_sub_field('intro');
 
             <?php if ($intro): ?>
                 <div class="prose prose-lg text-primary/80 leading-relaxed max-w-none">
-                    <?php echo wp_kses_post($intro); ?>
+                    <?php echo armo_content($intro); ?>
                 </div>
             <?php else: ?>
                 <div class="text-primary/80 text-base md:text-lg leading-relaxed">

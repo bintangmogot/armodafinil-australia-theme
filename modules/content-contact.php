@@ -14,7 +14,7 @@ $map     = get_sub_field('map');
         <!-- Contact Form -->
         <div>
             <?php if ($form) : ?>
-                <div class="prose"><?php echo wp_kses_post($form); ?></div>
+                <div class="prose"><?php echo armo_content($form); ?></div>
             <?php else : ?>
                 <p class="text-gray-400 italic">[ Contact form — add shortcode or content in ACF ]</p>
             <?php endif; ?>
@@ -39,7 +39,7 @@ $map     = get_sub_field('map');
             <?php if ($address) : ?>
                 <div>
                     <h3 class="font-semibold text-gray-900 mb-1">Address</h3>
-                    <div class="text-gray-600"><?php echo wp_kses_post($address); ?></div>
+                    <div class="text-gray-600"><?php echo armo_content($address); ?></div>
                 </div>
             <?php endif; ?>
             

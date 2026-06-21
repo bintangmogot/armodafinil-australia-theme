@@ -12,7 +12,7 @@ $content = get_sub_field('content');
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-end lg:items-center min-h-[inherit]">
         <div class="w-full lg:w-1/2 pt-28 pb-12 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20">
             <?php if ($content) : ?>
-                <div class="hero-content"><?php echo wp_kses_post($content); ?></div>
+                <div class="hero-content"><?php echo armo_content($content); ?></div>
             <?php endif; ?>
         </div>
     </div>

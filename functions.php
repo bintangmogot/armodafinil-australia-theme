@@ -25,6 +25,16 @@ define( 'ARMO_THEME_VERSION', '2.0.0' );
 define( 'ARMO_THEME_DIR', get_stylesheet_directory() );
 define( 'ARMO_THEME_URI', get_stylesheet_directory_uri() );
 
+/**
+ * Helper function to sanitize content and automatically replace the ✅ emoji
+ * with our custom premium yellow checkmark icon.
+ */
+function armo_content($content) {
+    if (!$content) return '';
+    $clean = wp_kses_post($content);
+    return str_replace('✅', '<span class="armo-yellow-tick"></span>', $clean);
+}
+
 /*
  * ── One-time fix: tell WordPress this is a standalone theme ──
  * When we removed "Template: astra" from style.css, WordPress still had
@@ -63,6 +73,13 @@ if ( class_exists( 'WooCommerce' ) ) {
  * File: inc/theme-options.php
  */
 require_once ARMO_THEME_DIR . '/inc/theme-options.php';
+
+/*
+ * ── Load Custom Shortcodes ──
+ * Registers: [armo_button] and [armo_info]
+ * File: inc/shortcodes.php
+ */
+require_once ARMO_THEME_DIR . '/inc/shortcodes.php';
 
 /*
  * ── Fix: Make ACF "Modules" field group show on ALL page templates ──

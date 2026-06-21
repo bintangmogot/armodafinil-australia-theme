@@ -426,3 +426,50 @@
         overflow: hidden;
     }
 }
+
+
+/* Replaces the green check emoji with a premium yellow tick */
+.armo-yellow-tick {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: #FFC700;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+    margin-top: -0.2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%231b4f93' stroke-width='4.5' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 12.75l6 6 9-13.5' /%3E%3C/svg%3E");
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Hide the inline emoji replacement if it's used inside a list to prevent duplicate ticks */
+li .armo-yellow-tick {
+    display: none !important;
+}
+
+/* Automatically style all standard bulleted lists as premium yellow checkmarks */
+.prose ul {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+}
+.prose ul > li {
+    position: relative !important;
+    padding-left: 2.25rem !important;
+    margin-bottom: 0.75rem !important;
+}
+.prose ul > li::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0.25rem !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    background-color: #FFC700 !important;
+    border-radius: 50% !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%231b4f93' stroke-width='4.5' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 12.75l6 6 9-13.5' /%3E%3C/svg%3E") !important;
+    background-size: 60% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}

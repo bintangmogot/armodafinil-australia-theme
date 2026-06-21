@@ -29,7 +29,7 @@ $background_color = get_sub_field('background_color');
 
         <?php if ($content) : ?>
             <div class="module-fulltext-content prose max-w-none mt-2 lg:mt-6 leading-[1.1]">
-                <?php echo wp_kses_post($content); ?>
+                <?php echo armo_content($content); ?>
             </div>
         <?php elseif (!$h1_heading && (!$h2_heading && !$h3_heading)) : ?>
             <p class="text-[#1E1E1E] text-center italic">[ Text Separate Headings module — add content in ACF ]</p>

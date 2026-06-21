@@ -11,7 +11,7 @@ $background_color = get_sub_field('background_color');
     <div class="max-w-4xl mx-auto text-center">
         <?php if ($content) : ?>
             <div class="module-fulltext-content prose max-w-none">
-                <?php echo wp_kses_post($content); ?>
+                <?php echo armo_content($content); ?>
             </div>
         <?php else : ?>
             <p class="text-[#1E1E1E] text-center italic">[ Text Full Width module — add content in ACF ]</p>

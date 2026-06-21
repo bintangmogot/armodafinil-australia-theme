@@ -17,7 +17,7 @@ $button_link = get_sub_field('button_link') ?: '/shop/';
 
         <?php if ($content) : ?>
             <div class="text-base md:text-lg leading-relaxed mb-6 opacity-90">
-                <?php echo wp_kses_post($content); ?>
+                <?php echo armo_content($content); ?>
             </div>
         <?php endif; ?>
 

@@ -11,7 +11,7 @@ $intro = get_sub_field('intro');
     <div class="max-w-7xl mx-auto">
         <?php if ($intro): ?>
             <div class="module-benefit-intro mb-10 lg:mb-12 max-w-3xl">
-                <?php echo wp_kses_post($intro); ?>
+                <?php echo armo_content($intro); ?>
             </div>
         <?php endif; ?>
 
@@ -43,7 +43,7 @@ $intro = get_sub_field('intro');
                             <?php endif; ?>
                             <?php if ($content): ?>
                                 <div class="module-benefit-content text-white/90">
-                                    <?php echo wp_kses_post($content); ?>
+                                    <?php echo armo_content($content); ?>
                                 </div>
                             <?php endif; ?>
                         </div>

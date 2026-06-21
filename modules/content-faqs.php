@@ -34,7 +34,7 @@ $faq_id = 'faq-' . uniqid();
                             </svg>
                         </summary>
                         <div class="px-6 md:px-8 pb-6 text-white/90 leading-relaxed text-base md:text-lg">
-                            <?php echo wp_kses_post($answer); ?>
+                            <?php echo armo_content($answer); ?>
                         </div>
                     </details>
                 <?php $i++; endwhile; ?>

@@ -13,7 +13,7 @@ $content = get_sub_field('content');
         <div>
             <?php if ($content) : ?>
                 <div class="module-side-image-content">
-                    <?php echo wp_kses_post($content); ?>
+                    <?php echo armo_content($content); ?>
                 </div>
             <?php else : ?>
                 <p class="text-white/50 italic">[ Text content — add in ACF ]</p>

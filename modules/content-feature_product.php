@@ -24,7 +24,7 @@ $products = get_sub_field('feature_product');
                     
                     if ( $wc_product ) :
                         $permalink  = esc_url( get_permalink( $post_id ) );
-                        $name       = wp_kses_post( $wc_product->get_name() );
+                        $name       = armo_content( $wc_product->get_name() );
                         $price_html = $wc_product->get_price_html();
                         $image_html = $wc_product->get_image('woocommerce_thumbnail', array(
                             'class' => 'w-full h-auto object-contain max-h-[140px]'

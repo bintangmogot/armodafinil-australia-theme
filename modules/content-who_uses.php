@@ -25,7 +25,7 @@ $intro   = get_sub_field('intro');
 
             <?php if ($intro) : ?>
                 <div class="module-who-uses-content text-white text-opacity-90 leading-relaxed max-w-none">
-                    <?php echo wp_kses_post($intro); ?>
+                    <?php echo armo_content($intro); ?>
                 </div>
             <?php else : ?>
                 <p class="text-white text-opacity-90 text-base md:text-lg leading-relaxed">

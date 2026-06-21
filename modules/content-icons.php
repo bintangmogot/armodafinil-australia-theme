@@ -9,7 +9,7 @@ $intro_content = get_sub_field('intro_content');
 <section class="py-6 lg:py-8 px-6 lg:px-12 bg-primary-dark">
     <div class="max-w-7xl mx-auto">
         <?php if ($intro_content) : ?>
-            <div class="text-center text-white/80 mb-6 text-base"><?php echo wp_kses_post($intro_content); ?></div>
+            <div class="text-center text-white/80 mb-6 text-base"><?php echo armo_content($intro_content); ?></div>
         <?php endif; ?>
         
         <?php if (have_rows('icons')) : ?>
@@ -25,7 +25,7 @@ $intro_content = get_sub_field('intro_content');
                             </div>
                         <?php endif; ?>
                         <?php if ($title) : ?>
-                            <div class="text-sm lg:text-base font-medium text-white/90 leading-tight"><?php echo wp_kses_post($title); ?></div>
+                            <div class="text-sm lg:text-base font-medium text-white/90 leading-tight"><?php echo armo_content($title); ?></div>
                         <?php endif; ?>
                     </div>
                 <?php endwhile; ?>

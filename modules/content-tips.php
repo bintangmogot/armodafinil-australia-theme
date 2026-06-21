@@ -19,7 +19,7 @@ $right       = get_sub_field('content_right');
                 <?php endif; ?>
                 <?php if ($left) : ?>
                     <div class="module-tips-content text-primary-dark/80 leading-relaxed">
-                        <?php echo wp_kses_post($left); ?>
+                        <?php echo armo_content($left); ?>
                     </div>
                 <?php endif; ?>
             </div>
@@ -31,7 +31,7 @@ $right       = get_sub_field('content_right');
                 <?php endif; ?>
                 <?php if ($right) : ?>
                     <div class="module-tips-content text-primary-dark/80 leading-relaxed">
-                        <?php echo wp_kses_post($right); ?>
+                        <?php echo armo_content($right); ?>
                     </div>
                 <?php endif; ?>
             </div>

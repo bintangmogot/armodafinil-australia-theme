@@ -115,7 +115,7 @@ $end_count   = min( $start_count + 20 - 1, $total_reviews );
                                 <!-- Right side: Title + Content -->
                                 <div class="text-white text-base md:text-lg leading-relaxed text-center md:text-left">
                                     <h4 class="text-base md:text-lg font-bold text-white mb-2"><?php echo esc_html( get_the_title() ); ?></h4>
-                                    <?php echo wp_kses_post(wpautop($content)); ?>
+                                    <?php echo armo_content(wpautop($content)); ?>
                                 </div>
                             </div>
                         </div>

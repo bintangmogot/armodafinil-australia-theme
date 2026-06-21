@@ -13,13 +13,13 @@ $subheading = get_sub_field('subheading');
         
         <?php if ($heading) : ?>
             <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                <?php echo wp_kses_post($heading); ?>
+                <?php echo armo_content($heading); ?>
             </h2>
         <?php endif; ?>
 
         <?php if ($subheading) : ?>
             <div class="text-lg md:text-xl text-primary mb-10 opacity-90">
-                <?php echo wp_kses_post($subheading); ?>
+                <?php echo armo_content($subheading); ?>
             </div>
         <?php endif; ?>
 

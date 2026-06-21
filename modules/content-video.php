@@ -18,7 +18,7 @@ $content = get_sub_field('content');
         <?php endif; ?>
         
         <?php if ($content) : ?>
-            <div class="prose prose-lg max-w-3xl mx-auto"><?php echo wp_kses_post($content); ?></div>
+            <div class="prose prose-lg max-w-3xl mx-auto"><?php echo armo_content($content); ?></div>
         <?php endif; ?>
         
         <?php if (!$video && !$content) : ?>

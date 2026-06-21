@@ -21,7 +21,7 @@
                         <?php endif; ?>
                         <?php if ($content) : ?>
                             <div class="module-boxes-content">
-                                <?php echo wp_kses_post($content); ?>
+                                <?php echo armo_content($content); ?>
                             </div>
                         <?php endif; ?>
                     </div>

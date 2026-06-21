@@ -8,7 +8,7 @@ $intro = get_sub_field('intro');
 <section class="py-12 px-4">
     <div class="max-w-4xl mx-auto">
         <?php if ($intro) : ?>
-            <div class="prose prose-lg mb-10"><?php echo wp_kses_post($intro); ?></div>
+            <div class="prose prose-lg mb-10"><?php echo armo_content($intro); ?></div>
         <?php endif; ?>
         
         <?php if (have_rows('dosage')) : ?>

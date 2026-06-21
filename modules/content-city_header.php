@@ -23,7 +23,7 @@ $background_color = get_sub_field('background_color');
 
         <?php if ($content) : ?>
             <div class="module-city-header-content text-primary text-base md:text-lg leading-relaxed space-y-4 mb-8">
-                <?php echo wp_kses_post($content); ?>
+                <?php echo armo_content($content); ?>
             </div>
         <?php endif; ?>
 

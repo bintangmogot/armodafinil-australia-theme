@@ -60,7 +60,7 @@ $safety_text = get_sub_field('safety_text');
                 </div>
                 <?php if ($safety_text) : ?>
                     <div class="text-primary text-base md:text-lg leading-relaxed max-w-4xl">
-                        <?php echo wp_kses_post($safety_text); ?>
+                        <?php echo armo_content($safety_text); ?>
                     </div>
                 <?php endif; ?>
             </div>
