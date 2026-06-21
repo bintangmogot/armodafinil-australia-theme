@@ -11,8 +11,9 @@ $h2_color = get_sub_field('h2_color');
 $h3_heading = get_sub_field('h3_heading');
 $h3_color = get_sub_field('h3_color');
 $content = get_sub_field('content');
+$background_color = get_sub_field('background_color');
 ?>
-<section class="py-6 lg:py-12 px-6 lg:px-12 bg-surface">
+<section class="py-6 lg:py-12 px-6 lg:px-12 <?php echo $background_color ? '' : 'bg-surface'; ?>" <?php if($background_color) echo 'style="background-color: ' . esc_attr($background_color) . ';"'; ?>>
     <div class="max-w-4xl mx-auto text-center">
         <?php if ($h1_heading) : ?>
             <h1 class="text-3xl lg:text-4xl font-extrabold mb-3 lg:mb-4 <?php echo $h1_color ? '' : 'text-primary'; ?>" <?php if($h1_color) echo 'style="color: ' . esc_attr($h1_color) . ';"'; ?>><?php echo esc_html($h1_heading); ?></h1>
