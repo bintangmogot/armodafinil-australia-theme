@@ -97,7 +97,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
 
                 <!-- Category -->
                 <div class="order-3 lg:order-2">
-                    <h3 class="text-lg font-bold text-primary-dark mb-4">Category</h3>
+                    <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_1_heading', 'option') ?: 'Category' ); ?></h3>
                     <div class="footer-menu-wrapper">
                         <?php the_field('footer_menu', 'option'); ?>
                     </div>
@@ -105,7 +105,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
 
                 <!-- Quick Links -->
                 <div class="order-4 lg:order-3">
-                    <h3 class="text-lg font-bold text-primary-dark mb-4">Quick Links</h3>
+                    <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_2_heading', 'option') ?: 'Quick Links' ); ?></h3>
                     <div class="footer-menu-wrapper">
                         <?php the_field('footer_menu_2', 'option'); ?>
                     </div>
@@ -113,7 +113,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
 
                 <!-- Important Links -->
                 <div class="order-5 lg:order-4">
-                    <h3 class="text-lg font-bold text-primary-dark mb-4">Important Links</h3>
+                    <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_3_heading', 'option') ?: 'Important Links' ); ?></h3>
                     <div class="footer-menu-wrapper">
                         <?php the_field('footer_menu_3', 'option'); ?>
                     </div>

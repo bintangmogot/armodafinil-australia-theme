@@ -30,15 +30,7 @@ if ( ! function_exists( 'acf_add_options_page' ) ) {
  *
  * The client will find it at: WP Admin → Appearance → Footer
  */
-acf_add_options_page( array(
-    'page_title'    => __( 'Footer Settings', 'armodafinil-australia' ),
-    'menu_title'    => __( 'Footer', 'armodafinil-australia' ),
-    'menu_slug'     => 'theme-options',
-    'capability'    => 'edit_posts',
-    'redirect'      => false,
-    'parent_slug'   => 'themes.php', // Nests under Appearance
-    'update_button' => __( 'Save Footer', 'armodafinil-australia' ),
-) );
+acf_add_options_page();
 
 /**
  * Register ACF Field Group for Footer Settings.
@@ -50,23 +42,35 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 
     acf_add_local_field_group( array(
         'key'    => 'group_footer_options',
-        'title'  => 'Footer Settings',
+        'title'  => 'Contact, Payments & Copyright',
         'fields' => array(
 
-            // ─── TAB: Brand ───────────────────────────────────────
+            // ─── TAB: Menu Headings ───────────────────────────────
             array(
-                'key'   => 'field_footer_tab_brand',
-                'label' => 'Brand',
+                'key'   => 'field_footer_tab_menu_headings',
+                'label' => 'Menu Headings',
                 'type'  => 'tab',
             ),
             array(
-                'key'           => 'field_footer_description',
-                'label'         => 'Footer Description',
-                'name'          => 'footer_description',
-                'type'          => 'textarea',
-                'instructions'  => 'The brand description text that appears below the logo in the footer.',
-                'rows'          => 4,
-                'default_value' => 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via Commonwealth Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.',
+                'key'           => 'field_footer_menu_1_heading',
+                'label'         => 'Menu 1 Heading',
+                'name'          => 'footer_menu_1_heading',
+                'type'          => 'text',
+                'default_value' => 'Category',
+            ),
+            array(
+                'key'           => 'field_footer_menu_2_heading',
+                'label'         => 'Menu 2 Heading',
+                'name'          => 'footer_menu_2_heading',
+                'type'          => 'text',
+                'default_value' => 'Quick Links',
+            ),
+            array(
+                'key'           => 'field_footer_menu_3_heading',
+                'label'         => 'Menu 3 Heading',
+                'name'          => 'footer_menu_3_heading',
+                'type'          => 'text',
+                'default_value' => 'Important Links',
             ),
 
             // ─── TAB: Contact Info ────────────────────────────────
@@ -185,7 +189,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 array(
                     'param'    => 'options_page',
                     'operator' => '==',
-                    'value'    => 'theme-options',
+                    'value'    => 'acf-options',
                 ),
             ),
         ),
