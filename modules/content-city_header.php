@@ -13,7 +13,7 @@ $button_link = get_sub_field('button_link');
 <section class="py-12 lg:py-16 px-6 lg:px-12 bg-surface overflow-hidden">
     <div class="max-w-4xl mx-auto text-center">
         <?php if ($heading) : ?>
-            <h1 class="text-2xl md:text-3xl font-bold text-primary mb-2"><?php echo esc_html($heading); ?></h1>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-accent-dark mb-3"><?php echo esc_html($heading); ?></h1>
         <?php endif; ?>
         
         <?php if ($subheading) : ?>

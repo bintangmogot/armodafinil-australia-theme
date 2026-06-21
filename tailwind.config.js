@@ -51,6 +51,7 @@ module.exports = {
         accent: {
           DEFAULT: '#FFD000', // Yellow (Tagline/Buttons)
           hover: '#e6bb00',
+          dark: '#D97706',    // Dark Yellow
         },
         surface: {
           DEFAULT: '#E1EDFF', // Light Blue (Cards)

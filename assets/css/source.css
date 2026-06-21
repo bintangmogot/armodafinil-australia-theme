@@ -177,6 +177,9 @@
     }
 
     /* ─── Module: Full Width Text ─── */
+    .module-fulltext-content h1 {
+        @apply text-3xl lg:text-4xl font-extrabold text-primary mb-5;
+    }
     .module-fulltext-content h2,
     .module-fulltext-content h3 {
         @apply text-2xl lg:text-3xl font-bold text-primary mb-4;
