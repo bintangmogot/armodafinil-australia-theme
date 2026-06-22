@@ -4044,7 +4044,7 @@ img {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 /* Replaces the green check emoji with a premium yellow tick */

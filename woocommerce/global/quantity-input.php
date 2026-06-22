@@ -11,7 +11,8 @@ defined( 'ABSPATH' ) || exit;
 $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'woocommerce' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'woocommerce' );
 
 // Hide the quantity box and output a hidden input if min == max (e.g. max 1 buy)
-if ( $max_value && $min_value === $max_value ) {
+// Hide the quantity box and output a hidden input if min == max (e.g. max 1 buy)
+if ( $max_value && $min_value == $max_value ) {
 	?>
 	<div class="quantity hidden" style="display:none !important;">
 		<input type="hidden" id="<?php echo esc_attr( $input_id ); ?>" class="qty" name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $min_value ); ?>" />
