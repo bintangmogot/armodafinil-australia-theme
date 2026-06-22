@@ -121,12 +121,27 @@
     }
 
     /* Footer */
-    .footer-links > li > a,
-    #site-footer ul > li > a {
-        @apply block text-[17px] text-primary-dark font-medium hover:text-red-600 transition-colors py-1.5 no-underline;
+    #site-footer .footer-menu-wrapper,
+    .footer-links {
+        @apply text-[17px] text-primary-dark font-medium;
     }
+    
+    #site-footer .footer-menu-wrapper p {
+        line-height: 2.75;
+        @apply mb-4;
+    }
+    
+    .footer-links > li > a,
+    #site-footer .footer-menu-wrapper li > a {
+        @apply block text-primary-dark hover:text-red-600 transition-colors py-1.5 no-underline;
+    }
+    
+    #site-footer .footer-menu-wrapper li:not(:has(a)) {
+        @apply py-1.5;
+    }
+
     #site-footer .footer-menu-wrapper ul {
-        @apply space-y-2;
+        @apply space-y-3;
     }
 
     /* Pagination */
