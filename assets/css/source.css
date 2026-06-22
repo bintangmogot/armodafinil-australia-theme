@@ -123,7 +123,7 @@
     /* Footer */
     .footer-links > li > a,
     #site-footer ul > li > a {
-        @apply block text-base text-primary-dark/80 hover:text-red-600 transition-colors py-0.5 no-underline;
+        @apply block text-[17px] text-primary-dark font-medium hover:text-red-600 transition-colors py-1.5 no-underline;
     }
     #site-footer .footer-menu-wrapper ul {
         @apply space-y-2;

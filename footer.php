@@ -99,7 +99,19 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                 <div class="order-3 lg:order-2">
                     <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_1_heading', 'option') ?: 'Category' ); ?></h3>
                     <div class="footer-menu-wrapper">
-                        <?php the_field('footer_menu', 'option'); ?>
+                        <?php 
+                        $menu_1_acf = get_field('footer_menu', 'option');
+                        if ( $menu_1_acf ) {
+                            echo $menu_1_acf;
+                        } else {
+                            wp_nav_menu( array(
+                                'theme_location' => 'footer',
+                                'menu_class'     => 'footer-links',
+                                'container'      => false,
+                                'fallback_cb'    => false,
+                            ) );
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -107,7 +119,19 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                 <div class="order-4 lg:order-3">
                     <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_2_heading', 'option') ?: 'Quick Links' ); ?></h3>
                     <div class="footer-menu-wrapper">
-                        <?php the_field('footer_menu_2', 'option'); ?>
+                        <?php 
+                        $menu_2_acf = get_field('footer_menu_2', 'option');
+                        if ( $menu_2_acf ) {
+                            echo $menu_2_acf;
+                        } else {
+                            wp_nav_menu( array(
+                                'theme_location' => 'footer-quick',
+                                'menu_class'     => 'footer-links',
+                                'container'      => false,
+                                'fallback_cb'    => false,
+                            ) );
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -115,7 +139,19 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                 <div class="order-5 lg:order-4">
                     <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_3_heading', 'option') ?: 'Important Links' ); ?></h3>
                     <div class="footer-menu-wrapper">
-                        <?php the_field('footer_menu_3', 'option'); ?>
+                        <?php 
+                        $menu_3_acf = get_field('footer_menu_3', 'option');
+                        if ( $menu_3_acf ) {
+                            echo $menu_3_acf;
+                        } else {
+                            wp_nav_menu( array(
+                                'theme_location' => 'footer-important',
+                                'menu_class'     => 'footer-links',
+                                'container'      => false,
+                                'fallback_cb'    => false,
+                            ) );
+                        }
+                        ?>
                     </div>
                 </div>
 
