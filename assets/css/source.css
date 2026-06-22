@@ -127,21 +127,21 @@
     }
     
     #site-footer .footer-menu-wrapper p {
-        line-height: 2.75;
+        line-height: 2.25;
         @apply mb-4;
     }
     
     .footer-links > li > a,
     #site-footer .footer-menu-wrapper li > a {
-        @apply block text-primary-dark hover:text-red-600 transition-colors py-1.5 no-underline;
+        @apply block text-primary-dark hover:text-red-600 transition-colors py-1 no-underline;
     }
     
     #site-footer .footer-menu-wrapper li:not(:has(a)) {
-        @apply py-1.5;
+        @apply py-1;
     }
 
     #site-footer .footer-menu-wrapper ul {
-        @apply space-y-3;
+        @apply space-y-1;
     }
 
     /* Pagination */
