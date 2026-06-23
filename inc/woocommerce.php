@@ -26,6 +26,29 @@ function armo_woocommerce_support()
 }
 add_action('after_setup_theme', 'armo_woocommerce_support');
 
+/**
+ * Add Shop Page Copy / Short Description to Product Cards
+ */
+add_action('woocommerce_after_shop_loop_item_title', 'armo_add_shop_page_copy', 5);
+function armo_add_shop_page_copy() {
+    global $post;
+    
+    $copy = '';
+    if (function_exists('get_field')) {
+        $copy = get_field('shop_page_copy', $post->ID);
+    }
+    
+    // Fallback to the WooCommerce short description (excerpt) if the ACF field is empty
+    if (empty($copy)) {
+        $copy = $post->post_excerpt;
+    }
+    
+    if (!empty($copy)) {
+        echo '<div class="text-sm md:text-base text-gray-500 mt-2 mb-3 leading-snug line-clamp-2 px-1">';
+        echo wp_kses_post($copy);
+        echo '</div>';
+    }
+}
 
 /**
  * WooCommerce content wrappers.
