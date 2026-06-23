@@ -4333,10 +4333,14 @@ div.wpforms-container-full input[type="number"],
   width: 100% !important;
   height: auto !important;
   margin: 0 auto !important;
-  display: block !important;
   border: 1px solid #00125E !important;
   border-radius: 16px !important;
   box-sizing: border-box !important;
+}
+
+.woocommerce ul.products li.product > a > img,
+.woocommerce ul.products li.product .armo-in-stock-badge,
+.woocommerce ul.products li.product .onsale {
   transition: all 0.3s ease !important;
 }
 
@@ -4344,6 +4348,11 @@ div.wpforms-container-full input[type="number"],
   transform: translateY(-8px) !important;
   box-shadow: 0 20px 40px rgba(0, 18, 94, 0.15) !important;
   border-color: #000a33 !important;
+}
+
+.woocommerce ul.products li.product:hover .armo-in-stock-badge,
+.woocommerce ul.products li.product:hover .onsale {
+  transform: translateY(-8px) !important;
 }
 
 /* In Stock Badge */
@@ -4561,6 +4570,11 @@ select.orderby:focus,
 .hover\:bg-blue-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-gray-200:hover {
