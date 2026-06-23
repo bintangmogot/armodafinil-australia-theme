@@ -171,9 +171,9 @@ function armo_add_hero_section_layout_to_modules( $field ) {
                         'key' => 'field_hero_section_button_link',
                         'label' => 'Button Link (URL)',
                         'name' => 'button_link',
-                        'type' => 'text',
+                        'type' => 'page_link',
                         'wrapper' => array('width' => '50'),
-                        'default_value' => '/shop/',
+                        'default_value' => '',
                     ),
                 );
                 return $field;
@@ -249,9 +249,9 @@ function armo_add_hero_section_layout_to_modules( $field ) {
                 'key' => 'field_hero_section_button_link',
                 'label' => 'Button Link (URL)',
                 'name' => 'button_link',
-                'type' => 'text',
+                'type' => 'page_link',
                 'wrapper' => array('width' => '50'),
-                'default_value' => '/shop/',
+                'default_value' => '',
             ),
         ),
     );
@@ -441,8 +441,8 @@ function armo_add_why_choose_us_layout_to_modules( $field ) {
                         'key' => 'field_why_choose_us_button_link',
                         'label' => 'Button Link',
                         'name' => 'button_link',
-                        'type' => 'text',
-                        'default_value' => '/shop/',
+                        'type' => 'page_link',
+                        'default_value' => '',
                     ),
                 );
                 return $field;
@@ -506,8 +506,8 @@ function armo_add_why_choose_us_layout_to_modules( $field ) {
                 'key' => 'field_why_choose_us_button_link',
                 'label' => 'Button Link',
                 'name' => 'button_link',
-                'type' => 'text',
-                'default_value' => '/shop/',
+                'type' => 'page_link',
+                'default_value' => '',
             ),
         ),
     );
@@ -682,8 +682,8 @@ function armo_add_city_header_layout_to_modules( $field ) {
                         'key' => 'field_city_header_button_link',
                         'label' => 'Button Link',
                         'name' => 'button_link',
-                        'type' => 'text',
-                        'default_value' => '/shop/',
+                        'type' => 'page_link',
+                        'default_value' => '',
                     ),
                 );
                 return $field;
@@ -735,8 +735,8 @@ function armo_add_city_header_layout_to_modules( $field ) {
                 'key' => 'field_city_header_button_link',
                 'label' => 'Button Link',
                 'name' => 'button_link',
-                'type' => 'text',
-                'default_value' => '/shop/',
+                'type' => 'page_link',
+                'default_value' => '',
             ),
         ),
     );
