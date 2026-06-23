@@ -21,39 +21,46 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'group bg-gradient-to-b from-secondary to-primary border border-primary-light rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full transform hover:-translate-y-1' ); ?>>
 
-    <!-- Featured Image -->
-    <?php if ( has_post_thumbnail() ) : ?>
-        <a href="<?php the_permalink(); ?>" class="block overflow-hidden">
-            <?php the_post_thumbnail( 'armo-card', array(
-                'class' => 'w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300',
-            ) ); ?>
-        </a>
-    <?php endif; ?>
-
-    <!-- Content -->
-    <div class="p-5">
-        <!-- Title -->
-        <h2 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-            <a href="<?php the_permalink(); ?>">
-                <?php the_title(); ?>
+    <div class="p-4 flex-grow flex flex-col">
+        <!-- Featured Image -->
+        <?php if ( has_post_thumbnail() ) : ?>
+            <a href="<?php the_permalink(); ?>" class="block overflow-hidden rounded-lg mb-5 border border-white/5 shadow-inner relative z-10 group-hover:shadow-md transition-shadow">
+                <!-- An overlay for a better hover effect -->
+                <div class="absolute inset-0 bg-primary/0 group-hover:bg-white/10 transition-colors duration-300 z-20 pointer-events-none"></div>
+                <?php the_post_thumbnail( 'large', array(
+                    'class' => 'w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500 ease-out',
+                ) ); ?>
             </a>
-        </h2>
+        <?php endif; ?>
 
-        <!-- Excerpt (short preview text) -->
-        <p class="mt-2 text-sm text-gray-600 line-clamp-3">
-            <?php echo get_the_excerpt(); ?>
-        </p>
+        <!-- Content -->
+        <div class="flex-grow flex flex-col px-2">
+            <!-- Title -->
+            <h2 class="text-[17px] md:text-lg font-bold text-accent group-hover:text-accent-hover transition-colors leading-snug mb-3 text-center">
+                <a href="<?php the_permalink(); ?>" class="block">
+                    <?php the_title(); ?>
+                </a>
+            </h2>
 
-        <!-- Meta -->
-        <div class="mt-4 flex items-center justify-between text-xs text-gray-400">
-            <time datetime="<?php echo get_the_date( 'c' ); ?>">
-                <?php echo get_the_date(); ?>
-            </time>
-            <a href="<?php the_permalink(); ?>" class="font-medium text-blue-600 hover:text-blue-800 transition-colors">
-                Read more →
-            </a>
+            <!-- Excerpt (short preview text) -->
+            <div class="text-[13px] md:text-sm text-white/90 leading-relaxed line-clamp-3 text-center mb-6">
+                <?php echo get_the_excerpt(); ?>
+            </div>
+
+            <!-- Spacer to push category to bottom -->
+            <div class="mt-auto"></div>
+
+            <!-- Category -->
+            <div class="text-center pt-2">
+                <?php
+                $categories = get_the_category();
+                if ( ! empty( $categories ) ) {
+                    echo '<a href="' . esc_url( get_category_link( $categories[0]->term_id ) ) . '" class="inline-block text-white font-extrabold uppercase tracking-wide text-xs md:text-sm hover:text-accent transition-colors">' . esc_html( $categories[0]->name ) . '</a>';
+                }
+                ?>
+            </div>
         </div>
     </div>
 
