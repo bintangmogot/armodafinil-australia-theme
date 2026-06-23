@@ -56,8 +56,10 @@ get_header();
 
     <!-- Featured Image -->
     <?php if ( has_post_thumbnail() ) : ?>
-        <div class="mb-8 rounded-xl overflow-hidden">
-            <?php the_post_thumbnail( 'large', array( 'class' => 'w-full h-auto' ) ); ?>
+        <div class="mb-8 mx-auto w-full md:w-[60%]">
+            <div class="rounded-xl overflow-hidden border-2 border-gray-200">
+                <?php the_post_thumbnail( 'large', array( 'class' => 'w-full h-auto' ) ); ?>
+            </div>
         </div>
     <?php endif; ?>
 
