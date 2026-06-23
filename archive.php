@@ -54,7 +54,7 @@ endif;
 ?>
 
 <!-- Blog Header -->
-<section class="bg-surface-light py-14 lg:py-20">
+<section class="bg-surface-light py-14 lg:py-10">
     <div class="max-w-3xl mx-auto px-6 text-center">
         <h1 class="text-3xl md:text-4xl font-extrabold text-primary leading-tight mb-3">
             <?php echo esc_html( $blog_title ); ?>
