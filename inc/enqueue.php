@@ -37,7 +37,7 @@ function armo_enqueue_assets() {
     // Main Tailwind compiled CSS
     // This is the OUTPUT file from: npx tailwindcss -i source.css -o main.css
     $main_css_path = get_stylesheet_directory() . '/assets/css/main.css';
-    $css_version = file_exists( $main_css_path ) ? filemtime( $main_css_path ) : $theme_version;
+    $css_version = time(); // FORCED CACHE BUSTING
 
     wp_enqueue_style(
         'armo-tailwind',                                                   // handle
