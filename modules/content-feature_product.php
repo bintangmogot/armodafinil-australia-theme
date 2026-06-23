@@ -15,8 +15,8 @@ $products = get_sub_field('feature_product');
         <?php endif; ?>
 
         <?php if ( $products && is_array($products) ) : ?>
-            <!-- Horizontal scroll on mobile, grid on desktop -->
-            <div class="flex overflow-x-auto gap-4 lg:gap-6 pb-4 mt-8 lg:mt-10 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-4 lg:overflow-visible">
+            <!-- 2-column grid on mobile, 4-column grid on desktop -->
+            <div class="grid grid-cols-2 gap-4 lg:gap-6 mt-8 lg:mt-10 lg:grid-cols-4">
                 <?php 
                 foreach ( $products as $product ) : 
                     $post_id = is_object( $product ) ? $product->ID : $product;
@@ -32,7 +32,7 @@ $products = get_sub_field('feature_product');
                         
                         $in_stock = $wc_product->is_in_stock();
                         ?>
-                        <div class="min-w-[200px] lg:min-w-0 flex-shrink-0 lg:flex-shrink snap-start flex flex-col">
+                        <div class="flex flex-col">
                             <a href="<?php echo $permalink; ?>" class="block w-full no-underline text-inherit flex-grow flex flex-col">
                                 <div class="bg-white border border-primary rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px]">
                                     <?php if ( $in_stock ) : ?>

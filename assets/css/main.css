@@ -2085,11 +2085,6 @@ img {
   margin: 0px;
 }
 
-.-mx-6 {
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-}
-
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -2554,10 +2549,6 @@ img {
 
 .min-w-0 {
   min-width: 0px;
-}
-
-.min-w-\[200px\] {
-  min-width: 200px;
 }
 
 .max-w-2xl {
@@ -6314,11 +6305,6 @@ select.orderby:focus,
     grid-column: span 2 / span 2;
   }
 
-  .lg\:mx-0 {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
   .lg\:mb-0 {
     margin-bottom: 0px;
   }
@@ -6599,14 +6585,6 @@ select.orderby:focus,
     width: 50%;
   }
 
-  .lg\:min-w-0 {
-    min-width: 0px;
-  }
-
-  .lg\:flex-shrink {
-    flex-shrink: 1;
-  }
-
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -6671,10 +6649,6 @@ select.orderby:focus,
     gap: 2rem;
   }
 
-  .lg\:overflow-visible {
-    overflow: visible;
-  }
-
   .lg\:p-10 {
     padding: 2.5rem;
   }
@@ -6685,11 +6659,6 @@ select.orderby:focus,
 
   .lg\:p-8 {
     padding: 2rem;
-  }
-
-  .lg\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 
   .lg\:px-12 {
