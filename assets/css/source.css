@@ -146,14 +146,19 @@
 
     /* Pagination */
     .nav-links {
-        @apply flex items-center justify-center gap-2;
+        @apply flex items-center justify-center gap-1;
     }
     .nav-links .page-numbers {
-        @apply inline-flex items-center justify-center w-10 h-10 text-sm rounded-lg;
-        @apply text-gray-600 hover:bg-gray-100 transition-colors;
+        @apply inline-flex items-center justify-center w-10 h-10 text-sm font-semibold rounded-full;
+        @apply text-primary hover:bg-surface-light transition-colors duration-200;
+        text-decoration: none;
     }
     .nav-links .page-numbers.current {
-        @apply bg-gray-900 text-white;
+        @apply bg-primary text-white;
+    }
+    .nav-links .prev,
+    .nav-links .next {
+        @apply text-primary font-bold text-lg;
     }
 
     /* Search */
