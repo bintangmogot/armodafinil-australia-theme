@@ -41,9 +41,9 @@ $carousel_id = 'carousel-' . uniqid();
                             
                             $in_stock = $wc_product->is_in_stock();
                             ?>
-                            <div class="w-[200px] md:w-[calc(25%-18px)] flex-shrink-0 snap-start flex flex-col hover:bg-gray-100 pb-6">
-                                <a href="<?php echo $permalink; ?>" class="block w-full no-underline text-inherit flex-grow flex flex-col">
-                                    <div class="bg-white border border-primary rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px]">
+                            <div class="w-[200px] md:w-[calc(25%-18px)] flex-shrink-0 snap-start flex flex-col pb-6">
+                                <a href="<?php echo $permalink; ?>" class="group block w-full no-underline text-inherit flex-grow flex flex-col">
+                                    <div class="bg-white border border-primary rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,18,94,0.15)] group-hover:border-[#000a33]">
                                         <?php if ( $in_stock ) : ?>
                                             <div class="absolute top-2 left-2 bg-[#1e7e34] text-white text-[10px] font-bold px-2 py-1 rounded">
                                                 IN STOCK

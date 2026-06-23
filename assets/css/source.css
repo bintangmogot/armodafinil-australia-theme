@@ -729,11 +729,12 @@ div.wpforms-container-full input[type="number"],
     border: 1px solid #00125E !important;
     border-radius: 16px !important;
     box-sizing: border-box !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    transition: all 0.3s ease !important;
 }
-.woocommerce ul.products li.product > a > img:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 15px 30px rgba(0, 18, 94, 0.1) !important;
+.woocommerce ul.products li.product:hover > a > img {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(0, 18, 94, 0.15) !important;
+    border-color: #000a33 !important;
 }
 
 /* In Stock Badge */
