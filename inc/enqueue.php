@@ -58,12 +58,11 @@ function armo_enqueue_assets() {
      * ── JAVASCRIPT FILES ──
      */
 
-    // Main theme JavaScript (mobile menu toggle, animations, etc.)
     wp_enqueue_script(
         'armo-app',                                                        // handle
         get_stylesheet_directory_uri() . '/assets/js/app.js',              // URL
         array(),                                                           // no dependencies (no jQuery!)
-        $theme_version,                                                    // version
+        time(),                                                            // version (forced cache busting)
         true                                                               // load in footer (better performance)
     );
 

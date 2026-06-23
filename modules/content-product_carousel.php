@@ -66,20 +66,6 @@ $carousel_id = 'carousel-' . uniqid();
                                         <h3 class="text-base md:text-lg font-bold text-[#1E1E1E] mb-1 leading-snug">
                                             <?php echo $name; ?>
                                         </h3>
-                                        <?php
-                                        $copy = get_field('shop_page_text', $post_id);
-                                        if (empty($copy)) {
-                                            $copy = get_field('shop_page_copy', $post_id);
-                                        }
-                                        if (empty($copy)) {
-                                            $copy = get_post_field('post_excerpt', $post_id);
-                                        }
-                                        if (!empty($copy)) :
-                                        ?>
-                                            <div class="text-sm md:text-base text-gray-500 mt-1 mb-2 leading-snug line-clamp-2 px-1">
-                                                <?php echo wp_kses_post($copy); ?>
-                                            </div>
-                                        <?php endif; ?>
                                         <div class="text-base md:text-lg font-extrabold text-primary mb-3">
                                             <?php echo $price_html; ?>
                                         </div>
@@ -97,7 +83,7 @@ $carousel_id = 'carousel-' . uniqid();
                                     </div>
                                 </a>
                             </div>
-                        <?php
+                            <?php
                         endif;
                     endforeach;
                     ?>

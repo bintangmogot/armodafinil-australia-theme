@@ -47,9 +47,20 @@ function armo_add_shop_page_copy() {
     }
     
     if (!empty($copy)) {
-        echo '<div class="text-sm md:text-base text-gray-500 mt-2 mb-3 leading-snug line-clamp-2 px-1">';
-        echo wp_kses_post($copy);
-        echo '</div>';
+        $copy_plain = wp_strip_all_tags(strip_shortcodes($copy));
+        $length = mb_strlen($copy_plain);
+        if ($length > 100) {
+            $short_text = mb_strimwidth($copy_plain, 0, 100, '...');
+            echo '<div class="product-excerpt text-xs md:text-sm text-gray-500 mt-2 mb-3 leading-snug px-1 text-center">';
+            echo '<span class="excerpt-short">' . esc_html($short_text) . '</span>';
+            echo '<span class="excerpt-full hidden">' . wp_kses_post($copy) . '</span>';
+            echo '<span class="read-more-toggle text-[11px] text-gray-500 italic hover:text-[#00125e] ml-1 cursor-pointer" onclick="event.preventDefault(); event.stopPropagation(); const p=this.closest(\'.product-excerpt\'); const s=p.querySelector(\'.excerpt-short\'); const f=p.querySelector(\'.excerpt-full\'); if(f.classList.contains(\'hidden\')){ f.classList.remove(\'hidden\'); s.classList.add(\'hidden\'); this.textContent=\'Read less <<\'; }else{ f.classList.add(\'hidden\'); s.classList.remove(\'hidden\'); this.textContent=\'Read more >>\'; }">Read more &gt;&gt;</span>';
+            echo '</div>';
+        } else {
+            echo '<div class="product-excerpt text-xs md:text-sm text-gray-500 mt-2 mb-3 leading-snug px-1 text-center">';
+            echo '<span>' . wp_kses_post($copy) . '</span>';
+            echo '</div>';
+        }
     }
 }
 

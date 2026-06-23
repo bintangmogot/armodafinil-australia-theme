@@ -74,4 +74,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── Excerpt Read More Toggle ─────────────────────────
+    document.addEventListener('click', (e) => {
+        const toggleBtn = e.target.closest('.read-more-toggle');
+        if (!toggleBtn) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        const parent = toggleBtn.closest('.product-excerpt');
+        if (!parent) return;
+
+        const shortSpan = parent.querySelector('.excerpt-short');
+        const fullSpan = parent.querySelector('.excerpt-full');
+
+        if (shortSpan && fullSpan) {
+            const isHidden = fullSpan.classList.contains('hidden');
+            if (isHidden) {
+                fullSpan.classList.remove('hidden');
+                shortSpan.classList.add('hidden');
+                toggleBtn.textContent = 'Read less <<';
+            } else {
+                fullSpan.classList.add('hidden');
+                shortSpan.classList.remove('hidden');
+                toggleBtn.textContent = 'Read more >>';
+            }
+        }
+    }, true);
+
 });
