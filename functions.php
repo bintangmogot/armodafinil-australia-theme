@@ -31,8 +31,8 @@ define( 'ARMO_THEME_URI', get_stylesheet_directory_uri() );
  */
 function armo_content($content) {
     if (!$content) return '';
-    $clean = wp_kses_post($content);
-    return str_replace('✅', '<span class="armo-yellow-tick"></span>', $clean);
+    // Removed wp_kses_post because it strips <style> tags injected by form plugins like WPForms
+    return str_replace('✅', '<span class="armo-yellow-tick"></span>', $content);
 }
 
 /*

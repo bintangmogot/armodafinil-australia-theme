@@ -2434,6 +2434,10 @@ img {
   height: 1px;
 }
 
+.h-\[250px\] {
+  height: 250px;
+}
+
 .h-\[400px\] {
   height: 400px;
 }
@@ -2444,6 +2448,11 @@ img {
 
 .h-auto {
   height: auto;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .h-full {
@@ -2869,6 +2878,10 @@ img {
   border-color: rgb(255 0 0 / var(--tw-border-opacity, 1));
 }
 
+.border-black\/5 {
+  border-color: rgb(0 0 0 / 0.05);
+}
+
 .border-blue-400 {
   --tw-border-opacity: 1;
   border-color: rgb(96 165 250 / var(--tw-border-opacity, 1));
@@ -2967,6 +2980,11 @@ img {
 .bg-\[\#eef4fa\] {
   --tw-bg-opacity: 1;
   background-color: rgb(238 244 250 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#f4f6f9\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 246 249 / var(--tw-bg-opacity, 1));
 }
 
 .bg-\[\#f5f7fb\] {
@@ -3855,6 +3873,12 @@ img {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-\[0_10px_40px_rgba\(0\2c 0\2c 0\2c 0\.04\)\] {
+  --tw-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  --tw-shadow-colored: 0 10px 40px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
@@ -4115,6 +4139,135 @@ li .armo-yellow-tick {
 #product-tabs-nav {
   flex-wrap: nowrap;
   justify-content: flex-start;
+}
+
+/* ─── Global Form Styling (Modern Theme Design for ALL Plugins) ─── */
+
+div.wpforms-container-full,
+.fluentform,
+.forminator-ui.forminator-custom-form,
+.gform_wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 40px !important;
+  border-radius: 32px !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08) !important;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+div.wpforms-container-full .wpforms-field-label,
+.fluentform .ff-el-input--label,
+.forminator-ui.forminator-custom-form .forminator-label,
+.gform_wrapper .gfield_label {
+  display: block;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #00125E !important;
+  margin-bottom: 8px !important;
+}
+
+div.wpforms-container-full input[type="text"],
+div.wpforms-container-full input[type="tel"],
+div.wpforms-container-full input[type="email"],
+div.wpforms-container-full input[type="number"],
+div.wpforms-container-full textarea,
+.fluentform .ff-el-form-control,
+.forminator-ui.forminator-custom-form input.forminator-input,
+.forminator-ui.forminator-custom-form textarea.forminator-textarea,
+.gform_wrapper input[type="text"],
+.gform_wrapper input[type="tel"],
+.gform_wrapper input[type="email"],
+.gform_wrapper input[type="number"],
+.gform_wrapper textarea {
+  padding: 0 16px !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: #1f2937 !important;
+  font-size: 16px !important;
+  font-family: inherit !important;
+  box-sizing: border-box !important;
+  transition: all 0.3s ease !important;
+  outline: none !important;
+  min-height: 52px !important;
+  width: 100% !important;
+  max-width: 100%;
+}
+
+div.wpforms-container-full input:focus,
+div.wpforms-container-full textarea:focus,
+.fluentform .ff-el-form-control:focus,
+.forminator-ui.forminator-custom-form input.forminator-input:focus,
+.forminator-ui.forminator-custom-form textarea.forminator-textarea:focus,
+.gform_wrapper input[type="text"]:focus,
+.gform_wrapper input[type="tel"]:focus,
+.gform_wrapper input[type="email"]:focus,
+.gform_wrapper input[type="number"]:focus,
+.gform_wrapper textarea:focus {
+  background-color: #f5f5f5 !important;
+  border-color: #00125E !important;
+  box-shadow: 0 0 0 3px rgba(0, 18, 94, 0.1) !important;
+}
+
+div.wpforms-container-full textarea,
+.fluentform textarea.ff-el-form-control,
+.forminator-ui.forminator-custom-form textarea.forminator-textarea,
+.gform_wrapper textarea {
+  padding: 12px 16px !important;
+  min-height: 120px !important;
+  resize: vertical;
+}
+
+div.wpforms-container-full button[type="submit"].wpforms-submit,
+.fluentform button.ff-btn-submit,
+.forminator-ui.forminator-custom-form button.forminator-button-submit,
+.gform_wrapper input[type="submit"],
+.gform_wrapper button.gform_button {
+  background-color: #FF0000 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  padding: 14px 32px !important;
+  border-radius: 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  width: 100% !important;
+  text-transform: none !important;
+}
+
+div.wpforms-container-full button[type="submit"].wpforms-submit:hover,
+.fluentform button.ff-btn-submit:hover,
+.forminator-ui.forminator-custom-form button.forminator-button-submit:hover,
+.gform_wrapper input[type="submit"]:hover,
+.gform_wrapper button.gform_button:hover {
+  background-color: #dc0000 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ─── Hide Number Spinners (for Phone fields) ─── */
+
+div.wpforms-container-full input[type="number"]::-webkit-inner-spin-button,
+div.wpforms-container-full input[type="number"]::-webkit-outer-spin-button,
+.fluentform input[type="number"]::-webkit-inner-spin-button,
+.fluentform input[type="number"]::-webkit-outer-spin-button,
+.forminator-ui.forminator-custom-form input[type="number"]::-webkit-inner-spin-button,
+.forminator-ui.forminator-custom-form input[type="number"]::-webkit-outer-spin-button,
+.gform_wrapper input[type="number"]::-webkit-inner-spin-button,
+.gform_wrapper input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+div.wpforms-container-full input[type="number"],
+.fluentform input[type="number"],
+.forminator-ui.forminator-custom-form input[type="number"],
+.gform_wrapper input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .hover\:-translate-y-1:hover {
@@ -6162,6 +6315,10 @@ li .armo-yellow-tick {
     height: 2rem;
   }
 
+  .lg\:h-\[300px\] {
+    height: 300px;
+  }
+
   .lg\:h-\[80vh\] {
     height: 80vh;
   }
@@ -6276,6 +6433,10 @@ li .armo-yellow-tick {
 
   .lg\:overflow-visible {
     overflow: visible;
+  }
+
+  .lg\:p-10 {
+    padding: 2.5rem;
   }
 
   .lg\:p-12 {
@@ -7804,6 +7965,14 @@ li .armo-yellow-tick {
   }
 }
 
+.\[\&\>iframe\]\:h-full>iframe {
+  height: 100%;
+}
+
+.\[\&\>iframe\]\:w-full>iframe {
+  width: 100%;
+}
+
 .\[\&_h1\]\:text-3xl h1 {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -7840,6 +8009,3 @@ li .armo-yellow-tick {
     height: 4.75rem;
   }
 }
-
-
-
