@@ -48,7 +48,10 @@ $products = get_sub_field('feature_product');
                                         <?php echo $name; ?>
                                     </h3>
                                     <?php
-                                    $copy = get_field('shop_page_copy', $post_id);
+                                    $copy = get_field('shop_page_text', $post_id);
+                                    if (empty($copy)) {
+                                        $copy = get_field('shop_page_copy', $post_id);
+                                    }
                                     if (empty($copy)) {
                                         $copy = get_post_field('post_excerpt', $post_id);
                                     }

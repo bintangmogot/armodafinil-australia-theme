@@ -35,7 +35,10 @@ function armo_add_shop_page_copy() {
     
     $copy = '';
     if (function_exists('get_field')) {
-        $copy = get_field('shop_page_copy', $post->ID);
+        $copy = get_field('shop_page_text', $post->ID);
+        if (empty($copy)) {
+            $copy = get_field('shop_page_copy', $post->ID);
+        }
     }
     
     // Fallback to the WooCommerce short description (excerpt) if the ACF field is empty

@@ -804,48 +804,7 @@ function armo_add_text_left_layout_to_modules( $field ) {
 }
 add_filter( 'acf/load_field/name=modules', 'armo_add_text_left_layout_to_modules' );
 
-/**
- * Register Product Custom Tabs and Locations
- */
-if( function_exists('acf_add_local_field_group') ):
 
-acf_add_local_field_group(array(
-    'key' => 'group_product_tabs',
-    'title' => 'Product Custom Tabs',
-    'fields' => array(
-        array(
-            'key' => 'field_product_dosage',
-            'label' => 'Dosage & Direction',
-            'name' => 'product_dosage',
-            'type' => 'wysiwyg',
-        ),
-        array(
-            'key' => 'field_product_shipping',
-            'label' => 'Shipping & Returns',
-            'name' => 'product_shipping',
-            'type' => 'wysiwyg',
-        ),
-        array(
-            'key' => 'field_product_safety',
-            'label' => 'Safety & Side Effects',
-            'name' => 'product_safety',
-            'type' => 'wysiwyg',
-        ),
-    ),
-    'location' => array(
-        array(
-            array(
-                'param' => 'post_type',
-                'operator' => '==',
-                'value' => 'product',
-            ),
-        ),
-    ),
-    'position' => 'normal',
-    'style' => 'default',
-));
-
-endif;
 
 /**
  * Enable the 'modules' field group on Products
