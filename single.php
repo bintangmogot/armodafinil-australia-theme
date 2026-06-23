@@ -69,7 +69,16 @@ get_header();
             <!-- Post Content -->
             <!-- This is where your blog post body appears. WordPress outputs it from the editor. -->
             <div class="prose prose-lg max-w-none text-gray-700">
-                <?php the_content(); ?>
+                <?php
+                if ( function_exists('have_rows') && have_rows('modules') ) :
+                    while ( have_rows('modules') ) : the_row();
+                        $layout_name = get_row_layout();
+                        get_template_part( 'modules/content', $layout_name );
+                    endwhile;
+                else :
+                    the_content();
+                endif;
+                ?>
             </div>
 
             <!-- Tags -->
