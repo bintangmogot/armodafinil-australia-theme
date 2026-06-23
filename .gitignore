@@ -25,3 +25,8 @@ node_modules/
 *.sql.gz
 *.tar.gz
 *.zip
+
+# ── Custom ignored items ──
+assets/previous-theme/
+acf-export-*.json
+assets/acf-export-*.json
