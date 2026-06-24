@@ -42,8 +42,151 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 
     acf_add_local_field_group( array(
         'key'    => 'group_footer_options',
-        'title'  => 'Contact, Payments & Copyright',
+        'title'  => 'Theme Settings',
         'fields' => array(
+
+            // ─── TAB: Announcement Bar ────────────────────────────
+            array(
+                'key'   => 'field_theme_tab_announcement',
+                'label' => 'Announcement Bar',
+                'type'  => 'tab',
+            ),
+            array(
+                'key'           => 'field_theme_enable_announcement',
+                'label'         => 'Enable Announcement Bar',
+                'name'          => 'enable_announcement_bar',
+                'type'          => 'true_false',
+                'ui'            => 1,
+                'default_value' => 1,
+            ),
+            array(
+                'key'           => 'field_theme_announcement_text',
+                'label'         => 'Announcement Text',
+                'name'          => 'announcement_text',
+                'type'          => 'text',
+                'default_value' => 'Free Shipping All Orders Over $299',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field'    => 'field_theme_enable_announcement',
+                            'operator' => '==',
+                            'value'    => '1',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key'           => 'field_theme_announcement_bg_color',
+                'label'         => 'Background Color',
+                'name'          => 'announcement_bg_color',
+                'type'          => 'color_picker',
+                'default_value' => '#ff0000',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field'    => 'field_theme_enable_announcement',
+                            'operator' => '==',
+                            'value'    => '1',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key'           => 'field_theme_announcement_text_color',
+                'label'         => 'Text Color',
+                'name'          => 'announcement_text_color',
+                'type'          => 'color_picker',
+                'default_value' => '#ffffff',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field'    => 'field_theme_enable_announcement',
+                            'operator' => '==',
+                            'value'    => '1',
+                        ),
+                    ),
+                ),
+            ),
+
+            // ─── TAB: Feature Bar ─────────────────────────────────
+            array(
+                'key'   => 'field_theme_tab_feature_bar',
+                'label' => 'Feature Bar',
+                'type'  => 'tab',
+            ),
+            array(
+                'key'           => 'field_theme_enable_feature_bar',
+                'label'         => 'Enable Feature Bar',
+                'name'          => 'enable_feature_bar',
+                'type'          => 'true_false',
+                'ui'            => 1,
+                'default_value' => 1,
+            ),
+            array(
+                'key'           => 'field_theme_feature_bar_bg_color',
+                'label'         => 'Background Color',
+                'name'          => 'feature_bar_bg_color',
+                'type'          => 'color_picker',
+                'default_value' => '#176BCE',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field'    => 'field_theme_enable_feature_bar',
+                            'operator' => '==',
+                            'value'    => '1',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key'           => 'field_theme_feature_bar_text_color',
+                'label'         => 'Text Color',
+                'name'          => 'feature_bar_text_color',
+                'type'          => 'color_picker',
+                'default_value' => '#ffffff',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field'    => 'field_theme_enable_feature_bar',
+                            'operator' => '==',
+                            'value'    => '1',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key'          => 'field_theme_feature_bar_items',
+                'label'        => 'Feature Items',
+                'name'         => 'feature_bar_items',
+                'type'         => 'repeater',
+                'layout'       => 'table',
+                'button_label' => 'Add Feature',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field'    => 'field_theme_enable_feature_bar',
+                            'operator' => '==',
+                            'value'    => '1',
+                        ),
+                    ),
+                ),
+                'sub_fields'   => array(
+                    array(
+                        'key'           => 'field_theme_feature_icon',
+                        'label'         => 'Icon (Image/SVG)',
+                        'name'          => 'icon',
+                        'type'          => 'image',
+                        'return_format' => 'url',
+                        'preview_size'  => 'thumbnail',
+                    ),
+                    array(
+                        'key'   => 'field_theme_feature_text',
+                        'label' => 'Text',
+                        'name'  => 'text',
+                        'type'  => 'text',
+                    ),
+                ),
+            ),
 
             // ─── TAB: Menu Headings ───────────────────────────────
             array(

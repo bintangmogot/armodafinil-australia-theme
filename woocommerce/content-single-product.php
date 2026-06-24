@@ -28,8 +28,8 @@ remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_pr
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 
-// Add "Total Price" hook just before the add to cart button
-add_action('woocommerce_before_add_to_cart_button', 'armo_custom_total_price_box', 15);
+// Add "Total Price" box after quantity input, before the add to cart button
+add_action('woocommerce_after_add_to_cart_quantity', 'armo_custom_total_price_box', 10);
 function armo_custom_total_price_box()
 {
     global $product;

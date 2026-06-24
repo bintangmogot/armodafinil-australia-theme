@@ -11,9 +11,86 @@
 <body <?php body_class('antialiased bg-white text-gray-900 overflow-x-hidden'); ?>>
     <?php wp_body_open(); ?>
 
+    <?php $has_announcement = get_field('enable_announcement_bar', 'option'); ?>
+    
+    <?php if ($has_announcement !== false && $has_announcement !== '0'): // Default to true if not set ?>
+    <!-- Top Announcement Bar (Editable in Theme Settings) -->
+    <div class="w-full relative z-50" style="background-color: <?php echo esc_attr(get_field('announcement_bg_color', 'option') ?: '#ff0000'); ?>; color: <?php echo esc_attr(get_field('announcement_text_color', 'option') ?: '#ffffff'); ?>;">
+        <div class="w-full px-4 sm:px-6 lg:px-[72px] py-1.5 flex items-center justify-between">
+            <div class="flex-grow text-center text-sm font-semibold tracking-wide flex justify-center items-center">
+                <?php echo get_field('announcement_text', 'option') ?: 'Free Shipping All Orders Over $299'; ?>
+            </div>
+            <?php 
+            $whatsapp_num = get_field('footer_whatsapp', 'option') ?: '+61 8 6866 0556';
+            $whatsapp_link = get_field('footer_whatsapp_link', 'option') ?: '#';
+            ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <?php $has_feature_bar = get_field('enable_feature_bar', 'option'); ?>
+    <?php if ($has_feature_bar !== false && $has_feature_bar !== '0'): ?>
+    <!-- Top Feature Bar -->
+    <div class="w-full relative z-40 flex bg-gradient-review" style="color: <?php echo esc_attr(get_field('feature_bar_text_color', 'option') ?: '#ffffff'); ?>;">
+        <div class="w-full px-4 sm:px-6 lg:px-[72px] py-2.5 flex flex-wrap items-center justify-center"justi style="gap: 1rem;">
+            <?php 
+            $feature_items = get_field('feature_bar_items', 'option');
+            if ($feature_items): 
+                foreach ($feature_items as $item): 
+            ?>
+                <div class="flex items-center gap-4 text-[15px] font-medium tracking-wide">
+                    <?php if (!empty($item['icon'])): ?>
+                        <img src="<?php echo esc_url($item['icon']); ?>" alt="" class="w-6 h-6 object-contain" />
+                    <?php endif; ?>
+                    <?php echo esc_html($item['text']); ?>
+                </div>
+            <?php 
+                endforeach; 
+            else: 
+            ?>
+                <!-- Default placeholders if repeater is empty -->
+                <div class="flex items-center gap-2.5 text-[15px] font-medium tracking-wide">
+                    <!-- Fast Truck Icon -->
+                    <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 18.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM18 18.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 18.5H3V7h10v11.5h-1M13 7h4l3 4v7.5h-2M1 11h3M2 14h2M1 8h3"></path>
+                    </svg>
+                    7-10 Day Delivery
+                </div>
+                <div class="flex items-center gap-2.5 text-[15px] font-medium tracking-wide">
+                    <!-- Hero/Customer Icon -->
+                    <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 12a3 3 0 100-6 3 3 0 000 6z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 3-2.5 5.5-5.5 5.5h-4c-3 0-5.5-2.5-5.5-5.5V9l7-2 7 2v1.5z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 16.5v5l3-2 3 2v-5"></path>
+                        <circle cx="16" cy="6" r="3" fill="currentColor" stroke="none"></circle>
+                        <path d="M16 4.5l.5 1 1.2.2-.8.8.2 1.2-1-.5-1 .5.2-1.2-.8-.8 1.2-.2z" fill="#fff"></path>
+                    </svg>
+                    5,000+ Australian Customers
+                </div>
+                <div class="flex items-center gap-2.5 text-[15px] font-medium tracking-wide">
+                    <!-- Thumbs up -->
+                    <svg class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 512 512">
+                        <path d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.1 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z"/>
+                    </svg>
+                    Genuine Brands
+                </div>
+                <div class="flex items-center gap-2.5 text-[15px] font-medium tracking-wide">
+                    <!-- Solid Star -->
+                    <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
+                    </svg>
+                    4.9/5 Customer Rating
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <?php
-    // Top bar is approx 56px on mobile.
-    $header_class = is_front_page() ? 'absolute top-[72px] lg:top-5 left-0 right-0 z-40' : 'bg-primary-light py-2 lg:py-4 relative z-40';
+    // Automatically position the absolute header relative to the flow of the bars above it
+    $header_absolute_class = 'absolute top-auto mt-2 left-0 right-0 z-40';
+    $header_class = is_front_page() ? $header_absolute_class : 'bg-primary-light py-2 lg:py-4 relative z-40';
     ?>
     <!-- Mobile Top Bar (Cart) - Hidden on Desktop -->
     <div class="bg-primary-light w-full px-10 sm:px-12 py-3 flex justify-between items-center relative z-50 lg:hidden">
@@ -37,7 +114,7 @@
 
     <!-- Tailwind scanner hook: bg-primary-light py-2 lg:py-4 relative z-40 -->
     <header id="site-header" class="<?php echo esc_attr($header_class); ?>">
-        <div class="w-full px-4 sm:px-6 lg:px-[72px] py-2">
+        <div class="w-full px-4 sm:px-6 lg:px-[72px]">
             <div
                 class="flex items-center justify-between bg-white/55 border border-white/25 backdrop-blur-md rounded-full shadow-lg px-6 py-2.5 lg:px-12 xl:px-24 lg:py-1">
 

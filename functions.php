@@ -719,7 +719,7 @@ add_filter('acf/get_field_group', function($group) {
  */
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'armo_custom_add_to_cart_text' );
 function armo_custom_add_to_cart_text() {
-    return __( 'Buy Now 🛒', 'woocommerce' );
+    return __( 'Add to cart', 'woocommerce' );
 }
 
 /**
@@ -730,4 +730,30 @@ function armo_allow_svg_uploads( $mimes ) {
     $mimes['svg'] = 'image/svg+xml';
     $mimes['svgz'] = 'image/svg+xml';
     return $mimes;
+}
+
+/**
+ * Override the variation attribute label on single product pages
+ * to show "Select Size/Quantity" instead of the WooCommerce default.
+ */
+add_filter( 'woocommerce_attribute_label', 'armo_custom_variation_label', 10, 3 );
+function armo_custom_variation_label( $label, $name, $product ) {
+    if ( is_product() ) {
+        return __( 'Select Size/Quantity', 'woocommerce' );
+    }
+    return $label;
+}
+
+/**
+ * Hide the WooCommerce default variation price display via CSS
+ * (we use our custom Total Price box instead).
+ */
+add_action( 'wp_head', 'armo_hide_variation_price_css' );
+function armo_hide_variation_price_css() {
+    if ( is_product() ) {
+        echo '<style>
+            .woocommerce-variation-price { display: none !important; }
+            .single_variation .woocommerce-variation-price { display: none !important; }
+        </style>';
+    }
 }
