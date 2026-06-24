@@ -43,7 +43,7 @@ function armo_custom_total_price_box()
 }
 ?>
 
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col', $product); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col max-w-5xl mx-auto w-full', $product); ?>>
 
     <!-- Top Grid Layout -->
     <div class="grid grid-cols-1 lg:grid-cols-[45%_55%] xl:grid-cols-[50%_50%] gap-10 lg:gap-16 mb-16">
