@@ -174,10 +174,39 @@
         @apply rounded-lg my-6;
     }
     .prose table {
-        @apply w-full border-collapse my-6;
+        @apply w-full text-left border-collapse my-8 shadow-sm rounded-lg overflow-hidden ring-2 ring-gray-200;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    .prose thead {
+        background-color: #00125E; /* Primary Navy */
     }
     .prose th {
-        @apply bg-gray-50 text-left px-4 py-3 text-sm font-semibold text-gray-900 border-b-2 border-gray-200;
+        @apply px-5 py-4 text-sm font-bold border-b-0 whitespace-nowrap tracking-wide;
+        color: #ffffff;
+        border-right: 2px solid rgba(255, 255, 255, 0.15);
+    }
+    .prose th:last-child {
+        border-right: none;
+    }
+    .prose td {
+        @apply px-5 py-4 text-sm text-gray-700 border-b-2 border-gray-200;
+        border-right: 2px solid #e5e7eb;
+    }
+    .prose td:last-child {
+        border-right: none;
+    }
+    .prose tbody tr:last-child td {
+        @apply border-b-0;
+    }
+    .prose tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+    .prose tbody tr:nth-child(even) {
+        background-color: #F9FAFB;
+    }
+    .prose tbody tr:hover {
+        background-color: #F3F4F6;
     }
     .wpcf7-response-output {
         @apply mt-6 px-4 py-3 rounded-lg text-sm font-medium border-2 !important;
