@@ -35,7 +35,7 @@ function armo_custom_total_price_box()
     global $product;
     if ($product->is_type('variable')) {
         // We will update this dynamically via JS
-        echo '<div class="armo-total-price-box mt-6 mb-4 bg-surface border border-[#ff0000] rounded-md p-4">';
+        echo '<div class="armo-total-price-box mt-3 mb-2 bg-surface border border-[#ff0000] rounded-md p-4">';
         echo '<div class="text-xs text-primary font-semibold mb-1">Total Price</div>';
         echo '<div class="text-2xl font-bold text-primary" id="armo-dynamic-total">$0.00</div>';
         echo '</div>';

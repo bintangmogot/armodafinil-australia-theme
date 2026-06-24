@@ -385,13 +385,27 @@
         @apply text-2xl lg:text-3xl font-bold text-primary mb-2;
     }
 
+    /* Ensure the right-side summary column stretches to full width */
+    .summary.entry-summary {
+        width: 100% !important;
+        float: none !important;
+        display: block !important;
+        min-width: 0;
+    }
+    .summary.entry-summary form.cart,
+    .summary.entry-summary .variations_form {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
     .woocommerce-product-details__short-description {
         @apply text-base text-gray-700 my-4 leading-relaxed;
     }
 
-    /* Price Styling */
-    .price {
-        @apply text-xl font-bold text-primary mb-4 block;
+    /* Price Styling — hide the gold price range on single product */
+    .woocommerce div.product p.price {
+        @apply hidden;
     }
     .price del {
         @apply text-gray-400 font-normal mr-2;
@@ -402,7 +416,13 @@
 
     /* Variations Form */
     .variations_form {
-        @apply mt-6;
+        @apply mt-3 w-full;
+    }
+    .variations_form,
+    .variations_form .single_variation_wrap,
+    .variations_form .woocommerce-variation-add-to-cart,
+    .armo-total-price-box {
+        width: 100% !important;
     }
     .variations {
         @apply w-full mb-6;
@@ -435,11 +455,11 @@
 
     /* Quantity and Add to Cart */
     .woocommerce-variation-add-to-cart {
-        @apply flex flex-col gap-4 mt-6;
+        @apply flex flex-col gap-2 mt-3;
     }
     
     .woocommerce div.product form.cart {
-        @apply flex flex-col gap-4 !important;
+        @apply flex flex-col gap-2 !important;
     }
 
     .woocommerce div.product form.cart .quantity {
@@ -451,7 +471,7 @@
     }
 
     .woocommerce div.product form.cart .button.single_add_to_cart_button {
-        @apply w-full bg-[#ff0000] hover:bg-[#d60000] text-white font-bold text-lg py-4 px-8 rounded-md transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer float-none mt-4;
+        @apply w-full bg-[#ff0000] hover:bg-[#d60000] text-white font-bold text-lg py-4 px-8 rounded-md transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer float-none mt-1;
         background-color: #ff0000 !important;
         color: #ffffff !important;
     }
@@ -947,4 +967,15 @@ select.orderby:focus,
 .nav-links .prev,
 .nav-links .next {
     @apply font-bold px-3;
+}
+
+/* ─── Single Product Page Layout ─── */
+.single-product-page {
+    @apply px-6 md:px-10 lg:px-16 xl:px-24 mx-auto;
+    max-width: 1280px;
+}
+
+/* Tighten short description spacing */
+.woocommerce-product-details__short-description {
+    @apply my-2 !important;
 }
