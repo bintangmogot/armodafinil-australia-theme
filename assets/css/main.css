@@ -1138,6 +1138,13 @@ img {
   /* Primary Navy */
 }
 
+.prose thead,
+    .prose thead th,
+    .prose thead td,
+    .prose thead * {
+  color: #ffffff !important;
+}
+
 .prose th {
   white-space: nowrap;
   border-bottom-width: 0px;
@@ -2243,6 +2250,10 @@ img {
   margin-left: 0.25rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -2329,10 +2340,6 @@ img {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
 }
 
 .line-clamp-3 {
@@ -3959,16 +3966,16 @@ img {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.opacity-90 {
-  opacity: 0.9;
-}
-
 .opacity-25 {
   opacity: 0.25;
 }
 
 .opacity-75 {
   opacity: 0.75;
+}
+
+.opacity-90 {
+  opacity: 0.9;
 }
 
 .shadow {

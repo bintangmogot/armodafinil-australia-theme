@@ -58,31 +58,7 @@ get_header( 'shop' ); ?>
 	
 	</div>
 	<div class='single-product-bottom-wrapper'>
-		<div class='reviews-section section'>
-			<div class='reviews-wrapper '>	
-				<div class='container'>
-					<h3 class='sub-heading'>Trusted by Everyday Aussies 👍</h3>				
-					<div class='reviews-slider'>
-						<?php 
-							$args = array( 'post_type' => 'reviews', 'posts_per_page' =>-1); 				
-							$wp_query = new WP_Query($args);
-						?>
-						<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
-							<div class='review-wrapper'>
-								<div class='review'>
-									<div class='star-rating'><span style='width:<?php echo get_field('rating')*20?>%;'></span></div>
-									<header><?php the_title()?></header>
-									<div class='entry-content'><?php the_content()?></div>
-									<name><?php the_field('name')?></name>
-								</div>
-							</div>
-						<?php endwhile ?>
-						<?php wp_reset_postdata();?>
-						<?php wp_reset_query();?>
-					</div>
-				</div>
-			</div>
-		</div>
+		<!-- Reviews section removed as requested -->
 		
 		<div class='product-delivery-content-wrapper'>
 			<div class='container'>
@@ -123,15 +99,7 @@ get_header( 'shop' ); ?>
 					</div>	
 			</div>
 		</div>
-		<div class='text-fullwidth-section section wowo fadeInUp section-<?php echo $section;?>'>
-			<div class='container'>	
-				<div class='entry-content'>
-					<h3 style="text-align: center;">Still Have Questions?</h3>
-					<p style="text-align: center;">Get clear answers to the most asked questions about ordering Modafinil online.</p>
-					<p style="text-align: center;"><a href="https://modafinilaustraliaxpress.com/faqs/"><span class="btn btn-outline">View FAQs</span></a></p>
-				</div>
-			</div>
-		</div>	
+
 		<div class='cta-2-section section wowo fadeInUp section-<?php echo $section;?>'>
 			<div class='container'>	
 				<div class='cta-2-content'><?php the_field('cta_content','options')?></div>			

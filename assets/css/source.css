@@ -181,6 +181,12 @@
     .prose thead {
         background-color: #00125E; /* Primary Navy */
     }
+    .prose thead,
+    .prose thead th,
+    .prose thead td,
+    .prose thead * {
+        color: #ffffff !important;
+    }
     .prose th {
         @apply px-5 py-4 text-sm font-bold border-b-0 whitespace-nowrap tracking-wide;
         color: #ffffff;
