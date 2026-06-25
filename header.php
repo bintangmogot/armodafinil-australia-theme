@@ -95,7 +95,29 @@
     <!-- Mobile Top Bar (Cart) - Hidden on Desktop -->
     <div class="bg-primary-light w-full px-10 sm:px-12 py-3 flex justify-between items-center relative z-50 lg:hidden">
         <div></div>
-        <div></div>
+        <?php if (class_exists('WooCommerce')): ?>
+            <div class="flex items-center">
+                <?php 
+                if (shortcode_exists('xoo_wsc_cart')) {
+                    echo do_shortcode('[xoo_wsc_cart]');
+                } else {
+                    ?>
+                    <a href="#" class="xoo-wsc-cart-trigger text-white hover:text-gray-200 transition-colors relative flex items-center" aria-label="Cart">
+                        <svg class="w-8 h-8 lg:w-10 lg:h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                        </svg>
+                        <?php $count = WC()->cart->get_cart_contents_count();
+                        if ($count > 0): ?>
+                            <span class="xoo-wsc-items-count absolute -top-1 -right-2 bg-red-600 text-white text-[11px] w-5 h-5 rounded-full flex items-center justify-center font-bold"><?php echo $count; ?></span>
+                        <?php endif; ?>
+                    </a>
+                    <?php
+                }
+                ?>
+            </div>
+        <?php else: ?>
+            <div></div>
+        <?php endif; ?>
     </div>
 
     <!-- Tailwind scanner hook: bg-primary-light py-2 lg:py-4 relative z-40 -->
@@ -131,7 +153,28 @@
 
                 <div class="flex items-center gap-4">
                     <?php if (class_exists('WooCommerce')): ?>
-                        <!-- Cart icon removed (handled by side cart plugin) -->
+                        <!-- Side Cart Plugin Trigger -->
+                        <div class="hidden lg:flex items-center">
+                            <?php 
+                            // If the plugin provides its own shortcode, use it to get the exact matching icon with price
+                            if (shortcode_exists('xoo_wsc_cart')) {
+                                echo do_shortcode('[xoo_wsc_cart]');
+                            } else {
+                                // Fallback: custom cart icon that triggers the side cart drawer
+                                ?>
+                                <a href="#" class="xoo-wsc-cart-trigger text-red-500 hover:text-red-600 transition-colors relative flex items-center" aria-label="Cart">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                                    </svg>
+                                    <?php $count = WC()->cart->get_cart_contents_count();
+                                    if ($count > 0): ?>
+                                        <span class="xoo-wsc-items-count absolute -top-1 -right-2 bg-red-600 text-white text-[11px] w-5 h-5 rounded-full flex items-center justify-center font-bold"><?php echo $count; ?></span>
+                                    <?php endif; ?>
+                                </a>
+                                <?php
+                            }
+                            ?>
+                        </div>
                     <?php endif; ?>
 
                     <button id="mobile-menu-toggle" class="lg:hidden p-2 text-primary-dark" aria-expanded="false"
