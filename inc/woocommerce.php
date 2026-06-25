@@ -175,3 +175,43 @@ function armo_in_stock_badge() {
     }
 }
 
+
+/**
+ * Reusable Feature Pills HTML
+ */
+function armo_feature_pills() {
+    ?>
+    <div class="grid grid-cols-2 gap-2 md:gap-3">
+        <div class="flex items-center justify-center gap-1.5 md:gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-xs md:text-sm py-1.5 px-1 md:py-2.5 md:px-4 rounded-md shadow-sm text-center leading-tight">
+            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-green-500 fill-current flex-shrink-0" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            100% Genuine
+        </div>
+        <div class="flex items-center justify-center gap-1.5 md:gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-xs md:text-sm py-1.5 px-1 md:py-2.5 md:px-4 rounded-md shadow-sm text-center leading-tight">
+            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-500 fill-current flex-shrink-0" viewBox="0 0 20 20">
+                <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z" />
+            </svg>
+            Easy Returns
+        </div>
+        <div class="flex items-center justify-center gap-1.5 md:gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-xs md:text-sm py-1.5 px-1 md:py-2.5 md:px-4 rounded-md shadow-sm text-center leading-tight">
+            <span class="text-sm md:text-base">??</span>
+            Fast Delivery
+        </div>
+        <div class="flex items-center justify-center gap-1.5 md:gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-xs md:text-sm py-1.5 px-1 md:py-2.5 md:px-4 rounded-md shadow-sm text-center leading-tight">
+            <span class="text-sm md:text-base">??</span>
+            Secure Payment
+        </div>
+    </div>
+    <?php
+}
+
+/**
+ * Display Feature Pills below Add to Cart on Mobile
+ */
+add_action('woocommerce_single_product_summary', 'armo_display_feature_pills_mobile', 35);
+function armo_display_feature_pills_mobile() {
+    echo '<div class="block lg:hidden mt-6">';
+    armo_feature_pills();
+    echo '</div>';
+}
