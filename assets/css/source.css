@@ -554,14 +554,15 @@
     .armo-tabs-nav {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
 /* Individual Tab Button */
 .armo-tab-btn {
     position: relative;
-    white-space: normal; /* Allow text wrapping on very small screens */
-    padding: 12px 10px;  /* Smaller padding on mobile */
+    white-space: normal; /* Allow text wrapping on all screens to prevent overflow */
+    padding: 12px 10px;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -579,8 +580,7 @@
 }
 @media (min-width: 768px) {
     .armo-tab-btn {
-        white-space: nowrap;
-        padding: 16px 24px;
+        padding: 16px 20px;
         font-size: 14px;
         letter-spacing: 0.08em;
     }
