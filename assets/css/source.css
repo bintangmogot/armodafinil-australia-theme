@@ -215,6 +215,7 @@
     .prose td:last-child,
     .woocommerce-product-details__short-description td:last-child {
         border-right: none;
+        @apply pl-8 md:pl-12;
     }
     .prose tbody tr:last-child td,
     .prose tbody tr:last-child th,

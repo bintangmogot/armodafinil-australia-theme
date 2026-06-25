@@ -1207,6 +1207,14 @@ img {
 .prose td:last-child,
     .woocommerce-product-details__short-description td:last-child {
   border-right: none;
+  padding-left: 2rem;
+}
+
+@media (min-width: 768px) {
+  .prose td:last-child,
+    .woocommerce-product-details__short-description td:last-child {
+    padding-left: 3rem;
+  }
 }
 
 .prose tbody tr:last-child td,
