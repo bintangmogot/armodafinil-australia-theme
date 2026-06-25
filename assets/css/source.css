@@ -528,7 +528,7 @@
     }
 
     .woocommerce div.product form.cart .button.single_add_to_cart_button {
-        @apply w-full bg-[#ff0000] hover:bg-[#d60000] text-white font-bold text-lg py-4 px-8 rounded-md transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer float-none mt-1;
+        @apply w-full bg-[#ff0000] hover:bg-[#d60000] text-white font-bold text-lg rounded-md transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer float-none mt-1;
         background-color: #ff0000 !important;
         color: #ffffff !important;
     }
