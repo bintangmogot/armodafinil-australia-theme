@@ -35,9 +35,9 @@ function armo_custom_total_price_box()
     global $product;
     if ($product->is_type('variable')) {
         // We will update this dynamically via JS
-        echo '<div class="armo-total-price-box mt-1 mb-1 bg-gradient-to-r from-[#FFF6EA] to-[#E1EDFF] border border-[#ff0000] rounded-[5px] p-4">';
-        echo '<div class="text-xs text-primary font-semibold mb-1">Total Price</div>';
-        echo '<div class="text-2xl font-bold text-gray-900" id="armo-dynamic-total">$0.00</div>';
+        echo '<div class="armo-total-price-box mt-0 mb-1 bg-gradient-to-r from-[#FFF6EA] to-[#E1EDFF] border border-[#ff0000] rounded-[5px] p-2 md:p-3">';
+        echo '<div class="text-[11px] md:text-xs text-primary font-semibold mb-0.5">Total Price</div>';
+        echo '<div class="text-xl md:text-2xl font-bold text-gray-900" id="armo-dynamic-total">$0.00</div>';
         echo '</div>';
     }
 }
@@ -46,7 +46,7 @@ function armo_custom_total_price_box()
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col max-w-5xl mx-auto w-full', $product); ?>>
 
     <!-- Top Grid Layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-[45%_55%] xl:grid-cols-[50%_50%] gap-10 lg:gap-16 mb-6 lg:mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[45%_55%] xl:grid-cols-[50%_50%] gap-10 lg:gap-16 mb-0 lg:mb-8">
 
         <!-- Left Column: Images & Features -->
         <div class="product-gallery-column flex flex-col w-full">
@@ -62,13 +62,13 @@ function armo_custom_total_price_box()
             <div style="clear: both; width: 100%;"></div>
 
             <!-- Feature Pills under the image (Desktop Only) -->
-            <div class="hidden lg:block mt-4 w-full">
+            <div class="hidden lg:block mt-2 w-full bg-white shadow-md rounded-xl p-5">
                 <?php armo_feature_pills(); ?>
             </div>
         </div>
 
         <!-- Right Column: Summary -->
-        <div class="summary entry-summary bg-white shadow-md rounded-xl p-6 lg:p-0 lg:bg-transparent lg:shadow-none lg:rounded-none">
+        <div class="summary entry-summary lg:bg-white lg:shadow-md lg:rounded-xl lg:p-8">
             <?php
             /**
              * Hook: woocommerce_single_product_summary.
@@ -89,7 +89,7 @@ function armo_custom_total_price_box()
     // Show tabs if at least Description or extra tabs exist
     if ($description || $extra_tabs):
         ?>
-        <div class="armo-product-tabs mt-2 lg:mt-8 mb-16">
+        <div class="armo-product-tabs mt-0 lg:mt-8 mb-16">
             <!-- Tab Navigation -->
             <div class="armo-tabs-nav-wrapper">
                 <nav class="armo-tabs-nav" aria-label="Product Tabs" id="product-tabs-nav">
