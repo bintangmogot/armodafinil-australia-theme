@@ -181,25 +181,33 @@ function armo_in_stock_badge() {
  */
 function armo_feature_pills() {
     ?>
-    <div class="grid grid-cols-2 gap-2 md:gap-3">
-        <div class="flex items-center justify-center gap-1.5 md:gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-xs md:text-sm py-1.5 px-1 md:py-2.5 md:px-4 rounded-md shadow-sm text-center leading-tight">
-            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-green-500 fill-current flex-shrink-0" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+    <div class="grid grid-cols-2 gap-y-4 gap-x-2 md:gap-x-4">
+        <!-- 100% Genuine -->
+        <div class="flex items-start gap-2 text-gray-800 text-[13px] md:text-sm leading-snug">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-5 h-5 text-green-500 flex-shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
             </svg>
             100% Genuine
         </div>
-        <div class="flex items-center justify-center gap-1.5 md:gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-xs md:text-sm py-1.5 px-1 md:py-2.5 md:px-4 rounded-md shadow-sm text-center leading-tight">
-            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-500 fill-current flex-shrink-0" viewBox="0 0 20 20">
-                <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z" />
+        <!-- Delivery -->
+        <div class="flex items-start gap-2 text-gray-800 text-[13px] md:text-sm leading-snug">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-5 h-5 text-green-500 flex-shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            Easy Returns
+            8-12 Days USA<br>Tracked Delivery
         </div>
-        <div class="flex items-center justify-center gap-1.5 md:gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-xs md:text-sm py-1.5 px-1 md:py-2.5 md:px-4 rounded-md shadow-sm text-center leading-tight">
-            <span class="text-sm md:text-base">??</span>
-            Fast Delivery
+        <!-- Packaging -->
+        <div class="flex items-start gap-2 text-gray-800 text-[13px] md:text-sm leading-snug">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-5 h-5 text-green-500 flex-shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+            </svg>
+            Discreet Packaging
         </div>
-        <div class="flex items-center justify-center gap-1.5 md:gap-2 bg-surface border border-[#B3D4FF] text-primary font-bold text-xs md:text-sm py-1.5 px-1 md:py-2.5 md:px-4 rounded-md shadow-sm text-center leading-tight">
-            <span class="text-sm md:text-base">??</span>
+        <!-- Secure Payment -->
+        <div class="flex items-start gap-2 text-gray-800 text-[13px] md:text-sm leading-snug">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-5 h-5 text-green-500 flex-shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+            </svg>
             Secure Payment
         </div>
     </div>
