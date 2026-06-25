@@ -22,7 +22,7 @@ $reviews = new WP_Query(array(
                     $rating = get_field('rating');
                     $name   = get_field('name');
                 ?>
-                    <div class="bg-[#f5f7fb] rounded-2xl p-6 border border-primary-dark/5 hover:shadow-md transition-shadow">
+                    <div class="bg-surface rounded-2xl p-6 border border-primary-dark/5 hover:shadow-md transition-shadow">
                         <?php if ($rating) : ?>
                             <div class="flex gap-1 mb-3">
                                 <?php for ($i = 1; $i <= 5; $i++) : ?>

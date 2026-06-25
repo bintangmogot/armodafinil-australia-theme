@@ -20,7 +20,7 @@ if ( ! $heading ) {
             <?php echo esc_html( $heading ); ?>
         </h2>
 
-        <div class="bg-[#f5f7fb] rounded-2xl p-8 lg:p-12 text-left shadow-xl max-w-2xl mx-auto">
+        <div class="bg-surface rounded-2xl p-8 lg:p-12 text-left shadow-xl max-w-2xl mx-auto">
             <form id="armo-review-form" method="POST" class="flex flex-col gap-6">
                 <?php wp_nonce_field( 'armo_submit_review', 'armo_review_nonce' ); ?>
                 <input type="hidden" name="action" value="armo_submit_review">

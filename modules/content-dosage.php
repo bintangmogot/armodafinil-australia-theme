@@ -19,7 +19,7 @@ $intro = get_sub_field('intro');
                     $content   = get_sub_field('content');
                     $recommend = get_sub_field('recommend');
                 ?>
-                    <div class="border rounded-lg p-5 <?php echo $recommend ? 'border-blue-400 bg-blue-50 ring-2 ring-blue-200' : 'border-gray-200 bg-white'; ?>">
+                    <div class="border rounded-lg p-5 <?php echo $recommend ? 'border-blue-400 bg-surface ring-2 ring-blue-200' : 'border-gray-200 bg-white'; ?>">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-semibold text-gray-900 text-lg"><?php echo esc_html($title); ?></h3>
                             <?php if ($recommend) : ?>

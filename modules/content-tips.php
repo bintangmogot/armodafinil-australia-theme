@@ -9,7 +9,7 @@ $left        = get_sub_field('content_left');
 $right_title = get_sub_field('content_right_title');
 $right       = get_sub_field('content_right');
 ?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-[#f5f7fb]">
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-surface">
     <div class="max-w-7xl mx-auto">
         <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
             <!-- Left Column -->

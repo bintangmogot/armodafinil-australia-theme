@@ -44,7 +44,7 @@ $average_rating = $valid_ratings > 0 ? round($total_rating / $valid_ratings, 1) 
 $start_count = ( ( $paged - 1 ) * 5 ) + 1;
 $end_count   = min( $start_count + 5 - 1, $total_reviews );
 ?>
-<section class="py-14 lg:py-20 px-6 lg:px-12 bg-[#f5f7fb]">
+<section class="py-14 lg:py-20 px-6 lg:px-12 bg-surface">
     <div class="max-w-7xl mx-auto">
         <h1 class="text-3xl lg:text-4xl font-bold text-primary mb-12 pb-4 border-b border-primary/10">
             <?php echo esc_html( $heading ); ?>

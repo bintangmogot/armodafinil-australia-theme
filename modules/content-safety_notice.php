@@ -7,7 +7,7 @@ $safety_title = get_sub_field('title') ?: get_sub_field('safety_title');
 $safety_text = get_sub_field('content') ?: get_sub_field('safety_text');
 ?>
 <?php if ($safety_title || $safety_text) : ?>
-<section class="bg-[#eef4fa] py-10 px-6">
+<section class="bg-surface py-10 px-6">
     <div class="max-w-5xl mx-auto">
         <div class="flex flex-col items-start gap-1 mb-3">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-7 h-7 mb-1">

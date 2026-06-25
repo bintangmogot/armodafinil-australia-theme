@@ -10,7 +10,7 @@ $content = get_sub_field('content');
 <section class="py-5 lg:py-16 relative overflow-hidden bg-white">
     <!-- Light Blue Background extending to the right edge of the screen -->
     <div
-        class="absolute bottom-0 left-0 right-0 top-32 md:top-0 md:bottom-0 md:left-auto md:right-0 md:w-5/6 lg:w-3/4 bg-[#EAF8FF] z-0">
+        class="absolute bottom-0 left-0 right-0 top-32 md:top-0 md:bottom-0 md:left-auto md:right-0 md:w-5/6 lg:w-3/4 bg-surface z-0">
     </div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
