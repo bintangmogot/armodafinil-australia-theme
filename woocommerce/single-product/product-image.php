@@ -58,7 +58,7 @@ $wrapper_classes   = apply_filters(
 		?>
 	</div>
 	<?php if(get_field('text_under_product_image')):?>
-	<div class='product-statement p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-[13px] md:text-sm text-gray-700 italic text-center shadow-sm leading-relaxed'>
+	<div class='product-statement mt-4 p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-[13px] md:text-sm text-gray-700 italic text-center shadow-sm leading-relaxed'>
 		<?php the_field('text_under_product_image')?>
 	</div>
 	<?php endif ?>

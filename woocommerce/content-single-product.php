@@ -46,7 +46,7 @@ function armo_custom_total_price_box()
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col max-w-7xl mx-auto w-full', $product); ?>>
 
     <!-- Top Grid Layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-8 mb-0 lg:mb-8 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-4 lg:gap-8 mb-0 lg:mb-8 items-start">
 
         <!-- Left Column: Images & Features -->
         <div class="product-gallery-column flex flex-col w-full gap-y-4">
@@ -59,7 +59,6 @@ function armo_custom_total_price_box()
                 do_action('woocommerce_before_single_product_summary');
                 ?>
             </div>
-            <div style="clear: both; width: 100%;"></div>
 
             <!-- Feature Pills under the image (Desktop Only) -->
             <div class="hidden lg:block w-full bg-white shadow-lg rounded-xl p-5">
