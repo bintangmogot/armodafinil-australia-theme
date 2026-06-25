@@ -72,7 +72,11 @@ function armo_add_shop_page_copy() {
  */
 function armo_woocommerce_wrapper_before()
 {
-    echo '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">';
+    if ( is_shop() ) {
+        echo '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">';
+    } else {
+        echo '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">';
+    }
 }
 
 function armo_woocommerce_wrapper_after()
