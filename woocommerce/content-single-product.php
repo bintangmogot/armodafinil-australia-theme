@@ -105,97 +105,78 @@ function armo_custom_total_price_box()
         </div>
     </div>
 
-    <!-- Custom Tabs Section -->
+    <!-- Custom Tabs Section (Description + ACF Repeater "extra_tabs") -->
     <?php
     $description = get_the_content();
-    $dosage = get_field('product_dosage');
-    $shipping = get_field('product_shipping');
-    $safety = get_field('product_safety');
+    $extra_tabs  = get_field('extra_tabs'); // ACF Repeater: tab_title (Text), tab_content (WYSIWYG)
 
-    // We only show tabs if at least Description is present
-    if ($description):
+    // Show tabs if at least Description or extra tabs exist
+    if ($description || $extra_tabs):
         ?>
         <div class="armo-product-tabs mt-8 mb-16">
-            <div class="border-b border-gray-200">
-                <nav class="-mb-px flex space-x-8 overflow-x-auto hide-scrollbar" aria-label="Tabs" id="product-tabs-nav">
+            <!-- Tab Navigation -->
+            <div class="armo-tabs-nav-wrapper">
+                <nav class="armo-tabs-nav" aria-label="Product Tabs" id="product-tabs-nav">
                     <?php if ($description): ?>
                         <button
-                            class="tab-btn active border-primary text-primary whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm uppercase tracking-wide"
-                            data-target="tab-description">
+                            class="armo-tab-btn active"
+                            data-target="tab-description"
+                            type="button">
                             Description
                         </button>
                     <?php endif; ?>
-                    <?php if ($dosage): ?>
-                        <button
-                            class="tab-btn border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm uppercase tracking-wide"
-                            data-target="tab-dosage">
-                            Dosage & Direction
-                        </button>
-                    <?php endif; ?>
-                    <?php if ($shipping): ?>
-                        <button
-                            class="tab-btn border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm uppercase tracking-wide"
-                            data-target="tab-shipping">
-                            Shipping & Returns
-                        </button>
-                    <?php endif; ?>
-                    <?php if ($safety): ?>
-                        <button
-                            class="tab-btn border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm uppercase tracking-wide"
-                            data-target="tab-safety">
-                            Safety & Side Effects
-                        </button>
+                    <?php if ($extra_tabs): ?>
+                        <?php foreach ($extra_tabs as $index => $tab): ?>
+                            <button
+                                class="armo-tab-btn"
+                                data-target="tab-extra-<?php echo $index; ?>"
+                                type="button">
+                                <?php echo esc_html($tab['tab_title']); ?>
+                            </button>
+                        <?php endforeach; ?>
                     <?php endif; ?>
                 </nav>
             </div>
 
-            <div class="tab-content py-10" id="product-tabs-content">
+            <!-- Tab Content Panels -->
+            <div class="armo-tabs-content" id="product-tabs-content">
                 <?php if ($description): ?>
-                    <div class="tab-pane active prose max-w-none text-primary-dark" id="tab-description">
+                    <div class="armo-tab-pane active prose max-w-none text-primary-dark" id="tab-description">
                         <?php echo apply_filters('the_content', $description); ?>
                     </div>
                 <?php endif; ?>
-                <?php if ($dosage): ?>
-                    <div class="tab-pane hidden prose max-w-none text-primary-dark" id="tab-dosage">
-                        <?php echo wp_kses_post($dosage); ?>
-                    </div>
-                <?php endif; ?>
-                <?php if ($shipping): ?>
-                    <div class="tab-pane hidden prose max-w-none text-primary-dark" id="tab-shipping">
-                        <?php echo wp_kses_post($shipping); ?>
-                    </div>
-                <?php endif; ?>
-                <?php if ($safety): ?>
-                    <div class="tab-pane hidden prose max-w-none text-primary-dark" id="tab-safety">
-                        <?php echo wp_kses_post($safety); ?>
-                    </div>
+                <?php if ($extra_tabs): ?>
+                    <?php foreach ($extra_tabs as $index => $tab): ?>
+                        <div class="armo-tab-pane prose max-w-none text-primary-dark" id="tab-extra-<?php echo $index; ?>">
+                            <?php echo wp_kses_post($tab['tab_content']); ?>
+                        </div>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </div>
         </div>
 
-        <!-- Simple Script for Tabs -->
+        <!-- Tabs Interaction Script -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const tabs = document.querySelectorAll('.tab-btn');
-                const panes = document.querySelectorAll('.tab-pane');
+                const tabBtns = document.querySelectorAll('.armo-tab-btn');
+                const tabPanes = document.querySelectorAll('.armo-tab-pane');
 
-                tabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        // Remove active from all tabs
-                        tabs.forEach(t => {
-                            t.classList.remove('active', 'border-primary', 'text-primary');
-                            t.classList.add('border-transparent', 'text-gray-500');
-                        });
+                tabBtns.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        // Deactivate all tabs
+                        tabBtns.forEach(function (b) { b.classList.remove('active'); });
                         // Hide all panes
-                        panes.forEach(p => p.classList.add('hidden'));
+                        tabPanes.forEach(function (p) { p.classList.remove('active'); });
 
-                        // Add active to clicked tab
-                        tab.classList.remove('border-transparent', 'text-gray-500');
-                        tab.classList.add('active', 'border-primary', 'text-primary');
+                        // Activate clicked tab
+                        btn.classList.add('active');
 
                         // Show corresponding pane
-                        const targetId = tab.getAttribute('data-target');
-                        document.getElementById(targetId).classList.remove('hidden');
+                        var targetId = btn.getAttribute('data-target');
+                        var targetPane = document.getElementById(targetId);
+                        if (targetPane) {
+                            targetPane.classList.add('active');
+                        }
                     });
                 });
             });
