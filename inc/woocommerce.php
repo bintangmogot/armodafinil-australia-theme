@@ -231,7 +231,7 @@ function armo_display_feature_pills_mobile() {
  */
 add_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 25);
 function armo_mobile_box_open() {
-    echo '<div class="bg-white shadow-md rounded-xl p-5 lg:bg-transparent lg:shadow-none lg:rounded-none lg:p-0 mb-6 lg:mb-0">';
+    echo '<div class="w-full bg-white shadow-md rounded-xl p-5 lg:bg-transparent lg:shadow-none lg:rounded-none lg:p-0 mb-6 lg:mb-0">';
 }
 
 /**

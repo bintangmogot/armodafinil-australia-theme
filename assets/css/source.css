@@ -1100,3 +1100,6 @@ li.variable-item.button-variable-item.selected span {
 
 body.single-product { background-color: #f9f9f9; }
 
+
+.woocommerce div.product form.cart, .woocommerce div.product form.cart .variations, .woocommerce div.product form.cart .woocommerce-variation-add-to-cart, .woocommerce div.product form.cart .armo-total-price-box, .woocommerce div.product form.cart .single_variation_wrap { width: 100% !important; }
+
