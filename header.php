@@ -6,6 +6,16 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
+    <style>
+        /* Hide the cart injected by Side Cart plugin into the nav menu to avoid duplicates */
+        #desktop-nav .xoo-wsc-cart-trigger, 
+        #desktop-nav li.menu-item-cart,
+        #mobile-menu .xoo-wsc-cart-trigger,
+        #mobile-menu li.menu-item-cart,
+        .menu-item-cart { 
+            display: none !important; 
+        }
+    </style>
 </head>
 
 <body <?php body_class('antialiased bg-white text-gray-900 overflow-x-hidden'); ?>>
