@@ -212,7 +212,7 @@
     .prose tbody td:first-child,
     .woocommerce-product-details__short-description tbody td:first-child {
         width: 45%;
-        @apply px-3 py-3 md:px-5 md:py-4 text-sm font-bold border-b-2 border-gray-200 text-primary;
+        @apply px-2 py-2 md:px-5 md:py-4 text-sm font-bold border-b-2 border-gray-200 text-primary;
         border-right: 2px solid #e5e7eb;
     }
     .prose thead,
@@ -231,7 +231,7 @@
     }
     .prose thead th,
     .woocommerce-product-details__short-description thead th {
-        @apply px-3 py-3 md:px-5 md:py-4 text-sm font-bold border-b-0 whitespace-nowrap tracking-wide;
+        @apply px-2 py-2 md:px-5 md:py-4 text-sm font-bold border-b-0 whitespace-nowrap tracking-wide;
         border-right: 2px solid rgba(255, 255, 255, 0.15);
     }
 
@@ -241,13 +241,13 @@
     }
     .prose td,
     .woocommerce-product-details__short-description td {
-        @apply px-3 py-3 md:px-5 md:py-4 text-sm text-gray-700 border-b-2 border-gray-200;
+        @apply px-2 py-2 md:px-5 md:py-4 text-sm text-gray-700 border-b-2 border-gray-200;
         border-right: 2px solid #e5e7eb;
     }
     .prose td:last-child,
     .woocommerce-product-details__short-description td:last-child {
         border-right: none;
-        @apply pl-4 md:pl-12;
+        @apply pl-2 md:pl-12;
     }
     .prose tbody tr:last-child td,
     .prose tbody tr:last-child th,
