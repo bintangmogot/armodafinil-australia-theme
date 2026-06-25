@@ -181,7 +181,7 @@ function armo_in_stock_badge() {
  */
 function armo_feature_pills() {
     ?>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+    <div class="grid grid-cols-2 gap-2 md:gap-3">
         <!-- 100% Genuine -->
         <div class="flex items-center justify-center gap-2 bg-[#EAF2FF] border border-[#B3D4FF] text-primary font-medium text-[13px] md:text-sm py-2 px-3 rounded-md shadow-sm leading-tight text-center">
             <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5 text-green-500 flex-shrink-0">
@@ -226,10 +226,10 @@ function armo_display_feature_pills_mobile() {
 }
 
 /**
- * Wrap Excerpt and Add to Cart in a white box on Mobile only.
- * Priority 15 is after Price (10), before Excerpt (20).
+ * Wrap Add to Cart in a white box on Mobile only.
+ * Priority 25 is after Excerpt (20), before Add to Cart (30).
  */
-add_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 15);
+add_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 25);
 function armo_mobile_box_open() {
     echo '<div class="bg-white shadow-md rounded-xl p-5 lg:bg-transparent lg:shadow-none lg:rounded-none lg:p-0 mb-6 lg:mb-0">';
 }

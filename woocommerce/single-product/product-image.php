@@ -58,7 +58,9 @@ $wrapper_classes   = apply_filters(
 		?>
 	</div>
 	<?php if(get_field('text_under_product_image')):?>
-	<div class='product-statement'><?php the_field('text_under_product_image')?></div>
+	<div class='product-statement mt-6 p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-[13px] md:text-sm text-gray-700 italic text-center shadow-sm leading-relaxed'>
+		<?php the_field('text_under_product_image')?>
+	</div>
 	<?php endif ?>
 	<?php //woocommerce_template_single_meta()?>
 </div>
