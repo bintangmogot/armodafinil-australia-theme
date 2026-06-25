@@ -157,8 +157,9 @@
         @apply px-5 py-2.5 bg-gray-900 text-white text-sm font-medium rounded-lg;
         @apply hover:bg-gray-700 transition-colors cursor-pointer;
     }
+}
 
-    /* Prose */
+/* Prose and Short Description Table Styles (Excluded from PurgeCSS) */
     .prose h1 { @apply text-3xl font-bold text-gray-900 mt-8 mb-4; }
     .prose h2 { @apply text-2xl font-bold text-gray-900 mt-8 mb-3; }
     .prose h3 { @apply text-xl font-semibold text-gray-900 mt-6 mb-3; }
@@ -246,7 +247,6 @@
     .wpcf7-response-output {
         @apply mt-6 px-4 py-3 rounded-lg text-sm font-medium border-2 !important;
     }
-}
 
 /* WooCommerce Layout Overrides */
 .woocommerce div.product div.images,

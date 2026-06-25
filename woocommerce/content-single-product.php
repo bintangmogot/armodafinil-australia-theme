@@ -107,8 +107,10 @@ function armo_custom_total_price_box()
 
     <!-- Custom Tabs Section (Description + ACF Repeater "extra_tabs") -->
     <?php
+    global $product;
+    $product_id  = $product->get_id();
     $description = get_the_content();
-    $extra_tabs  = get_field('extra_tabs'); // ACF Repeater: tab_title (Text), tab_content (WYSIWYG)
+    $extra_tabs  = get_field('extra_tabs', $product_id); // ACF Repeater: tab_title (Text), tab_content (WYSIWYG)
 
     // Show tabs if at least Description or extra tabs exist
     if ($description || $extra_tabs):
@@ -200,8 +202,8 @@ function armo_custom_total_price_box()
 // Close the max-w-7xl wrapper from inc/woocommerce.php temporarily so modules can be full width
 echo '</div>';
 
-if (have_rows('modules')) {
-    while (have_rows('modules')) {
+if (have_rows('modules', $product_id)) {
+    while (have_rows('modules', $product_id)) {
         the_row();
         get_template_part('modules/content', get_row_layout());
     }
