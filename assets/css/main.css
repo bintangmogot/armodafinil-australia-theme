@@ -2775,6 +2775,10 @@ img {
   border-radius: 0.75rem;
 }
 
+.rounded-\[5px\] {
+  border-radius: 5px;
+}
+
 .border {
   border-width: 1px;
 }
@@ -3126,6 +3130,12 @@ img {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-\[\#FFF6EA\] {
+  --tw-gradient-from: #FFF6EA var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 246 234 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .via-\[\#0f1a5e\] {
   --tw-gradient-to: rgb(15 26 94 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #0f1a5e var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -3150,6 +3160,10 @@ img {
 
 .to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
+
+.to-\[\#E1EDFF\] {
+  --tw-gradient-to: #E1EDFF var(--tw-gradient-to-position);
 }
 
 .bg-cover {
