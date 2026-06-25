@@ -1117,7 +1117,6 @@ img {
     .woocommerce-product-details__short-description table {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  width: 100%;
   border-collapse: collapse;
   overflow: hidden;
   border-radius: 0.5rem;
@@ -1132,6 +1131,15 @@ img {
   --tw-ring-color: rgb(229 231 235 / var(--tw-ring-opacity, 1));
   border-collapse: separate;
   border-spacing: 0;
+  width: 100% !important;
+  table-layout: auto !important;
+}
+
+.prose tbody th,
+    .woocommerce-product-details__short-description tbody th,
+    .prose tbody td:first-child,
+    .woocommerce-product-details__short-description tbody td:first-child {
+  width: 45%;
 }
 
 .prose thead,
