@@ -9,6 +9,7 @@ module.exports = {
   content: [
     './*.php',                 // Root PHP files (header.php, footer.php, etc.)
     './**/*.php',              // All PHP template files
+    './woocommerce/**/*.php',  // Explicitly add woocommerce directory
     './assets/js/**/*.js',     // JavaScript files (in case you add classes dynamically)
   ],
   safelist: [

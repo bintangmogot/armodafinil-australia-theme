@@ -537,61 +537,72 @@
     .reset_variations {
         @apply hidden !important;
     }
-    
-    /* ─── Product Tabs — Figma Design ─── */
+} /* END OF LAYER COMPONENTS */
 
-    /* Tabs Navigation Wrapper */
-    .armo-tabs-nav-wrapper {
-        border-bottom: 2px solid #e5e7eb;
-    }
-    .armo-tabs-nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0;
-    }
+/* ─── Product Tabs — Figma Design ─── */
 
-    /* Individual Tab Button */
+/* Tabs Navigation Wrapper */
+.armo-tabs-nav-wrapper {
+    border-bottom: 2px solid #e5e7eb;
+}
+.armo-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+/* Individual Tab Button */
+.armo-tab-btn {
+    position: relative;
+    white-space: normal; /* Allow text wrapping on very small screens */
+    padding: 12px 10px;  /* Smaller padding on mobile */
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #6b7280;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    font-family: inherit;
+    flex: 1 1 auto;
+    text-align: center;
+}
+@media (min-width: 768px) {
     .armo-tab-btn {
-        position: relative;
         white-space: nowrap;
         padding: 16px 24px;
         font-size: 14px;
-        font-weight: 700;
         letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #6b7280;
-        background: transparent;
-        border: none;
-        border-bottom: 3px solid transparent;
-        margin-bottom: -2px;
-        cursor: pointer;
-        transition: color 0.2s ease, border-color 0.2s ease;
-        font-family: inherit;
     }
-    .armo-tab-btn:hover {
-        @apply text-primary;
-    }
-    .armo-tab-btn.active {
-        @apply text-primary;
-        border-bottom-color: theme('colors.primary.DEFAULT');
-    }
+}
+.armo-tab-btn:hover {
+    @apply text-primary;
+}
+.armo-tab-btn.active {
+    @apply text-primary;
+    border-bottom-color: theme('colors.primary.DEFAULT');
+}
 
-    /* Tab Content Area */
-    .armo-tabs-content {
-        padding: 40px 0;
-    }
+/* Tab Content Area */
+.armo-tabs-content {
+    padding: 40px 0;
+}
 
-    /* Tab Panes — hidden by default, visible when active */
-    .armo-tab-pane {
-        display: none;
-        @keyframes armoTabFadeIn {
-        from { opacity: 0; transform: translateY(6px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
-    }
-    .armo-tab-pane.active {
-        display: block;
-    }
+/* Tab Panes — hidden by default, visible when active */
+.armo-tab-pane {
+    display: none;
+    animation: armoTabFadeIn 0.35s ease-in-out;
+}
+@keyframes armoTabFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.armo-tab-pane.active {
+    display: block;
 }
 
 @layer utilities {
