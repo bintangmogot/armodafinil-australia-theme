@@ -1096,3 +1096,7 @@ li.variable-item.button-variable-item.selected {
 li.variable-item.button-variable-item.selected span {
     color: #ffffff !important;
 }
+
+
+body.single-product { background-color: #f9f9f9; }
+
