@@ -7286,6 +7286,10 @@ body.single-product {
     gap: 2rem;
   }
 
+  .lg\:gap-y-8 {
+    row-gap: 2rem;
+  }
+
   .lg\:rounded-none {
     border-radius: 0px;
   }

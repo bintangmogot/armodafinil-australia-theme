@@ -17,7 +17,7 @@ $products = get_sub_field('feature_product');
 
         <?php if ($products && is_array($products)): ?>
             <!-- 2-column grid on mobile, 4-column grid on desktop -->
-            <div class="grid grid-cols-2 gap-4 lg:gap-6 mt-8 lg:mt-10 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-4 lg:gap-6 gap-y-5 lg:gap-y-8 mt-8 lg:mt-10 lg:grid-cols-4">
                 <?php
                 foreach ($products as $product):
                     $post_id = is_object($product) ? $product->ID : $product;
