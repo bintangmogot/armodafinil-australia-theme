@@ -173,45 +173,65 @@
     .prose img {
         @apply rounded-lg my-6;
     }
-    .prose table {
+    .prose table,
+    .woocommerce-product-details__short-description table {
         @apply w-full text-left border-collapse my-8 shadow-sm rounded-lg overflow-hidden ring-2 ring-gray-200;
         border-collapse: separate;
         border-spacing: 0;
     }
-    .prose thead {
+    .prose thead,
+    .woocommerce-product-details__short-description thead {
         background-color: #00125E; /* Primary Navy */
     }
     .prose thead,
     .prose thead th,
     .prose thead td,
-    .prose thead * {
+    .prose thead *,
+    .woocommerce-product-details__short-description thead,
+    .woocommerce-product-details__short-description thead th,
+    .woocommerce-product-details__short-description thead td,
+    .woocommerce-product-details__short-description thead * {
         color: #ffffff !important;
     }
-    .prose th {
+    .prose thead th,
+    .woocommerce-product-details__short-description thead th {
         @apply px-5 py-4 text-sm font-bold border-b-0 whitespace-nowrap tracking-wide;
-        color: #ffffff;
         border-right: 2px solid rgba(255, 255, 255, 0.15);
     }
-    .prose th:last-child {
+    .prose tbody th,
+    .woocommerce-product-details__short-description tbody th {
+        @apply px-5 py-4 text-sm font-bold border-b-2 border-gray-200 text-gray-900;
+        border-right: 2px solid #e5e7eb;
+    }
+    .prose th:last-child,
+    .woocommerce-product-details__short-description th:last-child {
         border-right: none;
     }
-    .prose td {
+    .prose td,
+    .woocommerce-product-details__short-description td {
         @apply px-5 py-4 text-sm text-gray-700 border-b-2 border-gray-200;
         border-right: 2px solid #e5e7eb;
     }
-    .prose td:last-child {
+    .prose td:last-child,
+    .woocommerce-product-details__short-description td:last-child {
         border-right: none;
     }
-    .prose tbody tr:last-child td {
+    .prose tbody tr:last-child td,
+    .prose tbody tr:last-child th,
+    .woocommerce-product-details__short-description tbody tr:last-child td,
+    .woocommerce-product-details__short-description tbody tr:last-child th {
         @apply border-b-0;
     }
-    .prose tbody tr:nth-child(odd) {
+    .prose tbody tr:nth-child(odd),
+    .woocommerce-product-details__short-description tbody tr:nth-child(odd) {
         background-color: #ffffff;
     }
-    .prose tbody tr:nth-child(even) {
+    .prose tbody tr:nth-child(even),
+    .woocommerce-product-details__short-description tbody tr:nth-child(even) {
         background-color: #F9FAFB;
     }
-    .prose tbody tr:hover {
+    .prose tbody tr:hover,
+    .woocommerce-product-details__short-description tbody tr:hover {
         background-color: #F3F4F6;
     }
     .wpcf7-response-output {
