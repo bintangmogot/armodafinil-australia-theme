@@ -1735,11 +1735,13 @@ img {
 }
 
 .armo-tab-btn:hover {
-  color: #00125E;
+  --tw-text-opacity: 1;
+  color: rgb(0 18 94 / var(--tw-text-opacity, 1));
 }
 
 .armo-tab-btn.active {
-  color: #00125E;
+  --tw-text-opacity: 1;
+  color: rgb(0 18 94 / var(--tw-text-opacity, 1));
   border-bottom-color: #00125E;
 }
 
@@ -4039,7 +4041,7 @@ img {
   line-height: 2.25rem;
   font-weight: 700;
   --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+  color: rgb(0 18 94 / var(--tw-text-opacity, 1));
 }
 
 .prose h2 {
@@ -4049,7 +4051,7 @@ img {
   line-height: 2rem;
   font-weight: 700;
   --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+  color: rgb(0 18 94 / var(--tw-text-opacity, 1));
 }
 
 .prose h3 {
@@ -4059,7 +4061,7 @@ img {
   line-height: 1.75rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+  color: rgb(0 18 94 / var(--tw-text-opacity, 1));
 }
 
 .prose h4 {
@@ -4069,7 +4071,7 @@ img {
   line-height: 1.75rem;
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+  color: rgb(0 18 94 / var(--tw-text-opacity, 1));
 }
 
 .prose p {

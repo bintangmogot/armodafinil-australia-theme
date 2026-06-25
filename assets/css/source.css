@@ -160,10 +160,10 @@
 }
 
 /* Prose and Short Description Table Styles (Excluded from PurgeCSS) */
-    .prose h1 { @apply text-3xl font-bold text-gray-900 mt-8 mb-4; }
-    .prose h2 { @apply text-2xl font-bold text-gray-900 mt-8 mb-3; }
-    .prose h3 { @apply text-xl font-semibold text-gray-900 mt-6 mb-3; }
-    .prose h4 { @apply text-lg font-semibold text-gray-900 mt-6 mb-2; }
+    .prose h1 { @apply text-3xl font-bold text-primary mt-8 mb-4; }
+    .prose h2 { @apply text-2xl font-bold text-primary mt-8 mb-3; }
+    .prose h3 { @apply text-xl font-semibold text-primary mt-6 mb-3; }
+    .prose h4 { @apply text-lg font-semibold text-primary mt-6 mb-2; }
     .prose p  { @apply text-gray-700 leading-relaxed mb-4; }
     .prose ul { @apply list-disc list-inside mb-4 text-gray-700; }
     .prose ol { @apply list-decimal list-inside mb-4 text-gray-700; }
@@ -551,11 +551,11 @@
         font-family: inherit;
     }
     .armo-tab-btn:hover {
-        color: #00125E;
+        @apply text-primary;
     }
     .armo-tab-btn.active {
-        color: #00125E;
-        border-bottom-color: #00125E;
+        @apply text-primary;
+        border-bottom-color: theme('colors.primary.DEFAULT');
     }
 
     /* Tab Content Area */

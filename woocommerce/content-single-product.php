@@ -121,7 +121,7 @@ function armo_custom_total_price_box()
                 <nav class="armo-tabs-nav" aria-label="Product Tabs" id="product-tabs-nav">
                     <?php if ($description): ?>
                         <button
-                            class="armo-tab-btn active"
+                            class="armo-tab-btn"
                             data-target="tab-description"
                             type="button">
                             Description
@@ -143,7 +143,7 @@ function armo_custom_total_price_box()
             <!-- Tab Content Panels -->
             <div class="armo-tabs-content" id="product-tabs-content">
                 <?php if ($description): ?>
-                    <div class="armo-tab-pane active prose max-w-none text-primary-dark" id="tab-description">
+                    <div class="armo-tab-pane prose max-w-none text-primary-dark" id="tab-description">
                         <?php echo apply_filters('the_content', $description); ?>
                     </div>
                 <?php endif; ?>
@@ -181,6 +181,11 @@ function armo_custom_total_price_box()
                         }
                     });
                 });
+
+                // Auto-open the very first tab by default
+                if (tabBtns.length > 0) {
+                    tabBtns[0].click();
+                }
             });
         </script>
     <?php endif; ?>
