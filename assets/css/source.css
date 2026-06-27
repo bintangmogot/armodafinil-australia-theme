@@ -46,7 +46,7 @@
 @layer components {
 
     #desktop-nav > ul > li > a {
-        @apply block px-4 py-2 text-lg font-semibold text-[#012C70];
+        @apply block px-4 py-2 text-lg font-semibold text-white;
         @apply hover:text-red-600 transition-colors duration-150;
     }
     #desktop-nav > ul > li.current-menu-item > a,
