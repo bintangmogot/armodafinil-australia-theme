@@ -1378,21 +1378,17 @@ body.single-product { background-color: #f9f9f9; }
     color: #93c5fd;
 }
 
-/* ===== CART PAGE ===== */
-.cart_totals .wc-proceed-to-checkout a.checkout-button {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background-color: #ef4444 !important;
-    color: #fff !important;
-    font-weight: 700;
-    padding: 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    transition: background-color 0.2s;
-}
-.cart_totals .wc-proceed-to-checkout a.checkout-button:hover {
-    background-color: #dc2626 !important;
-}
+/* Removed CART PAGE button override */
 
+
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
