@@ -235,14 +235,17 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 /* Shipping row stacking */
 .armo-cart-page tr.shipping {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
 }
 .armo-cart-page tr.shipping th,
 .armo-cart-page tr.shipping td {
+    display: block !important;
     width: 100% !important;
     text-align: left !important;
+    padding: 8px 0 !important;
 }
 /* Erase yellow check (likely a prose list marker/before element) */
 .armo-cart-page ul#shipping_method li::before,
@@ -351,6 +354,11 @@ do_action( 'woocommerce_before_cart' ); ?>
                                                 <a href="<?php echo esc_url( $product_permalink ); ?>" style="font-weight: 700; color: #00125E; font-size: 15px; text-decoration: none; display: block; margin-bottom: 4px;">
                                                     <?php echo wp_kses_post( $_product->get_name() ); ?>
                                                 </a>
+                                                <?php if ( $_product->get_short_description() ) : ?>
+                                                    <div style="font-size: 13px; color: #666; margin-bottom: 4px;">
+                                                        <?php echo wp_kses_post( $_product->get_short_description() ); ?>
+                                                    </div>
+                                                <?php endif; ?>
                                                 <span style="display: block; font-size: 14px; color: #111; margin-bottom: 8px;"><?php echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); ?></span>
                                                 
                                                 <div class="armo-cart-item-variation">
@@ -361,6 +369,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                                                     if ( $_product->is_sold_individually() ) {
                                                         $min_quantity = 1;
                                                         $max_quantity = 1;
+                                                        echo '<span style="font-size: 14px; font-weight: 500; color: #555; padding: 0 12px 0 0;">Qty: 1</span>';
                                                     } else {
                                                         $min_quantity = 0;
                                                         $max_quantity = $_product->get_max_purchase_quantity();
