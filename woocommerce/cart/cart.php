@@ -320,6 +320,35 @@ do_action( 'woocommerce_before_cart' ); ?>
 .armo-cart-page ul#shipping_method li:hover {
     border-color: #cbd5e1 !important;
 }
+
+/* Shipping Calculator Button (Change address) */
+.armo-cart-page .shipping-calculator-button {
+    color: #1868C6 !important;
+    text-decoration: none !important;
+}
+.armo-cart-page .shipping-calculator-button::after,
+.armo-cart-page .shipping-calculator-button::before,
+.armo-cart-page .shipping-calculator-button i,
+.armo-cart-page .shipping-calculator-button svg {
+    color: #00125E !important;
+    fill: #00125E !important;
+}
+
+/* Update Button */
+.armo-cart-page button[name="calc_shipping"] {
+    background-color: #FFD700 !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    padding: 10px 24px !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s !important;
+    font-size: 14px !important;
+}
+.armo-cart-page button[name="calc_shipping"]:hover {
+    background-color: #e6c200 !important;
+}
 </style>
 
 <div class="armo-cart-page" style="width: 100%; max-width: 1280px; margin: 0 auto; padding-left: 16px; padding-right: 16px; padding-top: 32px; padding-bottom: 32px;">

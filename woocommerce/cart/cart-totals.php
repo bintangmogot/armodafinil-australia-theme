@@ -65,7 +65,7 @@ defined( 'ABSPATH' ) || exit;
 
         <?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
             <tr class="fee">
-                <th style="width: 85%; text-align: left; font-weight: 400; color: #1868C6; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php echo esc_html( $fee->name ); ?></th>
+                <th style="width: 85%; text-align: left; font-weight: 400; color: #00125E; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php echo esc_html( $fee->name ); ?></th>
                 <td style="width: 15%; text-align: right; font-weight: 700; color: #111; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php echo esc_attr( $fee->name ); ?>"><?php wc_cart_totals_fee_html( $fee ); ?></td>
             </tr>
         <?php endforeach; ?>
