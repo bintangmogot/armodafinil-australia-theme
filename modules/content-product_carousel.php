@@ -10,8 +10,8 @@ $products = get_sub_field('feature_product');
 $carousel_id = 'carousel-' . uniqid();
 ?>
 
-<section class="py-10 lg:py-14 pb-0 lg:pb-0 bg-white relative overflow-hidden">
-    <!-- overflow-hidden on the section prevents horizontal scrollbar issues -->
+<section class="py-10 lg:py-14 pb-0 lg:pb-0 bg-white relative">
+    <!-- removed overflow-hidden to prevent clipping the 4th item -->
     <div class="max-w-[1100px] mx-auto px-6 md:px-12 relative">
         <?php if ($heading): ?>
             <h2 class="text-2xl lg:text-3xl font-bold text-center mb-10 text-primary"><?php echo esc_html($heading); ?>
@@ -31,7 +31,7 @@ $carousel_id = 'carousel-' . uniqid();
 
                 <!-- Carousel Container -->
                 <div id="<?php echo $carousel_id; ?>-container"
-                    class="flex overflow-x-auto gap-4 md:gap-6 pb-4 snap-x snap-mandatory w-full scroll-smooth">
+                    class="flex overflow-x-auto gap-4 md:gap-4 pb-4 snap-x snap-mandatory w-full scroll-smooth">
                     <?php
                     foreach ($products as $product):
                         $post_id = is_object($product) ? $product->ID : $product;
@@ -42,13 +42,13 @@ $carousel_id = 'carousel-' . uniqid();
                             $name = armo_content($wc_product->get_name());
                             $price_html = $wc_product->get_price_html();
                             $image_html = $wc_product->get_image('woocommerce_thumbnail', array(
-                                'class' => 'w-full h-auto object-contain max-h-[140px]'
+                                'class' => 'w-full h-auto aspect-square object-cover rounded-xl'
                             ));
 
                             $in_stock = $wc_product->is_in_stock();
                             ?>
                             <div
-                                class="w-[200px] md:w-[calc(25%-18px)] flex-shrink-0 snap-start flex flex-col hover:bg-gray-100 pb-6">
+                                class="w-[200px] md:w-[calc(25%-14px)] flex-shrink-0 snap-start flex flex-col hover:bg-gray-100 pb-6">
                                 <a href="<?php echo $permalink; ?>"
                                     class="block w-full no-underline text-inherit flex-grow flex flex-col">
                                     <div
@@ -107,16 +107,16 @@ $carousel_id = 'carousel-' . uniqid();
 
                     if (container && prevBtn && nextBtn && container.children.length > 0) {
                         prevBtn.addEventListener('click', () => {
-                            // Calculate dynamically based on the first card's actual rendered width plus the gap (approx 24px)
+                            // Calculate dynamically based on the first card's actual rendered width plus the gap (approx 16px)
                             const cardWidth = container.children[0].offsetWidth;
-                            const gap = 24; // md:gap-6 is 24px
+                            const gap = 16; // md:gap-4 is 16px
                             const scrollAmount = cardWidth + gap;
                             container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                         });
 
                         nextBtn.addEventListener('click', () => {
                             const cardWidth = container.children[0].offsetWidth;
-                            const gap = 24;
+                            const gap = 16;
                             const scrollAmount = cardWidth + gap;
 
                             // Loop back to start if at the end

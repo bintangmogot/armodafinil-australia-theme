@@ -46,7 +46,7 @@
 @layer components {
 
     #desktop-nav > ul > li > a {
-        @apply block px-4 py-2 text-lg font-semibold text-white;
+        @apply block px-4 py-2 text-lg font-semibold text-primary;
         @apply hover:text-red-600 transition-colors duration-150;
     }
     #desktop-nav > ul > li.current-menu-item > a,
@@ -880,6 +880,8 @@ div.wpforms-container-full input[type="number"],
 /* Product Image - Border goes here! */
 .woocommerce ul.products li.product > a > img {
     width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
     height: auto !important;
     margin: 0 auto !important;
     border: 1px solid #00125E !important;

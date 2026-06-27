@@ -8,8 +8,8 @@ $heading = get_sub_field('heading');
 $products = get_sub_field('feature_product');
 ?>
 
-<section class="py-10 lg:py-14 px-6 lg:px-16 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto">
+<section class="py-10 lg:py-14 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 relative">
         <?php if ($heading): ?>
             <h2 class="text-2xl lg:text-3xl font-bold text-center mb-10 text-primary"><?php echo esc_html($heading); ?>
             </h2>
@@ -28,7 +28,7 @@ $products = get_sub_field('feature_product');
                         $name = armo_content($wc_product->get_name());
                         $price_html = $wc_product->get_price_html();
                         $image_html = $wc_product->get_image('woocommerce_thumbnail', array(
-                            'class' => 'w-full h-auto object-contain max-h-[140px]'
+                            'class' => 'w-full h-auto aspect-square object-cover rounded-xl'
                         ));
 
                         $in_stock = $wc_product->is_in_stock();
