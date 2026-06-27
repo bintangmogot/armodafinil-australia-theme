@@ -13,12 +13,27 @@ defined( 'ABSPATH' ) || exit;
 
     <?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-    <h2 style="font-size: 20px; font-weight: 700; color: #333; margin: 0 0 16px 0; padding-bottom: 12px; border-bottom: 1px solid #e5e7eb;"><?php esc_html_e( 'Carts Totals', 'woocommerce' ); ?></h2>
+    <h2 style="font-size: 20px; font-weight: 700; color: #00125E; margin: 0 0 16px 0; padding-bottom: 12px; border-bottom: 1px solid #e5e7eb;"><?php esc_html_e( 'Carts Totals', 'woocommerce' ); ?></h2>
 
     <?php if ( wc_coupons_enabled() ) { ?>
-        <div class="coupon" style="display: none; align-items: center; gap: 10px; margin-bottom: 20px;">
-            <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Discount voucher', 'woocommerce' ); ?>" style="flex: 1; height: 40px; padding: 0 16px; font-size: 14px; border: 1px solid #333; border-radius: 9999px; outline: none;" />
-            <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>" style="background: #FFD700; color: #000; font-weight: 600; font-size: 14px; padding: 0 24px; height: 40px; border-radius: 9999px; border: 1px solid #333; cursor: pointer; white-space: nowrap;"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
+        <style>
+            .armo-cart-page .coupon .woocommerce-error,
+            .armo-cart-page .coupon .woocommerce-message {
+                font-size: 13px !important;
+                margin-top: 8px !important;
+                margin-bottom: 0 !important;
+                padding: 0 !important;
+                list-style: none !important;
+                color: #dc2626 !important;
+                background: transparent !important;
+                border: none !important;
+            }
+        </style>
+        <div class="coupon" style="margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Discount voucher', 'woocommerce' ); ?>" style="flex: 1; min-width: 0; width: 100%; height: 40px; padding: 0 16px; font-size: 14px; border: 1px solid #333; border-radius: 9999px; outline: none; box-sizing: border-box;" />
+                <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>" style="background: #FFD700; color: #000; font-weight: 600; font-size: 14px; padding: 0 24px; height: 40px; border-radius: 9999px; border: 1px solid #333; cursor: pointer; white-space: nowrap;"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
+            </div>
             <?php do_action( 'woocommerce_cart_coupon' ); ?>
         </div>
     <?php } ?>
@@ -26,8 +41,8 @@ defined( 'ABSPATH' ) || exit;
     <table cellspacing="0" class="shop_table shop_table_responsive" style="width: 100%; border-collapse: collapse;">
 
         <tr class="cart-subtotal">
-            <th style="text-align: left; font-weight: 400; color: #1868C6; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
-            <td style="text-align: right; font-weight: 700; color: #111; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></td>
+            <th style="text-align: left; font-weight: 400; color: #00125E; padding: 0 0 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
+            <td style="text-align: right; font-weight: 700; color: #111; padding: 0 0 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></td>
         </tr>
 
         <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
@@ -84,16 +99,20 @@ defined( 'ABSPATH' ) || exit;
 
         <?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
-        <tr class="order-total" style="border-top: 1px solid #e5e7eb;">
-            <th style="text-align: left; font-weight: 800; color: #00125E; padding: 16px 0 8px; font-size: 16px; background: transparent !important; border: none !important;"><?php esc_html_e( 'Estimated total', 'woocommerce' ); ?></th>
-            <td style="text-align: right; font-weight: 800; color: #111; padding: 16px 0 8px; font-size: 16px; background: transparent !important; border: none !important;" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
+        <tr>
+            <td colspan="2" style="padding: 0 !important; border-bottom: 1px solid #e5e7eb !important;"></td>
+        </tr>
+
+        <tr class="order-total">
+            <th style="text-align: left; vertical-align: middle; font-weight: 800; color: #00125E; padding: 16px 0; font-size: 16px; background: transparent !important; border: none !important; white-space: nowrap;"><?php esc_html_e( 'Estimated total', 'woocommerce' ); ?></th>
+            <td style="text-align: right; vertical-align: middle; font-weight: 800; color: #111; padding: 16px 0; font-size: 16px; background: transparent !important; border: none !important;" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
         </tr>
 
         <?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 
     </table>
 
-    <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 8px;">
+    <div style="border-top: 1px solid #e5e7eb; padding-top: 16px;">
         <div class="wc-proceed-to-checkout">
             <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt wc-forward" style="display: block; width: 100%; text-align: center; background-color: #FF0000 !important; color: #fff !important; font-weight: 700; font-size: 16px; padding: 14px 0; border-radius: 8px; text-decoration: none; box-sizing: border-box;">
                 <?php esc_html_e( 'Proceed to Checkout', 'woocommerce' ); ?>

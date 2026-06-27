@@ -66,8 +66,8 @@ function armo_enqueue_assets() {
         true                                                               // load in footer (better performance)
     );
 
-    // Product Total calculation (only on single product pages)
-    if ( is_product() ) {
+    // Product Total calculation & quantity buttons (single product and cart)
+    if ( is_product() || is_cart() ) {
         wp_enqueue_script(
             'armo-product-total',
             get_stylesheet_directory_uri() . '/assets/js/product-total.js',

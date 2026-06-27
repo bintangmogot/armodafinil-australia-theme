@@ -48,7 +48,12 @@ get_header(); // Loads YOUR header.php
             else :
                 // Fallback: If no ACF modules exist on this page, show normal content
                 ?>
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose prose-lg">
+                <?php
+                // Give WooCommerce pages a wider container and remove prose styling
+                $is_woo_page = function_exists('is_woocommerce') && ( is_cart() || is_checkout() || is_account_page() );
+                $container_classes = $is_woo_page ? 'max-w-7xl mx-auto' : 'max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose prose-lg';
+                ?>
+                <div class="<?php echo esc_attr($container_classes); ?>">
                     <?php the_content(); ?>
                 </div>
                 <?php
