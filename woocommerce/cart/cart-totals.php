@@ -47,8 +47,8 @@ defined( 'ABSPATH' ) || exit;
 
         <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
             <tr class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-                <th style="text-align: left; font-weight: 400; color: #16a34a; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php wc_cart_totals_coupon_label( $coupon ); ?></th>
-                <td style="text-align: right; color: #16a34a; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php echo esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ); ?>"><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
+                <th style="width: 35%; text-align: left; font-weight: 400; color: #16a34a; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php wc_cart_totals_coupon_label( $coupon ); ?></th>
+                <td style="width: 65%; text-align: right; color: #16a34a; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php echo esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ); ?>"><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
             </tr>
         <?php endforeach; ?>
 
@@ -65,8 +65,8 @@ defined( 'ABSPATH' ) || exit;
 
         <?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
             <tr class="fee">
-                <th style="text-align: left; font-weight: 400; color: #1868C6; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php echo esc_html( $fee->name ); ?></th>
-                <td style="text-align: right; font-weight: 700; color: #111; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php echo esc_attr( $fee->name ); ?>"><?php wc_cart_totals_fee_html( $fee ); ?></td>
+                <th style="width: 35%; text-align: left; font-weight: 400; color: #1868C6; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php echo esc_html( $fee->name ); ?></th>
+                <td style="width: 65%; text-align: right; font-weight: 700; color: #111; padding: 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php echo esc_attr( $fee->name ); ?>"><?php wc_cart_totals_fee_html( $fee ); ?></td>
             </tr>
         <?php endforeach; ?>
 
@@ -104,8 +104,8 @@ defined( 'ABSPATH' ) || exit;
         </tr>
 
         <tr class="order-total">
-            <th style="text-align: left; vertical-align: middle; font-weight: 800; color: #00125E; padding: 16px 0; font-size: 16px; background: transparent !important; border: none !important; white-space: nowrap;"><?php esc_html_e( 'Estimated total', 'woocommerce' ); ?></th>
-            <td style="text-align: right; vertical-align: middle; font-weight: 800; color: #111; padding: 16px 0; font-size: 16px; background: transparent !important; border: none !important;" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
+            <th style="width: 35%; text-align: left; font-weight: 700; color: #00125E; padding: 16px 0 0 0; font-size: 18px; background: transparent !important; border: none !important; border-top: 1px solid #e5e7eb !important;"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+            <td style="width: 65%; text-align: right; font-weight: 800; color: #111; padding: 16px 0 0 0; font-size: 22px; background: transparent !important; border: none !important; border-top: 1px solid #e5e7eb !important;" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
         </tr>
 
         <?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
