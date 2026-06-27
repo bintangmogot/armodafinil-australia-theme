@@ -252,6 +252,9 @@ do_action( 'woocommerce_before_cart' ); ?>
     display: block !important;
     border: none !important;
 }
+.armo-cart-page .cart_totals td::before {
+    display: none !important;
+}
 
 /* Shipping row stacking (1 column) */
 .armo-cart-page tr.shipping {
