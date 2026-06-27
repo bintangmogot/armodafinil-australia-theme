@@ -235,9 +235,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 /* Shipping row stacking */
 .armo-cart-page tr.shipping {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
+    display: block !important;
     width: 100% !important;
 }
 .armo-cart-page tr.shipping th,
