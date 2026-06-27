@@ -233,19 +233,7 @@ do_action( 'woocommerce_before_cart' ); ?>
     }
 }
 
-/* Shipping row stacking */
-.armo-cart-page tr.shipping {
-    display: block !important;
-    width: 100% !important;
-}
-.armo-cart-page tr.shipping th,
-.armo-cart-page tr.shipping td {
-    display: block !important;
-    width: 100% !important;
-    text-align: left !important;
-    padding: 8px 0 !important;
-}
-/* Erase yellow check (likely a prose list marker/before element) */
+
 .armo-cart-page ul#shipping_method li::before,
 .armo-cart-page ul#shipping_method li::marker {
     display: none !important;

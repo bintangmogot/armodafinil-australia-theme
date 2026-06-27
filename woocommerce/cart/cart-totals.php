@@ -41,8 +41,8 @@ defined( 'ABSPATH' ) || exit;
     <table cellspacing="0" class="shop_table shop_table_responsive" style="width: 100%; border-collapse: collapse;">
 
         <tr class="cart-subtotal">
-            <th style="text-align: left; font-weight: 400; color: #00125E; padding: 0 0 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
-            <td style="text-align: right; font-weight: 700; color: #111; padding: 0 0 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></td>
+            <th style="width: 35%; text-align: left; font-weight: 400; color: #00125E; padding: 0 0 10px 0; font-size: 14px; background: transparent !important; border: none !important;"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
+            <td style="width: 65%; text-align: right; font-weight: 700; color: #111; padding: 0 0 10px 0; font-size: 14px; background: transparent !important; border: none !important;" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></td>
         </tr>
 
         <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
