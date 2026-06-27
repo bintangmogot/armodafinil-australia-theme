@@ -9,9 +9,9 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="shipping-section-wrapper border border-gray-300 rounded mb-8">
     <?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
-        <div class="bg-[#1868C6] text-white px-4 py-3 rounded-t flex items-center gap-2">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M8 16a2 2 0 100-4 2 2 0 000 4zM14 16a2 2 0 100-4 2 2 0 000 4z" /><path d="M16 5h-3V4a1 1 0 00-1-1H3a1 1 0 00-1 1v10h1.27a3.001 3.001 0 015.46 0h2.54a3.001 3.001 0 015.46 0H18v-5l-2-4zm-2.4 1l1.5 3H13V6h.6z" /></svg>
-            <h3 class="text-[17px] font-normal m-0 tracking-wide text-white">Ship to a different addresss</h3>
+        <div class="bg-[#00125E] text-white px-4 py-3 rounded-t flex items-center gap-2">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M8 16a2 2 0 100-4 2 2 0 000 4zM14 16a2 2 0 100-4 2 2 0 000 4z" /><path d="M16 5h-3V4a1 1 0 00-1-1H3a1 1 0 00-1 1v10h1.27a3.001 3.001 0 015.46 0h2.54a3.001 3.001 0 015.46 0H18v-5l-2-4zm-2.4 1l1.5 3H13V6h.6z" /></svg>
+            <h3 class="text-[18px] font-bold m-0 tracking-wide text-white">Ship to a different address</h3>
         </div>
     <?php endif; ?>
 
@@ -21,8 +21,8 @@ defined( 'ABSPATH' ) || exit;
                 <div class="form-row mb-6">
                     <div id="ship-to-different-address">
                         <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox flex items-center gap-2 cursor-pointer m-0">
-                            <input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox w-4 h-4 text-[#1868C6] focus:ring-[#1868C6] border-gray-300 rounded m-0 mt-0.5" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" /> 
-                            <span class="text-[#0f4d92] text-[17px] select-none"><?php esc_html_e( 'Deliver to a different address?', 'woocommerce' ); ?></span>
+                            <input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox w-4 h-4 text-[#00125E] focus:ring-[#00125E] border-gray-300 rounded m-0 mt-0.5" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" /> 
+                            <span class="text-[#00125E] font-bold text-[17px] select-none"><?php esc_html_e( 'Deliver to a different address?', 'woocommerce' ); ?></span>
                         </label>
                     </div>
                 </div>
