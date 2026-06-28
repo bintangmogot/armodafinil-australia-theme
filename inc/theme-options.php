@@ -2,20 +2,6 @@
 /**
  * Theme Options — ACF Options Page for editable site-wide settings.
  *
- * =====================================================================
- * 🔰 PHP GUIDE:
- * =====================================================================
- * This creates the "Options" menu item in WP Admin that your client
- * asked for. It uses ACF's Options Page feature to store site-wide
- * settings (not tied to any specific page or post).
- *
- * The client can edit footer content from:
- *   WP Admin → Options (in the left sidebar)
- *
- * In templates, retrieve values with:
- *   get_field('field_name', 'option')
- * =====================================================================
- *
  * @package Armodafinil_Australia
  * @since   2.1.0
  */
@@ -26,31 +12,58 @@ if ( ! function_exists( 'acf_add_options_page' ) ) {
 }
 
 /**
- * Register the "Footer" page under Appearance menu.
- *
- * The client will find it at: WP Admin → Appearance → Footer
+ * Register Parent Theme Options Page
  */
-acf_add_options_page();
+acf_add_options_page(array(
+    'page_title'    => 'Theme Settings',
+    'menu_title'    => 'Theme Settings',
+    'menu_slug'     => 'theme-settings',
+    'capability'    => 'edit_posts',
+    'redirect'      => true
+));
 
 /**
- * Register ACF Field Group for Footer Settings.
- *
- * This creates all the editable fields the client will see
- * when they go to Options → Footer in WP Admin.
+ * Register Sub Pages
+ */
+acf_add_options_sub_page(array(
+    'page_title'  => 'Announcement Bar',
+    'menu_title'  => 'Announcement Bar',
+    'parent_slug' => 'theme-settings',
+    'menu_slug'   => 'theme-settings-announcement',
+));
+
+acf_add_options_sub_page(array(
+    'page_title'  => 'Feature Bar',
+    'menu_title'  => 'Feature Bar',
+    'parent_slug' => 'theme-settings',
+    'menu_slug'   => 'theme-settings-feature',
+));
+
+acf_add_options_sub_page(array(
+    'page_title'  => 'Footer Settings',
+    'menu_title'  => 'Footer',
+    'parent_slug' => 'theme-settings',
+    'menu_slug'   => 'theme-settings-footer',
+));
+
+acf_add_options_sub_page(array(
+    'page_title'  => 'Blog Header Settings',
+    'menu_title'  => 'Blog Header',
+    'parent_slug' => 'theme-settings',
+    'menu_slug'   => 'theme-settings-blog',
+));
+
+
+/**
+ * Register ACF Field Groups
  */
 if ( function_exists( 'acf_add_local_field_group' ) ) :
 
+    // ─── 1. Announcement Bar ───────────────────────────────────────
     acf_add_local_field_group( array(
-        'key'    => 'group_footer_options',
-        'title'  => 'Theme Settings',
+        'key'    => 'group_theme_announcement',
+        'title'  => 'Announcement Bar Settings',
         'fields' => array(
-
-            // ─── TAB: Announcement Bar ────────────────────────────
-            array(
-                'key'   => 'field_theme_tab_announcement',
-                'label' => 'Announcement Bar',
-                'type'  => 'tab',
-            ),
             array(
                 'key'           => 'field_theme_enable_announcement',
                 'label'         => 'Enable Announcement Bar',
@@ -107,13 +120,25 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                     ),
                 ),
             ),
-
-            // ─── TAB: Feature Bar ─────────────────────────────────
+        ),
+        'location' => array(
             array(
-                'key'   => 'field_theme_tab_feature_bar',
-                'label' => 'Feature Bar',
-                'type'  => 'tab',
+                array(
+                    'param'    => 'options_page',
+                    'operator' => '==',
+                    'value'    => 'theme-settings-announcement',
+                ),
             ),
+        ),
+        'style'    => 'default',
+        'position' => 'normal',
+    ) );
+
+    // ─── 2. Feature Bar ────────────────────────────────────────────
+    acf_add_local_field_group( array(
+        'key'    => 'group_theme_feature',
+        'title'  => 'Feature Bar Settings',
+        'fields' => array(
             array(
                 'key'           => 'field_theme_enable_feature_bar',
                 'label'         => 'Enable Feature Bar',
@@ -187,8 +212,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                     ),
                 ),
             ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param'    => 'options_page',
+                    'operator' => '==',
+                    'value'    => 'theme-settings-feature',
+                ),
+            ),
+        ),
+        'style'    => 'default',
+        'position' => 'normal',
+    ) );
 
-            // ─── TAB: Menu Headings ───────────────────────────────
+    // ─── 3. Footer Settings ────────────────────────────────────────
+    acf_add_local_field_group( array(
+        'key'    => 'group_theme_footer',
+        'title'  => 'Footer Settings',
+        'fields' => array(
+            
+            // ─── TAB: Menu Headings ───
             array(
                 'key'   => 'field_footer_tab_menu_headings',
                 'label' => 'Menu Headings',
@@ -216,7 +260,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'default_value' => 'Important Links',
             ),
 
-            // ─── TAB: Contact Info ────────────────────────────────
+            // ─── TAB: Contact Info ───
             array(
                 'key'   => 'field_footer_tab_contact',
                 'label' => 'Contact Info',
@@ -255,7 +299,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'default_value' => 'orders@armodafinilaustralia.com.au',
             ),
 
-            // ─── TAB: Payments & Shipping ─────────────────────────
+            // ─── TAB: Payments & Shipping ───
             array(
                 'key'   => 'field_footer_tab_payments',
                 'label' => 'Payments & Shipping',
@@ -312,7 +356,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 ),
             ),
 
-            // ─── TAB: Copyright ───────────────────────────────────
+            // ─── TAB: Copyright ───
             array(
                 'key'   => 'field_footer_tab_copyright',
                 'label' => 'Copyright',
@@ -326,13 +370,25 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'instructions'  => 'Copyright notice. Use {year} for the current year and {site_name} for the site name. Example: © {year} {site_name}. All rights reserved.',
                 'default_value' => '© {year} {site_name}. All rights reserved.',
             ),
-            
-            // ─── TAB: Blog Header ─────────────────────────────────
+        ),
+        'location' => array(
             array(
-                'key'   => 'field_theme_tab_blog_header',
-                'label' => 'Blog Header',
-                'type'  => 'tab',
+                array(
+                    'param'    => 'options_page',
+                    'operator' => '==',
+                    'value'    => 'theme-settings-footer',
+                ),
             ),
+        ),
+        'style'    => 'default',
+        'position' => 'normal',
+    ) );
+
+    // ─── 4. Blog Settings ──────────────────────────────────────────
+    acf_add_local_field_group( array(
+        'key'    => 'group_theme_blog',
+        'title'  => 'Blog Header Settings',
+        'fields' => array(
             array(
                 'key'           => 'field_theme_blog_title',
                 'label'         => 'Blog Title',
@@ -360,7 +416,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 array(
                     'param'    => 'options_page',
                     'operator' => '==',
-                    'value'    => 'acf-options',
+                    'value'    => 'theme-settings-blog',
                 ),
             ),
         ),
