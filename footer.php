@@ -67,9 +67,9 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                             <?php bloginfo('name'); ?>
                         </a>
                     <?php endif; ?>
-                    <p class="text-base text-primary-dark/70 leading-relaxed">
-                        <?php echo esc_html( $footer_description ); ?>
-                    </p>
+                    <div class="text-base text-primary-dark/70 leading-relaxed">
+                        <?php echo wp_kses_post( $footer_description ); ?>
+                    </div>
                 </div>
 
                 <!-- Get in Touch (mobile: 2nd, desktop: hidden here — shown below) -->
