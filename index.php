@@ -27,6 +27,21 @@ if ( empty( trim( strip_tags( $blog_description ) ) ) ) {
     $blog_description = 'Welcome to Armodafinil Insights, your dedicated resource for everything you need to know about optimizing your cognitive performance and managing wakefulness. Learn more about brain health, overcoming excessive daytime sleepiness, and defeating night-shift fatigue right here on this blog. We explore the most effective ways to sharpen your focus, eliminate brain fog, and put your daily productivity back on track. With our premium solutions, unlocking your mind\'s full potential is all good news.';
 }
 
+// Check ACF Options overrides
+$acf_blog_title       = get_field( 'blog_title', 'option' );
+$acf_blog_subtitle    = get_field( 'blog_subtitle', 'option' );
+$acf_blog_description = get_field( 'blog_description', 'option' );
+
+if ( ! empty( $acf_blog_title ) ) {
+    $blog_title = $acf_blog_title;
+}
+if ( ! empty( $acf_blog_subtitle ) ) {
+    $blog_subtitle = $acf_blog_subtitle;
+}
+if ( ! empty( $acf_blog_description ) ) {
+    $blog_description = $acf_blog_description;
+}
+
 // Category / tag / search overrides
 if ( is_category() ) {
     $blog_title = single_cat_title( '', false );

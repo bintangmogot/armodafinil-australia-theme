@@ -326,6 +326,34 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'instructions'  => 'Copyright notice. Use {year} for the current year and {site_name} for the site name. Example: © {year} {site_name}. All rights reserved.',
                 'default_value' => '© {year} {site_name}. All rights reserved.',
             ),
+            
+            // ─── TAB: Blog Header ─────────────────────────────────
+            array(
+                'key'   => 'field_theme_tab_blog_header',
+                'label' => 'Blog Header',
+                'type'  => 'tab',
+            ),
+            array(
+                'key'           => 'field_theme_blog_title',
+                'label'         => 'Blog Title',
+                'name'          => 'blog_title',
+                'type'          => 'text',
+                'instructions'  => 'Main title for the blog page (leave empty to use default).',
+            ),
+            array(
+                'key'           => 'field_theme_blog_subtitle',
+                'label'         => 'Blog Subtitle',
+                'name'          => 'blog_subtitle',
+                'type'          => 'text',
+                'instructions'  => 'Subtitle for the blog page.',
+            ),
+            array(
+                'key'           => 'field_theme_blog_description',
+                'label'         => 'Blog Description',
+                'name'          => 'blog_description',
+                'type'          => 'textarea',
+                'instructions'  => 'Short description under the subtitle on the blog page.',
+            ),
         ),
         'location' => array(
             array(
