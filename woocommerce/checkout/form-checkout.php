@@ -48,7 +48,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 <!-- RIGHT column: Medical Conditions -->
                 <div class="w-full lg:w-1/2 flex flex-col gap-6">
                     <div class="checkout-fields-block medical-condition-fields bg-white border border-gray-200 rounded-lg overflow-hidden">
-                        <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+                        <?php do_action( 'armo_custom_checkout_medical_conditions' ); ?>
                     </div>
                 </div>
             </div>
