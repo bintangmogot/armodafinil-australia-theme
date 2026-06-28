@@ -1235,72 +1235,165 @@ body.single-product { background-color: #f9f9f9; }
     border-color: #00104a !important;
 }
 
-/* Radio button lists (Smoke/Drink) */
-.medical-condition-fields .form-row > label,
-.medical-condition-fields .form-row .label,
-.medical-condition-fields .form-row .thwcfd-field-label {
-    font-weight: 600 !important;
-    color: #00125E !important;
+/* ===== MEDICAL CONDITIONS SECTION ===== */
+
+/* Form rows: label + input side by side */
+.medical-condition-fields .medical-conditions-body {
+    padding: 0;
+}
+.medical-condition-fields .medical-row {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-row:last-of-type {
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-row > label {
+    width: 40%;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: #111827;
+    margin: 0;
+    padding-right: 0.75rem;
+}
+.medical-condition-fields .medical-input-wrap {
+    width: 60%;
+    flex-grow: 1;
+}
+.medical-condition-fields .medical-input-wrap input.input-text {
+    width: 100%;
+    padding: 0.4rem 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+    outline: none;
+    box-shadow: none;
+    height: auto;
+    background: #fff;
+}
+.medical-condition-fields .medical-input-wrap input.input-text:focus {
+    border-color: #00125E;
 }
 
-/* Fix ul padding/margin and stack vertically */
-.medical-condition-fields .form-row .woocommerce-input-wrapper ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+/* Radio buttons row (Smoke / Drink) */
+.medical-condition-fields .medical-radio-row {
+    display: flex;
+    gap: 0;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-radio-group {
+    flex: 1;
+}
+.medical-condition-fields .medical-radio-label {
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: #00125E;
+    margin: 0 0 0.5rem 0;
+}
+.medical-condition-fields .medical-radio-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
+    gap: 0.375rem;
 }
-.medical-condition-fields .form-row .woocommerce-input-wrapper ul li {
-    margin: 0 !important;
-    padding: 0 !important;
+.medical-condition-fields .medical-radio-group ul li {
+    margin: 0;
+    padding: 0;
 }
-.medical-condition-fields .form-row .woocommerce-input-wrapper ul li label {
-    display: inline-flex !important;
+.medical-condition-fields .medical-radio-group ul li label {
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin: 0 !important;
     cursor: pointer;
-    font-weight: 500 !important;
-    color: #000 !important;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: #111827;
+    margin: 0;
 }
-.medical-condition-fields .form-row .woocommerce-input-wrapper input[type="radio"],
-.medical-condition-fields .form-row .woocommerce-input-wrapper input[type="checkbox"] {
-    margin: 0 !important;
-    transform: translateY(1px);
-    width: 18px;
-    height: 18px;
-    accent-color: #00125E; /* Modern way to color native radio buttons */
+.medical-condition-fields .medical-radio-group input[type="radio"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: #00125E;
+    cursor: pointer;
 }
 
 /* Certification Blue Box */
-.medical-condition-fields .description, 
-.medical-condition-fields .thwcfd-field-wrapper p:not(.form-row) {
-    display: block;
+.medical-condition-fields .medical-certification-box {
     background-color: #e5edfb;
     color: #00125E;
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     border-radius: 0.5rem;
     text-align: center;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 1.25rem 1rem;
+}
+.medical-condition-fields .medical-certification-box p {
+    margin: 0;
 }
 
-/* Upload Prescription styling */
-.medical-condition-fields .form-row input[type="file"] {
-    display: block;
-    width: 100%;
-    padding: 2rem;
-    border: 1px dashed #a0aec0 !important;
-    border-radius: 0.5rem;
-    text-align: center;
-    background-color: #ffffff;
-    cursor: pointer;
+/* Upload Prescription section */
+.medical-condition-fields .medical-upload-section {
+    padding: 0 1rem 1.25rem;
 }
+.medical-condition-fields .medical-upload-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111827;
+    margin: 0 0 0.75rem 0;
+    background: none !important;
+    padding: 0 !important;
+}
+.medical-condition-fields .medical-upload-dropzone {
+    border: 2px dashed #cbd5e1;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.medical-condition-fields .medical-upload-dropzone:hover {
+    border-color: #00125E;
+}
+.medical-condition-fields .medical-upload-dropzone .upload-icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto 0.5rem;
+    color: #9ca3af;
+}
+.medical-condition-fields .medical-upload-dropzone p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+.medical-condition-fields .medical-upload-dropzone .choose-file-link {
+    color: #ef4444;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.medical-condition-fields .medical-upload-dropzone .choose-file-link:hover {
+    color: #dc2626;
+}
+.medical-condition-fields .medical-upload-dropzone input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
 
 /* ===== REVIEW ORDER TABLE (Checkout) ===== */
 .woocommerce-checkout-review-order-table {

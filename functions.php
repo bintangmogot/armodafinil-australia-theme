@@ -65,6 +65,7 @@ require_once ARMO_THEME_DIR . '/inc/enqueue.php';
  */
 if ( class_exists( 'WooCommerce' ) ) {
     require_once ARMO_THEME_DIR . '/inc/woocommerce.php';
+    require_once ARMO_THEME_DIR . '/inc/checkout-medical.php';
 }
 
 /*
