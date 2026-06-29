@@ -59,7 +59,7 @@
     
     <?php if ($has_announcement !== false && $has_announcement !== '0'): // Default to true if not set ?>
     <!-- Top Announcement Bar (Editable in Theme Settings) -->
-    <div class="w-full relative z-50" style="background-color: <?php echo esc_attr(get_field('announcement_bg_color', 'option') ?: '#ff0000'); ?>; color: <?php echo esc_attr(get_field('announcement_text_color', 'option') ?: '#ffffff'); ?>;">
+    <div class="w-full relative z-50" data-aos="fade-down" style="background-color: <?php echo esc_attr(get_field('announcement_bg_color', 'option') ?: '#ff0000'); ?>; color: <?php echo esc_attr(get_field('announcement_text_color', 'option') ?: '#ffffff'); ?>;">
         <div class="w-full px-4 sm:px-6 lg:px-[72px] py-1.5 flex items-center justify-between">
             <div class="flex-grow text-center text-sm font-semibold tracking-wide flex justify-center items-center">
                 <?php echo get_field('announcement_text', 'option') ?: 'Free Shipping All Orders Over $299'; ?>
@@ -75,7 +75,7 @@
     <?php $has_feature_bar = get_field('enable_feature_bar', 'option'); ?>
     <?php if ($has_feature_bar !== false && $has_feature_bar !== '0'): ?>
     <!-- Top Feature Bar -->
-    <div class="w-full relative z-40 flex bg-gradient-review" style="color: <?php echo esc_attr(get_field('feature_bar_text_color', 'option') ?: '#ffffff'); ?>;">
+    <div class="w-full relative z-40 flex bg-gradient-review" data-aos="fade-down" data-aos-delay="100" style="color: <?php echo esc_attr(get_field('feature_bar_text_color', 'option') ?: '#ffffff'); ?>;">
         <div class="w-full px-4 sm:px-6 lg:px-[72px] py-2.5 grid grid-cols-2 place-items-start sm:flex sm:flex-wrap sm:items-center sm:justify-center gap-y-2 gap-x-2 sm:gap-4">
             <?php 
             $feature_items = get_field('feature_bar_items', 'option');
@@ -167,7 +167,7 @@
     <!-- Tailwind scanner hook: bg-primary-light py-2 lg:py-4 relative z-40 -->
     <header id="site-header" class="<?php echo esc_attr($header_class); ?>">
         <div class="w-full px-4 sm:px-6 lg:px-[72px]">
-            <div
+            <div data-aos="fade-down" data-aos-delay="200"
                 class="flex items-center justify-between bg-white/55 border border-white/25 backdrop-blur-md rounded-full shadow-lg px-6 py-2.5 lg:px-12 xl:px-24 lg:py-1">
 
                 <div class="flex-shrink-0">

@@ -54,7 +54,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-12 lg:pt-16 pb-6">
 
             <!-- Top Row: Logo/Description + 3 Link Columns -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-10 border-b border-primary-dark/10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-10 border-b border-primary-dark/10" data-aos="fade-up">
 
                 <!-- Brand -->
                 <div class="order-1 lg:col-span-2 lg:pr-8">
@@ -158,7 +158,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
             </div>
 
             <!-- Middle Row: Contact + Payments + Shipping (desktop only — mobile version is inline above) -->
-            <div class="hidden lg:grid lg:grid-cols-3 gap-8 py-8 border-b border-primary-dark/10">
+            <div class="hidden lg:grid lg:grid-cols-3 gap-8 py-8 border-b border-primary-dark/10" data-aos="fade-up" data-aos-delay="100">
 
                 <!-- Get in Touch -->
                 <div>
@@ -230,7 +230,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
             </div>
 
             <!-- Mobile-only: Payments & Shipping -->
-            <div class="lg:hidden py-8 space-y-6 border-b border-primary-dark/10">
+            <div class="lg:hidden py-8 space-y-6 border-b border-primary-dark/10" data-aos="fade-up" data-aos-delay="100">
                 <div>
                     <h3 class="text-sm font-semibold text-primary-dark/60 mb-3">Payments Accepted</h3>
                     <div class="flex items-center gap-4">
@@ -292,12 +292,12 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
             }
         }
         .footer-ship-logo {
-            height: 0.875rem !important; /* Mobile: 14px */
+            height: 1.25rem !important; /* Mobile: 20px */
             width: auto !important;
         }
         @media (min-width: 768px) {
             .footer-ship-logo {
-                height: 1.125rem !important; /* Desktop: 18px */
+                height: 1.5rem !important; /* Desktop: 24px */
             }
         }
     </style>
