@@ -58,7 +58,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
         <div class="mt-10">
-            <h3 id="order_review_heading" class="text-xl font-bold text-gray-900 text-center mb-6"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h3>
+            <h3 id="order_review_heading" class="text-2xl font-bold text-[#00104a] text-center mb-6"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h3>
 
             <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

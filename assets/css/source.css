@@ -1610,4 +1610,144 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+/* ========================================================== */
+/* ORDER REVIEW TABLE (Matches User Screenshot)               */
+/* ========================================================== */
+.woocommerce-checkout-review-order-table {
+    width: 100%;
+    border: 1px solid #d1d5db !important;
+    border-radius: 0.5rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 2rem;
+}
 
+/* Table Header */
+.woocommerce-checkout-review-order-table thead th {
+    background-color: #00104a !important;
+    color: #fff !important;
+    padding: 0.75rem 1rem !important;
+    font-weight: 600;
+}
+.woocommerce-checkout-review-order-table thead th.product-total {
+    text-align: right;
+}
+
+/* Base Cells */
+.woocommerce-checkout-review-order-table td,
+.woocommerce-checkout-review-order-table th {
+    padding: 1rem !important;
+    border-bottom: 1px solid #e5e7eb;
+}
+.woocommerce-checkout-review-order-table tr:last-child td,
+.woocommerce-checkout-review-order-table tr:last-child th {
+    border-bottom: none;
+}
+
+/* Product Row */
+.woocommerce-checkout-review-order-table tbody .product-name {
+    color: #00104a !important;
+    font-weight: 700 !important;
+}
+.woocommerce-checkout-review-order-table tbody .product-name .variation {
+    color: #4b5563 !important;
+    font-weight: 400 !important;
+    margin-top: 0.25rem;
+}
+.woocommerce-checkout-review-order-table tbody .product-total {
+    text-align: right;
+    font-weight: 700 !important;
+    color: #111827 !important;
+}
+
+/* Subtotal Row */
+.woocommerce-checkout-review-order-table tfoot .cart-subtotal th {
+    color: #00104a !important;
+    font-weight: 700 !important;
+}
+.woocommerce-checkout-review-order-table tfoot .cart-subtotal td {
+    text-align: right;
+    font-weight: 700 !important;
+    color: #111827 !important;
+}
+
+/* Stack TH and TD for Shipping & Fee rows */
+.woocommerce-checkout-review-order-table tfoot .woocommerce-shipping-totals th,
+.woocommerce-checkout-review-order-table tfoot .woocommerce-shipping-totals td,
+.woocommerce-checkout-review-order-table tfoot .fee th,
+.woocommerce-checkout-review-order-table tfoot .fee td {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.woocommerce-checkout-review-order-table tfoot .woocommerce-shipping-totals th,
+.woocommerce-checkout-review-order-table tfoot .fee th {
+    color: #00104a !important;
+    font-weight: 700 !important;
+    border-bottom: none !important;
+    padding-bottom: 0.5rem !important;
+    font-size: 1rem;
+}
+.woocommerce-checkout-review-order-table tfoot .woocommerce-shipping-totals td,
+.woocommerce-checkout-review-order-table tfoot .fee td {
+    padding-top: 0 !important;
+}
+
+/* Shipping Options List */
+#shipping_method {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#shipping_method li {
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+#shipping_method li:has(input[type="radio"]:checked) {
+    background-color: #f0f9ff !important;
+    border-color: #bae6fd !important;
+}
+#shipping_method li input[type="radio"] {
+    margin: 0.25rem 0.75rem 0 0;
+}
+#shipping_method li label {
+    margin: 0;
+    font-weight: 600;
+    color: #111827;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+/* If there's subtext inside the label (like "8-15 business days"), it needs formatting */
+#shipping_method li label span.description,
+#shipping_method li label small {
+    display: block;
+    font-weight: 400;
+    color: #6b7280;
+    font-size: 0.8125rem;
+    margin-top: 0.125rem;
+}
+
+/* Total Row */
+.woocommerce-checkout-review-order-table tfoot .order-total th {
+    color: #00104a !important;
+    font-weight: 700 !important;
+    font-size: 1.125rem;
+}
+.woocommerce-checkout-review-order-table tfoot .order-total td {
+    text-align: right;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    font-size: 1.125rem;
+}
