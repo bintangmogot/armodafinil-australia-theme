@@ -69,7 +69,7 @@
 
     /* Mobile nav */
     #mobile-menu ul > li > a {
-        @apply block px-4 py-3 text-2xl font-bold text-primary text-right;
+        @apply block px-4 py-2 text-lg font-bold text-primary text-right;
         @apply hover:text-red-600 transition-colors duration-150;
     }
     #mobile-menu ul > li.current-menu-item > a,
@@ -80,7 +80,7 @@
         @apply pr-4;
     }
     #mobile-menu ul > li > ul > li > a {
-        @apply block px-4 py-2 text-lg text-primary/70 text-right;
+        @apply block px-4 py-1.5 text-sm text-primary/70 text-right;
         @apply hover:text-red-600 transition-colors duration-150;
     }
 
