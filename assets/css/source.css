@@ -1832,12 +1832,18 @@ input[type="number"] {
 /* ========================================================== */
 /* SHIPPING INSURANCE CUSTOM ROW (Matches Shipment)             */
 /* ========================================================== */
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row {
+
+/* 1. Target the row and make it a flex column */
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row,
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(input[type="radio"]) {
     display: flex !important;
     flex-direction: column !important;
     border-bottom: 1px solid #e5e7eb !important;
 }
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row th {
+
+/* 2. Target the TH (title) */
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row th,
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(input[type="radio"]) th {
     color: #00104a !important;
     font-weight: 700 !important;
     padding: 1.5rem 1rem 0.75rem 1rem !important;
@@ -1847,7 +1853,10 @@ input[type="number"] {
     background: transparent !important;
     width: 100% !important;
 }
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td {
+
+/* 3. Target the TD (options container) */
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td,
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(input[type="radio"]) td {
     padding: 0 1rem 1.5rem 1rem !important;
     border: none !important;
     text-align: left !important;
@@ -1856,10 +1865,12 @@ input[type="number"] {
     flex-direction: column;
     gap: 0.375rem; 
 }
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td > div.insurance-option,
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td > label,
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td > .aftership-protection-widget {
-    display: flex;
+
+/* 4. Target the individual options. They could be labels, divs, or .insurance-option wrappers */
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td .insurance-option,
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td label,
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(input[type="radio"]) td *:has(> input[type="radio"]) {
+    display: flex !important;
     align-items: center;
     border: 1px solid #d1d5db;
     border-radius: 0.25rem;
@@ -1868,23 +1879,22 @@ input[type="number"] {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     width: 100%;
-}
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td > *:has(input[type="radio"]:checked) {
-    background-color: #f0f9ff !important;
-    border-color: #bae6fd !important;
-}
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td input[type="radio"] {
-    margin: 0.25rem 0.75rem 0 0;
-    flex-shrink: 0;
-}
-.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td label {
     margin: 0 !important;
     font-weight: 600 !important;
     color: #111827 !important;
-    flex-grow: 1 !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-    width: 100% !important;
+    box-sizing: border-box;
 }
 
+/* 5. Highlight the selected option */
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td *:has(> input[type="radio"]:checked),
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(input[type="radio"]) td *:has(> input[type="radio"]:checked) {
+    background-color: #f0f9ff !important;
+    border-color: #bae6fd !important;
+}
+
+/* 6. Style the radio input itself */
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td input[type="radio"],
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(input[type="radio"]) td input[type="radio"] {
+    margin: 0 0.75rem 0 0 !important;
+    flex-shrink: 0;
+}
