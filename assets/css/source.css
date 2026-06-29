@@ -1524,124 +1524,136 @@ body.single-product { background-color: #f9f9f9; }
 }
 
 /* ===== PAYMENT BOX (Checkout) ===== */
-.woocommerce-checkout-payment {
+.woocommerce-checkout #payment {
     background-color: #00104a !important;
     color: #fff !important;
     border-radius: 0.5rem;
     padding: 1.5rem;
     margin-top: 1.5rem;
 }
-.woocommerce-checkout-payment ul.payment_methods {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1rem 0;
+.woocommerce-checkout #payment ul.payment_methods {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 1rem 0 !important;
     border: none !important;
 }
-.woocommerce-checkout-payment ul.payment_methods li {
-    margin-bottom: 0.75rem;
+.woocommerce-checkout #payment ul.payment_methods li {
+    margin-bottom: 0.75rem !important;
     background: transparent !important;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
 }
-.woocommerce-checkout-payment ul.payment_methods li > label {
+.woocommerce-checkout #payment ul.payment_methods li > label {
     color: #fff !important;
-    font-weight: 600;
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    cursor: pointer !important;
+    margin: 0 !important;
 }
 /* Force show radio button even if there's only one payment method */
-.woocommerce-checkout-payment ul.payment_methods li input[type="radio"] {
+.woocommerce-checkout #payment ul.payment_methods li input[type="radio"],
+.woocommerce-checkout #payment ul.payment_methods li:only-child input[type="radio"] {
     display: inline-block !important;
-    margin: 0;
-    width: 1rem;
-    height: 1rem;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    margin: 0 !important;
+    width: 1rem !important;
+    height: 1rem !important;
     accent-color: #ef4444; /* Give it a red accent or it'll just be standard */
 }
-.woocommerce-checkout-payment div.payment_box {
-    position: relative;
+.woocommerce-checkout #payment div.payment_box {
+    position: relative !important;
     background: #e5edff !important;
     color: #111827 !important;
-    padding: 1rem;
-    border-radius: 0.25rem;
-    margin-top: 1rem;
-    font-size: 0.8125rem;
-    text-align: left;
-    width: 100%;
+    padding: 1rem !important;
+    border-radius: 0.25rem !important;
+    margin-top: 1rem !important;
+    font-size: 0.8125rem !important;
+    text-align: left !important;
+    width: 100% !important;
 }
-.woocommerce-checkout-payment div.payment_box::before {
+.woocommerce-checkout #payment div.payment_box::before {
     content: "" !important;
     display: block !important;
-    position: absolute;
-    top: -16px;
-    left: 20px;
-    border: 8px solid transparent;
-    border-bottom-color: #e5edff;
+    position: absolute !important;
+    top: -16px !important;
+    left: 20px !important;
+    margin: 0 !important;
+    border: 8px solid transparent !important;
+    border-bottom-color: #e5edff !important;
 }
-.woocommerce-checkout-payment .place-order {
-    text-align: left;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.woocommerce-checkout #payment .place-order {
+    text-align: left !important;
+    padding-top: 1.5rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    margin-top: 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    padding-bottom: 0 !important;
 }
-.woocommerce-checkout-payment #place_order,
-.woocommerce-checkout-payment .place-order .button {
+.woocommerce-checkout #payment #place_order,
+.woocommerce-checkout #payment .place-order .button {
     background-color: #ff0000 !important;
     color: #fff !important;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
     padding: 0.75rem 2.5rem !important;
-    border-radius: 0.5rem !important;
+    border-radius: 9999px !important;
     border: none !important;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    align-self: flex-end;
-    margin-top: 1rem;
+    cursor: pointer !important;
+    transition: background-color 0.2s !important;
+    align-self: flex-end !important;
+    margin-top: 1rem !important;
+    float: none !important;
 }
-.woocommerce-checkout-payment #place_order:hover,
-.woocommerce-checkout-payment .place-order .button:hover {
+.woocommerce-checkout #payment #place_order:hover,
+.woocommerce-checkout #payment .place-order .button:hover {
     background-color: #cc0000 !important;
 }
 
 /* Terms text */
-.woocommerce-checkout-payment .woocommerce-terms-and-conditions-wrapper {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 0.75rem;
-    width: 100%;
+.woocommerce-checkout #payment .woocommerce-terms-and-conditions-wrapper {
+    font-size: 0.75rem !important;
+    color: rgba(255,255,255,0.8) !important;
+    margin-bottom: 0.75rem !important;
+    width: 100% !important;
+    text-align: left !important;
 }
-.woocommerce-checkout-payment .woocommerce-terms-and-conditions-wrapper a {
-    color: #93c5fd;
+.woocommerce-checkout #payment .woocommerce-terms-and-conditions-wrapper a {
+    color: #93c5fd !important;
 }
-.woocommerce-checkout-payment .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: flex-start;
+.woocommerce-checkout #payment .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
 }
-.woocommerce-checkout-payment .woocommerce-terms-and-conditions-wrapper input[type="checkbox"] {
-    margin: 0;
+.woocommerce-checkout #payment .woocommerce-terms-and-conditions-wrapper input[type="checkbox"] {
+    margin: 0 !important;
 }
 
 /* Privacy text */
-.woocommerce-checkout-payment .woocommerce-privacy-policy-text {
-    color: rgba(255,255,255,0.7);
-    font-size: 0.75rem;
-    text-align: left;
-    width: 100%;
-    margin-bottom: 1rem;
+.woocommerce-checkout #payment .woocommerce-privacy-policy-text {
+    color: rgba(255,255,255,0.7) !important;
+    font-size: 0.75rem !important;
+    text-align: left !important;
+    width: 100% !important;
+    margin-bottom: 1rem !important;
 }
-.woocommerce-checkout-payment .woocommerce-privacy-policy-text p {
-    margin-bottom: 0.5rem;
+.woocommerce-checkout #payment .woocommerce-privacy-policy-text p {
+    margin-bottom: 0.5rem !important;
+    text-align: left !important;
 }
-.woocommerce-checkout-payment .woocommerce-privacy-policy-text a {
-    color: #93c5fd;
+.woocommerce-checkout #payment .woocommerce-privacy-policy-text a {
+    color: #93c5fd !important;
 }
 
 /* Removed CART PAGE button override */
