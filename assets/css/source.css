@@ -1687,12 +1687,15 @@ input[type="number"] {
 }
 
 /* Shipping Options List */
-#shipping_method {
+#shipping_method,
+.woocommerce-shipping-methods {
     list-style: none;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
-#shipping_method li {
+#shipping_method li,
+.woocommerce-shipping-methods li {
     display: flex;
     align-items: flex-start;
     border: 1px solid #d1d5db;
@@ -1702,32 +1705,45 @@ input[type="number"] {
     background-color: #fff;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    width: 100%;
 }
-#shipping_method li:has(input[type="radio"]:checked) {
+#shipping_method li:has(input[type="radio"]:checked),
+.woocommerce-shipping-methods li:has(input[type="radio"]:checked) {
     background-color: #f0f9ff !important;
     border-color: #bae6fd !important;
 }
-#shipping_method li input[type="radio"] {
+#shipping_method li input[type="radio"],
+.woocommerce-shipping-methods li input[type="radio"] {
     margin: 0.25rem 0.75rem 0 0;
+    flex-shrink: 0;
 }
-#shipping_method li label {
+#shipping_method li label,
+.woocommerce-shipping-methods li label {
     margin: 0;
     font-weight: 600;
     color: #111827;
     flex-grow: 1;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
 }
+#shipping_method li label .woocommerce-Price-amount,
+.woocommerce-shipping-methods li label .woocommerce-Price-amount {
+    margin-left: auto;
+    font-weight: 700;
+    color: #111827;
+}
 /* If there's subtext inside the label (like "8-15 business days"), it needs formatting */
 #shipping_method li label span.description,
-#shipping_method li label small {
-    display: block;
+#shipping_method li label small,
+.woocommerce-shipping-methods li label span.description,
+.woocommerce-shipping-methods li label small {
+    flex-basis: 100%;
     font-weight: 400;
     color: #6b7280;
     font-size: 0.8125rem;
-    margin-top: 0.125rem;
+    margin-top: 0.25rem;
 }
 
 /* Total Row */
