@@ -1725,18 +1725,23 @@ input[type="number"] {
     color: #111827;
     flex-grow: 1;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
 }
-/* If there's subtext inside the label (like "8-15 business days"), it needs formatting */
+#shipping_method li label .woocommerce-Price-amount {
+    margin-left: auto;
+    font-weight: 700;
+    color: #111827;
+}
+/* Subtext inside the label (like "8-15 business days") */
 #shipping_method li label span.description,
 #shipping_method li label small {
-    display: block;
+    flex-basis: 100%;
     font-weight: 400;
     color: #6b7280;
     font-size: 0.8125rem;
-    margin-top: 0.125rem;
+    margin-top: 0.25rem;
 }
 
 /* Total Row */
