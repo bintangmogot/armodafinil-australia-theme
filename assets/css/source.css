@@ -1541,18 +1541,17 @@ body.single-product { background-color: #f9f9f9; }
     margin-bottom: 0.75rem !important;
     background: transparent !important;
     display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
 }
 .woocommerce-checkout #payment ul.payment_methods li > label {
     color: #fff !important;
     font-weight: 600 !important;
     font-size: 0.875rem !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
+    display: inline-block !important;
+    margin: 0 0 0 0.5rem !important;
     cursor: pointer !important;
-    margin: 0 !important;
 }
 /* Force show radio button even if there's only one payment method */
 .woocommerce-checkout #payment ul.payment_methods li input[type="radio"],
@@ -1567,6 +1566,7 @@ body.single-product { background-color: #f9f9f9; }
     accent-color: #ef4444; /* Give it a red accent or it'll just be standard */
 }
 .woocommerce-checkout #payment div.payment_box {
+    flex: 1 1 100% !important; /* Force to new line */
     position: relative !important;
     background: #e5edff !important;
     color: #111827 !important;
