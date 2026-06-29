@@ -132,6 +132,9 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                             ) );
                         }
                         ?>
+                        <ul class="footer-links mt-1">
+                            <li><a href="<?php echo esc_url( home_url( '/sitemap_index.xml' ) ); ?>">Site Map</a></li>
+                        </ul>
                     </div>
                 </div>
 
