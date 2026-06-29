@@ -6043,12 +6043,18 @@ input[type="number"] {
 /* Wider tooltip box */
 
 #tiptip_holder {
-  max-width: 250px !important;
+  max-width: 350px !important;
+  width: -moz-max-content !important;
+  width: max-content !important;
+  z-index: 9999999 !important;
 }
 
 #tiptip_content {
   white-space: normal !important;
   text-align: center !important;
+  font-size: 0.875rem !important;
+  line-height: 1.4 !important;
+  padding: 0.5rem 0.75rem !important;
 }
 
 .hover\:-translate-y-1:hover {
