@@ -186,7 +186,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                 <!-- Payments Accepted -->
                 <div>
                     <h3 class="text-sm font-semibold text-primary-dark/60 mb-3">Payments Accepted</h3>
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2 sm:gap-4">
                         <?php if ( $payment_images ) : ?>
                             <?php foreach ( $payment_images as $payment ) : ?>
                                 <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
