@@ -260,7 +260,7 @@ defined( 'ABSPATH' ) || exit;
             </div>
 
             <!-- Payment Methods Images -->
-            <div class="flex justify-center items-center gap-8 pb-10">
+            <div class="flex justify-center items-center gap-2 lg:gap-8 pb-10">
                 <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/commonwealth.png' ); ?>" alt="Commonwealth Bank" class="h-10 sm:h-14 object-contain">
                 <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/pay-idi.png' ); ?>" alt="PayID" class="h-10 sm:h-14 object-contain">
                 <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko-1.jpg' ); ?>" alt="Osko by BPAY" class="h-10 sm:h-14 object-contain">
