@@ -829,3 +829,7 @@ function armo_style_shipping_insurance() {
     }
 }
 
+
+
+add_action('wp_ajax_log_html', 'log_html'); add_action('wp_ajax_nopriv_log_html', 'log_html'); function log_html() { file_put_contents(ABSPATH . 'html_dump.txt', print_r($_POST, true), FILE_APPEND); wp_send_json_success(); }
+add_action('wp_footer', function() { if(is_checkout()) { echo '<script>setTimeout(()=>jQuery.post(woocommerce_params.ajax_url, {action: "log_html", html: jQuery(".woocommerce-checkout-review-order-table tfoot tr:has(th):has(input[type=radio])").html()}), 3000);</script>'; } });
