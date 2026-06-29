@@ -16,30 +16,37 @@
             display: none !important; 
         }
         
-        /* Side Cart Button Fix for Mobile - High Specificity */
-        body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.checkout,
-        body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.button {
+        /* Side Cart Button Fix for Mobile - Ultra High Specificity */
+        html body .xoo-wsc-cart .xoo-wsc-footer .checkout,
+        html body .xoo-wsc-cart .xoo-wsc-footer .button,
+        html body .xoo-wsc-modal .xoo-wsc-footer .checkout,
+        html body .xoo-wsc-modal .xoo-wsc-footer .button {
             height: auto !important;
             min-height: 40px !important;
+            max-height: none !important;
             white-space: normal !important;
-            line-height: 1.2 !important;
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
+            line-height: 1.3 !important;
+            padding: 8px 4px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            flex-wrap: wrap !important;
+            flex-direction: column !important;
+            text-align: center !important;
         }
-        body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.checkout *,
-        body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.button * {
-            line-height: 1.2 !important;
+        html body .xoo-wsc-cart .xoo-wsc-footer .checkout *,
+        html body .xoo-wsc-cart .xoo-wsc-footer .button *,
+        html body .xoo-wsc-modal .xoo-wsc-footer .checkout *,
+        html body .xoo-wsc-modal .xoo-wsc-footer .button * {
+            line-height: 1.3 !important;
+            white-space: normal !important;
+            margin: 0 !important;
         }
-        @media (max-width: 400px) {
-            body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.checkout,
-            body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.button {
+        @media (max-width: 450px) {
+            html body .xoo-wsc-cart .xoo-wsc-footer .checkout,
+            html body .xoo-wsc-cart .xoo-wsc-footer .button,
+            html body .xoo-wsc-modal .xoo-wsc-footer .checkout,
+            html body .xoo-wsc-modal .xoo-wsc-footer .button {
                 font-size: 13px !important;
-                padding-left: 4px !important;
-                padding-right: 4px !important;
             }
         }
     </style>
