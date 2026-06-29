@@ -204,8 +204,8 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden mx-4 mt-1 flex justify-end">
-            <div class="bg-white/90 backdrop-blur-md rounded-2xl px-4 py-3 space-y-1 w-[70%] sm:w-[60%]">
+        <div id="mobile-menu" class="hidden lg:hidden mx-4 mt-1">
+            <div class="bg-white/90 backdrop-blur-md rounded-2xl px-4 py-4 space-y-1">
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'primary',
