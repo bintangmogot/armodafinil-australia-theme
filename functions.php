@@ -811,6 +811,12 @@ function armo_style_shipping_insurance() {
                                 return;
                             }
                             
+                            // If Aftership put the tooltip outside the label, move it inside!
+                            var $nextTooltip = $label.next('a, .woocommerce-help-tip, .tooltip-icon');
+                            if ($nextTooltip.length) {
+                                $label.append($nextTooltip);
+                            }
+                            
                             var $input = $label.find('input[type="radio"]');
                             if ($input.length) {
                                 // The label text is a text node right after the input

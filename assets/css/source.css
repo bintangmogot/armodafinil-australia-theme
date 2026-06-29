@@ -1912,10 +1912,23 @@ input[type="number"] {
 
 /* Help icon (?) */
 .woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label a,
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .tooltip-icon {
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .tooltip-icon,
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .woocommerce-help-tip {
     flex: 0 0 auto !important;
     flex-shrink: 0 !important;
-    margin-left: 0.25rem !important;
+    margin-left: 0.125rem !important;
     width: auto !important;
     height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Wider tooltip box */
+#tiptip_holder {
+    max-width: 250px !important;
+}
+#tiptip_content {
+    white-space: normal !important;
+    text-align: center !important;
 }
