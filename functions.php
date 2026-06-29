@@ -803,24 +803,24 @@ function armo_style_shipping_insurance() {
                             }
                         });
 
-                        // Parse labels
+                        // Parse labels safely using DOM manipulation
                         $td.find('label').each(function() {
                             var $label = $(this);
                             // Avoid processing the same label twice
-                            if ($label.find('.shipping-title').length > 0 || $label.find('.woocommerce-Price-amount').length > 0) {
+                            if ($label.find('.shipping-title').length > 0) {
                                 return;
                             }
                             
-                            var html = $label.html();
-                            
-                            var newHtml = html.replace(/:?\s*(\$\d+(?:\.\d+)?)/g, '<span class="woocommerce-Price-amount amount">$1</span>');
-                            
-                            if (newHtml !== html) {
-                                newHtml = newHtml.replace(/<input([^>]+)>\s*([^<]+)<span/g, '<input$1> <span class="shipping-title">$2</span><span');
-                                $label.html(newHtml);
-                            } else {
-                                var noPriceHtml = html.replace(/<input([^>]+)>\s*([^<]+)/g, '<input$1> <span class="shipping-title">$2</span>');
-                                $label.html(noPriceHtml);
+                            var $input = $label.find('input[type="radio"]');
+                            if ($input.length) {
+                                // The label text is a text node right after the input
+                                var textNode = $input[0].nextSibling;
+                                if (textNode && textNode.nodeType === 3) { // 3 is TEXT_NODE
+                                    var text = textNode.nodeValue.replace(':', '').trim();
+                                    if (text) {
+                                        $(textNode).replaceWith(' <span class="shipping-title">' + text + '</span> ');
+                                    }
+                                }
                             }
                         });
                     }

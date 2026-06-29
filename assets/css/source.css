@@ -1877,8 +1877,7 @@ input[type="number"] {
     box-sizing: border-box !important;
     font-weight: 600 !important;
     color: #111827 !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
 }
 .woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label:last-of-type {
     margin-bottom: 0 !important;
@@ -1902,16 +1901,21 @@ input[type="number"] {
     font-weight: 700 !important;
     color: #111827 !important;
     margin-left: auto !important;
+    flex-shrink: 0 !important;
 }
 
 /* Label text span — fill available space so price goes right */
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label span {
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .shipping-title {
     flex: 1 1 auto !important;
+    margin-right: 0.5rem !important;
 }
 
 /* Help icon (?) */
 .woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label a,
 .woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .tooltip-icon {
+    flex: 0 0 auto !important;
     flex-shrink: 0 !important;
     margin-left: 0.25rem !important;
+    width: auto !important;
+    height: auto !important;
 }

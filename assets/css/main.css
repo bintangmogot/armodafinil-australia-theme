@@ -3534,6 +3534,10 @@ img {
   text-align: right;
 }
 
+.align-top {
+  vertical-align: top;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -3737,6 +3741,11 @@ img {
 .text-blue-700 {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity, 1));
+}
+
+.text-blue-900 {
+  --tw-text-opacity: 1;
+  color: rgb(30 58 138 / var(--tw-text-opacity, 1));
 }
 
 .text-gray-200 {
@@ -6057,8 +6066,7 @@ input[type="number"] {
   box-sizing: border-box !important;
   font-weight: 600 !important;
   color: #111827 !important;
-  flex-wrap: wrap !important;
-  justify-content: space-between !important;
+  flex-wrap: nowrap !important;
 }
 
 .woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label:last-of-type {
@@ -6086,20 +6094,25 @@ input[type="number"] {
   font-weight: 700 !important;
   color: #111827 !important;
   margin-left: auto !important;
+  flex-shrink: 0 !important;
 }
 
 /* Label text span — fill available space so price goes right */
 
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label span {
+.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .shipping-title {
   flex: 1 1 auto !important;
+  margin-right: 0.5rem !important;
 }
 
 /* Help icon (?) */
 
 .woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label a,
 .woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .tooltip-icon {
+  flex: 0 0 auto !important;
   flex-shrink: 0 !important;
   margin-left: 0.25rem !important;
+  width: auto !important;
+  height: auto !important;
 }
 
 .hover\:-translate-y-1:hover {
@@ -6748,6 +6761,14 @@ input[type="number"] {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:items-start {
+    align-items: flex-start;
+  }
+
+  .sm\:justify-between {
+    justify-content: space-between;
   }
 
   .sm\:p-6 {
