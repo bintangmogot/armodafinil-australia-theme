@@ -783,16 +783,40 @@ function armo_style_shipping_insurance() {
                 $('.woocommerce-checkout-review-order-table tfoot tr').each(function() {
                     var $th = $(this).find('th');
                     if ($th.length && $th.text().indexOf('Shipping Insurance') !== -1) {
-                        if (!$(this).hasClass('custom-insurance-row')) {
-                            $(this).addClass('custom-insurance-row');
-                        }
                         
                         var $td = $(this).find('td');
+                        
+                        // If radio buttons aren't wrapped in labels yet, wrap them (failsafe)
                         $td.find('input[type="radio"]').each(function() {
                             var $parent = $(this).parent();
                             if ($parent.is('td')) {
-                                var $wrapper = jQuery('<div class="insurance-option"></div>');
+                                var $wrapper = jQuery('<label class="insurance-option-label"></label>');
                                 $(this).nextUntil('input, br').addBack().wrapAll($wrapper);
+                            }
+                        });
+
+                        // Now find all labels and parse out the price
+                        $td.find('label').each(function() {
+                            var $label = $(this);
+                            // Avoid processing the same label twice
+                            if ($label.find('.woocommerce-Price-amount').length > 0) return;
+                            
+                            // Get the HTML content
+                            var html = $label.html();
+                            
+                            // Aftership concatenates the title and price like "Shipping Insurance:$39"
+                            // Let's replace the colon and price with a properly formatted span
+                            // Regex looks for an optional colon, optional space, then a dollar sign and numbers
+                            var newHtml = html.replace(/:?\s*(\$\d+(?:\.\d+)?)/g, '<span class="woocommerce-Price-amount amount">$1</span>');
+                            
+                            if (newHtml !== html) {
+                                // Add a title span around the text before the price so it can push the price right
+                                newHtml = newHtml.replace(/<input([^>]+)>\s*([^<]+)<span/g, '<input$1> <span class="shipping-title">$2</span><span');
+                                $label.html(newHtml);
+                            } else {
+                                // If no price is found (e.g., "No Insurance"), just wrap the text in a title span
+                                var noPriceHtml = html.replace(/<input([^>]+)>\s*([^<]+)/g, '<input$1> <span class="shipping-title">$2</span>');
+                                $label.html(noPriceHtml);
                             }
                         });
                     }
