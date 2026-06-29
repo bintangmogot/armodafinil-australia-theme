@@ -1777,37 +1777,38 @@ input[type="number"] {
 }
 #shipping_method li label,
 .woocommerce-shipping-methods li label {
-    margin: 0;
-    font-weight: 600;
-    color: #111827;
-    flex-grow: 1;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    margin: 0 !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
 }
 #shipping_method li label .shipping-title,
 .woocommerce-shipping-methods li label .shipping-title {
-    /* Kept for compatibility if they do add a span */
+    flex: 1 1 auto !important;
 }
 #shipping_method li label .woocommerce-Price-amount,
 .woocommerce-shipping-methods li label .woocommerce-Price-amount {
-    font-weight: 700;
-    color: #111827;
-    margin-left: auto;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin-left: auto !important;
 }
 /* If there's subtext inside the label (like "8-15 business days"), it needs formatting */
 #shipping_method li label span.description,
 #shipping_method li label small,
 .woocommerce-shipping-methods li label span.description,
 .woocommerce-shipping-methods li label small {
-    flex-basis: 100%;
-    width: 100%;
-    font-weight: 400;
-    color: #6b7280;
-    font-size: 0.8125rem;
-    margin-top: 0.25rem;
+    flex-basis: 100% !important;
+    width: 100% !important;
+    font-weight: 400 !important;
+    color: #6b7280 !important;
+    font-size: 0.8125rem !important;
+    margin-top: 0.25rem !important;
+    display: block !important;
 }
 
 /* Total Row */
