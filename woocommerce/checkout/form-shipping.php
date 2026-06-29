@@ -8,7 +8,6 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="shipping-section-wrapper border border-gray-200 rounded-lg bg-white overflow-hidden">
-    <div class="p-6 bg-white">
         <div class="woocommerce-shipping-fields">
             <?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
                 <h3>Ship to a different address</h3>
@@ -53,6 +52,6 @@ defined( 'ABSPATH' ) || exit;
 
             <?php do_action( 'woocommerce_after_order_notes', $checkout ); ?>
         </div>
-    </div>
+    
 </div>
 
