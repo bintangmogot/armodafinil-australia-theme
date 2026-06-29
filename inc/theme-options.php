@@ -316,18 +316,18 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
             ),
             array(
                 'key'           => 'field_footer_whatsapp',
-                'label'         => 'WhatsApp Number',
+                'label'         => 'Phone Number',
                 'name'          => 'footer_whatsapp',
                 'type'          => 'text',
-                'instructions'  => 'WhatsApp contact number (displayed as-is).',
+                'instructions'  => 'Phone contact number (displayed as-is).',
                 'default_value' => '+61 8 6866 0556',
             ),
             array(
                 'key'           => 'field_footer_whatsapp_link',
-                'label'         => 'WhatsApp Link URL',
+                'label'         => 'Phone Link URL',
                 'name'          => 'footer_whatsapp_link',
                 'type'          => 'url',
-                'instructions'  => 'Full WhatsApp chat link (e.g. https://wa.me/61868660556). Leave empty to disable clickable link.',
+                'instructions'  => 'Full phone link (e.g. tel:+61868660556). Leave empty to disable clickable link.',
                 'default_value' => '',
             ),
             array(
