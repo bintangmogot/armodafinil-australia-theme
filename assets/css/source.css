@@ -1876,8 +1876,7 @@ input[type="number"] {
 }
 .woocommerce-help-tip::after {
     /* Anchor to the right so it expands to the left, preventing cut-off on the right edge of screen */
-    left: auto !important;
-    right: -10px !important;
+    left: 20px !important;
     transform: none !important;
     /* Force it above the icon and reset top to avoid height stretching */
     top: auto !important;
