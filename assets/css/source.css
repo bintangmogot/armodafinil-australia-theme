@@ -1755,11 +1755,11 @@ input[type="number"] {
 #shipping_method li,
 .woocommerce-shipping-methods li {
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* changed from flex-start to center since it's more compact */
     border: 1px solid #d1d5db;
     border-radius: 0.25rem;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.375rem;
     background-color: #fff;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -1807,7 +1807,7 @@ input[type="number"] {
     font-weight: 400 !important;
     color: #6b7280 !important;
     font-size: 0.8125rem !important;
-    margin-top: 0.25rem !important;
+    margin-top: 0 !important;
     display: block !important;
 }
 
