@@ -43,7 +43,7 @@ get_header();
                 </div>
 
                 <!-- Title -->
-                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">
                     <?php the_title(); ?>
                 </h1>
 
