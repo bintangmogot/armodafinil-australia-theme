@@ -67,7 +67,7 @@ function armo_enqueue_assets() {
     );
 
     // Product Total calculation & quantity buttons (single product and cart)
-    if ( class_exists( 'WooCommerce' ) && ( is_product() || is_cart() ) ) {
+    if ( is_product() || is_cart() ) {
         wp_enqueue_script(
             'armo-product-total',
             get_stylesheet_directory_uri() . '/assets/js/product-total.js',

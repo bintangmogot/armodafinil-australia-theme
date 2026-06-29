@@ -740,7 +740,7 @@ function armo_allow_svg_uploads( $mimes ) {
  */
 add_filter( 'woocommerce_attribute_label', 'armo_custom_variation_label', 10, 3 );
 function armo_custom_variation_label( $label, $name, $product ) {
-    if ( class_exists( 'WooCommerce' ) && is_product() ) {
+    if ( is_product() ) {
         return __( 'Select Size/Quantity', 'woocommerce' );
     }
     return $label;
@@ -752,7 +752,7 @@ function armo_custom_variation_label( $label, $name, $product ) {
  */
 add_action( 'wp_head', 'armo_hide_variation_price_css' );
 function armo_hide_variation_price_css() {
-    if ( class_exists( 'WooCommerce' ) && is_product() ) {
+    if ( is_product() ) {
         echo '<style>
             .woocommerce-variation-price { display: none !important; }
             .single_variation .woocommerce-variation-price { display: none !important; }
@@ -771,7 +771,6 @@ remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_
  */
 add_action( 'wp_footer', 'armo_style_shipping_insurance', 99 );
 function armo_style_shipping_insurance() {
-    if ( ! class_exists( 'WooCommerce' ) ) { return; }
     if ( is_checkout() ) {
         ?>
         <script>

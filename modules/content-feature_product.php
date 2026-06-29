@@ -4,7 +4,6 @@
  * Fields: heading (text), feature_product (relationship, return=object, post_type=product)
  * Design: White bg, heading centered, product cards in 4-column grid with rounded corners, navy border around images only, "IN STOCK" badge
  */
-if ( ! class_exists( 'WooCommerce' ) ) { return; }
 $heading = get_sub_field('heading');
 $products = get_sub_field('feature_product');
 ?>
