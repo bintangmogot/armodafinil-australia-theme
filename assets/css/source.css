@@ -1673,52 +1673,17 @@ input[type="number"] {
     color: #111827 !important;
 }
 
-/* TFOOT Flexbox Layout to force 100% width for Shipping/Fees */
-.woocommerce-checkout-review-order-table tfoot {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+/* Stack TH and TD for Shipping & Fee rows */
+.woocommerce-checkout-review-order-table tfoot .woocommerce-shipping-totals td,
+.woocommerce-checkout-review-order-table tfoot .fee td {
+    padding: 1.5rem 1rem !important;
 }
-.woocommerce-checkout-review-order-table tfoot tr {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    border-bottom: 1px solid #e5e7eb;
-}
-.woocommerce-checkout-review-order-table tfoot tr:last-child {
-    border-bottom: none;
-}
-.woocommerce-checkout-review-order-table tfoot th,
-.woocommerce-checkout-review-order-table tfoot td {
-    display: block;
-    border-bottom: none !important;
-    width: auto;
-}
-
-/* Rows that need left/right split (Subtotal, Total, Discount) */
-.woocommerce-checkout-review-order-table tfoot tr.cart-subtotal,
-.woocommerce-checkout-review-order-table tfoot tr.order-total,
-.woocommerce-checkout-review-order-table tfoot tr.cart-discount {
-    justify-content: space-between;
-}
-/* Rows that need full width stacking (Shipping, Fee) */
-.woocommerce-checkout-review-order-table tfoot tr.woocommerce-shipping-totals,
-.woocommerce-checkout-review-order-table tfoot tr.fee {
-    flex-direction: column;
-    align-items: stretch;
-}
-.woocommerce-checkout-review-order-table tfoot tr.woocommerce-shipping-totals th,
-.woocommerce-checkout-review-order-table tfoot tr.fee th {
+.shipping-method-header,
+.fee-method-header {
     color: #00104a !important;
     font-weight: 700 !important;
-    padding-bottom: 0.5rem !important;
-    font-size: 1rem;
-    text-align: left;
-}
-.woocommerce-checkout-review-order-table tfoot tr.woocommerce-shipping-totals td,
-.woocommerce-checkout-review-order-table tfoot tr.fee td {
-    padding-top: 0 !important;
-    width: 100%;
+    padding-bottom: 0.75rem !important;
+    font-size: 1.125rem;
 }
 
 /* Shipping Options List */
