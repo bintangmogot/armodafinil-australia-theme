@@ -1222,6 +1222,23 @@ body.single-product { background-color: #f9f9f9; }
     border-color: #00104a !important;
 }
 
+/* Specific override for Order Notes field to be column layout and resizable */
+.woocommerce-checkout .checkout-fields-block #order_comments_field {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+.woocommerce-checkout .checkout-fields-block #order_comments_field > label {
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+}
+.woocommerce-checkout .checkout-fields-block #order_comments_field .woocommerce-input-wrapper {
+    width: 100% !important;
+}
+.woocommerce-checkout .checkout-fields-block #order_comments_field textarea {
+    resize: vertical !important;
+    min-height: 80px;
+}
+
 /* ===== MEDICAL CONDITIONS SECTION ===== */
 
 /* Form rows: label + input side by side */
