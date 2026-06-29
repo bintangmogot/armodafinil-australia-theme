@@ -232,6 +232,21 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
         'title'  => 'Footer Settings',
         'fields' => array(
             
+            // ─── TAB: General ───
+            array(
+                'key'   => 'field_footer_tab_general',
+                'label' => 'General',
+                'type'  => 'tab',
+            ),
+            array(
+                'key'           => 'field_footer_text',
+                'label'         => 'Footer Description',
+                'name'          => 'footer_text',
+                'type'          => 'textarea',
+                'instructions'  => 'The text that appears below the logo in the footer.',
+                'default_value' => 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via Commonwealth Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.',
+            ),
+
             // ─── TAB: Menu Headings ───
             array(
                 'key'   => 'field_footer_tab_menu_headings',
