@@ -4,6 +4,7 @@
  * Fields: heading (text), feature_product (relationship, return=object, post_type=product)
  * Design: Carousel of products with left/right arrows on desktop, navy border around images only, "IN STOCK" badge
  */
+if ( ! class_exists( 'WooCommerce' ) ) { return; }
 $heading = get_sub_field('heading');
 $products = get_sub_field('feature_product');
 // Generate a unique ID for this carousel instance
