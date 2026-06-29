@@ -163,49 +163,82 @@ defined( 'ABSPATH' ) || exit;
             </div>
 
             <!-- Billing / Shipping Addresses -->
-            <div class="flex flex-col sm:flex-row gap-8 mb-8 text-xs text-gray-700">
+            <div class="flex flex-col sm:flex-row justify-between gap-8 mb-6 text-sm text-gray-700">
                 <div class="flex-1">
-                    <h4 class="font-bold text-gray-900 mb-2 text-sm">Billing address</h4>
-                    <?php echo wp_kses_post( $order->get_formatted_billing_address() ?: esc_html__( 'N/A', 'woocommerce' ) ); ?>
-                    <?php if ( $order->get_billing_phone() ) : ?>
-                        <br/><?php echo esc_html( $order->get_billing_phone() ); ?>
-                    <?php endif; ?>
-                    <?php if ( $order->get_billing_email() ) : ?>
-                        <br/><?php echo esc_html( $order->get_billing_email() ); ?>
-                    <?php endif; ?>
+                    <h4 class="font-bold text-gray-900 mb-2 text-base">Billing address</h4>
+                    <div class="leading-relaxed">
+                        <?php echo wp_kses_post( $order->get_formatted_billing_address() ?: esc_html__( 'N/A', 'woocommerce' ) ); ?>
+                        <?php if ( $order->get_billing_phone() ) : ?>
+                            <br/><?php echo esc_html( $order->get_billing_phone() ); ?>
+                        <?php endif; ?>
+                        <?php if ( $order->get_billing_email() ) : ?>
+                            <br/><?php echo esc_html( $order->get_billing_email() ); ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
                 <?php if ( ! wc_ship_to_billing_address_only() && $order->needs_shipping_address() ) : ?>
-                <div class="flex-1">
-                    <h4 class="font-bold text-gray-900 mb-2 text-sm">Shipping address</h4>
-                    <?php echo wp_kses_post( $order->get_formatted_shipping_address() ?: esc_html__( 'N/A', 'woocommerce' ) ); ?>
+                <div class="flex-1 sm:text-right">
+                    <h4 class="font-bold text-gray-900 mb-2 text-base">Shipping address</h4>
+                    <div class="leading-relaxed">
+                        <?php echo wp_kses_post( $order->get_formatted_shipping_address() ?: esc_html__( 'N/A', 'woocommerce' ) ); ?>
+                    </div>
                 </div>
                 <?php endif; ?>
             </div>
 
+            <!-- Divider -->
+            <hr class="border-gray-300 mb-6">
+
             <!-- Totals breakdown -->
-            <div class="border-t border-gray-200 pt-4 mb-8">
-                <table class="w-full text-sm">
-                    <?php foreach ( $order->get_order_item_totals() as $key => $total ) : ?>
+            <div class="mb-6">
+                <table class="w-full text-base">
+                    <?php 
+                    $order_totals = $order->get_order_item_totals();
+                    foreach ( $order_totals as $key => $total ) : 
+                        if ( $key === 'order_total' ) continue;
+                        $label = wp_strip_all_tags( $total['label'] );
+                        $label = rtrim( $label, ':' );
+                    ?>
                         <tr class="<?php echo esc_attr( $key ); ?>">
-                            <th class="text-left font-medium text-gray-600 py-1.5"><?php echo wp_kses_post( $total['label'] ); ?></th>
-                            <td class="text-right font-bold text-gray-900 py-1.5"><?php echo wp_kses_post( $total['value'] ); ?></td>
+                            <td class="text-left text-gray-700 py-2"><?php echo esc_html( $label ); ?></td>
+                            <td class="text-right font-bold text-gray-900 py-2"><?php echo wp_kses_post( $total['value'] ); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
             </div>
 
+            <!-- Divider -->
+            <hr class="border-gray-300 mb-6">
+
+            <!-- Total Due -->
+            <?php if ( isset( $order_totals['order_total'] ) ) : ?>
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-lg font-bold text-gray-900">Total Due</h3>
+                <div class="text-2xl font-bold text-blue-600">
+                    <?php echo wp_kses_post( $order_totals['order_total']['value'] ); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <!-- Continue Shopping -->
             <div class="text-center mb-10">
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-10 rounded-full transition-colors text-sm">
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="block w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-10 rounded-xl transition-colors text-base text-center shadow-sm">
                     Continue Shopping
                 </a>
             </div>
 
             <!-- Warning -->
-            <div class="text-xs text-gray-600 space-y-3">
+            <div class="text-sm text-blue-900 space-y-3 mb-10 mt-10">
                 <p><span class="text-yellow-500 font-bold">⚠ Note</span><br/>
                 The average shipping time is 15-22 days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.</p>
                 <p><span class="text-red-600 font-bold">DO NOT</span> mention anything related to <span class="text-red-600 font-bold">medicine</span> or <span class="text-red-600 font-bold">website</span> name. Just mention your order number.</p>
+            </div>
+
+            <!-- Payment Methods Images -->
+            <div class="flex justify-center items-center gap-8 pb-10">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/commonwealth.png' ); ?>" alt="Commonwealth Bank" class="h-10 sm:h-14 object-contain">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/pay-idi.png' ); ?>" alt="PayID" class="h-10 sm:h-14 object-contain">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko-1.jpg' ); ?>" alt="Osko by BPAY" class="h-10 sm:h-14 object-contain">
             </div>
 
             <?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
