@@ -190,19 +190,19 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                         <?php if ( $payment_images ) : ?>
                             <?php foreach ( $payment_images as $payment ) : ?>
                                 <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                    <img src="<?php echo esc_url( $payment['image']['url'] ); ?>" alt="<?php echo esc_attr( $payment['alt_text'] ?: $payment['image']['alt'] ); ?>" class="!h-5 md:!h-6 w-auto object-contain">
+                                    <img src="<?php echo esc_url( $payment['image']['url'] ); ?>" alt="<?php echo esc_attr( $payment['alt_text'] ?: $payment['image']['alt'] ); ?>" class="footer-pay-logo w-auto object-contain">
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <!-- Fallback: original hardcoded images -->
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/commonwealth.png'); ?>" alt="Commonwealth Bank" class="!h-5 md:!h-6 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/commonwealth.png'); ?>" alt="Commonwealth Bank" class="footer-pay-logo w-auto object-contain">
                             </div>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/osko-1.jpg'); ?>" alt="Osko" class="!h-5 md:!h-6 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/osko-1.jpg'); ?>" alt="Osko" class="footer-pay-logo w-auto object-contain">
                             </div>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/pay-idi.png'); ?>" alt="PayID" class="!h-5 md:!h-6 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/pay-idi.png'); ?>" alt="PayID" class="footer-pay-logo w-auto object-contain">
                             </div>
                         <?php endif; ?>
                     </div>
@@ -215,13 +215,13 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                         <?php if ( $shipping_images ) : ?>
                             <?php foreach ( $shipping_images as $shipping ) : ?>
                                 <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                    <img src="<?php echo esc_url( $shipping['image']['url'] ); ?>" alt="<?php echo esc_attr( $shipping['alt_text'] ?: $shipping['image']['alt'] ); ?>" class="!h-5 md:!h-6 w-auto object-contain">
+                                    <img src="<?php echo esc_url( $shipping['image']['url'] ); ?>" alt="<?php echo esc_attr( $shipping['alt_text'] ?: $shipping['image']['alt'] ); ?>" class="footer-ship-logo w-auto object-contain">
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <!-- Fallback: original hardcoded image -->
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/Australia_Post_Logo 1.png'); ?>" alt="Australia Post" class="!h-5 md:!h-6 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/Australia_Post_Logo 1.png'); ?>" alt="Australia Post" class="footer-ship-logo w-auto object-contain">
                             </div>
                         <?php endif; ?>
                     </div>
@@ -237,18 +237,18 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                         <?php if ( $payment_images ) : ?>
                             <?php foreach ( $payment_images as $payment ) : ?>
                                 <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                    <img src="<?php echo esc_url( $payment['image']['url'] ); ?>" alt="<?php echo esc_attr( $payment['alt_text'] ?: $payment['image']['alt'] ); ?>" class="!h-5 md:!h-6 w-auto object-contain">
+                                    <img src="<?php echo esc_url( $payment['image']['url'] ); ?>" alt="<?php echo esc_attr( $payment['alt_text'] ?: $payment['image']['alt'] ); ?>" class="footer-pay-logo w-auto object-contain">
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/commonwealth.png'); ?>" alt="Commonwealth Bank" class="!h-5 md:!h-6 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/commonwealth.png'); ?>" alt="Commonwealth Bank" class="footer-pay-logo w-auto object-contain">
                             </div>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/osko-1.jpg'); ?>" alt="Osko" class="!h-5 md:!h-6 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/osko-1.jpg'); ?>" alt="Osko" class="footer-pay-logo w-auto object-contain">
                             </div>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/pay-idi.png'); ?>" alt="PayID" class="!h-5 md:!h-6 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/pay-idi.png'); ?>" alt="PayID" class="footer-pay-logo w-auto object-contain">
                             </div>
                         <?php endif; ?>
                     </div>
@@ -259,12 +259,12 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                         <?php if ( $shipping_images ) : ?>
                             <?php foreach ( $shipping_images as $shipping ) : ?>
                                 <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                    <img src="<?php echo esc_url( $shipping['image']['url'] ); ?>" alt="<?php echo esc_attr( $shipping['alt_text'] ?: $shipping['image']['alt'] ); ?>" class="!h-5 md:!h-6 w-auto object-contain">
+                                    <img src="<?php echo esc_url( $shipping['image']['url'] ); ?>" alt="<?php echo esc_attr( $shipping['alt_text'] ?: $shipping['image']['alt'] ); ?>" class="footer-ship-logo w-auto object-contain">
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/Australia_Post_Logo 1.png'); ?>" alt="Australia Post" class="!h-5 md:!h-6 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/Australia_Post_Logo 1.png'); ?>" alt="Australia Post" class="footer-ship-logo w-auto object-contain">
                             </div>
                         <?php endif; ?>
                     </div>
@@ -281,7 +281,26 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
         </div>
 
     </footer>
-
+    <style>
+        .footer-pay-logo {
+            height: 1.25rem !important; /* Mobile: 20px */
+            width: auto !important;
+        }
+        @media (min-width: 768px) {
+            .footer-pay-logo {
+                height: 1.5rem !important; /* Desktop: 24px */
+            }
+        }
+        .footer-ship-logo {
+            height: 0.875rem !important; /* Mobile: 14px */
+            width: auto !important;
+        }
+        @media (min-width: 768px) {
+            .footer-ship-logo {
+                height: 1.125rem !important; /* Desktop: 18px */
+            }
+        }
+    </style>
 </div>
 
 <?php wp_footer(); ?>
