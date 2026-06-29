@@ -775,37 +775,51 @@ function armo_style_shipping_insurance() {
         ?>
         <script>
         jQuery(document).ready(function($) {
+            var isFormatting = false;
             function formatInsurance() {
+                if (isFormatting) return;
+                isFormatting = true;
+                
                 $('.woocommerce-checkout-review-order-table tfoot tr').each(function() {
                     var $th = $(this).find('th');
                     if ($th.length && $th.text().indexOf('Shipping Insurance') !== -1) {
-                        $(this).addClass('custom-insurance-row');
+                        if (!$(this).hasClass('custom-insurance-row')) {
+                            $(this).addClass('custom-insurance-row');
+                        }
                         
-                        // Some plugins use raw inputs, wrap them just in case they aren't wrapped
-                        // But only if they don't have a label parent.
                         var $td = $(this).find('td');
                         $td.find('input[type="radio"]').each(function() {
                             var $parent = $(this).parent();
                             if ($parent.is('td')) {
-                                // It's directly in the td, wrap it with the next text node
                                 var $wrapper = jQuery('<div class="insurance-option"></div>');
-                                $(this).nextUntil('input, br').andSelf().wrapAll($wrapper);
+                                $(this).nextUntil('input, br').addBack().wrapAll($wrapper);
                             }
                         });
                     }
                 });
+                
+                isFormatting = false;
             }
+            
             formatInsurance();
             $(document).on('updated_checkout', formatInsurance);
             setTimeout(formatInsurance, 500);
             setTimeout(formatInsurance, 1500);
             setTimeout(formatInsurance, 3000);
             
-            // Also observe the table for DOM changes (React/Vue plugins)
             var target = document.querySelector('.woocommerce-checkout-review-order-table');
             if (target) {
-                var observer = new MutationObserver(function() {
-                    formatInsurance();
+                var observer = new MutationObserver(function(mutations) {
+                    var shouldFormat = false;
+                    for (var i=0; i<mutations.length; i++) {
+                        if (mutations[i].addedNodes.length > 0) {
+                            shouldFormat = true;
+                            break;
+                        }
+                    }
+                    if (shouldFormat) {
+                        formatInsurance();
+                    }
                 });
                 observer.observe(target, { childList: true, subtree: true });
             }
