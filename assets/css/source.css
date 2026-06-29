@@ -1534,7 +1534,7 @@ body.single-product { background-color: #f9f9f9; }
 .woocommerce-checkout #payment ul.payment_methods {
     list-style: none !important;
     padding: 0 !important;
-    margin: 0 0 1rem 0 !important;
+    margin: 0 !important;
     border: none !important;
 }
 .woocommerce-checkout #payment ul.payment_methods li {
