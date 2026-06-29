@@ -259,11 +259,22 @@ defined( 'ABSPATH' ) || exit;
                 <p><span class="text-red-600 font-bold">DO NOT</span> mention anything related to <span class="text-red-600 font-bold">medicine</span> or <span class="text-red-600 font-bold">website</span> name. Just mention your order number.</p>
             </div>
 
+            <style>
+                .thankyou-pay-logo {
+                    height: 12px !important; /* Mobile: smaller size as requested */
+                    width: auto !important;
+                }
+                @media (min-width: 640px) {
+                    .thankyou-pay-logo {
+                        height: 24px !important;
+                    }
+                }
+            </style>
             <!-- Payment Methods Images -->
-            <div class="flex justify-center items-center gap-4 lg:gap-8 pb-10">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/commonwealth.png' ); ?>" alt="Commonwealth Bank" class="!h-[12px] sm:!h-[30px] object-contain">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/pay-idi.png' ); ?>" alt="PayID" class="!h-[12px] sm:!h-[30px] object-contain">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko-1.jpg' ); ?>" alt="Osko by BPAY" class="!h-[12px] sm:!h-[30px] object-contain">
+            <div class="flex flex-wrap justify-center items-center gap-4 lg:gap-8 pb-10">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/commonwealth.png' ); ?>" alt="Commonwealth Bank" class="thankyou-pay-logo object-contain">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/pay-idi.png' ); ?>" alt="PayID" class="thankyou-pay-logo object-contain">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko-1.jpg' ); ?>" alt="Osko by BPAY" class="thankyou-pay-logo object-contain">
             </div>
 
             <div style="display:none;">
