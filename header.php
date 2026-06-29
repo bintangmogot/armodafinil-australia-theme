@@ -210,7 +210,7 @@
                 wp_nav_menu(array(
                     'theme_location' => 'primary',
                     'container' => false,
-                    'menu_class' => 'flex flex-col divide-y divide-gray-200/50',
+                    'menu_class' => 'flex flex-col',
                     'fallback_cb' => false,
                     'depth' => 2,
                 ));

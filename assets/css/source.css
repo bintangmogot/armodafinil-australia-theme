@@ -68,8 +68,14 @@
     }
 
     /* Mobile nav */
+    #mobile-menu ul > li {
+        @apply border-b border-gray-300/60;
+    }
+    #mobile-menu ul > li:last-child {
+        @apply border-b-0;
+    }
     #mobile-menu ul > li > a {
-        @apply block px-4 py-1.5 text-lg font-bold text-primary text-right;
+        @apply block px-4 py-2 text-lg font-bold text-primary text-right;
         @apply hover:text-red-600 transition-colors duration-150;
     }
     #mobile-menu ul > li.current-menu-item > a,
