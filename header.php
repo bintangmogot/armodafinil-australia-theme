@@ -205,12 +205,12 @@
         </div>
 
         <div id="mobile-menu" class="hidden lg:hidden mx-4 mt-1">
-            <div class="bg-white/90 backdrop-blur-md rounded-2xl px-4 py-2 space-y-1">
+            <div class="bg-white/90 backdrop-blur-md rounded-2xl px-4 py-2">
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'primary',
                     'container' => false,
-                    'menu_class' => 'space-y-1',
+                    'menu_class' => 'flex flex-col divide-y divide-gray-200/50',
                     'fallback_cb' => false,
                     'depth' => 2,
                 ));
