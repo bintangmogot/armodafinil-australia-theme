@@ -239,7 +239,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'type'  => 'tab',
             ),
             array(
-                'key'           => 'field_footer_text',
+                'key'           => 'field_68adc7eef57a0',
                 'label'         => 'Footer Description',
                 'name'          => 'footer_text',
                 'type'          => 'textarea',
