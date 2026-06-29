@@ -1851,13 +1851,15 @@ input[type="number"] {
     justify-content: center !important;
 }
 
-/* Wider tooltip box */
-#tiptip_holder {
+/* Wider tooltip box (jQuery TipTip and CSS-only ::after tooltips) */
+#tiptip_holder,
+.woocommerce-help-tip::after {
     max-width: 350px !important;
     width: max-content !important;
     z-index: 9999999 !important;
 }
-#tiptip_content {
+#tiptip_content,
+.woocommerce-help-tip::after {
     white-space: normal !important;
     text-align: center !important;
     font-size: 0.875rem !important;
