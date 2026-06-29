@@ -152,13 +152,15 @@ defined( 'ABSPATH' ) || exit;
                     <span>Payment Method:</span>
                     <span class="font-bold text-blue-700"><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></span>
                 </div>
-                <div class="text-xs text-gray-600">
-                    <span>Order Contains:</span>
-                    <?php foreach ( $order->get_items() as $item_id => $item ) : ?>
-                        <div class="font-bold text-blue-700 mt-1">
-                            <?php echo wp_kses_post( $item->get_name() ); ?> · Quantity : <?php echo esc_html( $item->get_quantity() ); ?>  X <?php echo esc_html( $item->get_quantity() ); ?>
-                        </div>
-                    <?php endforeach; ?>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start text-xs text-gray-600">
+                    <span class="mb-1 sm:mb-0">Order Contains:</span>
+                    <div class="sm:text-right">
+                        <?php foreach ( $order->get_items() as $item_id => $item ) : ?>
+                            <div class="font-bold text-blue-700 mt-1 sm:mt-0">
+                                <?php echo wp_kses_post( $item->get_name() ); ?> · Quantity : <?php echo esc_html( $item->get_quantity() ); ?>  X <?php echo esc_html( $item->get_quantity() ); ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
 
@@ -198,10 +200,33 @@ defined( 'ABSPATH' ) || exit;
                         if ( $key === 'order_total' ) continue;
                         $label = wp_strip_all_tags( $total['label'] );
                         $label = rtrim( $label, ':' );
+                        
+                        $value = $total['value'];
+                        $extra_text = '';
+                        if ( $key === 'shipping' ) {
+                            if ( strpos( $value, '<small' ) !== false ) {
+                                $parts = explode( '<small', $value, 2 );
+                                $value = $parts[0];
+                                $extra_text = wp_strip_all_tags( '<small' . $parts[1] );
+                            } elseif ( strpos( $value, '&nbsp;via ' ) !== false ) {
+                                $parts = explode( '&nbsp;via ', $value, 2 );
+                                $value = $parts[0];
+                                $extra_text = 'via ' . wp_strip_all_tags( $parts[1] );
+                            } elseif ( strpos( $value, ' via ' ) !== false ) {
+                                $parts = explode( ' via ', $value, 2 );
+                                $value = $parts[0];
+                                $extra_text = 'via ' . wp_strip_all_tags( $parts[1] );
+                            }
+                        }
                     ?>
                         <tr class="<?php echo esc_attr( $key ); ?>">
-                            <td class="text-left text-gray-700 py-2"><?php echo esc_html( $label ); ?></td>
-                            <td class="text-right font-bold text-gray-900 py-2"><?php echo wp_kses_post( $total['value'] ); ?></td>
+                            <td class="text-left text-gray-700 py-2 align-top">
+                                <?php echo esc_html( $label ); ?>
+                                <?php if ( $extra_text ) : ?>
+                                    <div class="text-xs text-gray-500 mt-0.5"><?php echo esc_html( $extra_text ); ?></div>
+                                <?php endif; ?>
+                            </td>
+                            <td class="text-right font-bold text-gray-900 py-2 align-top"><?php echo wp_kses_post( $value ); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
@@ -241,7 +266,9 @@ defined( 'ABSPATH' ) || exit;
                 <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko-1.jpg' ); ?>" alt="Osko by BPAY" class="h-10 sm:h-14 object-contain">
             </div>
 
-            <?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
+            <div style="display:none;">
+                <?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
+            </div>
 
 		<?php endif; ?>
 
