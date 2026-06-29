@@ -1828,3 +1828,63 @@ input[type="number"] {
     color: #111827 !important;
     font-size: 1.125rem;
 }
+
+/* ========================================================== */
+/* SHIPPING INSURANCE CUSTOM ROW (Matches Shipment)             */
+/* ========================================================== */
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row {
+    display: flex !important;
+    flex-direction: column !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row th {
+    color: #00104a !important;
+    font-weight: 700 !important;
+    padding: 1.5rem 1rem 0.75rem 1rem !important;
+    font-size: 1.125rem;
+    text-align: left;
+    border: none !important;
+    background: transparent !important;
+    width: 100% !important;
+}
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td {
+    padding: 0 1rem 1.5rem 1rem !important;
+    border: none !important;
+    text-align: left !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem; 
+}
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td > div.insurance-option,
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td > label,
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td > .aftership-protection-widget {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td > *:has(input[type="radio"]:checked) {
+    background-color: #f0f9ff !important;
+    border-color: #bae6fd !important;
+}
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td input[type="radio"] {
+    margin: 0.25rem 0.75rem 0 0;
+    flex-shrink: 0;
+}
+.woocommerce-checkout-review-order-table tfoot tr.custom-insurance-row td label {
+    margin: 0 !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+

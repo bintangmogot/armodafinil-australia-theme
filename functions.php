@@ -764,3 +764,54 @@ function armo_hide_variation_price_css() {
  * Hide the WooCommerce coupon section on the checkout page
  */
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
+
+/**
+ * Style Shipping Insurance Row
+ */
+add_action( 'wp_footer', 'armo_style_shipping_insurance', 99 );
+function armo_style_shipping_insurance() {
+    if ( is_checkout() ) {
+        ?>
+        <script>
+        jQuery(document).ready(function($) {
+            function formatInsurance() {
+                $('.woocommerce-checkout-review-order-table tfoot tr').each(function() {
+                    var $th = $(this).find('th');
+                    if ($th.length && $th.text().indexOf('Shipping Insurance') !== -1) {
+                        $(this).addClass('custom-insurance-row');
+                        
+                        // Some plugins use raw inputs, wrap them just in case they aren't wrapped
+                        // But only if they don't have a label parent.
+                        var $td = $(this).find('td');
+                        $td.find('input[type="radio"]').each(function() {
+                            var $parent = $(this).parent();
+                            if ($parent.is('td')) {
+                                // It's directly in the td, wrap it with the next text node
+                                var $wrapper = jQuery('<div class="insurance-option"></div>');
+                                $(this).nextUntil('input, br').andSelf().wrapAll($wrapper);
+                            }
+                        });
+                    }
+                });
+            }
+            formatInsurance();
+            $(document).on('updated_checkout', formatInsurance);
+            setTimeout(formatInsurance, 500);
+            setTimeout(formatInsurance, 1500);
+            setTimeout(formatInsurance, 3000);
+            
+            // Also observe the table for DOM changes (React/Vue plugins)
+            var target = document.querySelector('.woocommerce-checkout-review-order-table');
+            if (target) {
+                var observer = new MutationObserver(function() {
+                    formatInsurance();
+                });
+                observer.observe(target, { childList: true, subtree: true });
+            }
+        });
+        </script>
+        <?php
+    }
+}
+
