@@ -46,6 +46,14 @@ function armo_enqueue_assets() {
         $css_version                                                       // version
     );
 
+    // AOS CSS
+    wp_enqueue_style(
+        'aos-css',
+        'https://unpkg.com/aos@2.3.1/dist/aos.css',
+        array(),
+        '2.3.1'
+    );
+
     // Theme's style.css (for WordPress theme metadata — mostly empty)
     wp_enqueue_style(
         'armo-style',
@@ -61,9 +69,18 @@ function armo_enqueue_assets() {
     wp_enqueue_script(
         'armo-app',                                                        // handle
         get_stylesheet_directory_uri() . '/assets/js/app.js',              // URL
-        array(),                                                           // no dependencies (no jQuery!)
+        array('aos-js'),                                                   // depends on aos
         time(),                                                            // version (forced cache busting)
         true                                                               // load in footer (better performance)
+    );
+
+    // AOS JS
+    wp_enqueue_script(
+        'aos-js',
+        'https://unpkg.com/aos@2.3.1/dist/aos.js',
+        array(),
+        '2.3.1',
+        true
     );
 
     // Product Total calculation & quantity buttons (single product and cart)

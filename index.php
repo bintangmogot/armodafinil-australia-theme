@@ -69,7 +69,7 @@ endif;
 ?>
 
 <!-- Blog Header -->
-<section class="bg-surface-light py-14 lg:py-10">
+<section class="bg-surface-light py-14 lg:py-10" data-aos="fade-up" data-aos-delay="200">
     <div class="max-w-3xl mx-auto px-6 text-center">
         <h1 class="text-3xl md:text-4xl font-extrabold text-primary leading-tight mb-3">
             <?php echo esc_html( $blog_title ); ?>
@@ -91,7 +91,7 @@ endif;
 
 <!-- Category Filter -->
 <?php if ( ! is_search() ) : ?>
-<section class="bg-surface-light pb-10">
+<section class="bg-surface-light pb-10" data-aos="fade-up" data-aos-delay="300">
     <div class="max-w-5xl mx-auto px-6">
         <p class="text-sm font-semibold text-primary mb-3">Category</p>
         <div class="flex flex-wrap gap-2">
@@ -130,7 +130,7 @@ endif;
 
         <?php if ( have_posts() ) : ?>
 
-            <div class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="400">
                 <?php
                 while ( have_posts() ) : the_post();
                     get_template_part( 'template-parts/content', get_post_type() );

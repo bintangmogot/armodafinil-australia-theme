@@ -26,7 +26,7 @@ get_header();
 
         <div class="p-6 md:p-10 lg:p-12">
             <!-- Post Header -->
-            <header class="mb-8">
+            <header class="mb-8" data-aos="fade-up">
                 <!-- Categories -->
                 <div class="flex flex-wrap gap-2 mb-4">
                     <?php
@@ -59,7 +59,7 @@ get_header();
 
             <!-- Featured Image -->
             <?php if ( has_post_thumbnail() ) : ?>
-                <div class="mb-10 mx-auto w-full md:w-[70%]">
+                <div class="mb-10 mx-auto w-full md:w-[70%]" data-aos="fade-up" data-aos-delay="100">
                     <div class="rounded-xl overflow-hidden border border-gray-100 shadow-sm">
                         <?php the_post_thumbnail( 'large', array( 'class' => 'w-full h-auto object-cover' ) ); ?>
                     </div>
@@ -68,7 +68,7 @@ get_header();
 
             <!-- Post Content -->
             <!-- This is where your blog post body appears. WordPress outputs it from the editor. -->
-            <div class="prose prose-sm sm:prose-base lg:prose-lg max-w-none text-gray-700 single-blog-content">
+            <div class="prose prose-sm sm:prose-base lg:prose-lg max-w-none text-gray-700 single-blog-content" data-aos="fade-up" data-aos-delay="200">
                 <?php
                 if ( function_exists('have_rows') && have_rows('modules') ) :
                     while ( have_rows('modules') ) : the_row();

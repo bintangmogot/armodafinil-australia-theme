@@ -102,4 +102,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, true);
 
+    // ── Auto-inject AOS to major sections for all pages ──
+    const animateElements = document.querySelectorAll('main section, .woocommerce-products-header, ul.products > li.product, .woocommerce-cart-form, .cart-collaterals, form.checkout > *, .woocommerce-order, article.post, .woocommerce-MyAccount-content');
+    animateElements.forEach((el) => {
+        if (!el.hasAttribute('data-aos')) {
+            el.setAttribute('data-aos', 'fade-up');
+            el.setAttribute('data-aos-offset', '50');
+        }
+    });
+
+    // ── Initialize AOS Animations ────────────────────────
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            once: true, // whether animation should happen only once - while scrolling down
+            offset: 100, // offset (in px) from the original trigger point
+            easing: 'ease-out-cubic',
+        });
+    }
+
 });
