@@ -7,17 +7,11 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div class="shipping-section-wrapper border border-gray-300 rounded mb-8">
-    <?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
-        <div class="bg-[#00125E] text-white px-4 py-3 rounded-t flex items-center gap-2">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M8 16a2 2 0 100-4 2 2 0 000 4zM14 16a2 2 0 100-4 2 2 0 000 4z" /><path d="M16 5h-3V4a1 1 0 00-1-1H3a1 1 0 00-1 1v10h1.27a3.001 3.001 0 015.46 0h2.54a3.001 3.001 0 015.46 0H18v-5l-2-4zm-2.4 1l1.5 3H13V6h.6z" /></svg>
-            <h3 class="text-[18px] font-bold m-0 tracking-wide text-white">Ship to a different address</h3>
-        </div>
-    <?php endif; ?>
-
-    <div class="p-6 bg-white <?php echo true === WC()->cart->needs_shipping_address() ? 'rounded-b' : 'rounded'; ?>">
+<div class="shipping-section-wrapper border border-gray-200 rounded-lg bg-white overflow-hidden">
+    <div class="p-6 bg-white">
         <div class="woocommerce-shipping-fields">
             <?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
+                <h3>Ship to a different address</h3>
                 <div class="form-row mb-6">
                     <div id="ship-to-different-address">
                         <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox flex items-center gap-2 cursor-pointer m-0">
