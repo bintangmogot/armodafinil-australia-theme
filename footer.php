@@ -215,13 +215,13 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                         <?php if ( $shipping_images ) : ?>
                             <?php foreach ( $shipping_images as $shipping ) : ?>
                                 <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                    <img src="<?php echo esc_url( $shipping['image']['url'] ); ?>" alt="<?php echo esc_attr( $shipping['alt_text'] ?: $shipping['image']['alt'] ); ?>" class="h-6 md:h-7 w-auto object-contain">
+                                    <img src="<?php echo esc_url( $shipping['image']['url'] ); ?>" alt="<?php echo esc_attr( $shipping['alt_text'] ?: $shipping['image']['alt'] ); ?>" class="h-7 w-auto object-contain">
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <!-- Fallback: original hardcoded image -->
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/Australia_Post_Logo 1.png'); ?>" alt="Australia Post" class="h-6 md:h-7 w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/Australia_Post_Logo 1.png'); ?>" alt="Australia Post" class="h-7 w-auto object-contain">
                             </div>
                         <?php endif; ?>
                     </div>
