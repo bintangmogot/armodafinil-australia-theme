@@ -1252,6 +1252,41 @@ body.single-product { background-color: #f9f9f9; }
     justify-content: center !important;
 }
 
+/* Select2 Dropdown Overrides (Appended to body) */
+.select2-dropdown {
+    border: 1px solid #00104a !important;
+    border-radius: 0.25rem !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    padding: 0.25rem !important;
+}
+.select2-search--dropdown .select2-search__field {
+    border: 1px solid #d1d5db !important;
+    border-radius: 0.25rem !important;
+    padding: 0.375rem 0.625rem !important;
+    font-size: 0.8125rem !important;
+    outline: none !important;
+}
+.select2-search--dropdown .select2-search__field:focus {
+    border-color: #00104a !important;
+}
+.select2-results__option {
+    padding: 0.375rem 0.625rem !important;
+    font-size: 0.8125rem !important;
+    color: #111827 !important;
+    border-radius: 0.25rem !important;
+    margin-bottom: 2px !important;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected],
+.select2-container--default .select2-results__option--highlighted[data-selected] {
+    background-color: #f3f4f6 !important;
+    color: #111827 !important;
+}
+.select2-container--default .select2-results__option[aria-selected="true"],
+.select2-container--default .select2-results__option[data-selected="true"] {
+    background-color: #e5e7eb !important;
+    color: #111827 !important;
+}
+
 /* Specific override for Order Notes field to be column layout and resizable */
 .woocommerce-checkout .checkout-fields-block #order_comments_field {
     flex-direction: column !important;
