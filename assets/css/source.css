@@ -1589,13 +1589,12 @@ body.single-product { background-color: #f9f9f9; }
 }
 .woocommerce-checkout #payment .place-order {
     text-align: left !important;
-    padding-top: 1.5rem !important;
+    padding: 1.5rem 0 0 0 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     width: 100% !important;
-    padding-bottom: 0 !important;
 }
 .woocommerce-checkout #payment #place_order,
 .woocommerce-checkout #payment .place-order .button {
