@@ -43,12 +43,12 @@ get_header();
                 </div>
 
                 <!-- Title -->
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
                     <?php the_title(); ?>
                 </h1>
 
                 <!-- Meta -->
-                <div class="flex items-center gap-4 text-sm text-gray-500">
+                <div class="flex items-center gap-4 text-xs sm:text-sm text-gray-500">
                     <time datetime="<?php echo get_the_date( 'c' ); ?>">
                         <?php echo get_the_date(); ?>
                     </time>
@@ -68,7 +68,7 @@ get_header();
 
             <!-- Post Content -->
             <!-- This is where your blog post body appears. WordPress outputs it from the editor. -->
-            <div class="prose prose-lg max-w-none text-gray-700">
+            <div class="prose prose-sm sm:prose-base lg:prose-lg max-w-none text-gray-700 single-blog-content">
                 <?php
                 if ( function_exists('have_rows') && have_rows('modules') ) :
                     while ( have_rows('modules') ) : the_row();

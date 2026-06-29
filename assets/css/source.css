@@ -16,7 +16,7 @@
      * Since Tailwind uses rem, this proportionally scales ALL text.
      */
     html {
-        font-size: 15px; /* mobile: ~25% smaller than before */
+        font-size: 20px; /* mobile: ~25% bigger */
         scroll-behavior: smooth;
     }
     @media (min-width: 768px) {
@@ -1907,28 +1907,12 @@ input[type="number"] {
     padding: 0.3rem 0.5rem !important; /* Re-adjust padding slightly */
 }
 
-/* Side Cart Button Fix for Mobile */
-.xoo-wsc-footer .xoo-wsc-ft-buttons a,
-.xoo-wsc-footer a.checkout,
-.xoo-wsc-footer a.button {
-    height: auto !important;
-    min-height: 40px !important;
-    white-space: normal !important;
-    line-height: 1.2 !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-}
-
-@media (max-width: 380px) {
-    .xoo-wsc-footer .xoo-wsc-ft-buttons a,
-    .xoo-wsc-footer a.checkout,
-    .xoo-wsc-footer a.button {
-        font-size: 14px !important;
-        padding-left: 5px !important;
-        padding-right: 5px !important;
+/* Fix double padding for ACF modules when used inside blog posts (mobile only) */
+@media (max-width: 1023px) {
+    .single-blog-content section {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
     }
 }
