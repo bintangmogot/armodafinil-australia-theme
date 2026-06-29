@@ -1677,6 +1677,7 @@ input[type="number"] {
 .woocommerce-checkout-review-order-table tfoot .woocommerce-shipping-totals td,
 .woocommerce-checkout-review-order-table tfoot .fee td {
     padding: 1.5rem 1rem !important;
+    text-align: left !important;
 }
 .shipping-method-header,
 .fee-method-header {
@@ -1723,14 +1724,21 @@ input[type="number"] {
     font-weight: 600;
     color: #111827;
     flex-grow: 1;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-areas: 
+        "title price"
+        "desc price";
     align-items: center;
     width: 100%;
 }
+#shipping_method li label .shipping-title,
+.woocommerce-shipping-methods li label .shipping-title {
+    grid-area: title;
+}
 #shipping_method li label .woocommerce-Price-amount,
 .woocommerce-shipping-methods li label .woocommerce-Price-amount {
-    margin-left: auto;
+    grid-area: price;
+    justify-self: end;
     font-weight: 700;
     color: #111827;
 }
@@ -1739,11 +1747,11 @@ input[type="number"] {
 #shipping_method li label small,
 .woocommerce-shipping-methods li label span.description,
 .woocommerce-shipping-methods li label small {
-    flex-basis: 100%;
+    grid-area: desc;
     font-weight: 400;
     color: #6b7280;
     font-size: 0.8125rem;
-    margin-top: 0.25rem;
+    margin-top: 0.125rem;
 }
 
 /* Total Row */
