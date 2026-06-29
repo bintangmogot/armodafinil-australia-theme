@@ -829,6 +829,15 @@ function armo_style_shipping_insurance() {
                                 }
                             }
                         });
+                        
+                        // DUMP HTML for debugging
+                        if (!window.hasDumpedInsuranceHTML) {
+                            var formData = new FormData();
+                            formData.append('action', 'dump_html');
+                            formData.append('html', $(this).html());
+                            fetch(woocommerce_params.ajax_url, { method: 'POST', body: formData });
+                            window.hasDumpedInsuranceHTML = true;
+                        }
                     }
                 });
                 
@@ -869,3 +878,5 @@ function armo_style_shipping_insurance() {
 
 
 
+
+add_action('wp_ajax_dump_html', function() { file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']); wp_die(); }); add_action('wp_ajax_nopriv_dump_html', function() { file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']); wp_die(); });
