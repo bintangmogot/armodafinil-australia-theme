@@ -1930,3 +1930,36 @@ input[type="number"] {
         padding-right: 3rem !important;
     }
 }
+
+/* ========================================================== */
+/* GLOBAL BUTTON HOVER SCALE EFFECT                           */
+/* ========================================================== */
+button, 
+input[type="submit"],
+input[type="button"],
+.button,
+.btn,
+.hero-content a,
+.module-side-image-content a,
+.module-benefit-content a,
+.module-cta-content a,
+.single_add_to_cart_button,
+.checkout-button,
+.place-order button {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+button:hover:not(:disabled),
+input[type="submit"]:hover:not(:disabled),
+input[type="button"]:hover:not(:disabled),
+.button:hover:not(:disabled),
+.btn:hover:not(:disabled),
+.hero-content a:hover,
+.module-side-image-content a:hover,
+.module-benefit-content a:hover,
+.module-cta-content a:hover,
+.single_add_to_cart_button:hover,
+.checkout-button:hover,
+.place-order button:hover {
+    transform: scale(1.03) !important;
+}
