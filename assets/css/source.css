@@ -1117,20 +1117,7 @@ body.single-product { background-color: #f9f9f9; }
 
 /* ===== CHECKOUT PAGE ===== */
 
-/* Dark-blue header bars for each section */
-.checkout-page .checkout-fields-block h3 {
-    background-color: #00104a;
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 600;
-    padding: 0.625rem 1rem;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
 
-/* ===== CHECKOUT PAGE ===== */
 
 /* Dark-blue header bars for Billing / Shipping / Medical sections */
 .woocommerce-checkout .woocommerce-billing-fields > h3,

@@ -758,3 +758,8 @@ function armo_hide_variation_price_css() {
         </style>';
     }
 }
+
+/**
+ * Hide the WooCommerce coupon section on the checkout page
+ */
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
