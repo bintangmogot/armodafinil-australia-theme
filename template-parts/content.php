@@ -44,20 +44,20 @@
         <div class="mt-auto"></div>
 
         <!-- Card Footer: Category + Date -->
-        <div class="flex items-center justify-between pt-3 border-t border-white/15">
+        <div class="flex items-center justify-between gap-3 pt-3 border-t border-white/15">
             <?php
             $categories = get_the_category();
             if ( ! empty( $categories ) ) :
             ?>
                 <a href="<?php echo esc_url( get_category_link( $categories[0]->term_id ) ); ?>"
-                   class="inline-block text-[11px] md:text-xs font-semibold uppercase tracking-wide text-white bg-white/15 px-3 py-1 rounded-full hover:bg-white/25 transition-colors duration-200">
+                   class="flex-initial min-w-0 inline-block text-[11px] md:text-xs font-semibold uppercase tracking-wide text-white bg-white/15 px-3 py-1 rounded-full hover:bg-white/25 transition-colors duration-200 truncate" title="<?php echo esc_attr( $categories[0]->name ); ?>">
                     <?php echo esc_html( $categories[0]->name ); ?>
                 </a>
             <?php else : ?>
-                <span></span>
+                <span class="flex-1"></span>
             <?php endif; ?>
 
-            <time datetime="<?php echo get_the_date( 'c' ); ?>" class="text-[11px] text-white/50">
+            <time datetime="<?php echo get_the_date( 'c' ); ?>" class="text-[11px] text-white/50 whitespace-nowrap flex-shrink-0">
                 <?php echo get_the_date( 'M j, Y' ); ?>
             </time>
         </div>
