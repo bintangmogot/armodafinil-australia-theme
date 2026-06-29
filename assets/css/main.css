@@ -6075,7 +6075,8 @@ input[type="number"] {
 
 .woocommerce-help-tip::after {
   /* Anchor to the right so it expands to the left, preventing cut-off on the right edge of screen */
-  left: 20px !important;
+  left: auto !important;
+  right: -10px !important;
   transform: none !important;
   /* Force it above the icon and reset top to avoid height stretching */
   top: auto !important;
@@ -6101,7 +6102,7 @@ input[type="number"] {
   font-size: 0.75rem !important;
   /* Smaller text */
   line-height: 1.3 !important;
-  padding: 0.5rem 0.75rem !important;
+  padding: 0.3rem 0.5rem !important;
   /* Re-adjust padding slightly */
 }
 
