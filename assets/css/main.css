@@ -5911,7 +5911,8 @@ input[type="number"] {
 /* Stack TH and TD for Shipping & Fee rows */
 
 .woocommerce-checkout-review-order-table tfoot .woocommerce-shipping-totals td,
-.woocommerce-checkout-review-order-table tfoot .fee td {
+.woocommerce-checkout-review-order-table tfoot .fee td,
+.woocommerce-checkout-review-order-table tfoot tr.armo-insurance-reformatted td {
   padding: 1.5rem 1rem !important;
   text-align: left !important;
 }
@@ -5977,6 +5978,7 @@ input[type="number"] {
 #shipping_method li label .shipping-title,
 .woocommerce-shipping-methods li label .shipping-title {
   flex: 1 1 auto !important;
+  text-align: left !important;
 }
 
 #shipping_method li label .woocommerce-Price-amount,
