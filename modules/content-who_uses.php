@@ -36,7 +36,7 @@ $intro   = get_sub_field('intro');
 
         <!-- Cards Grid -->
         <?php if (have_rows('users')) : ?>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6">
                 <?php while (have_rows('users')) : the_row(); 
                     $title = get_sub_field('title');
                     $image = get_sub_field('image');
@@ -52,7 +52,7 @@ $intro   = get_sub_field('intro');
                         }
                     }
                 ?>
-                    <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg hover:shadow-white/5 hover:scale-[1.02] transition-all duration-300">
+                    <div class="bg-surface-dark border-2 border-white rounded-2xl p-3 md:p-4 flex flex-col items-center gap-3 text-primary shadow-lg hover:shadow-white/5 hover:scale-[1.02] transition-all duration-300">
                         <?php if ($title) : ?>
                             <span class="text-base md:text-lg font-bold text-center leading-snug">
                                 <?php echo esc_html($title); ?>
