@@ -261,6 +261,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'default_value' => 'Category',
             ),
             array(
+                'key'           => 'field_footer_menu_1_content',
+                'label'         => 'Menu 1 Content',
+                'name'          => 'footer_menu',
+                'type'          => 'wysiwyg',
+                'instructions'  => 'Add your links or content here. If left empty, it will fallback to the WordPress Appearance > Menus system.',
+                'media_upload'  => 0,
+            ),
+            array(
                 'key'           => 'field_footer_menu_2_heading',
                 'label'         => 'Menu 2 Heading',
                 'name'          => 'footer_menu_2_heading',
@@ -268,11 +276,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'default_value' => 'Quick Links',
             ),
             array(
+                'key'           => 'field_footer_menu_2_content',
+                'label'         => 'Menu 2 Content',
+                'name'          => 'footer_menu_2',
+                'type'          => 'wysiwyg',
+                'instructions'  => 'Add your links or content here. If left empty, it will fallback to the WordPress Appearance > Menus system.',
+                'media_upload'  => 0,
+            ),
+            array(
                 'key'           => 'field_footer_menu_3_heading',
                 'label'         => 'Menu 3 Heading',
                 'name'          => 'footer_menu_3_heading',
                 'type'          => 'text',
                 'default_value' => 'Important Links',
+            ),
+            array(
+                'key'           => 'field_footer_menu_3_content',
+                'label'         => 'Menu 3 Content',
+                'name'          => 'footer_menu_3',
+                'type'          => 'wysiwyg',
+                'instructions'  => 'Add your links or content here. If left empty, it will fallback to the WordPress Appearance > Menus system.',
+                'media_upload'  => 0,
             ),
 
             // ─── TAB: Contact Info ───
