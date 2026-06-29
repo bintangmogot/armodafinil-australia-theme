@@ -261,7 +261,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'default_value' => 'Category',
             ),
             array(
-                'key'           => 'field_footer_menu_1_content',
+                'key'           => 'field_68adc863905a5',
                 'label'         => 'Menu 1 Content',
                 'name'          => 'footer_menu',
                 'type'          => 'wysiwyg',
@@ -276,7 +276,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'default_value' => 'Quick Links',
             ),
             array(
-                'key'           => 'field_footer_menu_2_content',
+                'key'           => 'field_6903853c60df4',
                 'label'         => 'Menu 2 Content',
                 'name'          => 'footer_menu_2',
                 'type'          => 'wysiwyg',
@@ -291,13 +291,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'default_value' => 'Important Links',
             ),
             array(
-                'key'           => 'field_footer_menu_3_content',
+                'key'           => 'field_6903854660df5',
                 'label'         => 'Menu 3 Content',
                 'name'          => 'footer_menu_3',
                 'type'          => 'wysiwyg',
                 'instructions'  => 'Add your links or content here. If left empty, it will fallback to the WordPress Appearance > Menus system.',
                 'media_upload'  => 0,
             ),
+
 
             // ─── TAB: Contact Info ───
             array(
