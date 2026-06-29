@@ -789,54 +789,63 @@ function armo_style_shipping_insurance() {
                 }
                 
                 $('.woocommerce-checkout-review-order-table tfoot tr').each(function() {
-                    var $th = $(this).find('th');
+                    var $tr = $(this);
+                    var $th = $tr.find('th');
                     if ($th.length && $th.text().indexOf('Shipping Insurance') !== -1) {
                         
-                        var $td = $(this).find('td');
-                        
-                        // If radio buttons aren't wrapped in labels yet, wrap them
-                        $td.find('input[type="radio"]').each(function() {
-                            var $parent = $(this).parent();
-                            if ($parent.is('td')) {
-                                var $wrapper = jQuery('<label class="insurance-option-label"></label>');
-                                $(this).nextUntil('input, br').addBack().wrapAll($wrapper);
-                            }
-                        });
-
-                        // Parse labels safely using DOM manipulation
-                        $td.find('label').each(function() {
-                            var $label = $(this);
-                            // Avoid processing the same label twice
-                            if ($label.find('.shipping-title').length > 0) {
-                                return;
+                        // Reformat the row to exactly match WooCommerce Shipping row
+                        if (!$tr.hasClass('armo-insurance-reformatted')) {
+                            $tr.addClass('armo-insurance-reformatted');
+                            var $td = $tr.find('td');
+                            
+                            var title = $th.text();
+                            $th.remove();
+                            $td.attr('colspan', '2');
+                            $td.prepend('<div class="shipping-method-header">' + title + '</div>');
+                            
+                            var $ul = $('<ul class="woocommerce-shipping-methods"></ul>');
+                            
+                            // Process labels or wrap bare inputs if needed
+                            var $labels = $td.find('label');
+                            if ($labels.length === 0) {
+                                $td.find('input[type="radio"]').each(function() {
+                                    var $wrapper = jQuery('<label></label>');
+                                    $(this).nextUntil('input, br').addBack().wrapAll($wrapper);
+                                });
+                                $labels = $td.find('label');
                             }
                             
-                            // If Aftership put the tooltip outside the label, move it inside!
-                            var $nextTooltip = $label.next('a, .woocommerce-help-tip, .tooltip-icon');
-                            if ($nextTooltip.length) {
-                                $label.append($nextTooltip);
-                            }
-                            
-                            var $input = $label.find('input[type="radio"]');
-                            if ($input.length) {
-                                // The label text is a text node right after the input
-                                var textNode = $input[0].nextSibling;
-                                if (textNode && textNode.nodeType === 3) { // 3 is TEXT_NODE
-                                    var text = textNode.nodeValue.replace(':', '').trim();
-                                    if (text) {
-                                        $(textNode).replaceWith(' <span class="shipping-title">' + text + '</span> ');
+                            $labels.each(function() {
+                                var $label = $(this);
+                                
+                                // Move tooltip inside
+                                var $nextTooltip = $label.next('a, .woocommerce-help-tip, .tooltip-icon');
+                                if ($nextTooltip.length) {
+                                    $label.append($nextTooltip);
+                                }
+                                
+                                // Parse text node for title so CSS can separate price
+                                var $input = $label.find('input[type="radio"]');
+                                if ($input.length) {
+                                    var textNode = $input[0].nextSibling;
+                                    if (textNode && textNode.nodeType === 3) {
+                                        var text = textNode.nodeValue.replace(':', '').trim();
+                                        if (text) {
+                                            $(textNode).replaceWith(' <span class="shipping-title">' + text + '</span> ');
+                                        }
                                     }
                                 }
-                            }
-                        });
-                        
-                        // DUMP HTML for debugging
-                        if (!window.hasDumpedInsuranceHTML) {
-                            var formData = new FormData();
-                            formData.append('action', 'dump_html');
-                            formData.append('html', $(this).html());
-                            fetch(woocommerce_params.ajax_url, { method: 'POST', body: formData });
-                            window.hasDumpedInsuranceHTML = true;
+                                
+                                // Move into LI
+                                var $li = $('<li></li>');
+                                $li.append($label);
+                                $ul.append($li);
+                            });
+                            
+                            // Clear old contents (except the header we just added)
+                            $td.children().not('.shipping-method-header').remove();
+                            // Append UL
+                            $td.append($ul);
                         }
                     }
                 });

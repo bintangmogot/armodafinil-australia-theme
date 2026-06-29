@@ -2191,6 +2191,10 @@ img {
   display: grid;
 }
 
+.contents {
+  display: contents;
+}
+
 .hidden {
   display: none;
 }
@@ -6014,101 +6018,16 @@ input[type="number"] {
 
 /* ========================================================== */
 
-/* SHIPPING INSURANCE ROW — Matches Shipment exactly           */
+/* TOOLTIP ICON FOR SHIPPING METHODS                        */
 
 /* ========================================================== */
 
-/* Row: stack TH title on top, TD options below */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) {
-  display: flex !important;
-  flex-direction: column !important;
-  border-bottom: 1px solid #e5e7eb !important;
-}
-
-/* Title (TH) */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) th {
-  color: #00104a !important;
-  font-weight: 700 !important;
-  padding: 1rem 1rem 0.5rem 1rem !important;
-  font-size: 1.125rem;
-  text-align: left !important;
-  border: none !important;
-  background: transparent !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Options container (TD) */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td {
-  padding: 0 1rem 1rem 1rem !important;
-  border: none !important;
-  text-align: left !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Each label — styled like #shipping_method li */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label {
-  display: flex !important;
-  align-items: center !important;
-  border: 1px solid #d1d5db !important;
-  border-radius: 0.25rem !important;
-  padding: 0.5rem 0.75rem !important;
-  margin: 0 0 0.375rem 0 !important;
-  background-color: #fff !important;
-  cursor: pointer !important;
-  transition: all 0.2s ease-in-out !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  font-weight: 600 !important;
-  color: #111827 !important;
-  flex-wrap: nowrap !important;
-}
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label:last-of-type {
-  margin-bottom: 0 !important;
-}
-
-/* Selected label highlight */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label:has(input[type="radio"]:checked) {
-  background-color: #f0f9ff !important;
-  border-color: #bae6fd !important;
-}
-
-/* Radio button */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td input[type="radio"] {
-  margin: 0 0.75rem 0 0 !important;
-  flex-shrink: 0 !important;
-}
-
-/* Price — push to the right */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .woocommerce-Price-amount,
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .amount {
-  font-weight: 700 !important;
-  color: #111827 !important;
-  margin-left: auto !important;
-  flex-shrink: 0 !important;
-}
-
-/* Label text span — fill available space so price goes right */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .shipping-title {
-  flex: 1 1 auto !important;
-  margin-right: 0.5rem !important;
-}
-
-/* Help icon (?) */
-
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label a,
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .tooltip-icon,
-.woocommerce-checkout-review-order-table tfoot tr:has(th):has(td input[type="radio"]) td label .woocommerce-help-tip {
+#shipping_method li label a,
+#shipping_method li label .tooltip-icon,
+#shipping_method li label .woocommerce-help-tip,
+.woocommerce-shipping-methods li label a,
+.woocommerce-shipping-methods li label .tooltip-icon,
+.woocommerce-shipping-methods li label .woocommerce-help-tip {
   flex: 0 0 auto !important;
   flex-shrink: 0 !important;
   margin-left: 0.125rem !important;
