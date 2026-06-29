@@ -137,7 +137,7 @@
     $header_class = is_front_page() ? $header_absolute_class : 'bg-primary-light py-2 lg:py-4 relative z-40';
     ?>
     <!-- Mobile Top Bar (Cart) - Hidden on Desktop -->
-    <div class="bg-primary-light w-full px-10 sm:px-12 py-3 flex justify-between items-center relative z-50 lg:hidden">
+    <div class="bg-primary-light w-full px-10 sm:px-12 py-3 flex justify-between items-center relative z-50 lg:hidden" data-aos="fade-down" data-aos-delay="150">
         <div></div>
         <?php if (class_exists('WooCommerce')): ?>
             <div class="flex items-center">
