@@ -1402,7 +1402,12 @@ body.single-product { background-color: #f9f9f9; }
     text-align: center;
     font-size: 0.875rem;
     line-height: 1.6;
-    margin: 1.25rem 1rem;
+    margin: 1.25rem 0; /* Mobile: no left/right margin */
+}
+@media (min-width: 768px) {
+    .medical-condition-fields .medical-certification-box {
+        margin: 1.25rem 1rem; /* Desktop: restore margin */
+    }
 }
 .medical-condition-fields .medical-certification-box p {
     margin: 0;
