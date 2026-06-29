@@ -1874,6 +1874,13 @@ input[type="number"] {
     width: max-content !important; /* grow naturally */
     z-index: 9999999 !important;
 }
+.woocommerce-help-tip::after {
+    /* Anchor to the right so it expands to the left, preventing cut-off on the right edge of screen */
+    left: auto !important;
+    right: -10px !important;
+    transform: none !important;
+    bottom: 120% !important; /* Move it slightly higher */
+}
 @media (min-width: 768px) {
     #tiptip_holder,
     .woocommerce-help-tip::after {
@@ -1886,5 +1893,5 @@ input[type="number"] {
     text-align: center !important;
     font-size: 0.75rem !important; /* Smaller text */
     line-height: 1.3 !important;
-    padding: 0.25rem 0.5rem !important; /* Smaller padding */
+    padding: 0.5rem 0.75rem !important; /* Re-adjust padding slightly */
 }
