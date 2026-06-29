@@ -83,9 +83,9 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                         <li class="flex items-start gap-2">
                             <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
                             <?php if ( $footer_whatsapp_link ) : ?>
-                                <a href="<?php echo esc_url( $footer_whatsapp_link ); ?>" target="_blank" rel="noopener noreferrer" class="hover:underline">Phone: <?php echo esc_html( $footer_whatsapp ); ?></a>
+                                <a href="<?php echo esc_url( $footer_whatsapp_link ); ?>" target="_blank" rel="noopener noreferrer" class="hover:underline"><?php echo esc_html( $footer_whatsapp ); ?></a>
                             <?php else : ?>
-                                <span>Phone: <?php echo esc_html( $footer_whatsapp ); ?></span>
+                                <span><?php echo esc_html( $footer_whatsapp ); ?></span>
                             <?php endif; ?>
                         </li>
                         <li class="flex items-start gap-2">
