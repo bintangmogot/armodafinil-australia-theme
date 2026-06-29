@@ -1906,3 +1906,29 @@ input[type="number"] {
     line-height: 1.3 !important;
     padding: 0.3rem 0.5rem !important; /* Re-adjust padding slightly */
 }
+
+/* Side Cart Button Fix for Mobile */
+.xoo-wsc-footer .xoo-wsc-ft-buttons a,
+.xoo-wsc-footer a.checkout,
+.xoo-wsc-footer a.button {
+    height: auto !important;
+    min-height: 40px !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+@media (max-width: 380px) {
+    .xoo-wsc-footer .xoo-wsc-ft-buttons a,
+    .xoo-wsc-footer a.checkout,
+    .xoo-wsc-footer a.button {
+        font-size: 14px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+}
