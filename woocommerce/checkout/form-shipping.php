@@ -35,7 +35,7 @@ defined( 'ABSPATH' ) || exit;
             <?php endif; ?>
         </div>
 
-        <div class="woocommerce-additional-fields mt-6">
+        <div class="woocommerce-additional-fields">
             <?php do_action( 'woocommerce_before_order_notes', $checkout ); ?>
 
             <?php if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) : ?>
