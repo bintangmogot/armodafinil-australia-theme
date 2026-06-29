@@ -1879,7 +1879,12 @@ input[type="number"] {
     left: auto !important;
     right: -10px !important;
     transform: none !important;
-    bottom: 120% !important; /* Move it slightly higher */
+    /* Force it above the icon and reset top to avoid height stretching */
+    top: auto !important;
+    bottom: 150% !important; 
+    height: auto !important;
+    min-height: max-content !important;
+    overflow: visible !important;
 }
 @media (min-width: 768px) {
     #tiptip_holder,
