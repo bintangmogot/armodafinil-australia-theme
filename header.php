@@ -15,6 +15,33 @@
         .menu-item-cart { 
             display: none !important; 
         }
+        
+        /* Side Cart Button Fix for Mobile - High Specificity */
+        body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.checkout,
+        body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.button {
+            height: auto !important;
+            min-height: 40px !important;
+            white-space: normal !important;
+            line-height: 1.2 !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+        }
+        body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.checkout *,
+        body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.button * {
+            line-height: 1.2 !important;
+        }
+        @media (max-width: 400px) {
+            body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.checkout,
+            body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-buttons a.button {
+                font-size: 13px !important;
+                padding-left: 4px !important;
+                padding-right: 4px !important;
+            }
+        }
     </style>
 </head>
 

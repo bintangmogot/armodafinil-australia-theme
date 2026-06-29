@@ -148,9 +148,9 @@ defined( 'ABSPATH' ) || exit;
                     <span>Date:</span>
                     <span class="font-bold text-blue-700"><?php echo wc_format_datetime( $order->get_date_created() ); ?></span>
                 </div>
-                <div class="flex justify-between items-center mb-3 pb-3 border-b border-blue-200 text-xs text-gray-600">
+                <div class="flex justify-between items-start mb-3 pb-3 border-b border-blue-200 text-xs text-gray-600">
                     <span>Payment Method:</span>
-                    <span class="font-bold text-blue-700"><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></span>
+                    <span class="font-bold text-blue-700 text-right"><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></span>
                 </div>
                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start text-xs text-gray-600">
                     <span class="mb-1 sm:mb-0">Order Contains:</span>
@@ -261,9 +261,9 @@ defined( 'ABSPATH' ) || exit;
 
             <!-- Payment Methods Images -->
             <div class="flex justify-center items-center gap-2 lg:gap-8 pb-10">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/commonwealth.png' ); ?>" alt="Commonwealth Bank" class="h-10 sm:h-14 object-contain">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/pay-idi.png' ); ?>" alt="PayID" class="h-10 sm:h-14 object-contain">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko-1.jpg' ); ?>" alt="Osko by BPAY" class="h-10 sm:h-14 object-contain">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/commonwealth.png' ); ?>" alt="Commonwealth Bank" class="h-6 sm:h-8 object-contain">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/pay-idi.png' ); ?>" alt="PayID" class="h-6 sm:h-8 object-contain">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko-1.jpg' ); ?>" alt="Osko by BPAY" class="h-6 sm:h-8 object-contain">
             </div>
 
             <div style="display:none;">

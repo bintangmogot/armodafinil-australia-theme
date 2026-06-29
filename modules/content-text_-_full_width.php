@@ -7,7 +7,7 @@
 $content = get_sub_field('content');
 $background_color = get_sub_field('background_color');
 ?>
-<section class="py-6 lg:py-12 px-6 lg:px-12 <?php echo $background_color ? '' : 'bg-surface'; ?>" <?php if($background_color) echo 'style="background-color: ' . esc_attr($background_color) . ';"'; ?>>
+<section class="lg:py-12 lg:px-12 <?php echo $background_color ? '' : 'bg-surface'; ?>" <?php if($background_color) echo 'style="background-color: ' . esc_attr($background_color) . ';"'; ?>>
     <div class="max-w-4xl mx-auto text-center">
         <?php if ($content) : ?>
             <div class="module-fulltext-content prose max-w-none">

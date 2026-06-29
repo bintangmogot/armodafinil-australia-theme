@@ -11,12 +11,12 @@
 
     /* 
      * Global font-size bump — makes all text larger for readability.
-     * Default browser = 16px. Mobile gets 20px (~25% bigger),
+     * Default browser = 16px. Mobile gets 15px (~25% smaller than before),
      * tablet 18px, desktop stays at 16px.
      * Since Tailwind uses rem, this proportionally scales ALL text.
      */
     html {
-        font-size: 20px; /* mobile: ~25% bigger */
+        font-size: 15px; /* mobile: ~25% smaller than before */
         scroll-behavior: smooth;
     }
     @media (min-width: 768px) {
