@@ -76,7 +76,7 @@
     }
     #mobile-menu ul > li > a {
         @apply block px-4 py-2 text-lg font-bold text-primary text-right;
-        @apply hover:text-red-600 transition-colors duration-150;
+        @apply hover:text-red-600 hover:bg-gray-50 transition-colors duration-150;
     }
     #mobile-menu ul > li.current-menu-item > a,
     #mobile-menu ul > li.current_page_item > a {
@@ -87,7 +87,7 @@
     }
     #mobile-menu ul > li > ul > li > a {
         @apply block px-4 py-1 text-sm text-primary/70 text-right;
-        @apply hover:text-red-600 transition-colors duration-150;
+        @apply hover:text-red-600 hover:bg-gray-50 transition-colors duration-150;
     }
 
     /* Hero content */
