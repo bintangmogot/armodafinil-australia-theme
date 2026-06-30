@@ -231,6 +231,60 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
         'key'    => 'group_theme_footer',
         'title'  => 'Footer Settings',
         'fields' => array(
+            // ─── TAB: Contact Info ───
+            array(
+                'key'   => 'field_footer_tab_contact',
+                'label' => 'Contact Info',
+                'type'  => 'tab',
+            ),
+            array(
+                'key'           => 'field_footer_address',
+                'label'         => 'Address',
+                'name'          => 'footer_address',
+                'type'          => 'text',
+                'instructions'  => 'Physical address displayed in the footer.',
+                'default_value' => 'Level 2/29 Chifley Square, Sydney NSW 2000',
+            ),
+            array(
+                'key'           => 'field_footer_whatsapp',
+                'label'         => 'Phone Number',
+                'name'          => 'footer_whatsapp',
+                'type'          => 'text',
+                'instructions'  => 'Phone contact number (displayed as-is).',
+                'default_value' => '+61 8 6866 0556',
+            ),
+            array(
+                'key'           => 'field_footer_whatsapp_link',
+                'label'         => 'Phone Link URL',
+                'name'          => 'footer_whatsapp_link',
+                'type'          => 'url',
+                'instructions'  => 'Full phone link (e.g. tel:+61868660556). Leave empty to disable clickable link.',
+                'default_value' => '',
+            ),
+            array(
+                'key'           => 'field_footer_email',
+                'label'         => 'Email Address',
+                'name'          => 'footer_email',
+                'type'          => 'email',
+                'instructions'  => 'Contact email displayed in the footer.',
+                'default_value' => 'orders@armodafinilaustralia.com.au',
+            ),
+            array(
+                'key'           => 'field_footer_facebook',
+                'label'         => 'Facebook URL',
+                'name'          => 'footer_facebook',
+                'type'          => 'url',
+                'instructions'  => 'Link to your Facebook page. Leave empty to hide.',
+                'default_value' => 'https://www.facebook.com/profile.php?id=61591182224726',
+            ),
+            array(
+                'key'           => 'field_footer_linkedin',
+                'label'         => 'LinkedIn URL',
+                'name'          => 'footer_linkedin',
+                'type'          => 'url',
+                'instructions'  => 'Link to your LinkedIn page. Leave empty to hide.',
+                'default_value' => 'https://www.linkedin.com/company/armodafinil-australia/about/?viewAsMember=true',
+            ),
             
             // ─── TAB: General ───
             array(
@@ -297,46 +351,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'type'          => 'wysiwyg',
                 'instructions'  => 'Add your links or content here. If left empty, it will fallback to the WordPress Appearance > Menus system.',
                 'media_upload'  => 0,
-            ),
-
-
-            // ─── TAB: Contact Info ───
-            array(
-                'key'   => 'field_footer_tab_contact',
-                'label' => 'Contact Info',
-                'type'  => 'tab',
-            ),
-            array(
-                'key'           => 'field_footer_address',
-                'label'         => 'Address',
-                'name'          => 'footer_address',
-                'type'          => 'text',
-                'instructions'  => 'Physical address displayed in the footer.',
-                'default_value' => 'Level 2/29 Chifley Square, Sydney NSW 2000',
-            ),
-            array(
-                'key'           => 'field_footer_whatsapp',
-                'label'         => 'Phone Number',
-                'name'          => 'footer_whatsapp',
-                'type'          => 'text',
-                'instructions'  => 'Phone contact number (displayed as-is).',
-                'default_value' => '+61 8 6866 0556',
-            ),
-            array(
-                'key'           => 'field_footer_whatsapp_link',
-                'label'         => 'Phone Link URL',
-                'name'          => 'footer_whatsapp_link',
-                'type'          => 'url',
-                'instructions'  => 'Full phone link (e.g. tel:+61868660556). Leave empty to disable clickable link.',
-                'default_value' => '',
-            ),
-            array(
-                'key'           => 'field_footer_email',
-                'label'         => 'Email Address',
-                'name'          => 'footer_email',
-                'type'          => 'email',
-                'instructions'  => 'Contact email displayed in the footer.',
-                'default_value' => 'orders@armodafinilaustralia.com.au',
             ),
 
             // ─── TAB: Payments & Shipping ───
