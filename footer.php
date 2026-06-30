@@ -79,33 +79,33 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
                         </a>
                     </div>
-                </div>
 
-                <!-- Get in Touch (mobile: 2nd, desktop: hidden here — shown below) -->
-                <div class="order-2 lg:hidden">
-                    <h3 class="text-lg font-bold text-primary-dark mb-4">Get in Touch with Us</h3>
-                    <ul class="space-y-2.5 text-sm text-primary-dark/80">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                            <span><?php echo esc_html( $footer_address ); ?></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                            <?php if ( $footer_whatsapp_link ) : ?>
-                                <a href="<?php echo esc_url( $footer_whatsapp_link ); ?>" target="_blank" rel="noopener noreferrer" class="hover:underline"><?php echo esc_html( $footer_whatsapp ); ?></a>
-                            <?php else : ?>
-                                <span><?php echo esc_html( $footer_whatsapp ); ?></span>
-                            <?php endif; ?>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                            <a href="mailto:<?php echo esc_attr( $footer_email ); ?>" class="hover:underline"><?php echo esc_html( $footer_email ); ?></a>
-                        </li>
-                    </ul>
+                    <!-- Get in Touch (Moved below Social Icons) -->
+                    <div class="mt-10">
+                        <h3 class="text-lg font-bold text-primary-dark mb-4">Get in Touch with Us</h3>
+                        <ul class="space-y-2.5 text-sm text-primary-dark/80">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                                <span><?php echo esc_html( $footer_address ); ?></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                                <?php if ( $footer_whatsapp_link ) : ?>
+                                    <a href="<?php echo esc_url( $footer_whatsapp_link ); ?>" target="_blank" rel="noopener noreferrer" class="hover:underline"><?php echo esc_html( $footer_whatsapp ); ?></a>
+                                <?php else : ?>
+                                    <span><?php echo esc_html( $footer_whatsapp ); ?></span>
+                                <?php endif; ?>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                                <a href="mailto:<?php echo esc_attr( $footer_email ); ?>" class="hover:underline"><?php echo esc_html( $footer_email ); ?></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- Category -->
-                <div class="order-3 lg:order-2">
+                <div class="order-2 lg:order-2">
                     <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_1_heading', 'option') ?: 'Category' ); ?></h3>
                     <div class="footer-menu-wrapper">
                         <?php 
@@ -125,7 +125,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                 </div>
 
                 <!-- Quick Links -->
-                <div class="order-4 lg:order-3">
+                <div class="order-3 lg:order-3">
                     <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_2_heading', 'option') ?: 'Quick Links' ); ?></h3>
                     <div class="footer-menu-wrapper">
                         <?php 
@@ -148,7 +148,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                 </div>
 
                 <!-- Important Links -->
-                <div class="order-5 lg:order-4">
+                <div class="order-4 lg:order-4">
                     <h3 class="text-lg font-bold text-primary-dark mb-4"><?php echo esc_html( get_field('footer_menu_3_heading', 'option') ?: 'Important Links' ); ?></h3>
                     <div class="footer-menu-wrapper">
                         <?php 
@@ -170,30 +170,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
             </div>
 
             <!-- Middle Row: Contact + Payments + Shipping (desktop only — mobile version is inline above) -->
-            <div class="hidden lg:grid lg:grid-cols-3 gap-8 py-8 border-b border-primary-dark/10" data-aos="fade-up" data-aos-delay="100">
-
-                <!-- Get in Touch -->
-                <div>
-                    <h3 class="text-lg font-bold text-primary-dark mb-4">Get in Touch with Us</h3>
-                    <ul class="space-y-2.5 text-sm text-primary-dark/80">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                            <span><?php echo esc_html( $footer_address ); ?></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                            <?php if ( $footer_whatsapp_link ) : ?>
-                                <a href="<?php echo esc_url( $footer_whatsapp_link ); ?>" target="_blank" rel="noopener noreferrer" class="hover:underline"><?php echo esc_html( $footer_whatsapp ); ?></a>
-                            <?php else : ?>
-                                <span><?php echo esc_html( $footer_whatsapp ); ?></span>
-                            <?php endif; ?>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                            <a href="mailto:<?php echo esc_attr( $footer_email ); ?>" class="hover:underline"><?php echo esc_html( $footer_email ); ?></a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="hidden lg:grid lg:grid-cols-2 gap-8 py-8 border-b border-primary-dark/10" data-aos="fade-up" data-aos-delay="100">
 
                 <!-- Payments Accepted -->
                 <div>
