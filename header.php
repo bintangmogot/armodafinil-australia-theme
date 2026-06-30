@@ -61,7 +61,7 @@
     <!-- Top Announcement Bar (Editable in Theme Settings) -->
     <div class="w-full relative z-50" data-aos="fade-down" style="background-color: <?php echo esc_attr(get_field('announcement_bg_color', 'option') ?: '#ff0000'); ?>; color: <?php echo esc_attr(get_field('announcement_text_color', 'option') ?: '#ffffff'); ?>;">
         <div class="w-full px-4 sm:px-6 lg:px-[72px] py-1.5 flex items-center justify-between">
-            <div class="flex-grow text-center text-sm font-semibold tracking-wide flex justify-center items-center">
+            <div class="flex-grow text-center text-[12px] sm:text-[15px] font-semibold tracking-wide flex justify-center items-center">
                 <?php echo get_field('announcement_text', 'option') ?: 'Free Shipping All Orders Over $299'; ?>
             </div>
             <?php 
@@ -137,7 +137,7 @@
     $header_class = is_front_page() ? $header_absolute_class : 'bg-primary-light py-2 lg:py-4 relative z-40';
     ?>
     <!-- Mobile Top Bar (Cart) - Hidden on Desktop -->
-    <div class="bg-primary-light w-full px-10 sm:px-12 py-3 flex justify-between items-center relative z-50 lg:hidden" data-aos="fade-down" data-aos-delay="150">
+    <div class="hidden bg-primary-light w-full px-10 sm:px-12 py-3 justify-between items-center relative z-50 lg:hidden" data-aos="fade-down" data-aos-delay="150">
         <div></div>
         <?php if (class_exists('WooCommerce')): ?>
             <div class="flex items-center">
