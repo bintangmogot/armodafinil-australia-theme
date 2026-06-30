@@ -57,6 +57,18 @@
             html body .xoo-wsc-modal .xoo-wsc-footer .checkout,
             html body .xoo-wsc-modal .xoo-wsc-footer .button {
                 font-size: 13px !important;
+                width: 100% !important;
+                margin: 0 0 8px 0 !important;
+            }
+            /* Force buttons to stack vertically on small screens so they don't squish */
+            html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-btns,
+            html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-buttons,
+            html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-action-btns,
+            html body .xoo-wsc-cart .xoo-wsc-footer [class*="btn"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 8px !important;
+                width: 100% !important;
             }
         }
     </style>
