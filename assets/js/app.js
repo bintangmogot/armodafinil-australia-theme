@@ -104,10 +104,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Auto-inject AOS to major sections for all pages ──
     const animateElements = document.querySelectorAll('main section:not(.hero), .woocommerce-products-header, ul.products > li.product, .woocommerce-cart-form, .cart-collaterals, form.checkout > *, .woocommerce-order, article.post, .woocommerce-MyAccount-content');
+    
+    // Find the first major element on the page
+    let firstSection = null;
+    if (animateElements.length > 0) {
+        firstSection = animateElements[0];
+    }
+
     animateElements.forEach((el) => {
-        if (!el.hasAttribute('data-aos')) {
-            el.setAttribute('data-aos', 'fade-up');
-            el.setAttribute('data-aos-offset', '50');
+        // If this is the very first section on the page, give it a cascading entrance
+        if (el === firstSection && !el.classList.contains('product')) {
+            let innerContainer = el.querySelector('.max-w-7xl, .max-w-4xl, .container');
+            if (!innerContainer) innerContainer = el;
+            
+            let delay = 0;
+            Array.from(innerContainer.children).forEach((child) => {
+                if (!['SCRIPT', 'STYLE', 'BR'].includes(child.tagName) && !child.hasAttribute('data-aos')) {
+                    child.setAttribute('data-aos', 'fade-up');
+                    child.setAttribute('data-aos-delay', delay.toString());
+                    delay += 100;
+                    if (delay > 600) delay = 600;
+                }
+            });
+        } else {
+            // For all other sections down the page, just fade the whole block up
+            if (!el.hasAttribute('data-aos')) {
+                el.setAttribute('data-aos', 'fade-up');
+                el.setAttribute('data-aos-offset', '50');
+            }
         }
     });
 
@@ -119,6 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
             offset: 100, // offset (in px) from the original trigger point
             easing: 'ease-out-cubic',
         });
+        
+        // Ensure animations at the very top trigger immediately on load
+        setTimeout(() => {
+            AOS.refresh();
+        }, 150);
     }
 
 });
