@@ -133,9 +133,9 @@ $end_count   = min( $start_count + 5 - 1, $total_reviews );
                         Showing <?php echo esc_html( $end_count ); ?> of <?php echo esc_html( $total_reviews ); ?> reviews
                     </div>
                     <?php if ( $reviews->max_num_pages > $paged ) : ?>
-                        <a href="<?php echo esc_url( get_pagenum_link( $paged + 1 ) ); ?>" id="load-more-btn" class="inline-flex items-center gap-2 bg-[#FF0000] text-white font-bold py-4 px-10 rounded-full hover:bg-red-600 transition-colors">
+                        <a href="<?php echo esc_url( get_pagenum_link( $paged + 1 ) ); ?>" id="load-more-btn" class="group inline-flex items-center gap-2 bg-[#FF0000] text-white font-bold py-4 px-10 rounded-full hover:bg-red-600 transition-colors">
                             Load More
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
                     <?php endif; ?>
                 </div>
