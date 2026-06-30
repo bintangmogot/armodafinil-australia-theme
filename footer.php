@@ -33,20 +33,13 @@ if ( ! $footer_email ) {
 }
 
 $footer_facebook = get_field( 'footer_facebook', 'option' );
-if ( $footer_facebook === false || $footer_facebook === '' ) {
-    // If exact match false (not saved yet) or empty, but let's provide default if not saved yet
-    $footer_facebook_raw = get_field( 'footer_facebook', 'option', false ); // get unformatted
-    if ( $footer_facebook_raw === null ) {
-        $footer_facebook = 'https://www.facebook.com/profile.php?id=61591182224726';
-    }
+if ( ! $footer_facebook && $footer_facebook !== '' ) {
+    $footer_facebook = 'https://www.facebook.com/profile.php?id=61591182224726';
 }
 
 $footer_linkedin = get_field( 'footer_linkedin', 'option' );
-if ( $footer_linkedin === false || $footer_linkedin === '' ) {
-    $footer_linkedin_raw = get_field( 'footer_linkedin', 'option', false );
-    if ( $footer_linkedin_raw === null ) {
-        $footer_linkedin = 'https://www.linkedin.com/company/armodafinil-australia/about/?viewAsMember=true';
-    }
+if ( ! $footer_linkedin && $footer_linkedin !== '' ) {
+    $footer_linkedin = 'https://www.linkedin.com/company/armodafinil-australia/about/?viewAsMember=true';
 }
 
 $footer_copyright = get_field( 'footer_copyright', 'option' );
