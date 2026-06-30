@@ -22,24 +22,34 @@
         html body .xoo-wsc-modal .xoo-wsc-footer .checkout,
         html body .xoo-wsc-modal .xoo-wsc-footer .button {
             height: auto !important;
-            min-height: 40px !important;
+            min-height: 44px !important;
             max-height: none !important;
             white-space: normal !important;
-            line-height: 1.3 !important;
-            padding: 8px 4px !important;
+            line-height: normal !important;
+            padding: 10px 8px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            flex-direction: column !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            gap: 4px !important;
             text-align: center !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        html body .xoo-wsc-cart .xoo-wsc-footer,
+        html body .xoo-wsc-modal .xoo-wsc-footer {
+            height: auto !important;
+            min-height: fit-content !important;
         }
         html body .xoo-wsc-cart .xoo-wsc-footer .checkout *,
         html body .xoo-wsc-cart .xoo-wsc-footer .button *,
         html body .xoo-wsc-modal .xoo-wsc-footer .checkout *,
         html body .xoo-wsc-modal .xoo-wsc-footer .button * {
-            line-height: 1.3 !important;
+            line-height: normal !important;
             white-space: normal !important;
             margin: 0 !important;
+            display: inline-block !important;
         }
         @media (max-width: 450px) {
             html body .xoo-wsc-cart .xoo-wsc-footer .checkout,
