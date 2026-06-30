@@ -17,12 +17,12 @@
         }
         
         /* Side Cart Button Fix for Mobile - Ultra High Specificity */
-        html body .xoo-wsc-cart .xoo-wsc-footer .checkout,
-        html body .xoo-wsc-cart .xoo-wsc-footer .button,
-        html body .xoo-wsc-modal .xoo-wsc-footer .checkout,
-        html body .xoo-wsc-modal .xoo-wsc-footer .button {
+        html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-btn-checkout,
+        html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-btn-cart,
+        html body .xoo-wsc-modal .xoo-wsc-footer .xoo-wsc-ft-btn-checkout,
+        html body .xoo-wsc-modal .xoo-wsc-footer .xoo-wsc-ft-btn-cart {
             height: auto !important;
-            min-height: 44px !important;
+            min-height: 48px !important;
             max-height: none !important;
             white-space: normal !important;
             line-height: normal !important;
@@ -42,20 +42,20 @@
             height: auto !important;
             min-height: fit-content !important;
         }
-        html body .xoo-wsc-cart .xoo-wsc-footer .checkout *,
-        html body .xoo-wsc-cart .xoo-wsc-footer .button *,
-        html body .xoo-wsc-modal .xoo-wsc-footer .checkout *,
-        html body .xoo-wsc-modal .xoo-wsc-footer .button * {
+        html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-btn-checkout *,
+        html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-btn-cart *,
+        html body .xoo-wsc-modal .xoo-wsc-footer .xoo-wsc-ft-btn-checkout *,
+        html body .xoo-wsc-modal .xoo-wsc-footer .xoo-wsc-ft-btn-cart * {
             line-height: normal !important;
             white-space: normal !important;
             margin: 0 !important;
             display: inline-block !important;
         }
         @media (max-width: 768px) {
-            html body .xoo-wsc-cart .xoo-wsc-footer .checkout,
-            html body .xoo-wsc-cart .xoo-wsc-footer .button,
-            html body .xoo-wsc-modal .xoo-wsc-footer .checkout,
-            html body .xoo-wsc-modal .xoo-wsc-footer .button {
+            html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-btn-checkout,
+            html body .xoo-wsc-cart .xoo-wsc-footer .xoo-wsc-ft-btn-cart,
+            html body .xoo-wsc-modal .xoo-wsc-footer .xoo-wsc-ft-btn-checkout,
+            html body .xoo-wsc-modal .xoo-wsc-footer .xoo-wsc-ft-btn-cart {
                 font-size: 13px !important;
                 width: 100% !important;
                 margin: 0 0 8px 0 !important;
