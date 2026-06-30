@@ -51,7 +51,7 @@
             margin: 0 !important;
             display: inline-block !important;
         }
-        @media (max-width: 450px) {
+        @media (max-width: 768px) {
             html body .xoo-wsc-cart .xoo-wsc-footer .checkout,
             html body .xoo-wsc-cart .xoo-wsc-footer .button,
             html body .xoo-wsc-modal .xoo-wsc-footer .checkout,
