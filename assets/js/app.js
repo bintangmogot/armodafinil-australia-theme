@@ -140,14 +140,17 @@ document.addEventListener('DOMContentLoaded', () => {
         AOS.init({
             duration: 800,
             once: true, // whether animation should happen only once - while scrolling down
-            offset: 100, // offset (in px) from the original trigger point
+            offset: 50, // lower offset so things trigger easier
             easing: 'ease-out-cubic',
         });
         
         // Ensure animations at the very top trigger immediately on load
-        setTimeout(() => {
+        // Sometimes images take a moment to load and push content around, blocking AOS from firing.
+        window.addEventListener('load', () => {
             AOS.refresh();
-        }, 150);
+            // Force a scroll event just in case
+            window.dispatchEvent(new Event('scroll'));
+        });
     }
 
 });
