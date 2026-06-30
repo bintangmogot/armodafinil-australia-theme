@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, true);
 
     // ── Auto-inject AOS to major sections for all pages ──
-    const animateElements = document.querySelectorAll('main section, .woocommerce-products-header, ul.products > li.product, .woocommerce-cart-form, .cart-collaterals, form.checkout > *, .woocommerce-order, article.post, .woocommerce-MyAccount-content');
+    const animateElements = document.querySelectorAll('main section:not(.hero), .woocommerce-products-header, ul.products > li.product, .woocommerce-cart-form, .cart-collaterals, form.checkout > *, .woocommerce-order, article.post, .woocommerce-MyAccount-content');
     animateElements.forEach((el) => {
         if (!el.hasAttribute('data-aos')) {
             el.setAttribute('data-aos', 'fade-up');

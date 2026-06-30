@@ -31,25 +31,25 @@ if ( $title ) {
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-start lg:items-center min-h-[inherit]">
         <div class="w-[70%] md:w-full pt-28 pb-6 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20 text-white">
             <?php if ($title_html) : ?>
-                <h1 class="max-w-5xl text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-[1.2] mb-3 lg:mb-4">
+                <h1 class="max-w-5xl text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-[1.2] mb-3 lg:mb-4" data-aos="fade-up">
                     <?php echo $title_html; ?>
                 </h1>
             <?php endif; ?>
 
             <?php if ($subtitle) : ?>
-                <p class="md:w-[70%] lg:w-[50%] text-lg md:text-2xl lg:text-3xl font-semibold text-white/90 leading-snug mb-2 lg:mb-3">
+                <p class="md:w-[70%] lg:w-[50%] text-lg md:text-2xl lg:text-3xl font-semibold text-white/90 leading-snug mb-2 lg:mb-3" data-aos="fade-up" data-aos-delay="100">
                     <?php echo esc_html($subtitle); ?>
                 </p>
             <?php endif; ?>
 
             <?php if ($tagline) : ?>
-                <p class="text-base lg:text-xl text-accent italic mb-6 lg:mb-8">
+                <p class="text-base lg:text-xl text-accent italic mb-6 lg:mb-8" data-aos="fade-up" data-aos-delay="200">
                     <?php echo esc_html($tagline); ?>
                 </p>
             <?php endif; ?>
 
             <?php if ( have_rows('features') ) : ?>
-                <ul class="space-y-3 mb-6 lg:mb-8">
+                <ul class="space-y-3 mb-6 lg:mb-8" data-aos="fade-up" data-aos-delay="300">
                     <?php while ( have_rows('features') ) : the_row(); ?>
                         <?php $feature_text = get_sub_field('feature_text'); ?>
                         <?php if ( $feature_text ) : ?>
@@ -63,7 +63,7 @@ if ( $title ) {
             <?php endif; ?>
 
             <?php if ($button_text && $button_link) : ?>
-                <div class="mt-5 lg:mt-6">
+                <div class="mt-5 lg:mt-6" data-aos="fade-up" data-aos-delay="400">
                     <a href="<?php echo esc_url($button_link); ?>" class="group inline-flex items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-3.5 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
                         <span><?php echo esc_html($button_text); ?></span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
