@@ -79,8 +79,8 @@
     <?php if ($has_announcement !== false && $has_announcement !== '0'): // Default to true if not set ?>
     <!-- Top Announcement Bar (Editable in Theme Settings) -->
     <div class="w-full relative z-50" data-aos="fade-down" style="background-color: <?php echo esc_attr(get_field('announcement_bg_color', 'option') ?: '#ff0000'); ?>; color: <?php echo esc_attr(get_field('announcement_text_color', 'option') ?: '#ffffff'); ?>;">
-        <div class="w-full px-4 sm:px-6 lg:px-[72px] py-1.5 flex items-center justify-between">
-            <div class="flex-grow text-center text-[12px] sm:text-[15px] font-semibold tracking-wide flex justify-center items-center">
+        <div class="w-full px-4 sm:px-6 lg:px-[72px] py-1.5 flex items-center justify-center">
+            <div class="w-full text-center text-[12px] sm:text-[15px] font-semibold tracking-wide leading-snug sm:leading-normal">
                 <?php echo get_field('announcement_text', 'option') ?: 'Free Shipping All Orders Over $299'; ?>
             </div>
             <?php 
