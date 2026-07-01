@@ -24,13 +24,13 @@ $carousel_id = 'reviews-carousel-' . uniqid();
         <?php if ($reviews->have_posts()): ?>
             <div class="relative group">
                 <!-- Left Arrow -->
-                <button id="<?php echo $carousel_id; ?>-prev"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 -ml-8 md:-ml-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 transition-colors"
+                <div id="<?php echo $carousel_id; ?>-prev" role="button"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -ml-8 md:-ml-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 hover:scale-125 transition-all duration-300 cursor-pointer"
                     aria-label="Previous">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                     </svg>
-                </button>
+                </div>
 
                 <!-- Carousel Container -->
                 <div id="<?php echo $carousel_id; ?>-container"
@@ -89,13 +89,13 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                 </div>
 
                 <!-- Right Arrow -->
-                <button id="<?php echo $carousel_id; ?>-next"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 -mr-8 md:-mr-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 transition-colors"
+                <div id="<?php echo $carousel_id; ?>-next" role="button"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 -mr-8 md:-mr-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 hover:scale-125 transition-all duration-300 cursor-pointer"
                     aria-label="Next">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                     </svg>
-                </button>
+                </div>
             </div>
 
             <!-- Pagination dots -->
