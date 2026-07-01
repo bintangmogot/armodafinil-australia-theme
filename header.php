@@ -76,16 +76,25 @@
 
     <?php $has_announcement = get_field('enable_announcement_bar', 'option'); ?>
     
-    <?php if ($has_announcement !== false && $has_announcement !== '0'): // Default to true if not set ?>
-    <!-- Top Announcement Bar (Editable in Theme Settings) -->
-    <div class="w-full relative z-50" data-aos="fade-down" style="background-color: <?php echo esc_attr(get_field('announcement_bg_color', 'option') ?: '#ff0000'); ?>; color: <?php echo esc_attr(get_field('announcement_text_color', 'option') ?: '#ffffff'); ?>;">
-        <div class="w-full px-4 sm:px-6 lg:px-[72px] py-1.5 flex items-center justify-center">
-            <div class="w-full text-center text-[12px] sm:text-[15px] font-semibold tracking-wide leading-snug sm:leading-normal">
-                <?php echo get_field('announcement_text', 'option') ?: 'Free Shipping All Orders Over $299'; ?>
-            </div>
+    <?php if ($has_announcement !== false && $has_announcement !== '0'): ?>
+    <!-- Top Announcement Bar (Rebuilt from Zero) -->
+    <div class="w-full relative z-50 flex items-center justify-center px-4 py-2 sm:py-2.5" data-aos="fade-down" style="background-color: <?php echo esc_attr(get_field('announcement_bg_color', 'option') ?: '#ff0000'); ?>; color: <?php echo esc_attr(get_field('announcement_text_color', 'option') ?: '#ffffff'); ?>;">
+        <div class="w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 text-center text-[13px] sm:text-[15px] font-semibold tracking-wide leading-snug">
             <?php 
-            $whatsapp_num = get_field('footer_whatsapp', 'option') ?: '+61 8 6866 0556';
-            $whatsapp_link = get_field('footer_whatsapp_link', 'option') ?: '#';
+                $announcement = get_field('announcement_text', 'option');
+                if (!$announcement) {
+                    $announcement = 'Free Shipping Orders Over $299 Australia-Wide | Call 0455 241 294';
+                }
+                
+                // Split by pipe '|' to stack nicely on mobile, side-by-side on desktop
+                if (strpos($announcement, '|') !== false) {
+                    $parts = explode('|', $announcement, 2);
+                    echo '<span class="inline-block">' . wp_kses_post(trim($parts[0])) . '</span>';
+                    echo '<span class="hidden sm:inline-block opacity-70">|</span>';
+                    echo '<span class="inline-block whitespace-nowrap">' . wp_kses_post(trim($parts[1])) . '</span>';
+                } else {
+                    echo wp_kses_post($announcement);
+                }
             ?>
         </div>
     </div>
