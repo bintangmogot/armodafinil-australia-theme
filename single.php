@@ -52,8 +52,6 @@ get_header();
                     <time datetime="<?php echo get_the_date( 'c' ); ?>">
                         <?php echo get_the_date(); ?>
                     </time>
-                    <span>·</span>
-                    <span>By <?php the_author(); ?></span>
                 </div>
             </header>
 
