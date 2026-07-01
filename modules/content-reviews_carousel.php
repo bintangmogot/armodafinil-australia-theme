@@ -25,9 +25,9 @@ $carousel_id = 'reviews-carousel-' . uniqid();
             <div class="relative group">
                 <!-- Left Arrow -->
                 <div id="<?php echo $carousel_id; ?>-prev" role="button"
-                    class="absolute left-0 top-1/2 -mt-5 -ml-8 md:-ml-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 hover:scale-125 transition-all duration-300 cursor-pointer"
+                    class="carousel-arrow absolute left-0 top-1/2 -mt-5 -ml-8 md:-ml-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 cursor-pointer"
                     aria-label="Previous">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <svg class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </div>
@@ -90,9 +90,9 @@ $carousel_id = 'reviews-carousel-' . uniqid();
 
                 <!-- Right Arrow -->
                 <div id="<?php echo $carousel_id; ?>-next" role="button"
-                    class="absolute right-0 top-1/2 -mt-5 -mr-8 md:-mr-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 hover:scale-125 transition-all duration-300 cursor-pointer"
+                    class="carousel-arrow absolute right-0 top-1/2 -mt-5 -mr-8 md:-mr-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 cursor-pointer"
                     aria-label="Next">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <svg class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </div>

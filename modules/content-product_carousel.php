@@ -22,9 +22,9 @@ $carousel_id = 'carousel-' . uniqid();
             <div class="relative group">
                 <!-- Left Arrow -->
                 <div id="<?php echo $carousel_id; ?>-prev" role="button"
-                    class="hidden md:flex absolute left-0 top-1/2 -mt-5 -ml-12 z-10 w-10 h-10 items-center justify-center text-primary hover:text-red-600 hover:scale-125 transition-all duration-300 cursor-pointer"
+                    class="carousel-arrow hidden md:flex absolute left-0 top-1/2 -mt-5 -ml-12 z-10 w-10 h-10 items-center justify-center text-primary hover:text-red-600 cursor-pointer"
                     aria-label="Previous">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-10 h-10 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </div>
@@ -91,9 +91,9 @@ $carousel_id = 'carousel-' . uniqid();
 
                 <!-- Right Arrow -->
                 <div id="<?php echo $carousel_id; ?>-next" role="button"
-                    class="hidden md:flex absolute right-0 top-1/2 -mt-5 -mr-12 z-10 w-10 h-10 items-center justify-center text-primary hover:text-red-600 hover:scale-125 transition-all duration-300 cursor-pointer"
+                    class="carousel-arrow hidden md:flex absolute right-0 top-1/2 -mt-5 -mr-12 z-10 w-10 h-10 items-center justify-center text-primary hover:text-red-600 cursor-pointer"
                     aria-label="Next">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-10 h-10 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </div>
