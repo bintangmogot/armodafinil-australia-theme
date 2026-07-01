@@ -10,3 +10,29 @@ Text Domain: armodafinil-australia
 Requires at least: 6.0
 Requires PHP: 7.4
 */
+
+/* Fix for top red notification bar text jumping/wrapping issues on mobile devices */
+.woocommerce-store-notice,
+p.demo_store,
+#wpfront-notification-bar,
+.top-notice-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    gap: 4px 8px !important;
+    line-height: 1.4 !important;
+}
+
+/* Ensure inner elements (like spans) don't float and cause broken layouts */
+.woocommerce-store-notice > *,
+p.demo_store > *,
+#wpfront-notification-bar > *,
+.top-notice-bar > * {
+    float: none !important;
+    display: inline-block !important;
+    margin: 0 !important;
+}
