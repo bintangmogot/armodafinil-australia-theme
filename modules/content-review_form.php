@@ -29,10 +29,12 @@ if ( ! $heading ) {
                 <!-- Rating -->
                 <div>
                     <label class="block text-sm font-bold text-primary mb-2">Your overall rating *</label>
-                    <div class="flex gap-2" id="star-rating-selector">
-                        <?php for ($i = 1; $i <= 5; $i++) : ?>
-                            <span data-rating="<?php echo $i; ?>" class="star-icon text-3xl text-accent cursor-pointer transition-colors leading-none select-none">★</span>
-                        <?php endfor; ?>
+                    <div id="star-rating-selector" class="whitespace-nowrap">
+                        <?php
+                        for ($i = 1; $i <= 5; $i++) {
+                            echo '<span data-rating="' . $i . '" class="star-icon text-3xl text-accent cursor-pointer transition-colors leading-none select-none inline-block mr-2">★</span>';
+                        }
+                        ?>
                     </div>
                 </div>
 

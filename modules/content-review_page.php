@@ -62,10 +62,14 @@ $end_count   = min( $start_count + 5 - 1, $total_reviews );
                         <?php echo number_format($average_rating, 1); ?>
                     </div>
                     <div>
-                        <div class="flex gap-1 mb-2">
-                            <?php for ($i = 1; $i <= 5; $i++) : ?>
-                                <span class="text-2xl leading-none <?php echo $i <= round($average_rating) ? 'text-accent' : 'text-gray-300'; ?>">★</span>
-                            <?php endfor; ?>
+                        <div class="mb-2 text-2xl leading-none tracking-[4px] text-accent">
+                            <?php
+                            $r = intval(round($average_rating));
+                            echo str_repeat('★', $r);
+                            if (5 - $r > 0) {
+                                echo '<span class="text-gray-300">' . str_repeat('★', 5 - $r) . '</span>';
+                            }
+                            ?>
                         </div>
                         <div class="text-base font-medium text-gray-600">
                             From <?php echo esc_html( $total_reviews ); ?> reviews
@@ -96,10 +100,14 @@ $end_count   = min( $start_count + 5 - 1, $total_reviews );
                                             </svg>
                                         </div>
                                         
-                                        <div class="flex gap-1">
-                                            <?php for ($i = 1; $i <= 5; $i++) : ?>
-                                                <span class="text-xl leading-none <?php echo $i <= $rating ? 'text-accent' : 'text-white/25'; ?>">★</span>
-                                            <?php endfor; ?>
+                                        <div class="text-xl leading-none tracking-[4px] text-accent">
+                                            <?php
+                                            $r = intval($rating);
+                                            echo str_repeat('★', $r);
+                                            if (5 - $r > 0) {
+                                                echo '<span class="text-white/25">' . str_repeat('★', 5 - $r) . '</span>';
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                     

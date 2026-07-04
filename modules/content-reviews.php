@@ -24,10 +24,14 @@ $reviews = new WP_Query(array(
                 ?>
                     <div class="bg-surface rounded-2xl p-6 border border-primary-dark/5 hover:shadow-md transition-shadow">
                         <?php if ($rating) : ?>
-                            <div class="flex gap-1 mb-3">
-                                <?php for ($i = 1; $i <= 5; $i++) : ?>
-                                    <span class="text-xl leading-none <?php echo $i <= $rating ? 'text-accent' : 'text-gray-200'; ?>">★</span>
-                                <?php endfor; ?>
+                            <div class="mb-3 text-xl leading-none tracking-[4px] text-accent">
+                                <?php
+                                $r = intval($rating);
+                                echo str_repeat('★', $r);
+                                if (5 - $r > 0) {
+                                    echo '<span class="text-gray-200">' . str_repeat('★', 5 - $r) . '</span>';
+                                }
+                                ?>
                             </div>
                         <?php endif; ?>
                         <h4 class="text-base font-bold text-primary-dark mb-2"><?php echo esc_html( get_the_title() ); ?></h4>

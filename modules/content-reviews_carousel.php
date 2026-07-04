@@ -59,10 +59,14 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                                             </svg>
                                         </div>
 
-                                        <div class="flex gap-1">
-                                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                                <span class="text-xl leading-none <?php echo $i <= $rating ? 'text-accent' : 'text-white/25'; ?>">★</span>
-                                            <?php endfor; ?>
+                                        <div class="text-xl leading-none tracking-[4px] text-accent">
+                                            <?php
+                                            $r = intval($rating);
+                                            echo str_repeat('★', $r);
+                                            if (5 - $r > 0) {
+                                                echo '<span class="text-white/25">' . str_repeat('★', 5 - $r) . '</span>';
+                                            }
+                                            ?>
                                         </div>
                                     </div>
 
