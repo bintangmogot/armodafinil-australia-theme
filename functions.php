@@ -889,3 +889,24 @@ function armo_style_shipping_insurance() {
 
 
 add_action('wp_ajax_dump_html', function() { file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']); wp_die(); }); add_action('wp_ajax_nopriv_dump_html', function() { file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']); wp_die(); });
+
+/**
+ * Force AIOSEO to use the Featured Image for Open Graph and Twitter Cards
+ */
+add_filter( 'aioseo_facebook_tags', 'aioseo_force_featured_image_facebook' );
+function aioseo_force_featured_image_facebook( $facebookMeta ) {
+	if ( is_singular() && has_post_thumbnail() ) {
+		$image_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+		$facebookMeta['og:image'] = $image_url;
+		$facebookMeta['og:image:secure_url'] = $image_url;
+	}
+	return $facebookMeta;
+}
+
+add_filter( 'aioseo_twitter_tags', 'aioseo_force_featured_image_twitter' );
+function aioseo_force_featured_image_twitter( $twitterMeta ) {
+	if ( is_singular() && has_post_thumbnail() ) {
+		$twitterMeta['twitter:image'] = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+	}
+	return $twitterMeta;
+}
