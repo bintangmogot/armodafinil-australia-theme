@@ -5,6 +5,20 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <?php if ( is_singular() && has_post_thumbnail() ) : ?>
+        <meta property="og:title" content="<?php echo esc_attr( get_the_title() ); ?>" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="<?php echo esc_url( get_permalink() ); ?>" />
+        <meta property="og:image" content="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" />
+        <meta property="og:description" content="<?php echo esc_attr( wp_trim_words( wp_strip_all_tags( get_post_field( 'post_content', get_the_ID() ) ), 40, '...' ) ); ?>" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="<?php echo esc_attr( get_the_title() ); ?>" />
+        <meta name="twitter:description" content="<?php echo esc_attr( wp_trim_words( wp_strip_all_tags( get_post_field( 'post_content', get_the_ID() ) ), 40, '...' ) ); ?>" />
+        <meta name="twitter:image" content="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" />
+    <?php endif; ?>
+
     <?php wp_head(); ?>
     <style>
         /* Hide the cart injected by Side Cart plugin into the nav menu to avoid duplicates */
