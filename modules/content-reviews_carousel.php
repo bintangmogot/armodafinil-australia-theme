@@ -24,13 +24,13 @@ $carousel_id = 'reviews-carousel-' . uniqid();
         <?php if ($reviews->have_posts()): ?>
             <div class="relative group">
                 <!-- Left Arrow -->
-                <button id="<?php echo $carousel_id; ?>-prev"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 -ml-8 md:-ml-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 transition-colors"
+                <div id="<?php echo $carousel_id; ?>-prev" role="button"
+                    class="carousel-arrow absolute left-0 top-1/2 -mt-5 -ml-8 md:-ml-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 cursor-pointer"
                     aria-label="Previous">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <svg class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                     </svg>
-                </button>
+                </div>
 
                 <!-- Carousel Container -->
                 <div id="<?php echo $carousel_id; ?>-container"
@@ -59,14 +59,14 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                                             </svg>
                                         </div>
 
-                                        <div class="flex gap-1">
-                                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                                <svg class="w-5 h-5 <?php echo $i <= $rating ? 'text-accent fill-current' : 'text-white/25 fill-current'; ?>"
-                                                    viewBox="0 0 20 20">
-                                                    <path
-                                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                </svg>
-                                            <?php endfor; ?>
+                                        <div class="text-xl leading-none tracking-[4px] text-accent">
+                                            <?php
+                                            $r = intval($rating);
+                                            echo str_repeat('★', $r);
+                                            if (5 - $r > 0) {
+                                                echo '<span class="text-white/25">' . str_repeat('★', 5 - $r) . '</span>';
+                                            }
+                                            ?>
                                         </div>
                                     </div>
 
@@ -89,13 +89,13 @@ $carousel_id = 'reviews-carousel-' . uniqid();
                 </div>
 
                 <!-- Right Arrow -->
-                <button id="<?php echo $carousel_id; ?>-next"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 -mr-8 md:-mr-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 transition-colors"
+                <div id="<?php echo $carousel_id; ?>-next" role="button"
+                    class="carousel-arrow absolute right-0 top-1/2 -mt-5 -mr-8 md:-mr-12 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-red-600 cursor-pointer"
                     aria-label="Next">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <svg class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                     </svg>
-                </button>
+                </div>
             </div>
 
             <!-- Pagination dots -->
