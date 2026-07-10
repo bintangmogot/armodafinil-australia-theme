@@ -909,3 +909,36 @@ add_action('wp_ajax_dump_html', function () {
 add_action('wp_ajax_nopriv_dump_html', function () {
     file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']);
     wp_die(); });
+
+
+/**
+ * Remove categories from WooCommerce product breadcrumbs.
+ * Forces breadcrumb to be: Home / Shop / Product Name
+ */
+add_filter( 'woocommerce_get_breadcrumb', 'armo_remove_categories_from_product_breadcrumb', 10, 2 );
+function armo_remove_categories_from_product_breadcrumb( $crumbs, $breadcrumb ) {
+    if ( is_product() ) {
+        $new_crumbs = array();
+        
+        // 1. Always keep Home (first item)
+        if ( isset( $crumbs[0] ) ) {
+            $new_crumbs[] = $crumbs[0];
+        }
+        
+        // 2. Add Shop page manually
+        $shop_page_id = wc_get_page_id( 'shop' );
+        if ( $shop_page_id > 0 ) {
+            $new_crumbs[] = array( get_the_title( $shop_page_id ), get_permalink( $shop_page_id ) );
+        }
+        
+        // 3. Always keep the Product Name (last item)
+        $last_crumb = end( $crumbs );
+        if ( $last_crumb ) {
+            $new_crumbs[] = $last_crumb;
+        }
+        
+        return $new_crumbs;
+    }
+    
+    return $crumbs;
+}
