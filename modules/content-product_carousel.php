@@ -31,7 +31,7 @@ $carousel_id = 'carousel-' . uniqid();
 
                 <!-- Carousel Container -->
                 <div id="<?php echo $carousel_id; ?>-container"
-                    class="flex overflow-x-auto gap-4 md:gap-4 pb-4 snap-x snap-mandatory w-full scroll-smooth">
+                    class="grid grid-cols-2 gap-3 gap-y-5 md:flex md:overflow-x-auto md:gap-4 pb-4 md:snap-x md:snap-mandatory w-full md:scroll-smooth">
                     <?php
                     foreach ($products as $product):
                         $post_id = is_object($product) ? $product->ID : $product;
@@ -48,7 +48,7 @@ $carousel_id = 'carousel-' . uniqid();
                             $in_stock = $wc_product->is_in_stock();
                             ?>
                             <div
-                                class="w-[200px] md:w-[calc(25%-14px)] flex-shrink-0 snap-start flex flex-col hover:bg-gray-100 pb-6">
+                                class="w-full md:w-[calc(25%-14px)] md:flex-shrink-0 md:snap-start flex flex-col hover:bg-gray-100 pb-2 md:pb-6 h-full">
                                 <a href="<?php echo $permalink; ?>"
                                     class="block w-full no-underline text-inherit flex-grow flex flex-col">
                                     <div
@@ -63,17 +63,17 @@ $carousel_id = 'carousel-' . uniqid();
                                     </div>
 
                                     <div class="text-center px-1 flex-grow flex flex-col">
-                                        <h3 class="text-base md:text-lg font-bold text-[#1E1E1E] mb-1 leading-snug">
+                                        <h3 class="text-sm md:text-lg font-bold text-[#1E1E1E] mb-1 leading-snug">
                                             <?php echo $name; ?>
                                         </h3>
-                                        <div class="text-base md:text-lg font-extrabold text-primary mb-3">
+                                        <div class="text-sm md:text-lg font-extrabold text-primary mb-3">
                                             <?php echo $price_html; ?>
                                         </div>
                                         <div class="mt-auto">
                                             <span
-                                                class="inline-flex items-center justify-center gap-2 bg-[#ff0000] text-white py-2 px-6 rounded shadow-md font-bold text-base text-center hover:bg-red-600 transition-colors">
+                                                class="inline-flex items-center justify-center gap-1 md:gap-2 bg-[#ff0000] text-white py-2 px-3 md:px-6 rounded shadow-md font-bold text-sm md:text-base text-center hover:bg-red-600 transition-colors whitespace-nowrap">
                                                 Buy Now
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
                                                     </path>
@@ -129,14 +129,14 @@ $carousel_id = 'carousel-' . uniqid();
 
                         // Auto-scroll every 5 seconds
                         let autoScroll = setInterval(() => {
-                            nextBtn.click();
+                            if(window.innerWidth >= 768) nextBtn.click();
                         }, 5000);
 
                         // Pause auto-scroll when interacting
                         container.addEventListener('mouseenter', () => clearInterval(autoScroll));
                         container.addEventListener('mouseleave', () => {
                             autoScroll = setInterval(() => {
-                                nextBtn.click();
+                                if(window.innerWidth >= 768) nextBtn.click();
                             }, 5000);
                         });
                         container.addEventListener('touchstart', () => clearInterval(autoScroll), { passive: true });

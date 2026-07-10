@@ -64,4 +64,9 @@
 
     </div>
 
+    <!-- Hover overlay link for the whole card -->
+    <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php echo esc_attr( get_the_title() ); ?>">
+        <span class="sr-only">Read article</span>
+    </a>
+
 </article>

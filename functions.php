@@ -21,16 +21,18 @@
  */
 
 // Define constants for easy reference
-define( 'ARMO_THEME_VERSION', '2.0.0' );
-define( 'ARMO_THEME_DIR', get_stylesheet_directory() );
-define( 'ARMO_THEME_URI', get_stylesheet_directory_uri() );
+define('ARMO_THEME_VERSION', '2.0.0');
+define('ARMO_THEME_DIR', get_stylesheet_directory());
+define('ARMO_THEME_URI', get_stylesheet_directory_uri());
 
 /**
  * Helper function to sanitize content and automatically replace the ✅ emoji
  * with our custom premium yellow checkmark icon.
  */
-function armo_content($content) {
-    if (!$content) return '';
+function armo_content($content)
+{
+    if (!$content)
+        return '';
     // Removed wp_kses_post because it strips <style> tags injected by form plugins like WPForms
     return str_replace('✅', '<span class="armo-yellow-tick"></span>', $content);
 }
@@ -40,8 +42,8 @@ function armo_content($content) {
  * When we removed "Template: astra" from style.css, WordPress still had
  * the old value cached in the database. This auto-corrects it once.
  */
-if ( get_option( 'template' ) !== get_option( 'stylesheet' ) ) {
-    update_option( 'template', get_option( 'stylesheet' ) );
+if (get_option('template') !== get_option('stylesheet')) {
+    update_option('template', get_option('stylesheet'));
 }
 
 /*
@@ -63,7 +65,7 @@ require_once ARMO_THEME_DIR . '/inc/enqueue.php';
  * Registers: WooCommerce compatibility, custom wrappers
  * File: inc/woocommerce.php
  */
-if ( class_exists( 'WooCommerce' ) ) {
+if (class_exists('WooCommerce')) {
     require_once ARMO_THEME_DIR . '/inc/woocommerce.php';
     require_once ARMO_THEME_DIR . '/inc/checkout-medical.php';
     require_once get_template_directory() . '/inc/shipping-label.php';
@@ -93,23 +95,25 @@ require_once ARMO_THEME_DIR . '/inc/shortcodes.php';
  * ACF checks "location rules" to decide if a field group should appear.
  * This filter intercepts that check and says "yes, show it" for any page.
  */
-function armo_acf_modules_on_all_pages( $match, $rule, $screen, $field_group ) {
+function armo_acf_modules_on_all_pages($match, $rule, $screen, $field_group)
+{
     // Only modify rules about page templates
-    if ( $rule['param'] === 'page_template' && isset( $screen['post_type'] ) && $screen['post_type'] === 'page' ) {
+    if ($rule['param'] === 'page_template' && isset($screen['post_type']) && $screen['post_type'] === 'page') {
         return true; // Always show on pages, regardless of template
     }
     return $match;
 }
-add_filter( 'acf/location/match_rule', 'armo_acf_modules_on_all_pages', 10, 4 );
+add_filter('acf/location/match_rule', 'armo_acf_modules_on_all_pages', 10, 4);
 
 /**
  * Dynamically register the Hero Section (Split Fields) layout inside the ACF Modules flexible content field.
  */
-function armo_add_hero_section_layout_to_modules( $field ) {
+function armo_add_hero_section_layout_to_modules($field)
+{
     // Ensure Hero Section (Split Fields) layout has all its sub-fields
-    if ( isset( $field['layouts'] ) ) {
-        foreach ( $field['layouts'] as &$layout ) {
-            if ( isset( $layout['name'] ) && $layout['name'] === 'hero_section' ) {
+    if (isset($field['layouts'])) {
+        foreach ($field['layouts'] as &$layout) {
+            if (isset($layout['name']) && $layout['name'] === 'hero_section') {
                 // Force inject the sub-fields so they never disappear
                 $layout['sub_fields'] = array(
                     array(
@@ -260,15 +264,16 @@ function armo_add_hero_section_layout_to_modules( $field ) {
 
     return $field;
 }
-add_filter( 'acf/load_field/name=modules', 'armo_add_hero_section_layout_to_modules' );
+add_filter('acf/load_field/name=modules', 'armo_add_hero_section_layout_to_modules');
 
 /**
  * Dynamically register the Reviews Carousel layout inside the ACF Modules flexible content field.
  */
-function armo_add_reviews_carousel_layout_to_modules( $field ) {
-    if ( isset( $field['layouts'] ) ) {
-        foreach ( $field['layouts'] as &$layout ) {
-            if ( isset( $layout['name'] ) && $layout['name'] === 'reviews_carousel' ) {
+function armo_add_reviews_carousel_layout_to_modules($field)
+{
+    if (isset($field['layouts'])) {
+        foreach ($field['layouts'] as &$layout) {
+            if (isset($layout['name']) && $layout['name'] === 'reviews_carousel') {
                 $layout['sub_fields'] = array(
                     array(
                         'key' => 'field_reviews_carousel_heading',
@@ -301,15 +306,16 @@ function armo_add_reviews_carousel_layout_to_modules( $field ) {
 
     return $field;
 }
-add_filter( 'acf/load_field/name=modules', 'armo_add_reviews_carousel_layout_to_modules' );
+add_filter('acf/load_field/name=modules', 'armo_add_reviews_carousel_layout_to_modules');
 
 /**
  * Dynamically register the Review Page layout inside the ACF Modules flexible content field.
  */
-function armo_add_review_page_layout_to_modules( $field ) {
-    if ( isset( $field['layouts'] ) ) {
-        foreach ( $field['layouts'] as &$layout ) {
-            if ( isset( $layout['name'] ) && $layout['name'] === 'review_page' ) {
+function armo_add_review_page_layout_to_modules($field)
+{
+    if (isset($field['layouts'])) {
+        foreach ($field['layouts'] as &$layout) {
+            if (isset($layout['name']) && $layout['name'] === 'review_page') {
                 $layout['sub_fields'] = array(
                     array(
                         'key' => 'field_review_page_heading',
@@ -342,15 +348,16 @@ function armo_add_review_page_layout_to_modules( $field ) {
 
     return $field;
 }
-add_filter( 'acf/load_field/name=modules', 'armo_add_review_page_layout_to_modules' );
+add_filter('acf/load_field/name=modules', 'armo_add_review_page_layout_to_modules');
 
 /**
  * Dynamically register the Review Form layout inside the ACF Modules flexible content field.
  */
-function armo_add_review_form_layout_to_modules( $field ) {
-    if ( isset( $field['layouts'] ) ) {
-        foreach ( $field['layouts'] as &$layout ) {
-            if ( isset( $layout['name'] ) && $layout['name'] === 'review_form' ) {
+function armo_add_review_form_layout_to_modules($field)
+{
+    if (isset($field['layouts'])) {
+        foreach ($field['layouts'] as &$layout) {
+            if (isset($layout['name']) && $layout['name'] === 'review_form') {
                 $layout['sub_fields'] = array(
                     array(
                         'key' => 'field_review_form_heading',
@@ -383,15 +390,16 @@ function armo_add_review_form_layout_to_modules( $field ) {
 
     return $field;
 }
-add_filter( 'acf/load_field/name=modules', 'armo_add_review_form_layout_to_modules' );
+add_filter('acf/load_field/name=modules', 'armo_add_review_form_layout_to_modules');
 
 /**
  * Dynamically register the Why Choose Us layout inside the ACF Modules flexible content field.
  */
-function armo_add_why_choose_us_layout_to_modules( $field ) {
-    if ( isset( $field['layouts'] ) ) {
-        foreach ( $field['layouts'] as &$layout ) {
-            if ( isset( $layout['name'] ) && $layout['name'] === 'why_choose_us' ) {
+function armo_add_why_choose_us_layout_to_modules($field)
+{
+    if (isset($field['layouts'])) {
+        foreach ($field['layouts'] as &$layout) {
+            if (isset($layout['name']) && $layout['name'] === 'why_choose_us') {
                 $layout['sub_fields'] = array(
                     array(
                         'key' => 'field_why_choose_us_heading',
@@ -516,15 +524,16 @@ function armo_add_why_choose_us_layout_to_modules( $field ) {
 
     return $field;
 }
-add_filter( 'acf/load_field/name=modules', 'armo_add_why_choose_us_layout_to_modules' );
+add_filter('acf/load_field/name=modules', 'armo_add_why_choose_us_layout_to_modules');
 
 /**
  * Dynamically register the Why Buy layout inside the ACF Modules flexible content field.
  */
-function armo_add_why_buy_layout_to_modules( $field ) {
-    if ( isset( $field['layouts'] ) ) {
-        foreach ( $field['layouts'] as &$layout ) {
-            if ( isset( $layout['name'] ) && $layout['name'] === 'why_buy' ) {
+function armo_add_why_buy_layout_to_modules($field)
+{
+    if (isset($field['layouts'])) {
+        foreach ($field['layouts'] as &$layout) {
+            if (isset($layout['name']) && $layout['name'] === 'why_buy') {
                 $layout['sub_fields'] = array(
                     array(
                         'key' => 'field_why_buy_heading',
@@ -635,17 +644,18 @@ function armo_add_why_buy_layout_to_modules( $field ) {
 
     return $field;
 }
-add_filter( 'acf/load_field/name=modules', 'armo_add_why_buy_layout_to_modules' );
+add_filter('acf/load_field/name=modules', 'armo_add_why_buy_layout_to_modules');
 
 
 
 /**
  * Dynamically register the Text Left layout inside the ACF Modules flexible content field.
  */
-function armo_add_text_left_layout_to_modules( $field ) {
-    if ( isset( $field['layouts'] ) ) {
-        foreach ( $field['layouts'] as &$layout ) {
-            if ( isset( $layout['name'] ) && $layout['name'] === 'text_left' ) {
+function armo_add_text_left_layout_to_modules($field)
+{
+    if (isset($field['layouts'])) {
+        foreach ($field['layouts'] as &$layout) {
+            if (isset($layout['name']) && $layout['name'] === 'text_left') {
                 $layout['sub_fields'] = array(
                     array(
                         'key' => 'field_text_left_sections',
@@ -696,14 +706,14 @@ function armo_add_text_left_layout_to_modules( $field ) {
 
     return $field;
 }
-add_filter( 'acf/load_field/name=modules', 'armo_add_text_left_layout_to_modules' );
+add_filter('acf/load_field/name=modules', 'armo_add_text_left_layout_to_modules');
 
 
 
 /**
  * Enable the 'modules' field group on Products
  */
-add_filter('acf/get_field_group', function($group) {
+add_filter('acf/get_field_group', function ($group) {
     if ($group['title'] == 'Modular Page Content' || strpos(strtolower($group['title']), 'module') !== false) {
         $group['location'][] = array(
             array(
@@ -719,16 +729,18 @@ add_filter('acf/get_field_group', function($group) {
 /**
  * Change WooCommerce Add to Cart button text on single product pages
  */
-add_filter( 'woocommerce_product_single_add_to_cart_text', 'armo_custom_add_to_cart_text' );
-function armo_custom_add_to_cart_text() {
-    return __( 'Add to cart', 'woocommerce' );
+add_filter('woocommerce_product_single_add_to_cart_text', 'armo_custom_add_to_cart_text');
+function armo_custom_add_to_cart_text()
+{
+    return __('Add to cart', 'woocommerce');
 }
 
 /**
  * Enable SVG Uploads in Media Library
  */
-add_filter( 'upload_mimes', 'armo_allow_svg_uploads' );
-function armo_allow_svg_uploads( $mimes ) {
+add_filter('upload_mimes', 'armo_allow_svg_uploads');
+function armo_allow_svg_uploads($mimes)
+{
     $mimes['svg'] = 'image/svg+xml';
     $mimes['svgz'] = 'image/svg+xml';
     return $mimes;
@@ -738,10 +750,11 @@ function armo_allow_svg_uploads( $mimes ) {
  * Override the variation attribute label on single product pages
  * to show "Select Size/Quantity" instead of the WooCommerce default.
  */
-add_filter( 'woocommerce_attribute_label', 'armo_custom_variation_label', 10, 3 );
-function armo_custom_variation_label( $label, $name, $product ) {
-    if ( is_product() ) {
-        return __( 'Select Size/Quantity', 'woocommerce' );
+add_filter('woocommerce_attribute_label', 'armo_custom_variation_label', 10, 3);
+function armo_custom_variation_label($label, $name, $product)
+{
+    if (is_product()) {
+        return __('Select Size/Quantity', 'woocommerce');
     }
     return $label;
 }
@@ -750,9 +763,10 @@ function armo_custom_variation_label( $label, $name, $product ) {
  * Hide the WooCommerce default variation price display via CSS
  * (we use our custom Total Price box instead).
  */
-add_action( 'wp_head', 'armo_hide_variation_price_css' );
-function armo_hide_variation_price_css() {
-    if ( is_product() ) {
+add_action('wp_head', 'armo_hide_variation_price_css');
+function armo_hide_variation_price_css()
+{
+    if (is_product()) {
         echo '<style>
             .woocommerce-variation-price { display: none !important; }
             .single_variation .woocommerce-variation-price { display: none !important; }
@@ -763,123 +777,124 @@ function armo_hide_variation_price_css() {
 /**
  * Hide the WooCommerce coupon section on the checkout page
  */
-remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10);
 
 
 /**
  * Style Shipping Insurance Row
  */
-add_action( 'wp_footer', 'armo_style_shipping_insurance', 99 );
-function armo_style_shipping_insurance() {
-    if ( is_checkout() ) {
+add_action('wp_footer', 'armo_style_shipping_insurance', 99);
+function armo_style_shipping_insurance()
+{
+    if (is_checkout()) {
         ?>
         <script>
-        jQuery(document).ready(function($) {
-            var isFormatting = false;
-            var observer = null;
-            var target = document.querySelector('.woocommerce-checkout-review-order-table');
+            jQuery(document).ready(function ($) {
+                var isFormatting = false;
+                var observer = null;
+                var target = document.querySelector('.woocommerce-checkout-review-order-table');
 
-            function formatInsurance() {
-                if (isFormatting) return;
-                isFormatting = true;
-                
-                // Disconnect observer to prevent infinite loops during DOM modification
-                if (observer) {
-                    observer.disconnect();
-                }
-                
-                $('.woocommerce-checkout-review-order-table tfoot tr').each(function() {
-                    var $tr = $(this);
-                    var $th = $tr.find('th');
-                    if ($th.length && $th.text().indexOf('Shipping Insurance') !== -1) {
-                        
-                        // Reformat the row to exactly match WooCommerce Shipping row
-                        if (!$tr.hasClass('armo-insurance-reformatted')) {
-                            $tr.addClass('armo-insurance-reformatted');
-                            var $td = $tr.find('td');
-                            
-                            var title = $th.text();
-                            $th.remove();
-                            $td.attr('colspan', '2');
-                            $td.prepend('<div class="shipping-method-header">' + title + '</div>');
-                            
-                            var $ul = $('<ul class="woocommerce-shipping-methods"></ul>');
-                            
-                            // Process labels or wrap bare inputs if needed
-                            var $labels = $td.find('label');
-                            if ($labels.length === 0) {
-                                $td.find('input[type="radio"]').each(function() {
-                                    var $wrapper = jQuery('<label></label>');
-                                    $(this).nextUntil('input, br').addBack().wrapAll($wrapper);
-                                });
-                                $labels = $td.find('label');
-                            }
-                            
-                            $labels.each(function() {
-                                var $label = $(this);
-                                
-                                // Move tooltip inside
-                                var $nextTooltip = $label.next('a, .woocommerce-help-tip, .tooltip-icon');
-                                if ($nextTooltip.length) {
-                                    $label.append($nextTooltip);
+                function formatInsurance() {
+                    if (isFormatting) return;
+                    isFormatting = true;
+
+                    // Disconnect observer to prevent infinite loops during DOM modification
+                    if (observer) {
+                        observer.disconnect();
+                    }
+
+                    $('.woocommerce-checkout-review-order-table tfoot tr').each(function () {
+                        var $tr = $(this);
+                        var $th = $tr.find('th');
+                        if ($th.length && $th.text().indexOf('Shipping Insurance') !== -1) {
+
+                            // Reformat the row to exactly match WooCommerce Shipping row
+                            if (!$tr.hasClass('armo-insurance-reformatted')) {
+                                $tr.addClass('armo-insurance-reformatted');
+                                var $td = $tr.find('td');
+
+                                var title = $th.text();
+                                $th.remove();
+                                $td.attr('colspan', '2');
+                                $td.prepend('<div class="shipping-method-header">' + title + '</div>');
+
+                                var $ul = $('<ul class="woocommerce-shipping-methods"></ul>');
+
+                                // Process labels or wrap bare inputs if needed
+                                var $labels = $td.find('label');
+                                if ($labels.length === 0) {
+                                    $td.find('input[type="radio"]').each(function () {
+                                        var $wrapper = jQuery('<label></label>');
+                                        $(this).nextUntil('input, br').addBack().wrapAll($wrapper);
+                                    });
+                                    $labels = $td.find('label');
                                 }
-                                
-                                // Parse text node for title so CSS can separate price
-                                var $input = $label.find('input[type="radio"]');
-                                if ($input.length) {
-                                    var textNode = $input[0].nextSibling;
-                                    if (textNode && textNode.nodeType === 3) {
-                                        var text = textNode.nodeValue.replace(':', '').trim();
-                                        if (text) {
-                                            $(textNode).replaceWith(' <span class="shipping-title">' + text + '</span> ');
+
+                                $labels.each(function () {
+                                    var $label = $(this);
+
+                                    // Move tooltip inside
+                                    var $nextTooltip = $label.next('a, .woocommerce-help-tip, .tooltip-icon');
+                                    if ($nextTooltip.length) {
+                                        $label.append($nextTooltip);
+                                    }
+
+                                    // Parse text node for title so CSS can separate price
+                                    var $input = $label.find('input[type="radio"]');
+                                    if ($input.length) {
+                                        var textNode = $input[0].nextSibling;
+                                        if (textNode && textNode.nodeType === 3) {
+                                            var text = textNode.nodeValue.replace(':', '').trim();
+                                            if (text) {
+                                                $(textNode).replaceWith(' <span class="shipping-title">' + text + '</span> ');
+                                            }
                                         }
                                     }
-                                }
-                                
-                                // Move into LI
-                                var $li = $('<li></li>');
-                                $li.append($label);
-                                $ul.append($li);
-                            });
-                            
-                            // Clear old contents (except the header we just added)
-                            $td.children().not('.shipping-method-header').remove();
-                            // Append UL
-                            $td.append($ul);
+
+                                    // Move into LI
+                                    var $li = $('<li></li>');
+                                    $li.append($label);
+                                    $ul.append($li);
+                                });
+
+                                // Clear old contents (except the header we just added)
+                                $td.children().not('.shipping-method-header').remove();
+                                // Append UL
+                                $td.append($ul);
+                            }
                         }
+                    });
+
+                    // Reconnect observer
+                    if (observer && target) {
+                        observer.observe(target, { childList: true, subtree: true });
                     }
-                });
-                
-                // Reconnect observer
-                if (observer && target) {
+
+                    isFormatting = false;
+                }
+
+                if (target) {
+                    observer = new MutationObserver(function (mutations) {
+                        var shouldFormat = false;
+                        for (var i = 0; i < mutations.length; i++) {
+                            if (mutations[i].addedNodes.length > 0) {
+                                shouldFormat = true;
+                                break;
+                            }
+                        }
+                        if (shouldFormat) {
+                            formatInsurance();
+                        }
+                    });
                     observer.observe(target, { childList: true, subtree: true });
                 }
-                
-                isFormatting = false;
-            }
-            
-            if (target) {
-                observer = new MutationObserver(function(mutations) {
-                    var shouldFormat = false;
-                    for (var i=0; i<mutations.length; i++) {
-                        if (mutations[i].addedNodes.length > 0) {
-                            shouldFormat = true;
-                            break;
-                        }
-                    }
-                    if (shouldFormat) {
-                        formatInsurance();
-                    }
-                });
-                observer.observe(target, { childList: true, subtree: true });
-            }
 
-            formatInsurance();
-            $(document).on('updated_checkout', formatInsurance);
-            setTimeout(formatInsurance, 500);
-            setTimeout(formatInsurance, 1500);
-            setTimeout(formatInsurance, 3000);
-        });
+                formatInsurance();
+                $(document).on('updated_checkout', formatInsurance);
+                setTimeout(formatInsurance, 500);
+                setTimeout(formatInsurance, 1500);
+                setTimeout(formatInsurance, 3000);
+            });
         </script>
         <?php
     }
@@ -888,4 +903,9 @@ function armo_style_shipping_insurance() {
 
 
 
-add_action('wp_ajax_dump_html', function() { file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']); wp_die(); }); add_action('wp_ajax_nopriv_dump_html', function() { file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']); wp_die(); });
+add_action('wp_ajax_dump_html', function () {
+    file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']);
+    wp_die(); });
+add_action('wp_ajax_nopriv_dump_html', function () {
+    file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']);
+    wp_die(); });
