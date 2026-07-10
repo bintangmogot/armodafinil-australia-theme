@@ -942,3 +942,17 @@ function armo_remove_categories_from_product_breadcrumb( $crumbs, $breadcrumb ) 
     
     return $crumbs;
 }
+
+/**
+ * Force 301 redirect from /?post_type=product to /shop/ to clean up Google Index
+ */
+add_action( 'template_redirect', 'armo_force_shop_redirect_for_seo' );
+function armo_force_shop_redirect_for_seo() {
+    if ( is_shop() && isset( $_GET['post_type'] ) && $_GET['post_type'] === 'product' ) {
+        $shop_url = wc_get_page_permalink( 'shop' );
+        if ( $shop_url ) {
+            wp_redirect( $shop_url, 301 );
+            exit;
+        }
+    }
+}
