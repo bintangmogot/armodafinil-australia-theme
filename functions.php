@@ -954,5 +954,73 @@ function armo_force_shop_redirect_for_seo() {
             wp_redirect( $shop_url, 301 );
             exit;
         }
+        
+    }
+}
+
+/**
+ * ══════════════════════════════════════════════════════════════════════
+ * FIX: Product Permalink — Google Indexing Issues
+ * ══════════════════════════════════════════════════════════════════════
+ *
+ * PROBLEM:
+ * Products at /shop/waklert-50-mg-australia/ get "Indexing request
+ * rejected" in Google Search Console because they share the /shop/
+ * prefix with the shop archive page.
+ *
+ * ROOT CAUSE:
+ * The WooCommerce product permalink base uses the same slug as the
+ * Shop page ("shop"). WordPress internally resolves /shop/ as the
+ * archive, but /shop/product-slug/ can confuse Google's crawler
+ * because the shop page returns paginated product listings and
+ * Google may see deep /shop/* URLs as soft-404 duplicates.
+ *
+ * FIX:
+ * 1. Ensure product base uses a DIFFERENT slug than the shop page
+ *    by using the "Custom Base" option: /shop/%product_cat%/
+ *    This creates URLs like: /shop/armodafinil/waklert-50-mg-australia/
+ *    which Google can clearly distinguish from the /shop/ archive.
+ * 2. One-time rewrite flush to regenerate .htaccess rules
+ * 3. Send explicit indexing headers on product pages
+ * ══════════════════════════════════════════════════════════════════════
+ */
+
+/**
+ * Force the WooCommerce product permalink structure to include the
+ * product category, creating a clear hierarchy:
+ *   /shop/category-name/product-slug/
+ * This distinguishes products from the /shop/ archive page.
+ */
+add_filter( 'option_woocommerce_permalinks', 'armo_fix_product_permalink_structure' );
+function armo_fix_product_permalink_structure( $permalinks ) {
+    if ( ! is_array( $permalinks ) ) {
+        $permalinks = array();
+    }
+    // Use category in product URLs: /shop/category/product-slug/
+    $permalinks['product_base'] = '/shop/%product_cat%';
+    return $permalinks;
+}
+
+/**
+ * Send explicit X-Robots-Tag header on single product pages
+ * to tell Google: "Yes, index this page."
+ */
+add_action( 'template_redirect', 'armo_product_indexing_headers', 5 );
+function armo_product_indexing_headers() {
+    if ( is_product() ) {
+        header( 'X-Robots-Tag: index, follow', true );
+    }
+}
+
+/**
+ * One-time rewrite rules flush after permalink structure change.
+ * This regenerates .htaccess so the new category-based product URLs work.
+ * The flag is stored in options so it only runs once.
+ */
+add_action( 'init', 'armo_flush_rewrite_rules_once' );
+function armo_flush_rewrite_rules_once() {
+    if ( get_option( 'armo_permalinks_flushed_v4' ) !== 'yes' ) {
+        flush_rewrite_rules();
+        update_option( 'armo_permalinks_flushed_v4', 'yes' );
     }
 }
