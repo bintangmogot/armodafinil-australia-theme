@@ -1024,3 +1024,30 @@ function armo_flush_rewrite_rules_once() {
         update_option( 'armo_permalinks_flushed_v4', 'yes' );
     }
 }
+
+/**
+ * Force AIOSEO to use the featured image as the default Open Graph and Twitter image.
+ */
+add_filter( 'aioseo_facebook_tags', 'armo_force_aioseo_og_image' );
+function armo_force_aioseo_og_image( $facebookMeta ) {
+    if ( is_singular() && has_post_thumbnail() ) {
+        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+        if ( $image_url ) {
+            $facebookMeta['og:image'] = $image_url;
+            $facebookMeta['og:image:secure_url'] = $image_url;
+        }
+    }
+    return $facebookMeta;
+}
+
+add_filter( 'aioseo_twitter_tags', 'armo_force_aioseo_twitter_image' );
+function armo_force_aioseo_twitter_image( $twitterMeta ) {
+    if ( is_singular() && has_post_thumbnail() ) {
+        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+        if ( $image_url ) {
+            $twitterMeta['twitter:image'] = $image_url;
+        }
+    }
+    return $twitterMeta;
+}
+

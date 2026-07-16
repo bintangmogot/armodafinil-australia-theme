@@ -193,12 +193,12 @@ function armo_feature_pills() {
             </svg>
             100% Genuine
         </div>
-        <!-- Delivery -->
+        <!-- Australia-Wide -->
         <div class="flex items-center justify-center gap-2 bg-[#EAF2FF] border border-[#B3D4FF] text-primary font-medium text-[13px] md:text-sm py-2 px-3 rounded-md shadow-sm leading-tight text-center">
             <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] flex-shrink-0">
                 <path fill-rule="evenodd" d="M9.53 2.47a.75.75 0 010 1.06L4.81 8.25H15a6.75 6.75 0 010 13.5h-3a.75.75 0 010-1.5h3a5.25 5.25 0 100-10.5H4.81l4.72 4.72a.75.75 0 11-1.06 1.06l-6-6a.75.75 0 010-1.06l6-6a.75.75 0 011.06 0z" clip-rule="evenodd" />
             </svg>
-            Easy Return
+            Australia-Wide
         </div>
         <!-- Packaging -->
         <div class="flex items-center justify-center gap-2 bg-[#EAF2FF] border border-[#B3D4FF] text-primary font-medium text-[13px] md:text-sm py-2 px-3 rounded-md shadow-sm leading-tight text-center">
@@ -208,12 +208,14 @@ function armo_feature_pills() {
             </svg>
             Fast Delivery
         </div>
-        <!-- Secure Payment -->
+        <!-- Local EFT or PayID
+ -->
         <div class="flex items-center justify-center gap-2 bg-[#EAF2FF] border border-[#B3D4FF] text-primary font-medium text-[13px] md:text-sm py-2 px-3 rounded-md shadow-sm leading-tight text-center">
             <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5 text-[#D4AF37] flex-shrink-0">
                 <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z" clip-rule="evenodd" />
             </svg>
-            Secure Payment
+            Local EFT or PayID
+
         </div>
     </div>
     <?php
