@@ -195,8 +195,8 @@ function armo_feature_pills() {
         </div>
         <!-- Australia-Wide -->
         <div class="flex items-center justify-center gap-2 bg-[#EAF2FF] border border-[#B3D4FF] text-primary font-medium text-[13px] md:text-sm py-2 px-3 rounded-md shadow-sm leading-tight text-center">
-            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] flex-shrink-0">
-                <path fill-rule="evenodd" d="M9.53 2.47a.75.75 0 010 1.06L4.81 8.25H15a6.75 6.75 0 010 13.5h-3a.75.75 0 010-1.5h3a5.25 5.25 0 100-10.5H4.81l4.72 4.72a.75.75 0 11-1.06 1.06l-6-6a.75.75 0 010-1.06l6-6a.75.75 0 011.06 0z" clip-rule="evenodd" />
+            <svg viewBox="0 0 512 512" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] flex-shrink-0">
+                <path d="m380.37 28.839l-27.24 100.215l-64-48l17.405-34.46l-83.863 8.079l-13.541 42.38l-35.512-25.482l-67.16 85.62l-83.008 48.593l34.81 156.752l38.87 6.518l112-64l74.38 52.082l21.62-28.094l32 72.012L424 415.452l64.549-126.398l-6.014-64.703l-65.404-79.297l-36.762-116.215zm-14.75 411.238l15.099 43.084l20.412-2.107l11.435-35.864l-46.947-5.113z" />
             </svg>
             Australia-Wide
         </div>
@@ -212,7 +212,7 @@ function armo_feature_pills() {
  -->
         <div class="flex items-center justify-center gap-2 bg-[#EAF2FF] border border-[#B3D4FF] text-primary font-medium text-[13px] md:text-sm py-2 px-3 rounded-md shadow-sm leading-tight text-center">
             <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5 text-[#D4AF37] flex-shrink-0">
-                <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z" clip-rule="evenodd" />
+                <path d="M2.273 5.625A4.483 4.483 0 0 1 5.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 3H5.25a3 3 0 0 0-2.977 2.625ZM2.273 8.625A4.483 4.483 0 0 1 5.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 6H5.25a3 3 0 0 0-2.977 2.625ZM5.25 9a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3H15a.75.75 0 0 0-.75.75 2.25 2.25 0 0 1-4.5 0A.75.75 0 0 0 9 9H5.25Z" />
             </svg>
             Local EFT or PayID
 
