@@ -49,7 +49,7 @@ function armo_custom_total_price_box()
     <div class="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-4 lg:gap-8 mb-0 lg:mb-8 items-start">
 
         <!-- Left Column: Images & Features -->
-        <div class="product-gallery-column flex flex-col w-full gap-y-4">
+        <div class="product-gallery-column hidden lg:flex flex-col w-full gap-y-4">
             <div class="w-full">
                 <?php
                 /**

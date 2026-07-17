@@ -233,11 +233,22 @@ function armo_display_feature_pills_mobile() {
 
 /**
  * Wrap Add to Cart in a white box on Mobile only.
- * Priority 25 is after Excerpt (20), before Add to Cart (30).
+ * Priority 15 is before Excerpt (20), Add to Cart (30).
  */
-add_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 25);
+add_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 15);
 function armo_mobile_box_open() {
     echo '<div class="w-full bg-white shadow-md rounded-xl p-5 lg:bg-transparent lg:shadow-none lg:rounded-none lg:p-0 mb-6 lg:mb-0">';
+}
+
+/**
+ * Output Product Image for Mobile inside the white box.
+ * Priority 18 is after box open (15), before Excerpt (20).
+ */
+add_action('woocommerce_single_product_summary', 'armo_mobile_product_image', 18);
+function armo_mobile_product_image() {
+    echo '<div class="block lg:hidden mb-4">';
+    do_action('woocommerce_before_single_product_summary');
+    echo '</div>';
 }
 
 /**
