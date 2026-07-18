@@ -27,11 +27,11 @@ $intro = get_sub_field('intro');
                     <?php echo armo_content($intro); ?>
                 </div>
             <?php else: ?>
-                <div class="text-primary/80 text-base md:text-lg leading-relaxed">
+                <!-- <div class="text-primary/80 text-base md:text-lg leading-relaxed">
                     <p class="mb-2">Looking to buy Armodafinil online in Australia without the stress?</p>
                     <p>Thousands of Australians choose Armodafinil Australia for premium Armodafinil tablets, fast
                         Australia-wide shipping, discreet packaging, and trusted customer support.</p>
-                </div>
+                </div> -->
             <?php endif; ?>
         </div>
 
