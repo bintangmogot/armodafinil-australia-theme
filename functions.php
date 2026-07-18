@@ -1051,3 +1051,14 @@ function armo_force_aioseo_twitter_image( $twitterMeta ) {
     return $twitterMeta;
 }
 
+/**
+ * Add FAQ Schema markup to the Shop page
+ */
+add_action( 'wp_head', 'armo_add_faq_schema_to_shop_page' );
+function armo_add_faq_schema_to_shop_page() {
+    if ( is_shop() ) {
+        ?>
+        <script type="application/ld+json"> { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [ {"@type": "Question", "name": "Is it legal to buy Armodafinil online in Australia?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, provided it is executed via the TGA Personal Importation Scheme. You must possess a valid prescription from an Australian doctor, import no more than a 3-month supply at one time, and use the product solely for personal or immediate family needs." } }, { "@type": "Question", "name": "What happens if my package is checked by Australian Customs?", "acceptedAnswer": { "@type": "Answer", "text": "If the Australian Border Force intercepts a shipment of a Schedule 4 medicine like Armodafinil, they will hold the package and request a copy of your prescription. If you provide a valid prescription matching the order quantity, the package is released; otherwise, it is destroyed." } } ] }</script>
+        <?php
+    }
+}
