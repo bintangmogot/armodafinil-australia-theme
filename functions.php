@@ -986,18 +986,18 @@ function armo_force_shop_redirect_for_seo() {
  */
 
 /**
- * Force the WooCommerce product permalink structure to include the
- * product category, creating a clear hierarchy:
- *   /shop/category-name/product-slug/
- * This distinguishes products from the /shop/ archive page.
+ * WooCommerce Product Permalink Structure
+ *
+ * Sets product URLs to: /shop/product-slug/
+ * Clean, flat structure without category for better SEO.
  */
 add_filter( 'option_woocommerce_permalinks', 'armo_fix_product_permalink_structure' );
 function armo_fix_product_permalink_structure( $permalinks ) {
     if ( ! is_array( $permalinks ) ) {
         $permalinks = array();
     }
-    // Use category in product URLs: /shop/category/product-slug/
-    $permalinks['product_base'] = '/shop/%product_cat%';
+    // Flat product URLs: /shop/product-slug/
+    $permalinks['product_base'] = '/shop';
     return $permalinks;
 }
 
@@ -1014,14 +1014,39 @@ function armo_product_indexing_headers() {
 
 /**
  * One-time rewrite rules flush after permalink structure change.
- * This regenerates .htaccess so the new category-based product URLs work.
+ * This regenerates .htaccess so the new flat product URLs work.
  * The flag is stored in options so it only runs once.
  */
 add_action( 'init', 'armo_flush_rewrite_rules_once' );
 function armo_flush_rewrite_rules_once() {
-    if ( get_option( 'armo_permalinks_flushed_v4' ) !== 'yes' ) {
+    if ( get_option( 'armo_permalinks_flushed_v5' ) !== 'yes' ) {
         flush_rewrite_rules();
-        update_option( 'armo_permalinks_flushed_v4', 'yes' );
+        update_option( 'armo_permalinks_flushed_v5', 'yes' );
+    }
+}
+
+/**
+ * 301 Redirect: Old category-based product URLs → new flat URLs
+ *
+ * Redirects /shop/shop-armodafinil/product-slug/ → /shop/product-slug/
+ * This preserves SEO link equity from any indexed or bookmarked old URLs.
+ */
+add_action( 'template_redirect', 'armo_redirect_old_category_product_urls', 1 );
+function armo_redirect_old_category_product_urls() {
+    // Only run on 404s (old URLs will 404 since the structure changed)
+    if ( ! is_404() ) {
+        return;
+    }
+
+    $request_uri = trim( $_SERVER['REQUEST_URI'], '/' );
+
+    // Match pattern: shop/shop-armodafinil/product-slug/
+    if ( preg_match( '#^shop/shop-armodafinil/([^/]+)/?$#i', $request_uri, $matches ) ) {
+        $product_slug = $matches[1];
+        $new_url      = home_url( '/shop/' . $product_slug . '/' );
+
+        wp_redirect( $new_url, 301 );
+        exit;
     }
 }
 
