@@ -15,21 +15,29 @@ if ( ! $footer_description ) {
     $footer_description = 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via Commonwealth Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.';
 }
 
-$footer_address = get_field( 'footer_address', 'option' );
-if ( ! $footer_address ) {
-    $footer_address = 'Level 2/29 Chifley Square, Sydney NSW 2000';
+$footer_corporate_registry = get_field( 'footer_corporate_registry', 'option' );
+if ( ! $footer_corporate_registry ) {
+    $footer_corporate_registry = '360 Collins St, Melbourne VIC 3000';
 }
 
-$footer_whatsapp = get_field( 'footer_whatsapp', 'option' );
-if ( ! $footer_whatsapp ) {
-    $footer_whatsapp = '+61 8 6866 0556';
+$footer_logistics_hubs = get_field( 'footer_logistics_hubs', 'option' );
+if ( ! $footer_logistics_hubs ) {
+    $footer_logistics_hubs = 'International Dispatch (Drop-shipped directly to consumer under TGA Personal Importation rules)';
 }
 
-$footer_whatsapp_link = get_field( 'footer_whatsapp_link', 'option' );
+$footer_direct_helpline = get_field( 'footer_direct_helpline', 'option' );
+if ( ! $footer_direct_helpline ) {
+    $footer_direct_helpline = '0455 241 294';
+}
 
 $footer_email = get_field( 'footer_email', 'option' );
 if ( ! $footer_email ) {
-    $footer_email = 'orders@armodafinilaustralia.com.au';
+    $footer_email = 'orders@armodafinil-australia.com';
+}
+
+$footer_track_order_url = get_field( 'footer_track_order_url', 'option' );
+if ( ! $footer_track_order_url ) {
+    $footer_track_order_url = home_url('/track-order/');
 }
 
 $footer_facebook = get_field( 'footer_facebook', 'option' );
@@ -77,30 +85,40 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                             <?php bloginfo('name'); ?>
                         </a>
                     <?php endif; ?>
-                    <div class="text-base text-primary-dark/70 leading-relaxed">
+                    <div class="text-base text-primary-dark/70 leading-relaxed mb-6">
                         <?php echo wp_kses_post( $footer_description ); ?>
                     </div>
+                    <div class="text-base text-primary-dark/80 leading-relaxed space-y-3">
+                        <?php if ( $footer_corporate_registry ) : ?>
+                            <p><strong>Corporate Registry:</strong> <?php echo esc_html( $footer_corporate_registry ); ?></p>
+                        <?php endif; ?>
+                        <?php if ( $footer_logistics_hubs ) : ?>
+                            <p><strong>Logistics Hubs:</strong> <?php echo esc_html( $footer_logistics_hubs ); ?></p>
+                        <?php endif; ?>
+                    </div>
 
-                    <!-- Get in Touch (Moved below Brand Description) -->
+                    <!-- Customer Support -->
                     <div class="mt-8">
-                        <h3 class="text-lg font-bold text-primary-dark mb-4">Get in Touch with Us</h3>
-                        <ul class="space-y-2.5 text-sm text-primary-dark/80">
-                            <li class="flex items-start gap-2">
-                                <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                                <span><?php echo esc_html( $footer_address ); ?></span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                                <?php if ( $footer_whatsapp_link ) : ?>
-                                    <a href="<?php echo esc_url( $footer_whatsapp_link ); ?>" target="_blank" rel="noopener noreferrer" class="hover:underline"><?php echo esc_html( $footer_whatsapp ); ?></a>
-                                <?php else : ?>
-                                    <span><?php echo esc_html( $footer_whatsapp ); ?></span>
-                                <?php endif; ?>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                                <a href="mailto:<?php echo esc_attr( $footer_email ); ?>" class="hover:underline"><?php echo esc_html( $footer_email ); ?></a>
-                            </li>
+                        <h3 class="text-lg font-bold text-primary-dark mb-2">Get in Touch with Us</h3>
+                        <ul class="space-y-3 text-sm text-primary-dark/80">
+                            <?php if ( $footer_direct_helpline ) : ?>
+                                <li class="flex items-start gap-2">
+                                    <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                                    <span><strong>Direct Helpline:</strong> <?php echo esc_html( $footer_direct_helpline ); ?></span>
+                                </li>
+                            <?php endif; ?>
+                            <?php if ( $footer_email ) : ?>
+                                <li class="flex items-start gap-2">
+                                    <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                                    <span><strong>Email Notifications:</strong> <a href="mailto:<?php echo esc_attr( $footer_email ); ?>" class="hover:underline"><?php echo esc_html( $footer_email ); ?></a></span>
+                                </li>
+                            <?php endif; ?>
+                            <?php if ( $footer_track_order_url ) : ?>
+                                <li class="flex items-start gap-2">
+                                    <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                                    <span><strong>Live Order Monitoring:</strong> <a href="<?php echo esc_url( $footer_track_order_url ); ?>" class="hover:underline font-medium">Track My Order</a></span>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
 

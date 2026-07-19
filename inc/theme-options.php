@@ -231,6 +231,30 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
         'key'    => 'group_theme_footer',
         'title'  => 'Footer Settings',
         'fields' => array(
+            // ─── TAB: Company Info ───
+            array(
+                'key'   => 'field_footer_tab_company',
+                'label' => 'Company Info',
+                'type'  => 'tab',
+            ),
+            array(
+                'key'           => 'field_footer_corporate_registry',
+                'label'         => 'Corporate Registry',
+                'name'          => 'footer_corporate_registry',
+                'type'          => 'text',
+                'instructions'  => 'Corporate Registry address displayed in the footer.',
+                'default_value' => '360 Collins St, Melbourne VIC 3000',
+            ),
+            array(
+                'key'           => 'field_footer_logistics_hubs',
+                'label'         => 'Logistics Hubs',
+                'name'          => 'footer_logistics_hubs',
+                'type'          => 'textarea',
+                'instructions'  => 'Logistics Hubs information.',
+                'default_value' => 'International Dispatch (Drop-shipped directly to consumer under TGA Personal Importation rules)',
+                'rows'          => 3,
+            ),
+
             // ─── TAB: Contact Info ───
             array(
                 'key'   => 'field_footer_tab_contact',
@@ -238,28 +262,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'type'  => 'tab',
             ),
             array(
-                'key'           => 'field_footer_address',
-                'label'         => 'Address',
-                'name'          => 'footer_address',
+                'key'           => 'field_footer_direct_helpline',
+                'label'         => 'Direct Helpline',
+                'name'          => 'footer_direct_helpline',
                 'type'          => 'text',
-                'instructions'  => 'Physical address displayed in the footer.',
-                'default_value' => 'Level 2/29 Chifley Square, Sydney NSW 2000',
-            ),
-            array(
-                'key'           => 'field_footer_whatsapp',
-                'label'         => 'Phone Number',
-                'name'          => 'footer_whatsapp',
-                'type'          => 'text',
-                'instructions'  => 'Phone contact number (displayed as-is).',
-                'default_value' => '+61 8 6866 0556',
-            ),
-            array(
-                'key'           => 'field_footer_whatsapp_link',
-                'label'         => 'Phone Link URL',
-                'name'          => 'footer_whatsapp_link',
-                'type'          => 'url',
-                'instructions'  => 'Full phone link (e.g. tel:+61868660556). Leave empty to disable clickable link.',
-                'default_value' => '',
+                'instructions'  => 'Direct helpline number (displayed as-is).',
+                'default_value' => '0455 241 294',
             ),
             array(
                 'key'           => 'field_footer_email',
@@ -267,7 +275,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'name'          => 'footer_email',
                 'type'          => 'email',
                 'instructions'  => 'Contact email displayed in the footer.',
-                'default_value' => 'orders@armodafinilaustralia.com.au',
+                'default_value' => 'orders@armodafinil-australia.com',
+            ),
+            array(
+                'key'           => 'field_footer_track_order_url',
+                'label'         => 'Track Order URL',
+                'name'          => 'footer_track_order_url',
+                'type'          => 'url',
+                'instructions'  => 'URL for the Track My Order page (e.g., https://yourdomain.com/track-order/).',
+                'default_value' => '',
             ),
             array(
                 'key'           => 'field_footer_facebook',
@@ -285,7 +301,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'instructions'  => 'Link to your LinkedIn page. Leave empty to hide.',
                 'default_value' => 'https://www.linkedin.com/company/armodafinil-australia/about/?viewAsMember=true',
             ),
-            
+
             // ─── TAB: General ───
             array(
                 'key'   => 'field_footer_tab_general',
