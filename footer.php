@@ -99,7 +99,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
 
                     <!-- Customer Support -->
                     <div class="mt-8">
-                        <h3 class="text-lg font-bold text-primary-dark mb-2">Get in Touch with Us</h3>
+                        <h3 class="text-lg font-bold text-primary-dark mb-2">Customer Support & Order Resolutions</h3>
                         <ul class="space-y-3 text-sm text-primary-dark/80">
                             <?php if ( $footer_direct_helpline ) : ?>
                                 <li class="flex items-start gap-2">
