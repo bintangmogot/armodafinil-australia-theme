@@ -42,6 +42,15 @@ defined( 'ABSPATH' ) || exit;
                 <p class="text-sm text-gray-500">Thank you for your order. Please complete your payment using EFT or PayID below.</p>
             </div>
 
+            <?php
+            $bacs_settings = get_option( 'woocommerce_bacs_accounts' );
+            $bacs_account  = ! empty( $bacs_settings[0] ) ? $bacs_settings[0] : array();
+            $account_name  = ! empty( $bacs_account['account_name'] ) ? $bacs_account['account_name'] : 'Sean Williams';
+            $account_num   = ! empty( $bacs_account['account_number'] ) ? $bacs_account['account_number'] : '306528842';
+            $bank_name     = ! empty( $bacs_account['bank_name'] ) ? $bacs_account['bank_name'] : 'ING Bank';
+            $bsb_code      = ! empty( $bacs_account['sort_code'] ) ? $bacs_account['sort_code'] : '923100';
+            $pay_id        = ! empty( $bacs_account['iban'] ) ? $bacs_account['iban'] : '0455 241 294';
+            ?>
             <!-- Payment Details -->
             <h3 class="text-sm font-bold text-gray-900 mb-3">Payment Details</h3>
             <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 sm:p-6 mb-8">
@@ -50,8 +59,8 @@ defined( 'ABSPATH' ) || exit;
                 <div class="mb-5">
                     <div class="text-xs text-gray-400 mb-1">PayID</div>
                     <div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between shadow-sm">
-                        <span class="text-base font-bold text-gray-900">0402 222 605</span>
-                        <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="0402 222 605">
+                        <span class="text-base font-bold text-gray-900"><?php echo esc_html( $pay_id ); ?></span>
+                        <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="<?php echo esc_attr( $pay_id ); ?>">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                             <span>Copy</span>
                         </button>
@@ -65,11 +74,11 @@ defined( 'ABSPATH' ) || exit;
                 <div class="grid grid-cols-2 gap-4 mb-4">
                     <div>
                         <div class="text-xs text-gray-400 mb-0.5">Account Name</div>
-                        <div class="font-bold text-sm text-primary-dark">Steven Waldberg</div>
+                        <div class="font-bold text-sm text-primary-dark"><?php echo esc_html( $account_name ); ?></div>
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-gray-400 mb-0.5">Bank</div>
-                        <div class="font-bold text-sm text-primary-dark">Commonwealth Bank</div>
+                        <div class="font-bold text-sm text-primary-dark"><?php echo esc_html( $bank_name ); ?></div>
                     </div>
                 </div>
 
@@ -78,8 +87,8 @@ defined( 'ABSPATH' ) || exit;
                     <div>
                         <div class="text-xs text-gray-400 mb-1">Account Number</div>
                         <div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between shadow-sm">
-                            <span class="text-base font-bold text-gray-900">48880531</span>
-                            <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="48880531">
+                            <span class="text-base font-bold text-gray-900"><?php echo esc_html( $account_num ); ?></span>
+                            <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="<?php echo esc_attr( $account_num ); ?>">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                                 <span>Copy</span>
                             </button>
@@ -90,8 +99,8 @@ defined( 'ABSPATH' ) || exit;
                     <div>
                         <div class="text-xs text-gray-400 mb-1">BSB</div>
                         <div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between shadow-sm">
-                            <span class="text-base font-bold text-gray-900">062 948</span>
-                            <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="062 948">
+                            <span class="text-base font-bold text-gray-900"><?php echo esc_html( $bsb_code ); ?></span>
+                            <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="<?php echo esc_attr( $bsb_code ); ?>">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                                 <span>Copy</span>
                             </button>

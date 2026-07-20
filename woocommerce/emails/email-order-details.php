@@ -50,7 +50,12 @@ if ( $email_improvements_enabled ) {
  */
 do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text, $email ); ?>
 
-<h3 style='color:#F30105'>PayID: 0402 222 605</h3>
+<?php
+$bacs_settings = get_option( 'woocommerce_bacs_accounts' );
+$bacs_account  = ! empty( $bacs_settings[0] ) ? $bacs_settings[0] : array();
+$pay_id        = ! empty( $bacs_account['iban'] ) ? $bacs_account['iban'] : '0455 241 294';
+?>
+<h3 style='color:#F30105'>PayID: <?php echo esc_html( $pay_id ); ?></h3>
 
 <h2 class="<?php echo esc_attr( $heading_class ); ?>">
 	<?php
