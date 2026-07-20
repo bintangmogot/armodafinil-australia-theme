@@ -65,7 +65,7 @@ $carousel_id = 'carousel-' . uniqid();
                                             <?php echo $price_html; ?>
                                         </div>
                                         <?php 
-                                        $price_subtext = get_field('global_price_subtext', 'option');
+                                        $price_subtext = get_field('price_subtext', $post_id);
                                         if (empty($price_subtext)) $price_subtext = 'From $1.45/tab';
                                         if ($price_subtext): 
                                         ?>

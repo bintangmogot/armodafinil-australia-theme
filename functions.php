@@ -1087,3 +1087,40 @@ function armo_add_faq_schema_to_shop_page() {
         <?php
     }
 }
+
+/**
+ * Register Product Price Subtext ACF Field Group
+ */
+if( function_exists('acf_add_local_field_group') ):
+    acf_add_local_field_group(array(
+        'key' => 'group_product_price_subtext',
+        'title' => 'Product Subtext Settings',
+        'fields' => array(
+            array(
+                'key' => 'field_price_subtext',
+                'label' => 'Price Subtext',
+                'name' => 'price_subtext',
+                'type' => 'text',
+                'instructions' => 'Text to display below the price (e.g. From $1.45/tab). Leave empty to use the default.',
+                'default_value' => 'From $1.45/tab',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'product',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+    ));
+endif;

@@ -77,7 +77,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	?>
 	<div class='price-per-unit'><?php the_field('price_per_unit')?></div>
 	<?php 
-	$price_subtext = get_field('global_price_subtext', 'option');
+	$price_subtext = get_field('price_subtext', $product->get_id());
 	if (empty($price_subtext)) $price_subtext = 'From $1.45/tab';
 	if ($price_subtext): 
 	?>
