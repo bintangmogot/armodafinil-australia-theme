@@ -22,7 +22,7 @@ if ( ! $footer_corporate_registry ) {
 
 $footer_logistics_hubs = get_field( 'footer_logistics_hubs', 'option' );
 if ( ! $footer_logistics_hubs ) {
-    $footer_logistics_hubs = 'International Dispatch (Drop-shipped directly to consumer under TGA Personal Importation rules)';
+    $footer_logistics_hubs = 'Sydney, Melbourne, Brisbane, Adelaide, Perth, Darwin & Gold Coast - International Dispatch (Drop-shipped directly to consumer under TGA Personal Importation rules)';
 }
 
 $footer_direct_helpline = get_field( 'footer_direct_helpline', 'option' );
