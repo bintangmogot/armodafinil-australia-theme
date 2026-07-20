@@ -81,7 +81,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	if (empty($price_subtext)) $price_subtext = 'From $1.45/tab';
 	if ($price_subtext): 
 	?>
-		<div class="text-sm font-bold text-[#1e7e34] mb-3 text-center" style="width:100%; display:block; margin-top:-10px;">
+		<div class="text-sm font-bold mb-3 text-center" style="color: #196C21; width:100%; display:block; margin-top:-10px;">
 			<?php echo esc_html($price_subtext); ?>
 		</div>
 	<?php endif; ?>

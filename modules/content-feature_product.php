@@ -78,7 +78,7 @@ $products = get_sub_field('feature_product');
                                     if (empty($price_subtext)) $price_subtext = 'From $1.45/tab';
                                     if ($price_subtext): 
                                     ?>
-                                        <div class="text-sm font-bold text-[#1e7e34] mb-3">
+                                        <div class="text-sm font-bold mb-3" style="color: #196C21;">
                                             <?php echo esc_html($price_subtext); ?>
                                         </div>
                                     <?php endif; ?>
