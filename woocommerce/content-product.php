@@ -76,6 +76,15 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	do_action( 'woocommerce_after_shop_loop_item_title' );
 	?>
 	<div class='price-per-unit'><?php the_field('price_per_unit')?></div>
+	<?php 
+	$price_subtext = get_field('global_price_subtext', 'option');
+	if (empty($price_subtext)) $price_subtext = 'From $1.45/tab';
+	if ($price_subtext): 
+	?>
+		<div class="text-sm font-bold text-[#1e7e34] mb-3 text-center" style="width:100%; display:block; margin-top:-10px;">
+			<?php echo esc_html($price_subtext); ?>
+		</div>
+	<?php endif; ?>
 	<!--<?php
 	$copy = get_field('shop_page_text', $product->get_id());
 	if (empty($copy)) {

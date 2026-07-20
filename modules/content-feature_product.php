@@ -38,12 +38,7 @@ $products = get_sub_field('feature_product');
                                 class="group block w-full no-underline text-inherit flex-grow flex flex-col">
                                 <div
                                     class="bg-white border border-primary rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,18,94,0.15)] group-hover:border-[#000a33]">
-                                    <?php if ($in_stock): ?>
-                                        <div
-                                            class="absolute top-2 left-2 bg-[#1e7e34] text-white text-[10px] font-bold px-2 py-1 rounded">
-                                            IN STOCK
-                                        </div>
-                                    <?php endif; ?>
+
                                     <?php echo $image_html; ?>
                                 </div>
 
@@ -75,9 +70,18 @@ $products = get_sub_field('feature_product');
                                             <?php endif; ?>
                                         </div>
                                     <?php endif; ?>
-                                    <div class="text-base md:text-lg font-extrabold text-primary mb-3">
+                                    <div class="text-base md:text-lg font-extrabold text-primary mb-1">
                                         <?php echo $price_html; ?>
                                     </div>
+                                    <?php 
+                                    $price_subtext = get_field('global_price_subtext', 'option');
+                                    if (empty($price_subtext)) $price_subtext = 'From $1.45/tab';
+                                    if ($price_subtext): 
+                                    ?>
+                                        <div class="text-sm font-bold text-[#1e7e34] mb-3">
+                                            <?php echo esc_html($price_subtext); ?>
+                                        </div>
+                                    <?php endif; ?>
                                     <div class="mt-auto">
                                         <span
                                             class="inline-flex items-center justify-center gap-1 md:gap-2 bg-[#ff0000] text-white py-2 px-3 md:px-6 rounded shadow-md font-bold text-sm md:text-base text-center hover:bg-red-700 transition-colors whitespace-nowrap">

@@ -168,16 +168,6 @@ function armo_custom_loop_add_to_cart_link( $html, $product, $args ) {
     );
 }
 
-/**
- * Add "IN STOCK" badge to WooCommerce products on the loop
- */
-add_action( 'woocommerce_before_shop_loop_item_title', 'armo_in_stock_badge', 9 );
-function armo_in_stock_badge() {
-    global $product;
-    if ( $product && $product->is_in_stock() ) {
-        echo '<span class="armo-in-stock-badge">IN STOCK</span>';
-    }
-}
 
 
 /**

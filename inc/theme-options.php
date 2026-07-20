@@ -309,6 +309,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'type'  => 'tab',
             ),
             array(
+                'key'           => 'field_theme_price_subtext',
+                'label'         => 'Global Price Subtext',
+                'name'          => 'global_price_subtext',
+                'type'          => 'text',
+                'instructions'  => 'Text to display below the price on all products (e.g. From $1.45/tab).',
+                'default_value' => 'From $1.45/tab',
+            ),
+            array(
                 'key'           => 'field_68adc7eef57a0',
                 'label'         => 'Footer Description',
                 'name'          => 'footer_text',
