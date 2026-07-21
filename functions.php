@@ -1137,25 +1137,32 @@ function armo_custom_redirects() {
         // '/old-url' => '/new-url',
     );
 
-    // Get the current URL path without query string
-    $current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    
-    // Remove trailing slash for consistent matching
-    $current_path = rtrim($current_path, '/');
-
-    // 1. Check exact match
-    if ( array_key_exists( $current_path, $redirects ) ) {
-        wp_redirect( home_url( $redirects[ $current_path ] ), 301 );
-        exit;
+    if ( empty( $_SERVER['REQUEST_URI'] ) ) {
+        return;
     }
 
-    // 2. Check prefix match (e.g. /shop-page/product-1 -> /shop/product-1)
+    // Get the current URL path without query string
+    $current_path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+    
+    // Normalize path: lowercase, ensure leading slash, remove trailing slash
+    $current_path = '/' . trim( strtolower( $current_path ), '/' );
+
     foreach ( $redirects as $old_path => $new_path ) {
-        if ( strpos( $current_path, $old_path . '/' ) === 0 ) {
-            $redirect_url = str_replace( $old_path, $new_path, $current_path );
+        $old_path_normalized = '/' . trim( strtolower( $old_path ), '/' );
+        
+        // 1. Check exact match
+        if ( $current_path === $old_path_normalized ) {
+            wp_redirect( home_url( $new_path ), 301 );
+            exit;
+        }
+
+        // 2. Check prefix match (e.g. /shop-page/product-1 -> /shop/product-1)
+        if ( strpos( $current_path, $old_path_normalized . '/' ) === 0 ) {
+            $redirect_url = str_replace( $old_path_normalized, $new_path, $current_path );
             wp_redirect( home_url( $redirect_url ), 301 );
             exit;
         }
     }
 }
-add_action( 'template_redirect', 'armo_custom_redirects' );
+// Run early on 'init' instead of 'template_redirect' to avoid conflicts with WP canonical redirects
+add_action( 'init', 'armo_custom_redirects', 1 );
