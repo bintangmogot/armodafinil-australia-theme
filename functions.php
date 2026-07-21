@@ -1124,3 +1124,38 @@ if( function_exists('acf_add_local_field_group') ):
         'description' => '',
     ));
 endif;
+
+/**
+ * Custom 301 Redirects
+ * Moving forward, add any old to new page redirects here.
+ */
+function armo_custom_redirects() {
+    // Map of old URL paths to new URL paths
+    $redirects = array(
+        '/shop-page' => '/shop',
+        // Add more redirects here in the future:
+        // '/old-url' => '/new-url',
+    );
+
+    // Get the current URL path without query string
+    $current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    
+    // Remove trailing slash for consistent matching
+    $current_path = rtrim($current_path, '/');
+
+    // 1. Check exact match
+    if ( array_key_exists( $current_path, $redirects ) ) {
+        wp_redirect( home_url( $redirects[ $current_path ] ), 301 );
+        exit;
+    }
+
+    // 2. Check prefix match (e.g. /shop-page/product-1 -> /shop/product-1)
+    foreach ( $redirects as $old_path => $new_path ) {
+        if ( strpos( $current_path, $old_path . '/' ) === 0 ) {
+            $redirect_url = str_replace( $old_path, $new_path, $current_path );
+            wp_redirect( home_url( $redirect_url ), 301 );
+            exit;
+        }
+    }
+}
+add_action( 'template_redirect', 'armo_custom_redirects' );
