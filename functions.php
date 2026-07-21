@@ -1,5 +1,29 @@
 <?php
 /**
+ * ── 301 Redirects (Raw PHP — runs BEFORE WordPress) ──
+ * This must stay at the very top of functions.php.
+ * Add old-to-new URL mappings in the array below.
+ */
+$_armo_redirects = array(
+    '/shop-page' => '/shop',
+    // Add more redirects here:
+    // '/old-url' => '/new-url',
+);
+if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
+    $_armo_path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+    $_armo_path = '/' . trim( strtolower( $_armo_path ), '/' );
+    foreach ( $_armo_redirects as $_armo_old => $_armo_new ) {
+        $_armo_old_n = '/' . trim( strtolower( $_armo_old ), '/' );
+        if ( $_armo_path === $_armo_old_n || strpos( $_armo_path, $_armo_old_n . '/' ) === 0 ) {
+            $_armo_dest = str_replace( $_armo_old_n, $_armo_new, $_armo_path );
+            header( 'Location: ' . $_armo_dest, true, 301 );
+            exit;
+        }
+    }
+}
+unset( $_armo_redirects, $_armo_path, $_armo_old, $_armo_new, $_armo_old_n, $_armo_dest );
+
+/**
  * Armodafinil Australia — Theme Functions
  *
  * =====================================================================
@@ -1125,44 +1149,3 @@ if( function_exists('acf_add_local_field_group') ):
     ));
 endif;
 
-/**
- * Custom 301 Redirects
- * Moving forward, add any old to new page redirects here.
- */
-function armo_custom_redirects() {
-    // Map of old URL paths to new URL paths
-    $redirects = array(
-        '/shop-page' => '/shop',
-        // Add more redirects here in the future:
-        // '/old-url' => '/new-url',
-    );
-
-    if ( empty( $_SERVER['REQUEST_URI'] ) ) {
-        return;
-    }
-
-    // Get the current URL path without query string
-    $current_path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
-    
-    // Normalize path: lowercase, ensure leading slash, remove trailing slash
-    $current_path = '/' . trim( strtolower( $current_path ), '/' );
-
-    foreach ( $redirects as $old_path => $new_path ) {
-        $old_path_normalized = '/' . trim( strtolower( $old_path ), '/' );
-        
-        // 1. Check exact match
-        if ( $current_path === $old_path_normalized ) {
-            wp_redirect( home_url( $new_path ), 301 );
-            exit;
-        }
-
-        // 2. Check prefix match (e.g. /shop-page/product-1 -> /shop/product-1)
-        if ( strpos( $current_path, $old_path_normalized . '/' ) === 0 ) {
-            $redirect_url = str_replace( $old_path_normalized, $new_path, $current_path );
-            wp_redirect( home_url( $redirect_url ), 301 );
-            exit;
-        }
-    }
-}
-// Run early on 'init' instead of 'template_redirect' to avoid conflicts with WP canonical redirects
-add_action( 'init', 'armo_custom_redirects', 1 );
