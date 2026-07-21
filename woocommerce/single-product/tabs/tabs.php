@@ -57,7 +57,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 			<div class="woocommerce-Tabs-panel panel entry-content wc-tab" id="tab-<?php echo sanitize_title(get_sub_field('tab_title'))?>" role="tabpanel" >
 				<?php the_sub_field('tab_content')?>
 				<?php if($count==1):?>
-					<a class='product-cta-content' target='_blank' href='https://modafinilaustraliaxpress.com/modafinil-dosage/'>
+					<a class='product-cta-content' target='_blank' href='https://armodafinilaustralia.com.au/modafinil-dosage/'>
 						<div class='product-cta-content-inner'>
 						<header><i class='icon ion-ios-search-strong'></i>Modafinil Dosage Guide</header>
 						<p>Unsure about the right dose? Read our complete Modafinil dosage guide for expert tips and brand comparisons.</p>
