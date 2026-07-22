@@ -65,8 +65,18 @@ if ( $title ) {
             </div>
 
             <?php if ($button_text && $button_link) : ?>
-                <div class="mt-5 lg:mt-6 w-full" data-aos="fade-up" data-aos-delay="400">
-                    <a href="<?php echo esc_url($button_link); ?>" class="group flex md:inline-flex justify-center items-center gap-2 w-full md:w-auto bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base lg:text-lg px-4 lg:px-8 py-3 lg:py-3.5 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
+                <!-- Mobile Button Wrapper -->
+                <div class="mt-5 block md:hidden" data-aos="fade-up" data-aos-delay="400">
+                    <a href="<?php echo esc_url($button_link); ?>" class="group inline-flex justify-center items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base px-4 py-3 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
+                        <span class="whitespace-nowrap"><?php echo esc_html($button_text); ?></span>
+                        <svg class="w-5 h-5 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 28 28">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <!-- Desktop Button Wrapper -->
+                <div class="mt-6 hidden md:block" data-aos="fade-up" data-aos-delay="400">
+                    <a href="<?php echo esc_url($button_link); ?>" class="group inline-flex items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base lg:text-lg px-4 lg:px-8 py-2.5 lg:py-3.5 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
                         <span class="whitespace-nowrap"><?php echo esc_html($button_text); ?></span>
                         <svg class="w-5 h-5 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 28 28">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>

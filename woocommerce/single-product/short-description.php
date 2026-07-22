@@ -28,6 +28,52 @@ if ( ! $short_description ) {
 }
 
 ?>
-<div class="woocommerce-product-details__short-description">
+<style>
+.woocommerce-product-details__short-description h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: #00125E;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+.woocommerce-product-details__short-description h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    color: #00125E;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+}
+.woocommerce-product-details__short-description h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    color: #00125E;
+    margin-bottom: 0.75rem;
+    margin-top: 1.25rem;
+}
+.woocommerce-product-details__short-description h4 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: #00125E;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+.woocommerce-product-details__short-description h1:first-child,
+.woocommerce-product-details__short-description h2:first-child,
+.woocommerce-product-details__short-description h3:first-child,
+.woocommerce-product-details__short-description h4:first-child {
+    margin-top: 0;
+}
+.woocommerce-product-details__short-description p {
+    margin-bottom: 1rem;
+}
+.woocommerce-product-details__short-description ul {
+    margin-bottom: 1rem;
+}
+</style>
+<div class="woocommerce-product-details__short-description prose max-w-none text-primary-dark">
 	<?php echo $short_description; // WPCS: XSS ok. ?>
 </div>
