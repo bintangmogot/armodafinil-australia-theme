@@ -110,20 +110,24 @@ require_once ARMO_THEME_DIR . '/inc/theme-options.php';
 require_once ARMO_THEME_DIR . '/inc/shortcodes.php';
 
 /*
- * ── Fix: Make ACF "Modules" field group show on ALL page templates ──
+ * ── Fix: Make ACF "Modules" field group show on ALL page templates & products ──
  * The ACF field group was set to only show on "Default Template".
  * This overrides that rule so modules appear no matter which
- * page template you select in the editor.
+ * page template you select in the editor, AND on WooCommerce products.
  *
  * 🔰 How this works:
  * ACF checks "location rules" to decide if a field group should appear.
- * This filter intercepts that check and says "yes, show it" for any page.
+ * This filter intercepts that check and says "yes, show it" for any page or product.
  */
 function armo_acf_modules_on_all_pages($match, $rule, $screen, $field_group)
 {
-    // Only modify rules about page templates
+    // Show on all page templates (regardless of template selected)
     if ($rule['param'] === 'page_template' && isset($screen['post_type']) && $screen['post_type'] === 'page') {
-        return true; // Always show on pages, regardless of template
+        return true;
+    }
+    // Also show on WooCommerce product pages so ACF modules work on products
+    if ($rule['param'] === 'page_template' && isset($screen['post_type']) && $screen['post_type'] === 'product') {
+        return true;
     }
     return $match;
 }
@@ -1149,3 +1153,128 @@ if( function_exists('acf_add_local_field_group') ):
     ));
 endif;
 
+/**
+ * Register "Linked Product" ACF field on Reviews CPT.
+ *
+ * This allows each review to be associated with a specific WooCommerce product.
+ * When the field is empty, the review is considered "global" (appears everywhere).
+ */
+if ( function_exists('acf_add_local_field_group') ) :
+    acf_add_local_field_group(array(
+        'key' => 'group_review_linked_product',
+        'title' => 'Product Association',
+        'fields' => array(
+            array(
+                'key' => 'field_review_linked_product',
+                'label' => 'Linked Product',
+                'name' => 'linked_product',
+                'type' => 'post_object',
+                'instructions' => 'Select the product this review belongs to. Leave empty for a global review.',
+                'post_type' => array('product'),
+                'return_format' => 'id',
+                'ui' => 1,
+                'allow_null' => 1,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'reviews',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'side',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'active' => true,
+    ));
+endif;
+
+/**
+ * AJAX handler: Load paginated product-specific reviews.
+ *
+ * Called by the "Load More" button on individual product review sections.
+ * Accepts: product_id, page (pagination)
+ * Returns: JSON with reviews HTML, has_more flag, shown count, total count
+ */
+function armo_load_product_reviews() {
+    $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+    $page       = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $per_page   = 5;
+
+    if ( ! $product_id ) {
+        wp_send_json_error(array('message' => 'Invalid product.'));
+    }
+
+    $reviews = new WP_Query(array(
+        'post_type'      => 'reviews',
+        'posts_per_page' => $per_page,
+        'paged'          => $page,
+        'post_status'    => 'publish',
+        'meta_query'     => array(
+            array(
+                'key'     => 'linked_product',
+                'value'   => $product_id,
+                'compare' => '=',
+            ),
+        ),
+    ));
+
+    $html = '';
+    if ($reviews->have_posts()) {
+        ob_start();
+        while ($reviews->have_posts()) {
+            $reviews->the_post();
+            $rating  = get_field('rating') ? get_field('rating') : 5;
+            $name    = get_field('name') ? get_field('name') : get_the_title();
+            $content = get_the_content();
+            ?>
+            <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white">
+                <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-8 items-center">
+                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-1"><?php echo esc_html($name); ?></h3>
+                        <div class="flex items-center gap-1 text-xs text-accent font-bold mb-3">
+                            <span>Verified</span>
+                            <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="text-xl leading-none tracking-[4px] text-accent">
+                            <?php
+                            $r = intval($rating);
+                            echo str_repeat('★', $r);
+                            if (5 - $r > 0) {
+                                echo '<span class="text-white/25">' . str_repeat('★', 5 - $r) . '</span>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="hidden md:block w-[1px] h-20 bg-white/20 self-stretch"></div>
+                    <div class="md:hidden w-full h-[1px] bg-white/20"></div>
+                    <div class="text-white/90 text-sm md:text-base leading-relaxed text-center md:text-left">
+                        <h4 class="text-xl font-extrabold text-white mb-2"><?php echo esc_html(get_the_title()); ?></h4>
+                        <?php echo wp_kses_post(wpautop($content)); ?>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        $html = ob_get_clean();
+        wp_reset_postdata();
+    }
+
+    $shown = min($page * $per_page, $reviews->found_posts);
+
+    wp_send_json_success(array(
+        'html'     => $html,
+        'has_more' => $page < $reviews->max_num_pages,
+        'shown'    => $shown,
+        'total'    => $reviews->found_posts,
+    ));
+}
+add_action('wp_ajax_armo_load_product_reviews', 'armo_load_product_reviews');
+add_action('wp_ajax_nopriv_armo_load_product_reviews', 'armo_load_product_reviews');

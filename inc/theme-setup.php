@@ -202,11 +202,12 @@ function armo_handle_review_submission() {
     }
 
     // Sanitize inputs
-    $title   = isset( $_POST['review_title'] )   ? sanitize_text_field( $_POST['review_title'] )   : '';
-    $content = isset( $_POST['review_content'] ) ? sanitize_textarea_field( $_POST['review_content'] ) : '';
-    $name    = isset( $_POST['review_name'] )    ? sanitize_text_field( $_POST['review_name'] )    : '';
-    $email   = isset( $_POST['review_email'] )   ? sanitize_email( $_POST['review_email'] )        : '';
-    $rating  = isset( $_POST['review_rating'] )  ? intval( $_POST['review_rating'] )               : 5;
+    $title      = isset( $_POST['review_title'] )      ? sanitize_text_field( $_POST['review_title'] )      : '';
+    $content    = isset( $_POST['review_content'] )    ? sanitize_textarea_field( $_POST['review_content'] ) : '';
+    $name       = isset( $_POST['review_name'] )       ? sanitize_text_field( $_POST['review_name'] )       : '';
+    $email      = isset( $_POST['review_email'] )      ? sanitize_email( $_POST['review_email'] )           : '';
+    $rating     = isset( $_POST['review_rating'] )     ? intval( $_POST['review_rating'] )                  : 5;
+    $product_id = isset( $_POST['review_product_id'] ) ? intval( $_POST['review_product_id'] )              : 0;
 
     // Validate required fields
     if ( empty( $title ) || empty( $content ) || empty( $name ) || empty( $email ) ) {
@@ -238,6 +239,11 @@ function armo_handle_review_submission() {
     update_field( 'name', $name, $post_id );
     update_field( 'email', $email, $post_id );
 
+    // Save linked product if submitted from a product page
+    if ( $product_id > 0 ) {
+        update_field( 'linked_product', $product_id, $post_id );
+    }
+
     wp_send_json_success( array(
         'message' => 'Thank you for your review! It will appear on the site once approved.',
     ) );
@@ -245,4 +251,5 @@ function armo_handle_review_submission() {
 // wp_ajax_ = for logged-in users, wp_ajax_nopriv_ = for visitors (not logged in)
 add_action( 'wp_ajax_armo_submit_review', 'armo_handle_review_submission' );
 add_action( 'wp_ajax_nopriv_armo_submit_review', 'armo_handle_review_submission' );
+
 
