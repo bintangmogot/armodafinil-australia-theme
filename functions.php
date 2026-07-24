@@ -49,9 +49,6 @@ define('ARMO_THEME_VERSION', '2.0.0');
 define('ARMO_THEME_DIR', get_stylesheet_directory());
 define('ARMO_THEME_URI', get_stylesheet_directory_uri());
 
-// TEMPORARY: Bulk-assign existing reviews to products. Remove after running.
-require_once get_template_directory() . '/bulk-assign-reviews.php';
-
 
 /**
  * Helper function to sanitize content and automatically replace the ✅ emoji
@@ -339,6 +336,48 @@ function armo_add_reviews_carousel_layout_to_modules($field)
     return $field;
 }
 add_filter('acf/load_field/name=modules', 'armo_add_reviews_carousel_layout_to_modules');
+
+/**
+ * Dynamically register the Reviews Carousel Grid layout inside the ACF Modules flexible content field.
+ */
+function armo_add_reviews_carousel_grid_layout_to_modules($field)
+{
+    if (isset($field['layouts'])) {
+        foreach ($field['layouts'] as &$layout) {
+            if (isset($layout['name']) && $layout['name'] === 'reviews_carousel_grid') {
+                $layout['sub_fields'] = array(
+                    array(
+                        'key' => 'field_reviews_carousel_grid_heading',
+                        'label' => 'Heading',
+                        'name' => 'heading',
+                        'type' => 'text',
+                        'default_value' => 'Trusted by Everyday Australian\'s',
+                    ),
+                );
+                return $field;
+            }
+        }
+    }
+
+    $field['layouts']['layout_reviews_carousel_grid_layout'] = array(
+        'key' => 'layout_reviews_carousel_grid_layout',
+        'name' => 'reviews_carousel_grid',
+        'label' => 'Reviews Carousel Grid (3 Col)',
+        'display' => 'block',
+        'sub_fields' => array(
+            array(
+                'key' => 'field_reviews_carousel_grid_heading',
+                'label' => 'Heading',
+                'name' => 'heading',
+                'type' => 'text',
+                'default_value' => 'Trusted by Everyday Australian\'s',
+            ),
+        ),
+    );
+
+    return $field;
+}
+add_filter('acf/load_field/name=modules', 'armo_add_reviews_carousel_grid_layout_to_modules');
 
 /**
  * Dynamically register the Review Page layout inside the ACF Modules flexible content field.
