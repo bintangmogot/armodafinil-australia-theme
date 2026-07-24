@@ -48,32 +48,40 @@ $carousel_id = 'reviews-carousel-grid-' . uniqid();
                         <!-- Card Wrapper: 1 col mobile, 2 col tablet, 3 col desktop -->
                         <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 snap-start px-3 py-2">
                             <!-- Card Content (Flex Column) -->
-                            <div class="h-full bg-white border border-[#173062] rounded-md p-6 md:p-8 flex flex-col items-center text-center shadow-sm">
+                            <div class="h-full bg-[#173062] rounded-md p-6 md:p-8 flex flex-col items-center text-center shadow-lg">
                                 
+                                <!-- Name -->
+                                <h3 class="text-lg font-bold text-white mb-1">
+                                    <?php echo esc_html($name); ?>
+                                </h3>
+
+                                <!-- Verified Badge -->
+                                <div class="flex items-center gap-1 text-xs text-[#EAA800] font-bold mb-2">
+                                    <span>Verified</span>
+                                    <svg class="w-4 h-4 text-green-400 fill-current" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+
                                 <!-- Stars -->
-                                <div class="text-xl leading-none tracking-[2px] text-[#0066CC] mb-3">
+                                <div class="text-xl leading-none tracking-[2px] text-[#EAA800] mb-5">
                                     <?php
                                     $r = intval($rating);
                                     echo str_repeat('★', $r);
                                     if (5 - $r > 0) {
-                                        echo '<span class="text-gray-300">' . str_repeat('★', 5 - $r) . '</span>';
+                                        echo '<span class="text-white/25">' . str_repeat('★', 5 - $r) . '</span>';
                                     }
                                     ?>
                                 </div>
 
                                 <!-- Title -->
-                                <h3 class="text-lg font-semibold text-[#173062] mb-3">
+                                <h4 class="text-base font-bold text-white mb-3">
                                     <?php echo esc_html(get_the_title()); ?>
-                                </h3>
+                                </h4>
 
                                 <!-- Content -->
-                                <div class="text-gray-700 text-sm md:text-base leading-relaxed mb-4">
+                                <div class="text-white/90 text-sm md:text-base leading-relaxed">
                                     <?php echo wp_kses_post(wpautop($content)); ?>
-                                </div>
-
-                                <!-- Author / Location -->
-                                <div class="text-sm text-[#4da6e7]">
-                                    <?php echo esc_html($name); ?>
                                 </div>
                             </div>
                         </div>
