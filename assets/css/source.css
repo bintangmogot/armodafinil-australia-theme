@@ -215,11 +215,14 @@
     }
     .prose table,
     .woocommerce-product-details__short-description table {
-        @apply w-full text-left border-collapse my-8 shadow-sm rounded-lg overflow-hidden ring-2 ring-gray-200;
+        @apply w-full text-left border-collapse my-8 shadow-sm rounded-lg ring-2 ring-gray-200;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
         border-collapse: separate;
         border-spacing: 0;
         width: 100% !important;
-        table-layout: auto !important;
     }
     .prose tbody th,
     .woocommerce-product-details__short-description tbody th,
