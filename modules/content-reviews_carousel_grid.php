@@ -20,7 +20,7 @@ $carousel_id = 'reviews-carousel-grid-' . uniqid();
 <section class="py-12 lg:py-16 bg-white relative overflow-hidden">
     <div class="max-w-[1200px] mx-auto px-6 md:px-12 relative">
         <?php if ($heading): ?>
-            <h2 class="text-3xl lg:text-4xl font-extrabold text-center mb-10 text-primary">
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-center mb-10 text-[#173062]">
                 <?php echo esc_html($heading); ?>
             </h2>
         <?php endif; ?>
@@ -48,10 +48,10 @@ $carousel_id = 'reviews-carousel-grid-' . uniqid();
                         <!-- Card Wrapper: 1 col mobile, 2 col tablet, 3 col desktop -->
                         <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 snap-start px-3 py-2">
                             <!-- Card Content (Flex Column) -->
-                            <div class="h-full bg-[#F8F9FA] border border-primary rounded-lg p-8 flex flex-col items-center text-center shadow-sm">
+                            <div class="h-full bg-white border border-[#173062] rounded-md p-6 md:p-8 flex flex-col items-center text-center shadow-sm">
                                 
                                 <!-- Stars -->
-                                <div class="text-xl leading-none tracking-[2px] text-[#0066CC] mb-4">
+                                <div class="text-xl leading-none tracking-[2px] text-[#0066CC] mb-3">
                                     <?php
                                     $r = intval($rating);
                                     echo str_repeat('★', $r);
@@ -62,17 +62,17 @@ $carousel_id = 'reviews-carousel-grid-' . uniqid();
                                 </div>
 
                                 <!-- Title -->
-                                <h3 class="text-lg md:text-xl font-medium text-primary mb-4">
+                                <h3 class="text-lg font-semibold text-[#173062] mb-3">
                                     <?php echo esc_html(get_the_title()); ?>
                                 </h3>
 
                                 <!-- Content -->
-                                <div class="text-primary/90 text-sm md:text-base leading-relaxed mb-6 flex-grow">
+                                <div class="text-gray-700 text-sm md:text-base leading-relaxed mb-4">
                                     <?php echo wp_kses_post(wpautop($content)); ?>
                                 </div>
 
                                 <!-- Author / Location -->
-                                <div class="text-sm font-medium text-[#4da6e7] mt-auto">
+                                <div class="text-sm text-[#4da6e7]">
                                     <?php echo esc_html($name); ?>
                                 </div>
                             </div>
