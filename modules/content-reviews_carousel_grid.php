@@ -29,7 +29,7 @@
                 <div class="relative group">
                     <!-- Left Arrow -->
                     <div id="<?php echo $carousel_id; ?>-prev" role="button"
-                        class="carousel-arrow absolute left-0 top-1/2 -mt-5 -ml-6 md:-ml-14 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-[#FF0000] cursor-pointer"
+                        class="carousel-arrow absolute -left-4 md:-left-12 top-1/2 -mt-5 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-[#FF0000] cursor-pointer"
                         aria-label="Previous">
                         <svg class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
@@ -38,7 +38,7 @@
 
                     <!-- Carousel Container -->
                     <div id="<?php echo $carousel_id; ?>-container"
-                        class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full scroll-smooth">
+                        class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full scroll-smooth py-4">
                         <?php while ($reviews->have_posts()):
                             $reviews->the_post();
                             $rating = get_field('rating') ? get_field('rating') : 5;
@@ -46,7 +46,7 @@
                             $content = get_the_content();
                             ?>
                             <!-- Card Wrapper: 1 col mobile, 2 col tablet, 3 col desktop -->
-                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 snap-start px-3 py-2">
+                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 snap-start px-4 lg:px-6">
                                 <!-- Card Content (Flex Column) -->
                                 <div class="h-full bg-gradient-review rounded-2xl p-6 md:p-8 flex flex-col items-center text-center shadow-lg" style="border-radius: 30px;">
                                     
@@ -90,7 +90,7 @@
 
                     <!-- Right Arrow -->
                     <div id="<?php echo $carousel_id; ?>-next" role="button"
-                        class="carousel-arrow absolute right-0 top-1/2 -mt-5 -mr-6 md:-mr-14 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-[#FF0000] cursor-pointer"
+                        class="carousel-arrow absolute -right-4 md:-right-12 top-1/2 -mt-5 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-[#FF0000] cursor-pointer"
                         aria-label="Next">
                         <svg class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
