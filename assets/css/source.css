@@ -224,6 +224,13 @@
         border-spacing: 0;
         width: 100% !important;
     }
+    .prose table th,
+    .prose table td,
+    .woocommerce-product-details__short-description table th,
+    .woocommerce-product-details__short-description table td {
+        white-space: nowrap !important;
+        width: auto !important;
+    }
     .prose tbody th,
     .woocommerce-product-details__short-description tbody th,
     .prose tbody td:first-child,
