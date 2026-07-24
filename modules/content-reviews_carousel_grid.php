@@ -48,7 +48,7 @@ $carousel_id = 'reviews-carousel-grid-' . uniqid();
                         <!-- Card Wrapper: 1 col mobile, 2 col tablet, 3 col desktop -->
                         <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 snap-start px-3 py-2">
                             <!-- Card Content (Flex Column) -->
-                            <div class="h-full bg-[#173062] rounded-md p-6 md:p-8 flex flex-col items-center text-center shadow-lg">
+                            <div class="h-full bg-gradient-review rounded-xl p-6 md:p-8 flex flex-col items-center text-center shadow-lg">
                                 
                                 <!-- Name -->
                                 <h3 class="text-lg font-bold text-white mb-1">
