@@ -26,11 +26,11 @@
             <?php endif; ?>
 
             <?php if ($reviews->have_posts()): ?>
-            <!-- Added px-12 md:px-16 here to create safe space for the arrows so they never overlap the cards -->
-            <div class="relative group px-12 md:px-16">
+            <!-- Reduced padding to px-8 md:px-12 so the arrows are closer to the content -->
+            <div class="relative group px-8 md:px-12">
                 <!-- Left Arrow -->
                 <div id="<?php echo $carousel_id; ?>-prev" role="button"
-                    class="carousel-arrow absolute left-0 md:left-2 top-1/2 -mt-5 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-[#FF0000] cursor-pointer"
+                    class="carousel-arrow absolute left-0 top-1/2 -mt-5 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-[#FF0000] cursor-pointer"
                     aria-label="Previous">
                     <svg class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
@@ -38,17 +38,17 @@
                 </div>
 
                 <!-- Carousel Container -->
-                <!-- Added gap-4 md:gap-6 for spacing, and md:justify-center to center if fewer than 3 reviews -->
+                <!-- Removed 'gap' and reverted to padding inside cards so standard w-1/3 works -->
                 <div id="<?php echo $carousel_id; ?>-container"
-                    class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full scroll-smooth py-4 gap-4 md:gap-6 <?php echo ($reviews->found_posts < 3) ? 'md:justify-center' : ''; ?>">
+                    class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full scroll-smooth py-4 <?php echo ($reviews->found_posts < 3) ? 'md:justify-center' : ''; ?>">
                     <?php while ($reviews->have_posts()):
                         $reviews->the_post();
                         $rating = get_field('rating') ? get_field('rating') : 5;
                         $name = get_field('name') ? get_field('name') : get_the_title();
                         $content = get_the_content();
                         ?>
-                        <!-- Card Wrapper -->
-                        <div class="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)] flex-shrink-0 snap-start">
+                        <!-- Card Wrapper: standard 1/3 width, padding creates the gap -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 snap-start px-3">
                             <!-- Card Content (Flex Column) -->
                             <div class="h-full bg-gradient-review p-6 md:p-8 flex flex-col items-center text-center shadow-lg" style="border-radius: 30px;">
                                 
@@ -93,7 +93,7 @@
 
                 <!-- Right Arrow -->
                 <div id="<?php echo $carousel_id; ?>-next" role="button"
-                    class="carousel-arrow absolute right-0 md:right-2 top-1/2 -mt-5 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-[#FF0000] cursor-pointer"
+                    class="carousel-arrow absolute right-0 top-1/2 -mt-5 z-10 w-10 h-10 flex items-center justify-center text-primary hover:text-[#FF0000] cursor-pointer"
                     aria-label="Next">
                     <svg class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
