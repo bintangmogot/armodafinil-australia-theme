@@ -49,6 +49,10 @@ define('ARMO_THEME_VERSION', '2.0.0');
 define('ARMO_THEME_DIR', get_stylesheet_directory());
 define('ARMO_THEME_URI', get_stylesheet_directory_uri());
 
+// TEMPORARY: Bulk-assign existing reviews to products. Remove after running.
+require_once get_template_directory() . '/bulk-assign-reviews.php';
+
+
 /**
  * Helper function to sanitize content and automatically replace the ✅ emoji
  * with our custom premium yellow checkmark icon.
