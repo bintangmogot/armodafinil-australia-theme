@@ -320,14 +320,17 @@ function armo_custom_total_price_box()
         <?php endif; ?>
 
         <!-- Review Form - Full Width Breakout -->
-        <div class="mt-12 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-primary py-10 px-4 lg:px-8">
-            <div class="max-w-2xl mx-auto text-center">
-                <h2 class="text-2xl lg:text-3xl font-bold text-white mb-6">
+        <div class="mt-8 relative py-8 px-2 md:px-4 lg:px-6">
+            <!-- Full width background -->
+            <div class="absolute inset-0 bg-primary" style="left: 50%; transform: translateX(-50%); width: 100vw;"></div>
+            
+            <div class="max-w-xl mx-auto text-center relative z-10">
+                <h2 class="text-xl lg:text-2xl font-bold text-white mb-4">
                     Leave a Review 🙏
                 </h2>
 
-                <div class="bg-surface rounded-xl p-5 lg:p-8 text-left shadow-xl">
-                    <form id="armo-product-review-form" method="POST" class="flex flex-col gap-4">
+                <div class="bg-surface rounded-md md:rounded-xl p-4 lg:p-6 text-left shadow-xl">
+                    <form id="armo-product-review-form" method="POST" class="flex flex-col gap-3">
                         <?php wp_nonce_field( 'armo_submit_review', 'armo_review_nonce' ); ?>
                         <input type="hidden" name="action" value="armo_submit_review">
                         <input type="hidden" name="review_product_id" value="<?php echo esc_attr($product_id); ?>">
@@ -358,7 +361,7 @@ function armo_custom_total_price_box()
                         </div>
 
                         <!-- Grid for Name and Email -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <!-- Name -->
                             <div>
                                 <label class="block text-sm font-bold text-primary mb-1">Your name *</label>
@@ -376,8 +379,8 @@ function armo_custom_total_price_box()
                         <div id="product-review-form-message" class="hidden rounded-lg p-3 text-sm font-medium text-center"></div>
 
                         <!-- Submit Button -->
-                        <div class="mt-2 text-center">
-                            <button type="submit" id="product-review-submit-btn" class="bg-[#FF0000] text-white font-bold py-3 px-8 rounded-full hover:bg-red-600 transition-colors w-full md:w-auto text-sm">
+                        <div class="mt-1 text-center">
+                            <button type="submit" id="product-review-submit-btn" class="bg-[#FF0000] text-white font-bold py-2 px-6 rounded-full hover:bg-red-600 transition-colors w-full md:w-auto text-sm">
                                 Submit your review
                             </button>
                         </div>
