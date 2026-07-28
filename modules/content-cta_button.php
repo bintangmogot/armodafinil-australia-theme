@@ -6,8 +6,11 @@
 $button_text = get_sub_field('button_text');
 $button_link = get_sub_field('button_link');
 
-if (!$button_text || !$button_link) {
-    return;
+if (!$button_text) {
+    $button_text = 'Click Here';
+}
+if (!$button_link) {
+    $button_link = '#';
 }
 ?>
 <section class="py-6 lg:py-10 bg-transparent flex justify-center">
