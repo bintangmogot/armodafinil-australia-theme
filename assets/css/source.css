@@ -549,10 +549,12 @@
     
     .woocommerce div.product form.cart {
         @apply flex flex-col gap-2 !important;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
     }
 
     .woocommerce div.product form.cart .quantity {
-        @apply flex items-center justify-start mb-0 float-none w-auto;
+        @apply flex items-center justify-start mb-0 float-none w-fit;
     }
     .woocommerce div.product form.cart .quantity .qty {
         @apply w-16 text-center py-3 appearance-none m-0 focus:outline-none h-[46px];
