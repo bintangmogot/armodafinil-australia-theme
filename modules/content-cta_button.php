@@ -13,6 +13,7 @@ if (!$button_link) {
     $button_link = '#';
 }
 ?>
+<!-- DEBUG: CTA BUTTON MODULE LOADED SUCCESSFULLY -->
 <section class="py-6 lg:py-10 bg-transparent flex justify-center">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center w-full">
         <!-- Mobile Button Wrapper -->
