@@ -319,15 +319,15 @@ function armo_custom_total_price_box()
             <p class="text-gray-400 italic mb-4">No reviews yet. Be the first to review this product!</p>
         <?php endif; ?>
 
-        <!-- Review Form -->
-        <div class="mt-12 bg-primary rounded-2xl py-14 px-6 lg:px-12">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-10">
+        <!-- Review Form - Full Width Breakout -->
+        <div class="mt-12 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-primary py-10 px-4 lg:px-8">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-2xl lg:text-3xl font-bold text-white mb-6">
                     Leave a Review 🙏
                 </h2>
 
-                <div class="bg-surface rounded-2xl p-8 lg:p-12 text-left shadow-xl max-w-2xl mx-auto">
-                    <form id="armo-product-review-form" method="POST" class="flex flex-col gap-6">
+                <div class="bg-surface rounded-xl p-5 lg:p-8 text-left shadow-xl">
+                    <form id="armo-product-review-form" method="POST" class="flex flex-col gap-4">
                         <?php wp_nonce_field( 'armo_submit_review', 'armo_review_nonce' ); ?>
                         <input type="hidden" name="action" value="armo_submit_review">
                         <input type="hidden" name="review_product_id" value="<?php echo esc_attr($product_id); ?>">
@@ -335,11 +335,11 @@ function armo_custom_total_price_box()
 
                         <!-- Rating -->
                         <div>
-                            <label class="block text-sm font-bold text-primary mb-2">Your overall rating *</label>
+                            <label class="block text-sm font-bold text-primary mb-1">Your overall rating *</label>
                             <div id="product-star-rating-selector" class="whitespace-nowrap">
                                 <?php
                                 for ($i = 1; $i <= 5; $i++) {
-                                    echo '<span data-rating="' . $i . '" class="product-star-icon text-3xl text-accent cursor-pointer transition-colors leading-none select-none inline-block mr-2">★</span>';
+                                    echo '<span data-rating="' . $i . '" class="product-star-icon text-2xl text-accent cursor-pointer transition-colors leading-none select-none inline-block mr-1">★</span>';
                                 }
                                 ?>
                             </div>
@@ -347,37 +347,37 @@ function armo_custom_total_price_box()
 
                         <!-- Title -->
                         <div>
-                            <label class="block text-sm font-bold text-primary mb-2">Title of your review *</label>
-                            <input type="text" name="review_title" placeholder="Enter your title" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
+                            <label class="block text-sm font-bold text-primary mb-1">Title of your review *</label>
+                            <input type="text" name="review_title" placeholder="Enter your title" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
                         </div>
 
                         <!-- Review Content -->
                         <div>
-                            <label class="block text-sm font-bold text-primary mb-2">Your review *</label>
-                            <textarea name="review_content" placeholder="Write your review" rows="4" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-primary transition-colors resize-none" required></textarea>
+                            <label class="block text-sm font-bold text-primary mb-1">Your review *</label>
+                            <textarea name="review_content" placeholder="Write your review" rows="3" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-primary transition-colors resize-none" required></textarea>
                         </div>
 
                         <!-- Grid for Name and Email -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Name -->
                             <div>
-                                <label class="block text-sm font-bold text-primary mb-2">Your name *</label>
-                                <input type="text" name="review_name" placeholder="Enter your name" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
+                                <label class="block text-sm font-bold text-primary mb-1">Your name *</label>
+                                <input type="text" name="review_name" placeholder="Enter your name" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
                             </div>
 
                             <!-- Email -->
                             <div>
-                                <label class="block text-sm font-bold text-primary mb-2">Your email address *</label>
-                                <input type="email" name="review_email" placeholder="Enter your email" class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
+                                <label class="block text-sm font-bold text-primary mb-1">Your email address *</label>
+                                <input type="email" name="review_email" placeholder="Enter your email" class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-primary transition-colors" required>
                             </div>
                         </div>
 
                         <!-- Success / Error Messages -->
-                        <div id="product-review-form-message" class="hidden rounded-lg p-4 text-sm font-medium text-center"></div>
+                        <div id="product-review-form-message" class="hidden rounded-lg p-3 text-sm font-medium text-center"></div>
 
                         <!-- Submit Button -->
-                        <div class="mt-4 text-center">
-                            <button type="submit" id="product-review-submit-btn" class="bg-[#FF0000] text-white font-bold py-4 px-10 rounded-full hover:bg-red-600 transition-colors w-full md:w-auto">
+                        <div class="mt-2 text-center">
+                            <button type="submit" id="product-review-submit-btn" class="bg-[#FF0000] text-white font-bold py-3 px-8 rounded-full hover:bg-red-600 transition-colors w-full md:w-auto text-sm">
                                 Submit your review
                             </button>
                         </div>
