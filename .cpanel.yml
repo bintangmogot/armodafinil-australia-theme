@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/armodafi/staging.armodafinil-australia.com/wp-content/themes/armodafinil-australia/
+    - export DEPLOYPATH=/home/armodafi/public_html/wp-content/themes/armodafinil-australia/
     - /bin/cp -R * $DEPLOYPATH
