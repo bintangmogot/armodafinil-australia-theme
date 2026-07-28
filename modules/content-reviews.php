@@ -9,6 +9,11 @@ $reviews = new WP_Query(array(
     'post_type'      => 'reviews',
     'posts_per_page' => 6,
     'post_status'    => 'publish',
+    'meta_query'     => array(
+        'relation' => 'OR',
+        array('key' => 'linked_product', 'compare' => 'NOT EXISTS'),
+        array('key' => 'linked_product', 'value' => '', 'compare' => '=')
+    )
 ));
 ?>
 <section class="py-14 lg:py-20 px-6 lg:px-12 bg-white">

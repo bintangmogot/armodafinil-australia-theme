@@ -9,6 +9,11 @@ $reviews = new WP_Query(array(
     'post_type' => 'reviews',
     'posts_per_page' => 8,
     'post_status' => 'publish',
+    'meta_query' => array(
+        'relation' => 'OR',
+        array('key' => 'linked_product', 'compare' => 'NOT EXISTS'),
+        array('key' => 'linked_product', 'value' => '', 'compare' => '=')
+    )
 ));
 
 // Generate a unique ID for this carousel instance

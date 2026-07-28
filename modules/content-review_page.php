@@ -16,6 +16,11 @@ $reviews = new WP_Query(array(
     'posts_per_page' => 5,
     'paged'          => $paged,
     'post_status'    => 'publish',
+    'meta_query'     => array(
+        'relation' => 'OR',
+        array('key' => 'linked_product', 'compare' => 'NOT EXISTS'),
+        array('key' => 'linked_product', 'value' => '', 'compare' => '=')
+    )
 ));
 
 // Calculate average rating and total
@@ -23,6 +28,11 @@ $all_reviews = new WP_Query(array(
     'post_type'      => 'reviews',
     'posts_per_page' => -1,
     'post_status'    => 'publish',
+    'meta_query'     => array(
+        'relation' => 'OR',
+        array('key' => 'linked_product', 'compare' => 'NOT EXISTS'),
+        array('key' => 'linked_product', 'value' => '', 'compare' => '=')
+    )
 ));
 $total_reviews = $all_reviews->found_posts;
 $total_rating = 0;
