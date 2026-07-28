@@ -1321,3 +1321,118 @@ function armo_load_product_reviews() {
 }
 add_action('wp_ajax_armo_load_product_reviews', 'armo_load_product_reviews');
 add_action('wp_ajax_nopriv_armo_load_product_reviews', 'armo_load_product_reviews');
+
+function armo_bulk_assign_reviews_to_products() {
+    if ( ! isset($_GET['armo_bulk_assign_reviews']) || $_GET['armo_bulk_assign_reviews'] !== '1' ) return;
+    if ( ! current_user_can('manage_options') ) wp_die('Unauthorized.');
+
+    $products = get_posts(array(
+        'post_type'      => 'product',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+        'fields'         => 'ids',
+    ));
+    if ( empty($products) ) wp_die('No products found.');
+
+    $reviews = new WP_Query(array(
+        'post_type'      => 'reviews',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+        'meta_query'     => array(
+            'relation' => 'OR',
+            array('key' => 'linked_product', 'compare' => 'NOT EXISTS'),
+            array('key' => 'linked_product', 'value' => '', 'compare' => '='),
+            array('key' => 'linked_product', 'value' => '0', 'compare' => '='),
+        ),
+    ));
+    if ( ! $reviews->have_posts() ) wp_die('No unassigned reviews found.');
+
+    shuffle($products);
+    $product_count = count($products);
+    $assigned = 0;
+    $index = 0;
+
+    $output = '<h2>Bulk Assign Reviews - Results</h2><ul>';
+    while ($reviews->have_posts()) {
+        $reviews->the_post();
+        $target_product_id = $products[$index % $product_count];
+        update_field('linked_product', $target_product_id, get_the_ID());
+        $output .= '<li>Assigned Review #' . get_the_ID() . ' to Product #' . $target_product_id . '</li>';
+        $assigned++;
+        $index++;
+    }
+    wp_reset_postdata();
+
+    wp_die($output . '</ul><p><strong>Done!</strong> Assigned ' . $assigned . ' reviews.</p>', 'Bulk Assign Reviews', array('response' => 200));
+}
+add_action('template_redirect', 'armo_bulk_assign_reviews_to_products');
+
+// Force WYSIWYG tables to be horizontally scrollable via a robust JS wrapper
+add_action('wp_footer', function() {
+    ?>
+    <style>
+        /* 1. Ensure table always takes up full width on desktop */
+        .prose table, 
+        .woocommerce-product-details__short-description table {
+            width: 100% !important;
+            display: table !important; /* Keep it acting like a normal table */
+        }
+        
+        /* 2. Override the WYSIWYG inline widths everywhere so it sizes naturally */
+        .prose table th,
+        .prose table td,
+        .woocommerce-product-details__short-description table th,
+        .woocommerce-product-details__short-description table td {
+            width: auto !important;
+        }
+
+        /* 3. Force text to not wrap on mobile, which forces the JS wrapper to scroll */
+        @media (max-width: 1024px) {
+            .prose table th,
+            .prose table td,
+            .woocommerce-product-details__short-description table th,
+            .woocommerce-product-details__short-description table td {
+                white-space: nowrap !important;
+            }
+            
+            /* Style the scrollbar on our new wrapper */
+            .armo-table-wrapper::-webkit-scrollbar {
+                height: 8px;
+                -webkit-appearance: none;
+            }
+            .armo-table-wrapper::-webkit-scrollbar-track {
+                background: #f1f1f1; 
+                border-radius: 8px;
+            }
+            .armo-table-wrapper::-webkit-scrollbar-thumb {
+                background: #c1c1c1; 
+                border-radius: 8px;
+            }
+        }
+    </style>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Find all tables in your content areas
+        var tables = document.querySelectorAll('.prose table, .woocommerce-product-details__short-description table');
+        
+        tables.forEach(function(table) {
+            // Check if it's already wrapped to prevent duplicates
+            if (!table.parentNode.classList.contains('armo-table-wrapper')) {
+                // Create a scrollable wrapper div
+                var wrapper = document.createElement('div');
+                wrapper.className = 'armo-table-wrapper';
+                wrapper.style.overflowX = 'auto';
+                wrapper.style.width = '100%';
+                wrapper.style.WebkitOverflowScrolling = 'touch';
+                wrapper.style.marginBottom = '2rem';
+                
+                // Wrap the table!
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            }
+        });
+    });
+    </script>
+    <?php
+});
