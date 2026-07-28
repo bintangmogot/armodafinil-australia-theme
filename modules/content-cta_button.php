@@ -13,12 +13,11 @@ if (!$button_link) {
     $button_link = '#';
 }
 ?>
-<!-- DEBUG: CTA BUTTON MODULE LOADED SUCCESSFULLY -->
-<section class="py-6 lg:py-10 bg-transparent flex justify-center">
+<section class="py-1 lg:py-2 bg-transparent flex justify-center">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center w-full">
         <!-- Mobile Button Wrapper -->
         <div class="block md:hidden">
-            <a href="<?php echo esc_url($button_link); ?>" class="group inline-flex w-full justify-center items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base px-4 py-3 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
+            <a href="<?php echo esc_url($button_link); ?>" class="group inline-flex justify-center items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base px-4 py-3 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
                 <span class="whitespace-nowrap"><?php echo esc_html($button_text); ?></span>
                 <svg class="w-5 h-5 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 28 28">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
