@@ -12,7 +12,7 @@
 // Retrieve ACF option values with fallbacks
 $footer_description = get_field( 'footer_text', 'option' );
 if ( ! $footer_description ) {
-    $footer_description = 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via Commonwealth Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.';
+    $footer_description = 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via ING Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.';
 }
 
 $footer_corporate_registry = get_field( 'footer_corporate_registry', 'option' );
@@ -218,7 +218,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                         <?php else : ?>
                             <!-- Fallback: original hardcoded images -->
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/commonwealth.png'); ?>" alt="Commonwealth Bank" class="footer-pay-logo w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/ING_idfZagXgvQ_0.svg'); ?>" alt="ING Bank" class="footer-pay-logo w-auto object-contain">
                             </div>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/osko-1.jpg'); ?>" alt="Osko" class="footer-pay-logo w-auto object-contain">
@@ -264,7 +264,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                             <?php endforeach; ?>
                         <?php else : ?>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/commonwealth.png'); ?>" alt="Commonwealth Bank" class="footer-pay-logo w-auto object-contain">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/ING_idfZagXgvQ_0.svg'); ?>" alt="ING Bank" class="footer-pay-logo w-auto object-contain">
                             </div>
                             <div class="bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200 flex items-center justify-center">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/osko-1.jpg'); ?>" alt="Osko" class="footer-pay-logo w-auto object-contain">
