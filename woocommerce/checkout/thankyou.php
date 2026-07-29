@@ -121,30 +121,6 @@ defined( 'ABSPATH' ) || exit;
                 </div>
             </div>
 
-            <!-- Important Steps (orange) -->
-            <div class="bg-orange-50 border border-orange-200 rounded-xl p-5 mb-6">
-                <h4 class="font-bold text-orange-800 text-sm mb-2">Important Steps:</h4>
-                <ol class="list-decimal list-inside text-orange-900 text-xs space-y-1 leading-relaxed">
-                    <li>Open your banking app</li>
-                    <li>Choose Pay Anyone / Bank Transfer (EFT) or PayID</li>
-                    <li>Enter the recipient details provided (Account Name / BSB &amp; Account Number or PayID)</li>
-                    <li>Send the exact amount</li>
-                    <li>Use your order number as the payment reference</li>
-                    <li>Email your payment confirmation once the transfer is complete</li>
-                </ol>
-            </div>
-
-            <!-- After Payment (green) -->
-            <div class="bg-green-50 border border-green-200 rounded-xl p-5 mb-10">
-                <h4 class="font-bold text-green-800 text-sm mb-2">After Payment:</h4>
-                <p class="text-green-900 text-xs mb-2">Once we receive your payment confirmation, we will:</p>
-                <ul class="list-disc list-inside text-green-900 text-xs space-y-1 leading-relaxed">
-                    <li>Confirm receipt of payment</li>
-                    <li>Process your order immediately</li>
-                    <li>Send tracking information to your email</li>
-                    <li>Ship your order within 24 hours</li>
-                </ul>
-            </div>
 
             <!-- Order Summary -->
             <h3 class="text-sm font-bold text-gray-900 mb-3">Order Summary</h3>
