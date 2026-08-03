@@ -32,7 +32,7 @@ $bg_url = $bg_image ? esc_url($bg_image['url']) : 'https://images.unsplash.com/p
     <div class="relative z-10 max-w-6xl mx-auto">
         
         <!-- Top Section: Title, Description, and List -->
-        <div class="max-w-2xl">
+        <div class="max-w-4xl">
             <?php if ($title): ?>
                 <h2 class="text-3xl lg:text-4xl font-bold text-accent mb-4">
                     <?php echo esc_html($title); ?>
@@ -48,9 +48,9 @@ $bg_url = $bg_image ? esc_url($bg_image['url']) : 'https://images.unsplash.com/p
             <?php if (have_rows('list_items')): ?>
                 <div class="flex flex-col gap-3 mb-12">
                     <?php while (have_rows('list_items')): the_row(); ?>
-                        <div class="inline-flex items-center gap-3 bg-[#1b4f93]/90 px-4 py-2.5 rounded shadow-sm w-fit max-w-full">
+                        <div class="inline-flex items-center gap-3 w-fit max-w-full">
                             <span class="armo-yellow-tick flex-shrink-0 !m-0 !w-5 !h-5 !bg-[length:60%]"></span>
-                            <span class="text-white font-medium text-sm lg:text-base leading-tight">
+                            <span class="bg-[#1b4f93]/90 px-3 py-1.5 rounded shadow-sm text-white font-medium text-sm lg:text-base leading-tight">
                                 <?php echo esc_html(get_sub_field('item_text')); ?>
                             </span>
                         </div>
