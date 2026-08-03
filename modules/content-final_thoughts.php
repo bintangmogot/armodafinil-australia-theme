@@ -23,8 +23,11 @@ $cta_link    = get_sub_field('cta_link');
 // Use placeholder image if none provided
 $bg_url = $bg_image ? esc_url($bg_image['url']) : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop';
 ?>
-<section class="relative py-16 lg:py-20 px-6 lg:px-12 bg-gray-900 bg-cover bg-center bg-no-repeat overflow-hidden" 
-    style="background-image: url('<?php echo $bg_url; ?>');">
+<section class="relative py-16 lg:py-20 px-6 lg:px-12 overflow-hidden" 
+    style="width: 100vw; left: 50%; transform: translateX(-50%);">
+    
+    <!-- Full width background image -->
+    <div class="absolute inset-0 bg-gray-900 bg-cover bg-center bg-no-repeat" style="background-image: url('<?php echo $bg_url; ?>');"></div>
     
     <!-- Dark overlay to ensure text readability against the background image -->
     <div class="absolute inset-0 bg-black/80"></div>
@@ -46,7 +49,7 @@ $bg_url = $bg_image ? esc_url($bg_image['url']) : 'https://images.unsplash.com/p
             <?php endif; ?>
             
             <?php if (have_rows('list_items')): ?>
-                <div class="flex flex-col gap-3 mb-12">
+                <div class="flex flex-col gap-3 mb-4">
                     <?php while (have_rows('list_items')): the_row(); ?>
                         <div class="inline-flex items-center gap-3 w-fit max-w-full">
                             <span class="armo-yellow-tick flex-shrink-0 !m-0 !w-5 !h-5 !bg-[length:60%]"></span>
