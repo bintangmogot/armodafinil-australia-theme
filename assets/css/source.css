@@ -229,8 +229,15 @@
         width: auto !important;
     }
 
-    /* Force text to not wrap on mobile so it forces the JS wrapper to scroll */
+    /* Force text to not wrap on mobile and ensure the table itself can scroll horizontally */
     @media (max-width: 1024px) {
+        .prose table,
+        .woocommerce-product-details__short-description table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            width: 100% !important;
+        }
         .prose table th,
         .prose table td,
         .woocommerce-product-details__short-description table th,
