@@ -68,7 +68,7 @@ function armo_custom_reviews_anchor_button()
     $r = intval(round($average_rating));
 
     echo '<div class="my-2 lg:mt-3 lg:mb-4">';
-    echo '<a href="#product-reviews-section" class="inline-flex flex-col gap-1 lg:gap-1.5 bg-gradient-review hover:bg-secondary-dark text-white px-4 py-3 rounded-lg transition-colors">';
+    echo '<a href="#product-reviews-section" class="inline-flex flex-col gap-1 lg:gap-1.5 bg-gradient-review hover:bg-secondary-dark text-white px-4 py-3 rounded-lg transition-colors w-full md:w-auto md:max-w-[320px]">';
     
     // Top row: Stars and Arrow
     echo '<div class="flex items-center justify-between w-full">';
