@@ -331,7 +331,7 @@ function armo_custom_total_price_box()
                                     $content = get_the_content();
                                     ?>
                                     <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] md:w-[95%] lg:w-full max-w-full">
-                                        <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-8 items-center">
+                                        <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-6 items-center">
                                             <!-- Left side: Name, Verified, Stars -->
                                             <div class="flex flex-col items-center md:items-start text-center md:text-left">
                                                 <h3 class="text-lg md:text-xl font-bold text-white mb-1"><?php echo esc_html($name); ?>
