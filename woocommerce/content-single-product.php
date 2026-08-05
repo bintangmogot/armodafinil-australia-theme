@@ -309,7 +309,10 @@ function armo_custom_total_price_box()
 
                 <!-- Right Side: Reviews List -->
                 <div class="lg:w-3/4 flex flex-col gap-6" id="product-reviews-wrapper">
-                    <div id="product-reviews-container" class="flex flex-col gap-6">
+                    <div id="product-reviews-container" class="flex flex-row gap-6 overflow-x-auto snap-x pb-6" style="scrollbar-width: none; -ms-overflow-style: none;">
+                        <style>
+                            #product-reviews-container::-webkit-scrollbar { display: none; }
+                        </style>
                         <?php if ($review_query->have_posts()): ?>
                             <?php while ($review_query->have_posts()):
                                 $review_query->the_post();
@@ -317,7 +320,7 @@ function armo_custom_total_price_box()
                                 $name = get_field('name') ? get_field('name') : get_the_title();
                                 $content = get_the_content();
                                 ?>
-                                <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white">
+                                <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] sm:w-[400px] md:w-[600px]">
                                     <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-8 items-center">
                                         <!-- Left side: Name, Verified, Stars -->
                                         <div class="flex flex-col items-center md:items-start text-center md:text-left">
