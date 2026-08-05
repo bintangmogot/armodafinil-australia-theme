@@ -30,15 +30,15 @@ if ( $title ) {
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-start lg:items-center min-h-[inherit]">
         <div class="w-full pt-28 pb-6 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20 text-white">
-            <div class="w-[70%] sm:w-[80%] md:w-full">
+            <div class="w-[70%] sm:w-[80%] md:w-full lg:w-[75%] xl:w-[65%]">
                 <?php if ($title_html) : ?>
-                    <h1 class="max-w-5xl text-4xl md:text-5xl lg:text-5xl font-extrabold text-white leading-[1.2] mb-3 lg:mb-4" data-aos="fade-up">
+                    <h1 class="max-w-5xl text-4xl md:text-5xl font-extrabold text-white leading-[1.2] mb-3 lg:mb-4" data-aos="fade-up">
                         <?php echo $title_html; ?>
                     </h1>
                 <?php endif; ?>
 
                 <?php if ($subtitle) : ?>
-                    <p class="md:w-[70%] lg:w-[50%] text-lg md:text-2xl lg:text-3xl font-semibold text-white/90 leading-snug mb-2 lg:mb-3" data-aos="fade-up" data-aos-delay="100">
+                    <p class="md:w-[80%] lg:w-full text-lg md:text-2xl lg:text-3xl font-semibold text-white/90 leading-snug mb-2 lg:mb-3" data-aos="fade-up" data-aos-delay="100">
                         <?php echo esc_html($subtitle); ?>
                     </p>
                 <?php endif; ?>
