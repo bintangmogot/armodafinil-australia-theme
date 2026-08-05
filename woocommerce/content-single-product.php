@@ -312,14 +312,14 @@ function armo_custom_total_price_box()
                     <!-- Carousel Wrapper -->
                     <div class="relative w-full">
                         <!-- Carousel Buttons -->
-                        <button type="button" id="review-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-2 lg:-ml-6 bg-white rounded-full p-2 shadow-lg z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
+                        <button type="button" id="review-prev" class="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-xl z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                         </button>
-                        <button type="button" id="review-next" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-2 lg:-mr-6 bg-white rounded-full p-2 shadow-lg z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
+                        <button type="button" id="review-next" class="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-xl z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
 
-                        <div id="product-reviews-container" class="flex flex-row gap-6 overflow-x-auto snap-x pb-6 scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+                        <div id="product-reviews-container" class="flex flex-row gap-6 overflow-x-auto snap-x scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
                             <style>
                                 #product-reviews-container::-webkit-scrollbar { display: none; }
                             </style>
@@ -385,10 +385,10 @@ function armo_custom_total_price_box()
 
                             if(container && btnPrev && btnNext) {
                                 btnPrev.addEventListener('click', () => {
-                                    container.scrollBy({ left: -400, behavior: 'smooth' });
+                                    container.scrollBy({ left: -(container.offsetWidth + 24), behavior: 'smooth' });
                                 });
                                 btnNext.addEventListener('click', () => {
-                                    container.scrollBy({ left: 400, behavior: 'smooth' });
+                                    container.scrollBy({ left: (container.offsetWidth + 24), behavior: 'smooth' });
                                 });
                             }
                         });
