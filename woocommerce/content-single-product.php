@@ -277,7 +277,7 @@ function armo_custom_total_price_box()
         </h2>
 
         <?php if ($total_product_reviews > 0): ?>
-            <div class="flex flex-col lg:flex-row gap-8 lg:gap-16">
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-10">
                 <!-- Left Side: Aggregate Score -->
                 <div class="lg:w-1/4 flex flex-col">
                     <div class="text-xs text-gray-500 mb-6 uppercase tracking-wider font-semibold"
