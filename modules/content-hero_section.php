@@ -30,7 +30,7 @@ if ( $title ) {
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-start lg:items-center min-h-[inherit]">
         <div class="w-full pt-28 pb-6 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20 text-white">
-            <div class="w-[70%] sm:w-[80%] md:w-full lg:w-[75%] xl:w-[65%]">
+            <div class="w-[70%] sm:w-[80%] md:w-full lg:w-[75%] xl:w-[70%]">
                 <?php if ($title_html) : ?>
                     <h1 class="max-w-5xl text-4xl md:text-5xl font-extrabold text-white leading-[1.2] mb-3 lg:mb-4" data-aos="fade-up">
                         <?php echo $title_html; ?>
