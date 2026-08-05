@@ -308,70 +308,73 @@ function armo_custom_total_price_box()
                 </div>
 
                 <!-- Right Side: Reviews List -->
-                <div class="lg:w-3/4 flex flex-col gap-6 relative" id="product-reviews-wrapper">
-                    <!-- Carousel Buttons -->
-                    <button type="button" id="review-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 lg:-ml-6 bg-white rounded-full p-2 shadow-lg z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </button>
-                    <button type="button" id="review-next" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 lg:-mr-6 bg-white rounded-full p-2 shadow-lg z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
+                <div class="lg:w-3/4 flex flex-col gap-6" id="product-reviews-wrapper">
+                    <!-- Carousel Wrapper -->
+                    <div class="relative w-full">
+                        <!-- Carousel Buttons -->
+                        <button type="button" id="review-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-2 lg:-ml-6 bg-white rounded-full p-2 shadow-lg z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button type="button" id="review-next" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-2 lg:-mr-6 bg-white rounded-full p-2 shadow-lg z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
 
-                    <div id="product-reviews-container" class="flex flex-row gap-6 overflow-x-auto snap-x pb-6 scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
-                        <style>
-                            #product-reviews-container::-webkit-scrollbar { display: none; }
-                        </style>
-                        <?php if ($review_query->have_posts()): ?>
-                            <?php while ($review_query->have_posts()):
-                                $review_query->the_post();
-                                $rating = get_field('rating') ? get_field('rating') : 5;
-                                $name = get_field('name') ? get_field('name') : get_the_title();
-                                $content = get_the_content();
-                                ?>
-                                <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] sm:w-[400px] md:w-[600px]">
-                                    <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-8 items-center">
-                                        <!-- Left side: Name, Verified, Stars -->
-                                        <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                                            <h3 class="text-lg md:text-xl font-bold text-white mb-1"><?php echo esc_html($name); ?>
-                                            </h3>
+                        <div id="product-reviews-container" class="flex flex-row gap-6 overflow-x-auto snap-x pb-6 scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+                            <style>
+                                #product-reviews-container::-webkit-scrollbar { display: none; }
+                            </style>
+                            <?php if ($review_query->have_posts()): ?>
+                                <?php while ($review_query->have_posts()):
+                                    $review_query->the_post();
+                                    $rating = get_field('rating') ? get_field('rating') : 5;
+                                    $name = get_field('name') ? get_field('name') : get_the_title();
+                                    $content = get_the_content();
+                                    ?>
+                                    <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] md:w-[95%] lg:w-full max-w-full">
+                                        <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-8 items-center">
+                                            <!-- Left side: Name, Verified, Stars -->
+                                            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                                                <h3 class="text-lg md:text-xl font-bold text-white mb-1"><?php echo esc_html($name); ?>
+                                                </h3>
 
-                                            <div class="flex items-center gap-1 text-xs text-accent font-bold mb-3">
-                                                <span>Verified</span>
-                                                <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20">
-                                                    <path fill-rule="evenodd"
-                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
+                                                <div class="flex items-center gap-1 text-xs text-accent font-bold mb-3">
+                                                    <span>Verified</span>
+                                                    <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+
+                                                <div class="text-xl leading-none tracking-[4px] text-accent">
+                                                    <?php
+                                                    $r = intval($rating);
+                                                    echo str_repeat('★', $r);
+                                                    if (5 - $r > 0) {
+                                                        echo '<span class="text-white/25">' . str_repeat('★', 5 - $r) . '</span>';
+                                                    }
+                                                    ?>
+                                                </div>
                                             </div>
 
-                                            <div class="text-xl leading-none tracking-[4px] text-accent">
-                                                <?php
-                                                $r = intval($rating);
-                                                echo str_repeat('★', $r);
-                                                if (5 - $r > 0) {
-                                                    echo '<span class="text-white/25">' . str_repeat('★', 5 - $r) . '</span>';
-                                                }
-                                                ?>
+                                            <!-- Divider (desktop only) -->
+                                            <div class="hidden md:block w-px h-full bg-white/20 mx-auto"></div>
+
+                                            <!-- Divider (mobile only) -->
+                                            <div class="md:hidden w-full h-[1px] bg-white/20"></div>
+
+                                            <!-- Right side: Title + Content -->
+                                            <div class="text-white/90 text-sm md:text-base leading-relaxed text-center md:text-left">
+                                                <h4 class="text-xl font-extrabold text-white mb-2">
+                                                    <?php echo esc_html(get_the_title()); ?></h4>
+                                                <?php echo wp_kses_post(wpautop($content)); ?>
                                             </div>
-                                        </div>
-
-                                        <!-- Divider (desktop only) -->
-                                        <div class="hidden md:block w-[1px] h-20 bg-white/20 self-stretch"></div>
-
-                                        <!-- Divider (mobile only) -->
-                                        <div class="md:hidden w-full h-[1px] bg-white/20"></div>
-
-                                        <!-- Right side: Title + Content -->
-                                        <div class="text-white/90 text-sm md:text-base leading-relaxed text-center md:text-left">
-                                            <h4 class="text-xl font-extrabold text-white mb-2">
-                                                <?php echo esc_html(get_the_title()); ?></h4>
-                                            <?php echo wp_kses_post(wpautop($content)); ?>
                                         </div>
                                     </div>
-                                </div>
-                            <?php endwhile; ?>
-                        <?php endif; ?>
-                        <?php wp_reset_postdata(); ?>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                            <?php wp_reset_postdata(); ?>
+                        </div>
                     </div>
 
                     <script>

@@ -1276,7 +1276,7 @@ function armo_load_product_reviews() {
             $name    = get_field('name') ? get_field('name') : get_the_title();
             $content = get_the_content();
             ?>
-            <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] sm:w-[400px] md:w-[600px]">
+            <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] md:w-[95%] lg:w-full max-w-full">
                 <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-8 items-center">
                     <!-- Left side: Name, Verified, Stars -->
                     <div class="flex flex-col items-center md:items-start text-center md:text-left">
