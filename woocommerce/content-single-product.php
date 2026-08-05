@@ -312,10 +312,10 @@ function armo_custom_total_price_box()
                     <!-- Carousel Wrapper -->
                     <div class="relative w-full">
                         <!-- Carousel Buttons -->
-                        <button type="button" id="review-prev" class="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-xl z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
+                        <button type="button" id="review-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 lg:-ml-6 bg-white rounded-full p-2 shadow-xl z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                         </button>
-                        <button type="button" id="review-next" class="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-xl z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
+                        <button type="button" id="review-next" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 lg:-mr-6 bg-white rounded-full p-2 shadow-xl z-10 text-primary hover:text-accent focus:outline-none hidden md:flex items-center justify-center">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
 
