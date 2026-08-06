@@ -458,6 +458,19 @@
     .module-text-left-content hr {
         @apply border-t border-gray-300 my-8;
     }
+
+    /* ─── Module: FAQs ─── */
+    .module-faqs-content p, 
+    .module-faqs-content span,
+    .module-faqs-content a,
+    .module-faqs-content ul,
+    .module-faqs-content li,
+    .module-faqs-content strong {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    .module-faqs-content a {
+        @apply underline;
+    }
 }
 
 @layer components {
