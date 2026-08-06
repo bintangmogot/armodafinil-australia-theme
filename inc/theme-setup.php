@@ -21,6 +21,11 @@ if ( ! function_exists( 'armo_theme_setup' ) ) :
     function armo_theme_setup() {
 
         /*
+         * Add custom styles to the backend visual editor (TinyMCE)
+         */
+        add_editor_style( 'assets/css/editor-style.css' );
+
+        /*
          * Let WordPress manage the <title> tag in <head>.
          * Without this, you'd have to hardcode <title> in header.php.
          */
