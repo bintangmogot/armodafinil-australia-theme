@@ -166,10 +166,10 @@
 }
 
 /* Prose and Short Description Table Styles (Excluded from PurgeCSS) */
-    .prose h1 { @apply text-3xl font-bold text-primary mt-8 mb-4; }
-    .prose h2 { @apply text-2xl font-bold text-primary mt-8 mb-3; }
-    .prose h3 { @apply text-xl font-semibold text-primary mt-6 mb-3; }
-    .prose h4 { @apply text-lg font-semibold text-primary mt-6 mb-2; }
+    .prose h1 { @apply text-2xl lg:text-3xl font-bold text-primary mt-8 mb-4; }
+    .prose h2 { @apply text-xl lg:text-2xl font-bold text-primary mt-8 mb-3; }
+    .prose h3 { @apply text-lg lg:text-xl font-semibold text-primary mt-6 mb-3; }
+    .prose h4 { @apply text-base lg:text-lg font-semibold text-primary mt-6 mb-2; }
     
     .prose h1:first-child,
     .prose h2:first-child,
