@@ -83,7 +83,23 @@ function armo_inline_product_shortcode( $atts ) {
     // Prevent reviews anchor button from showing since the reviews section isn't on the blog page
     remove_action('woocommerce_single_product_summary', 'armo_custom_reviews_anchor_button', 27);
 
+    // Prevent product meta (SKU, Categories, Tags) from showing
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+
     ?>
+    <style>
+        .armo-inline-product-shortcode ul li::before,
+        .armo-inline-product-shortcode ul li::after {
+            display: none !important;
+            content: none !important;
+            background: none !important;
+        }
+        .armo-inline-product-shortcode ul li {
+            background-image: none !important;
+            list-style: none !important;
+            padding-left: 0 !important;
+        }
+    </style>
     <div class="woocommerce my-12 armo-inline-product-shortcode">
         <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col max-w-4xl mx-auto w-full border border-gray-200 shadow-md rounded-xl p-4 lg:p-6 bg-white', $product); ?>>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
@@ -108,6 +124,7 @@ function armo_inline_product_shortcode( $atts ) {
 
     // Restore the action for other parts of the site
     add_action('woocommerce_single_product_summary', 'armo_custom_reviews_anchor_button', 27);
+    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 
     wp_reset_postdata();
     return ob_get_clean();
