@@ -101,7 +101,7 @@ function armo_inline_product_shortcode( $atts ) {
         }
     </style>
     <div class="woocommerce my-12 armo-inline-product-shortcode">
-        <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col max-w-4xl mx-auto w-full border border-gray-200 shadow-md rounded-xl p-4 lg:p-6 bg-white', $product); ?>>
+        <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col mx-auto w-full', $product); ?>>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
                 <!-- Left Column: Image -->
                 <div class="product-gallery-column w-full flex items-center justify-center">
