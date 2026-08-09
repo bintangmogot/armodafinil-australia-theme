@@ -99,10 +99,16 @@ function armo_inline_product_shortcode( $atts ) {
             list-style: none !important;
             padding-left: 0 !important;
         }
+        .armo-inline-product-shortcode img.wp-post-image {
+            margin: 0 !important;
+        }
+        .armo-inline-product-shortcode .armo-table-wrapper {
+            margin-bottom: 16px !important;
+        }
     </style>
-    <div class="woocommerce my-12 armo-inline-product-shortcode">
+    <div class="woocommerce my-8 armo-inline-product-shortcode">
         <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col mx-auto w-full', $product); ?>>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 items-start">
                 <!-- Left Column: Image -->
                 <div class="product-gallery-column w-full flex items-center justify-center">
                     <?php 
