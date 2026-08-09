@@ -85,8 +85,8 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                             <?php bloginfo('name'); ?>
                         </a>
                     <?php endif; ?>
-                    <div class="text-base text-primary-dark/70 leading-relaxed mb-6">
-                        <?php echo wp_kses_post( $footer_description ); ?>
+                    <div class="text-base text-primary-dark/70 leading-relaxed mb-6 space-y-3">
+                        <?php echo wp_kses_post( wpautop( $footer_description ) ); ?>
                     </div>
                     <div class="text-base text-primary-dark/80 leading-relaxed space-y-3">
                         <?php if ( $footer_corporate_registry ) : ?>
