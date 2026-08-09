@@ -86,6 +86,12 @@ function armo_inline_product_shortcode( $atts ) {
     // Prevent product meta (SKU, Categories, Tags) from showing
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 
+    // Prevent theme's custom mobile layout from rendering inside the inline shortcode
+    remove_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 25);
+    remove_action('woocommerce_single_product_summary', 'armo_mobile_product_image', 26);
+    remove_action('woocommerce_single_product_summary', 'armo_mobile_box_close', 32);
+    remove_action('woocommerce_single_product_summary', 'armo_display_feature_pills_mobile', 35);
+
     ?>
     <style>
         .armo-inline-product-shortcode ul li::before,
@@ -133,6 +139,11 @@ function armo_inline_product_shortcode( $atts ) {
     // Restore the action for other parts of the site
     add_action('woocommerce_single_product_summary', 'armo_custom_reviews_anchor_button', 27);
     add_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+    
+    add_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 25);
+    add_action('woocommerce_single_product_summary', 'armo_mobile_product_image', 26);
+    add_action('woocommerce_single_product_summary', 'armo_mobile_box_close', 32);
+    add_action('woocommerce_single_product_summary', 'armo_display_feature_pills_mobile', 35);
 
     wp_reset_postdata();
     return ob_get_clean();
