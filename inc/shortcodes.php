@@ -57,3 +57,59 @@ function armo_info_box_shortcode( $atts, $content = null ) {
     ';
 }
 add_shortcode( 'armo_info', 'armo_info_box_shortcode' );
+
+/**
+ * 3. Inline Detailed Product
+ * Usage: [armo_inline_product id="123"]
+ */
+function armo_inline_product_shortcode( $atts ) {
+    $atts = shortcode_atts( array(
+        'id' => '',
+    ), $atts, 'armo_inline_product' );
+
+    if ( empty( $atts['id'] ) ) return '';
+
+    $post_id = intval( $atts['id'] );
+    $post_object = get_post( $post_id );
+    if ( ! $post_object || $post_object->post_type !== 'product' ) return '';
+
+    ob_start();
+
+    global $post, $product;
+    $post = $post_object;
+    setup_postdata( $post );
+    $product = wc_get_product( $post_id );
+
+    // Prevent reviews anchor button from showing since the reviews section isn't on the blog page
+    remove_action('woocommerce_single_product_summary', 'armo_custom_reviews_anchor_button', 27);
+
+    ?>
+    <div class="woocommerce my-12 armo-inline-product-shortcode">
+        <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col max-w-4xl mx-auto w-full border border-gray-200 shadow-md rounded-xl p-4 lg:p-6 bg-white', $product); ?>>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
+                <!-- Left Column: Image -->
+                <div class="product-gallery-column w-full flex items-center justify-center">
+                    <?php 
+                    $image_size = apply_filters( 'woocommerce_gallery_image_size', 'woocommerce_single' );
+                    echo $product->get_image( $image_size, array( 'class' => 'w-full h-auto object-contain rounded-lg' ) ); 
+                    ?>
+                </div>
+
+                <!-- Right Column: Summary -->
+                <div class="summary entry-summary">
+                    <?php
+                    do_action('woocommerce_single_product_summary');
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+
+    // Restore the action for other parts of the site
+    add_action('woocommerce_single_product_summary', 'armo_custom_reviews_anchor_button', 27);
+
+    wp_reset_postdata();
+    return ob_get_clean();
+}
+add_shortcode( 'armo_inline_product', 'armo_inline_product_shortcode' );
