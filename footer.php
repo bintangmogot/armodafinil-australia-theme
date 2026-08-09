@@ -11,47 +11,47 @@
 
 // Retrieve ACF option values with fallbacks
 $footer_description = get_field( 'footer_text', 'option' );
-if ( ! $footer_description ) {
+if ( $footer_description === false ) {
     $footer_description = 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via ING Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.';
 }
 
 $footer_corporate_registry = get_field( 'footer_corporate_registry', 'option' );
-if ( ! $footer_corporate_registry ) {
+if ( $footer_corporate_registry === false ) {
     $footer_corporate_registry = '360 Collins St, Melbourne VIC 3000';
 }
 
 $footer_logistics_hubs = get_field( 'footer_logistics_hubs', 'option' );
-if ( ! $footer_logistics_hubs ) {
+if ( $footer_logistics_hubs === false ) {
     $footer_logistics_hubs = 'Sydney, Melbourne, Brisbane, Adelaide, Perth, Darwin & Gold Coast - International Dispatch (Drop-shipped directly to consumer under TGA Personal Importation rules)';
 }
 
 $footer_direct_helpline = get_field( 'footer_direct_helpline', 'option' );
-if ( ! $footer_direct_helpline ) {
+if ( $footer_direct_helpline === false ) {
     $footer_direct_helpline = '0455 241 294';
 }
 
 $footer_email = get_field( 'footer_email', 'option' );
-if ( ! $footer_email ) {
+if ( $footer_email === false ) {
     $footer_email = 'orders@armodafinil-australia.com';
 }
 
 $footer_track_order_url = get_field( 'footer_track_order_url', 'option' );
-if ( ! $footer_track_order_url ) {
+if ( $footer_track_order_url === false ) {
     $footer_track_order_url = home_url('/track-order/');
 }
 
 $footer_facebook = get_field( 'footer_facebook', 'option' );
-if ( ! $footer_facebook && $footer_facebook !== '' ) {
+if ( $footer_facebook === false ) {
     $footer_facebook = 'https://www.facebook.com/profile.php?id=61591182224726';
 }
 
 $footer_linkedin = get_field( 'footer_linkedin', 'option' );
-if ( ! $footer_linkedin && $footer_linkedin !== '' ) {
+if ( $footer_linkedin === false ) {
     $footer_linkedin = 'https://www.linkedin.com/company/armodafinil-australia/about/?viewAsMember=true';
 }
 
 $footer_copyright = get_field( 'footer_copyright', 'option' );
-if ( ! $footer_copyright ) {
+if ( $footer_copyright === false ) {
     $footer_copyright = '© {year} {site_name}. All rights reserved.';
 }
 // Replace placeholders
