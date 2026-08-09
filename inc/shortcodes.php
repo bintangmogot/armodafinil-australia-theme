@@ -110,10 +110,10 @@ function armo_inline_product_shortcode( $atts ) {
         <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col mx-auto w-full', $product); ?>>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 items-start">
                 <!-- Left Column: Image -->
-                <div class="product-gallery-column w-full flex items-center justify-center">
+                <div class="product-gallery-column w-full">
                     <?php 
-                    $image_size = apply_filters( 'woocommerce_gallery_image_size', 'woocommerce_single' );
-                    echo $product->get_image( $image_size, array( 'class' => 'w-full h-auto object-contain rounded-lg' ) ); 
+                    // Use standard WooCommerce action to render the gallery with lightbox support
+                    do_action('woocommerce_before_single_product_summary');
                     ?>
                 </div>
 
