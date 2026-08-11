@@ -200,9 +200,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                         'key'           => 'field_theme_feature_icon',
                         'label'         => 'Icon (Image/SVG)',
                         'name'          => 'icon',
-                        'type'          => 'image',
-                        'return_format' => 'url',
-                        'preview_size'  => 'thumbnail',
+                        'type'          => 'textarea',
+                        'rows'          => 3,
                     ),
                     array(
                         'key'   => 'field_theme_feature_text',
