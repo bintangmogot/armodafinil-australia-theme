@@ -90,7 +90,7 @@ $shipping_images = get_field( 'footer_shipping_images', 'option' );
                     </div>
                     <div class="text-base text-primary-dark/80 leading-relaxed space-y-3">
                         <?php if ( $footer_corporate_registry ) : ?>
-                            <p><strong>Corporate Registry:</strong> <?php echo esc_html( $footer_corporate_registry ); ?></p>
+                            <p><strong>Address:</strong> <?php echo esc_html( $footer_corporate_registry ); ?></p>
                         <?php endif; ?>
                         <?php if ( $footer_logistics_hubs ) : ?>
                             <p><strong>Logistics Hubs:</strong> <?php echo esc_html( $footer_logistics_hubs ); ?></p>

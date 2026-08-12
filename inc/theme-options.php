@@ -238,10 +238,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
             ),
             array(
                 'key'           => 'field_footer_corporate_registry',
-                'label'         => 'Corporate Registry',
+                'label'         => 'Address',
                 'name'          => 'footer_corporate_registry',
                 'type'          => 'text',
-                'instructions'  => 'Corporate Registry address displayed in the footer.',
+                'instructions'  => 'Address displayed in the footer.',
                 'default_value' => '360 Collins St, Melbourne VIC 3000',
             ),
             array(
