@@ -16,89 +16,92 @@ $products = get_sub_field('feature_product');
         <?php endif; ?>
 
         <?php if ($products && is_array($products)): ?>
-            <?php
-            $module_price_subtext = get_sub_field('price_subtext');
-            
-            // Temporary hook to inject price subtext after the price
-            $inject_subtext_fn = function() use ($module_price_subtext) {
-                if ($module_price_subtext) {
-                    echo '<div class="text-sm font-bold mb-3" style="color: #196C21;">' . esc_html($module_price_subtext) . '</div>';
-                }
-            };
-            add_action('woocommerce_single_product_summary', $inject_subtext_fn, 11);
-
-            foreach ($products as $prod):
-                $post_id = is_object($prod) ? $prod->ID : $prod;
-                $post_object = get_post($post_id);
-                
-                if (!$post_object || $post_object->post_type !== 'product') continue;
-
-                global $post, $product;
-                $post = $post_object;
-                setup_postdata($post);
-                $product = wc_get_product($post_id);
-
-                // Prevent reviews anchor button from showing since the reviews section isn't on the blog page
-                remove_action('woocommerce_single_product_summary', 'armo_custom_reviews_anchor_button', 27);
-                // Prevent product meta (SKU, Categories, Tags) from showing
-                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
-                // Prevent theme's custom mobile layout from rendering inside the inline shortcode
-                remove_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 25);
-                remove_action('woocommerce_single_product_summary', 'armo_mobile_product_image', 26);
-                remove_action('woocommerce_single_product_summary', 'armo_mobile_box_close', 32);
-                remove_action('woocommerce_single_product_summary', 'armo_display_feature_pills_mobile', 35);
-                ?>
-                <style>
-                    .armo-inline-product-module ul li::before,
-                    .armo-inline-product-module ul li::after {
-                        display: none !important;
-                        content: none !important;
-                        background: none !important;
-                    }
-                    .armo-inline-product-module ul li {
-                        background-image: none !important;
-                        list-style: none !important;
-                        padding-left: 0 !important;
-                    }
-                    .armo-inline-product-module img.wp-post-image {
-                        margin: 0 !important;
-                    }
-                    .armo-inline-product-module .armo-table-wrapper {
-                        margin-bottom: 16px !important;
-                    }
-                </style>
-                <div class="woocommerce my-8 armo-inline-product-module">
-                    <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col mx-auto w-full', $product); ?>>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 items-start">
-                            <!-- Left Column: Image -->
-                            <div class="product-gallery-column w-full">
-                                <a href="<?php echo esc_url( $product->get_permalink() ); ?>" class="block w-full text-center hover:opacity-90 transition-opacity">
-                                    <?php 
-                                    $image_size = apply_filters( 'woocommerce_gallery_image_size', 'woocommerce_single' );
-                                    echo $product->get_image( $image_size, array( 'class' => 'w-full h-auto object-contain rounded-lg inline-block' ) ); 
-                                    ?>
-                                </a>
-                            </div>
-
-                            <!-- Right Column: Summary -->
-                            <div class="summary entry-summary">
-                                <?php do_action('woocommerce_single_product_summary'); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- 2-column grid on mobile, 4-column grid on desktop -->
+            <div class="grid grid-cols-2 gap-4 lg:gap-6 gap-y-5 lg:gap-y-8 mt-8 lg:mt-10 lg:grid-cols-4">
                 <?php
-                // Restore the action for other parts of the site
-                add_action('woocommerce_single_product_summary', 'armo_custom_reviews_anchor_button', 27);
-                add_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
-                add_action('woocommerce_single_product_summary', 'armo_mobile_box_open', 25);
-                add_action('woocommerce_single_product_summary', 'armo_mobile_product_image', 26);
-                add_action('woocommerce_single_product_summary', 'armo_mobile_box_close', 32);
-                add_action('woocommerce_single_product_summary', 'armo_display_feature_pills_mobile', 35);
-            endforeach; 
-            wp_reset_postdata();
-            remove_action('woocommerce_single_product_summary', $inject_subtext_fn, 11);
-            ?>
+                foreach ($products as $product):
+                    $post_id = is_object($product) ? $product->ID : $product;
+                    $wc_product = wc_get_product($post_id);
+
+                    if ($wc_product):
+                        $permalink = esc_url(get_permalink($post_id));
+                        $name = armo_content($wc_product->get_name());
+                        $price_html = $wc_product->get_price_html();
+                        $image_html = $wc_product->get_image('woocommerce_thumbnail', array(
+                            'class' => 'w-full h-auto aspect-square object-cover rounded-xl'
+                        ));
+
+                        $in_stock = $wc_product->is_in_stock();
+                        ?>
+                        <div class="flex flex-col h-full">
+                            <a href="<?php echo $permalink; ?>"
+                                class="group block w-full no-underline text-inherit flex-grow flex flex-col">
+                                <div
+                                    class="bg-white border border-primary rounded-xl relative p-4 mb-4 flex items-center justify-center min-h-[160px] md:min-h-[180px] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,18,94,0.15)] group-hover:border-[#000a33]">
+
+                                    <?php echo $image_html; ?>
+                                </div>
+
+                                <div class="text-center px-1 flex-grow flex flex-col">
+                                    <h3 class="text-base md:text-lg font-bold text-[#1E1E1E] mb-1 leading-snug">
+                                        <?php echo $name; ?>
+                                    </h3>
+                                    <?php
+                                    $copy = get_field('shop_page_text', $post_id);
+                                    if (empty($copy)) {
+                                        $copy = get_field('shop_page_copy', $post_id);
+                                    }
+                                    if (empty($copy)) {
+                                        $copy = get_post_field('post_excerpt', $post_id);
+                                    }
+                                    if (!empty($copy)):
+                                        $copy_plain = wp_strip_all_tags(strip_shortcodes($copy));
+                                        $length = mb_strlen($copy_plain);
+                                        ?>
+                                        <div class="product-excerpt text-xs md:text-sm text-gray-500 mt-1 mb-2 leading-snug px-1 text-center">
+                                            <?php if ($length > 100): 
+                                                $short_text = mb_strimwidth($copy_plain, 0, 100, '...');
+                                                ?>
+                                                 <span class="excerpt-short"><?php echo esc_html($short_text); ?></span>
+                                                 <span class="excerpt-full hidden"><?php echo wp_kses_post($copy); ?></span>
+                                                 <span class="read-more-toggle text-[11px] text-gray-500 italic hover:text-[#00125e] ml-1 cursor-pointer" onclick="event.preventDefault(); event.stopPropagation(); const p=this.closest('.product-excerpt'); const s=p.querySelector('.excerpt-short'); const f=p.querySelector('.excerpt-full'); if(f.classList.contains('hidden')){ f.classList.remove('hidden'); s.classList.add('hidden'); this.textContent='Read less <<'; }else{ f.classList.add('hidden'); s.classList.remove('hidden'); this.textContent='Read more >>'; }">Read more &gt;&gt;</span>
+                                             <?php else: ?>
+                                                <span><?php echo wp_kses_post($copy); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="text-base md:text-lg font-extrabold text-primary mb-1">
+                                        <?php echo $price_html; ?>
+                                    </div>
+                                    <?php 
+                                    $price_subtext = get_field('price_subtext', $post_id);
+                                    if (empty($price_subtext)) $price_subtext = 'From $1.45/tab';
+                                    if ($price_subtext): 
+                                    ?>
+                                        <div class="text-sm font-bold mb-3" style="color: #196C21;">
+                                            <?php echo esc_html($price_subtext); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="mt-auto">
+                                        <span
+                                            class="inline-flex items-center justify-center gap-1 md:gap-2 bg-[#ff0000] text-white py-2 px-3 md:px-6 rounded shadow-md font-bold text-sm md:text-base text-center hover:bg-red-700 transition-colors whitespace-nowrap">
+                                            Buy Now
+                                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php
+                    endif;
+                endforeach;
+                ?>
+            </div>
         <?php else: ?>
             <p class="text-center text-gray-400 italic mt-6">No products selected.</p>
         <?php endif; ?>
