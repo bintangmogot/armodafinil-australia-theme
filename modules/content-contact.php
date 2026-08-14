@@ -36,7 +36,7 @@ $map = get_sub_field('map');
 
             <?php if ($address): ?>
                 <div>
-                    <h3 class="font-bold text-primary text-xl mb-1">Address</h3>
+                    
                     <div class="text-gray-600 text-lg leading-relaxed"><?php echo armo_content($address); ?></div>
                 </div>
             <?php endif; ?>
