@@ -153,4 +153,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── Auto-fix Email Links (ensures mailto: instead of 404 relative URLs) ──
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+    // 1. Scan and normalize existing <a> tags in DOM
+    document.querySelectorAll('a[href]').forEach((link) => {
+        const href = (link.getAttribute('href') || '').trim();
+        if (emailPattern.test(href)) {
+            link.setAttribute('href', `mailto:${href}`);
+        }
+    });
+
+    // 2. Event delegation catch-all for any clicked link
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+        const href = (link.getAttribute('href') || '').trim();
+        if (emailPattern.test(href)) {
+            link.setAttribute('href', `mailto:${href}`);
+        }
+    });
+
 });

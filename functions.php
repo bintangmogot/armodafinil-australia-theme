@@ -51,13 +51,26 @@ define('ARMO_THEME_URI', get_stylesheet_directory_uri());
 
 
 /**
- * Helper function to sanitize content and automatically replace the ✅ emoji
- * with our custom premium yellow checkmark icon.
+ * Helper function to sanitize content, automatically fix email links (ensuring mailto: prefix),
+ * and automatically replace the ✅ emoji with our custom premium yellow checkmark icon.
  */
 function armo_content($content)
 {
     if (!$content)
         return '';
+
+    // Fix existing <a> tags where href is just an email address (e.g. href="orders@armodafinilaustralia.com.au")
+    $content = preg_replace(
+        '/href=(["\'])\s*(?!(?:mailto:|https?:\/\/|\/|#|\?|tel:))([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*\1/i',
+        'href="mailto:$2"',
+        $content
+    );
+
+    // Auto-link any plain-text emails if WordPress make_clickable is available
+    if (function_exists('make_clickable')) {
+        $content = make_clickable($content);
+    }
+
     // Removed wp_kses_post because it strips <style> tags injected by form plugins like WPForms
     return str_replace('✅', '<span class="armo-yellow-tick"></span>', $content);
 }
