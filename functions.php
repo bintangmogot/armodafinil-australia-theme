@@ -1519,8 +1519,27 @@ function armo_custom_social_meta_tags()
         $excerpt = '';
         if (has_excerpt()) {
             $excerpt = get_the_excerpt();
-        } elseif (isset($post->post_content) && !empty($post->post_content)) {
-            $excerpt = wp_trim_words($post->post_content, 20, '...');
+        } else {
+            // Check ACF modules for Text - Full Width
+            $post_id = get_the_ID();
+            if (function_exists('have_rows') && have_rows('modules', $post_id)) {
+                while (have_rows('modules', $post_id)) {
+                    the_row();
+                    if (get_row_layout() == 'text_-_full_width') {
+                        $content = get_sub_field('content');
+                        if ($content) {
+                            $excerpt = wp_trim_words($content, 20, '...');
+                            break;
+                        }
+                    }
+                }
+                reset_rows();
+            }
+            
+            // Fallback
+            if (empty($excerpt) && isset($post->post_content) && !empty($post->post_content)) {
+                $excerpt = wp_trim_words($post->post_content, 20, '...');
+            }
         }
 
         if ($excerpt) {
