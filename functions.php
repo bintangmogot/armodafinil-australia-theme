@@ -9,19 +9,19 @@ $_armo_redirects = array(
     // Add more redirects here:
     // '/old-url' => '/new-url',
 );
-if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
-    $_armo_path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
-    $_armo_path = '/' . trim( strtolower( $_armo_path ), '/' );
-    foreach ( $_armo_redirects as $_armo_old => $_armo_new ) {
-        $_armo_old_n = '/' . trim( strtolower( $_armo_old ), '/' );
-        if ( $_armo_path === $_armo_old_n || strpos( $_armo_path, $_armo_old_n . '/' ) === 0 ) {
-            $_armo_dest = str_replace( $_armo_old_n, $_armo_new, $_armo_path );
-            header( 'Location: ' . $_armo_dest, true, 301 );
+if (!empty($_SERVER['REQUEST_URI'])) {
+    $_armo_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $_armo_path = '/' . trim(strtolower($_armo_path), '/');
+    foreach ($_armo_redirects as $_armo_old => $_armo_new) {
+        $_armo_old_n = '/' . trim(strtolower($_armo_old), '/');
+        if ($_armo_path === $_armo_old_n || strpos($_armo_path, $_armo_old_n . '/') === 0) {
+            $_armo_dest = str_replace($_armo_old_n, $_armo_new, $_armo_path);
+            header('Location: ' . $_armo_dest, true, 301);
             exit;
         }
     }
 }
-unset( $_armo_redirects, $_armo_path, $_armo_old, $_armo_new, $_armo_old_n, $_armo_dest );
+unset($_armo_redirects, $_armo_path, $_armo_old, $_armo_new, $_armo_old_n, $_armo_dest);
 
 /**
  * Armodafinil Australia — Theme Functions
@@ -989,56 +989,60 @@ function armo_style_shipping_insurance()
 
 add_action('wp_ajax_dump_html', function () {
     file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']);
-    wp_die(); });
+    wp_die();
+});
 add_action('wp_ajax_nopriv_dump_html', function () {
     file_put_contents(get_stylesheet_directory() . '/debug_insurance.html', ['html']);
-    wp_die(); });
+    wp_die();
+});
 
 
 /**
  * Remove categories from WooCommerce product breadcrumbs.
  * Forces breadcrumb to be: Home / Shop / Product Name
  */
-add_filter( 'woocommerce_get_breadcrumb', 'armo_remove_categories_from_product_breadcrumb', 10, 2 );
-function armo_remove_categories_from_product_breadcrumb( $crumbs, $breadcrumb ) {
-    if ( is_product() ) {
+add_filter('woocommerce_get_breadcrumb', 'armo_remove_categories_from_product_breadcrumb', 10, 2);
+function armo_remove_categories_from_product_breadcrumb($crumbs, $breadcrumb)
+{
+    if (is_product()) {
         $new_crumbs = array();
-        
+
         // 1. Always keep Home (first item)
-        if ( isset( $crumbs[0] ) ) {
+        if (isset($crumbs[0])) {
             $new_crumbs[] = $crumbs[0];
         }
-        
+
         // 2. Add Shop page manually
-        $shop_page_id = wc_get_page_id( 'shop' );
-        if ( $shop_page_id > 0 ) {
-            $new_crumbs[] = array( get_the_title( $shop_page_id ), get_permalink( $shop_page_id ) );
+        $shop_page_id = wc_get_page_id('shop');
+        if ($shop_page_id > 0) {
+            $new_crumbs[] = array(get_the_title($shop_page_id), get_permalink($shop_page_id));
         }
-        
+
         // 3. Always keep the Product Name (last item)
-        $last_crumb = end( $crumbs );
-        if ( $last_crumb ) {
+        $last_crumb = end($crumbs);
+        if ($last_crumb) {
             $new_crumbs[] = $last_crumb;
         }
-        
+
         return $new_crumbs;
     }
-    
+
     return $crumbs;
 }
 
 /**
  * Force 301 redirect from /?post_type=product to /shop/ to clean up Google Index
  */
-add_action( 'template_redirect', 'armo_force_shop_redirect_for_seo' );
-function armo_force_shop_redirect_for_seo() {
-    if ( is_shop() && isset( $_GET['post_type'] ) && $_GET['post_type'] === 'product' ) {
-        $shop_url = wc_get_page_permalink( 'shop' );
-        if ( $shop_url ) {
-            wp_redirect( $shop_url, 301 );
+add_action('template_redirect', 'armo_force_shop_redirect_for_seo');
+function armo_force_shop_redirect_for_seo()
+{
+    if (is_shop() && isset($_GET['post_type']) && $_GET['post_type'] === 'product') {
+        $shop_url = wc_get_page_permalink('shop');
+        if ($shop_url) {
+            wp_redirect($shop_url, 301);
             exit;
         }
-        
+
     }
 }
 
@@ -1075,9 +1079,10 @@ function armo_force_shop_redirect_for_seo() {
  * Sets product URLs to: /shop/product-slug/
  * Clean, flat structure without category for better SEO.
  */
-add_filter( 'option_woocommerce_permalinks', 'armo_fix_product_permalink_structure' );
-function armo_fix_product_permalink_structure( $permalinks ) {
-    if ( ! is_array( $permalinks ) ) {
+add_filter('option_woocommerce_permalinks', 'armo_fix_product_permalink_structure');
+function armo_fix_product_permalink_structure($permalinks)
+{
+    if (!is_array($permalinks)) {
         $permalinks = array();
     }
     // Flat product URLs: /shop/product-slug/
@@ -1089,10 +1094,11 @@ function armo_fix_product_permalink_structure( $permalinks ) {
  * Send explicit X-Robots-Tag header on single product pages
  * to tell Google: "Yes, index this page."
  */
-add_action( 'template_redirect', 'armo_product_indexing_headers', 5 );
-function armo_product_indexing_headers() {
-    if ( is_product() ) {
-        header( 'X-Robots-Tag: index, follow', true );
+add_action('template_redirect', 'armo_product_indexing_headers', 5);
+function armo_product_indexing_headers()
+{
+    if (is_product()) {
+        header('X-Robots-Tag: index, follow', true);
     }
 }
 
@@ -1101,11 +1107,12 @@ function armo_product_indexing_headers() {
  * This regenerates .htaccess so the new flat product URLs work.
  * The flag is stored in options so it only runs once.
  */
-add_action( 'init', 'armo_flush_rewrite_rules_once' );
-function armo_flush_rewrite_rules_once() {
-    if ( get_option( 'armo_permalinks_flushed_v5' ) !== 'yes' ) {
+add_action('init', 'armo_flush_rewrite_rules_once');
+function armo_flush_rewrite_rules_once()
+{
+    if (get_option('armo_permalinks_flushed_v5') !== 'yes') {
         flush_rewrite_rules();
-        update_option( 'armo_permalinks_flushed_v5', 'yes' );
+        update_option('armo_permalinks_flushed_v5', 'yes');
     }
 }
 
@@ -1115,21 +1122,22 @@ function armo_flush_rewrite_rules_once() {
  * Redirects /shop/shop-armodafinil/product-slug/ → /shop/product-slug/
  * This preserves SEO link equity from any indexed or bookmarked old URLs.
  */
-add_action( 'template_redirect', 'armo_redirect_old_category_product_urls', 1 );
-function armo_redirect_old_category_product_urls() {
+add_action('template_redirect', 'armo_redirect_old_category_product_urls', 1);
+function armo_redirect_old_category_product_urls()
+{
     // Only run on 404s (old URLs will 404 since the structure changed)
-    if ( ! is_404() ) {
+    if (!is_404()) {
         return;
     }
 
-    $request_uri = trim( $_SERVER['REQUEST_URI'], '/' );
+    $request_uri = trim($_SERVER['REQUEST_URI'], '/');
 
     // Match pattern: shop/shop-armodafinil/product-slug/
-    if ( preg_match( '#^shop/shop-armodafinil/([^/]+)/?$#i', $request_uri, $matches ) ) {
+    if (preg_match('#^shop/shop-armodafinil/([^/]+)/?$#i', $request_uri, $matches)) {
         $product_slug = $matches[1];
-        $new_url      = home_url( '/shop/' . $product_slug . '/' );
+        $new_url = home_url('/shop/' . $product_slug . '/');
 
-        wp_redirect( $new_url, 301 );
+        wp_redirect($new_url, 301);
         exit;
     }
 }
@@ -1137,11 +1145,12 @@ function armo_redirect_old_category_product_urls() {
 /**
  * Force AIOSEO to use the featured image as the default Open Graph and Twitter image.
  */
-add_filter( 'aioseo_facebook_tags', 'armo_force_aioseo_og_image' );
-function armo_force_aioseo_og_image( $facebookMeta ) {
-    if ( is_singular() && has_post_thumbnail() ) {
-        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-        if ( $image_url ) {
+add_filter('aioseo_facebook_tags', 'armo_force_aioseo_og_image');
+function armo_force_aioseo_og_image($facebookMeta)
+{
+    if (is_singular() && has_post_thumbnail()) {
+        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+        if ($image_url) {
             $facebookMeta['og:image'] = $image_url;
             $facebookMeta['og:image:secure_url'] = $image_url;
         }
@@ -1149,11 +1158,12 @@ function armo_force_aioseo_og_image( $facebookMeta ) {
     return $facebookMeta;
 }
 
-add_filter( 'aioseo_twitter_tags', 'armo_force_aioseo_twitter_image' );
-function armo_force_aioseo_twitter_image( $twitterMeta ) {
-    if ( is_singular() && has_post_thumbnail() ) {
-        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-        if ( $image_url ) {
+add_filter('aioseo_twitter_tags', 'armo_force_aioseo_twitter_image');
+function armo_force_aioseo_twitter_image($twitterMeta)
+{
+    if (is_singular() && has_post_thumbnail()) {
+        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+        if ($image_url) {
             $twitterMeta['twitter:image'] = $image_url;
         }
     }
@@ -1163,11 +1173,13 @@ function armo_force_aioseo_twitter_image( $twitterMeta ) {
 /**
  * Add FAQ Schema markup to the Shop page
  */
-add_action( 'wp_head', 'armo_add_faq_schema_to_shop_page' );
-function armo_add_faq_schema_to_shop_page() {
-    if ( is_shop() ) {
+add_action('wp_head', 'armo_add_faq_schema_to_shop_page');
+function armo_add_faq_schema_to_shop_page()
+{
+    if (is_shop()) {
         ?>
-        <script type="application/ld+json"> { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [ {"@type": "Question", "name": "Is it legal to buy Armodafinil online in Australia?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, provided it is executed via the TGA Personal Importation Scheme. You must possess a valid prescription from an Australian doctor, import no more than a 3-month supply at one time, and use the product solely for personal or immediate family needs." } }, { "@type": "Question", "name": "What happens if my package is checked by Australian Customs?", "acceptedAnswer": { "@type": "Answer", "text": "If the Australian Border Force intercepts a shipment of a Schedule 4 medicine like Armodafinil, they will hold the package and request a copy of your prescription. If you provide a valid prescription matching the order quantity, the package is released; otherwise, it is destroyed." } } ] }</script>
+        <script
+            type="application/ld+json"> { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [ {"@type": "Question", "name": "Is it legal to buy Armodafinil online in Australia?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, provided it is executed via the TGA Personal Importation Scheme. You must possess a valid prescription from an Australian doctor, import no more than a 3-month supply at one time, and use the product solely for personal or immediate family needs." } }, { "@type": "Question", "name": "What happens if my package is checked by Australian Customs?", "acceptedAnswer": { "@type": "Answer", "text": "If the Australian Border Force intercepts a shipment of a Schedule 4 medicine like Armodafinil, they will hold the package and request a copy of your prescription. If you provide a valid prescription matching the order quantity, the package is released; otherwise, it is destroyed." } } ] }</script>
         <?php
     }
 }
@@ -1175,7 +1187,7 @@ function armo_add_faq_schema_to_shop_page() {
 /**
  * Register Product Price Subtext ACF Field Group
  */
-if( function_exists('acf_add_local_field_group') ):
+if (function_exists('acf_add_local_field_group')):
     acf_add_local_field_group(array(
         'key' => 'group_product_price_subtext',
         'title' => 'Product Subtext Settings',
@@ -1215,7 +1227,7 @@ endif;
  * This allows each review to be associated with a specific WooCommerce product.
  * When the field is empty, the review is considered "global" (appears everywhere).
  */
-if ( function_exists('acf_add_local_field_group') ) :
+if (function_exists('acf_add_local_field_group')):
     acf_add_local_field_group(array(
         'key' => 'group_review_linked_product',
         'title' => 'Product Association',
@@ -1257,24 +1269,25 @@ endif;
  * Accepts: product_id, page (pagination)
  * Returns: JSON with reviews HTML, has_more flag, shown count, total count
  */
-function armo_load_product_reviews() {
+function armo_load_product_reviews()
+{
     $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
-    $page       = isset($_POST['page']) ? intval($_POST['page']) : 1;
-    $per_page   = 5;
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $per_page = 5;
 
-    if ( ! $product_id ) {
+    if (!$product_id) {
         wp_send_json_error(array('message' => 'Invalid product.'));
     }
 
     $reviews = new WP_Query(array(
-        'post_type'      => 'reviews',
+        'post_type' => 'reviews',
         'posts_per_page' => $per_page,
-        'paged'          => $page,
-        'post_status'    => 'publish',
-        'meta_query'     => array(
+        'paged' => $page,
+        'post_status' => 'publish',
+        'meta_query' => array(
             array(
-                'key'     => 'linked_product',
-                'value'   => $product_id,
+                'key' => 'linked_product',
+                'value' => $product_id,
                 'compare' => '=',
             ),
         ),
@@ -1285,11 +1298,12 @@ function armo_load_product_reviews() {
         ob_start();
         while ($reviews->have_posts()) {
             $reviews->the_post();
-            $rating  = get_field('rating') ? get_field('rating') : 5;
-            $name    = get_field('name') ? get_field('name') : get_the_title();
+            $rating = get_field('rating') ? get_field('rating') : 5;
+            $name = get_field('name') ? get_field('name') : get_the_title();
             $content = get_the_content();
             ?>
-            <div class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] md:w-[95%] lg:w-full max-w-full">
+            <div
+                class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] md:w-[95%] lg:w-full max-w-full">
                 <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-8 items-center">
                     <!-- Left side: Name, Verified, Stars -->
                     <div class="flex flex-col items-center md:items-start text-center md:text-left">
@@ -1297,7 +1311,9 @@ function armo_load_product_reviews() {
                         <div class="flex items-center gap-1 text-xs text-accent font-bold mb-3">
                             <span>Verified</span>
                             <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
                             </svg>
                         </div>
                         <div class="text-xl leading-none tracking-[4px] text-accent">
@@ -1310,10 +1326,10 @@ function armo_load_product_reviews() {
                             ?>
                         </div>
                     </div>
-                    
+
                     <!-- Divider (desktop only) -->
                     <div class="hidden md:block w-px h-full bg-white/20 mx-auto"></div>
-                    
+
                     <!-- Right side: Content -->
                     <div class="text-white/90 text-sm md:text-base leading-relaxed text-center md:text-left">
                         <h4 class="text-xl font-extrabold text-white mb-2"><?php echo esc_html(get_the_title()); ?></h4>
@@ -1330,39 +1346,44 @@ function armo_load_product_reviews() {
     $shown = min($page * $per_page, $reviews->found_posts);
 
     wp_send_json_success(array(
-        'html'     => $html,
+        'html' => $html,
         'has_more' => $page < $reviews->max_num_pages,
-        'shown'    => $shown,
-        'total'    => $reviews->found_posts,
+        'shown' => $shown,
+        'total' => $reviews->found_posts,
     ));
 }
 add_action('wp_ajax_armo_load_product_reviews', 'armo_load_product_reviews');
 add_action('wp_ajax_nopriv_armo_load_product_reviews', 'armo_load_product_reviews');
 
-function armo_bulk_assign_reviews_to_products() {
-    if ( ! isset($_GET['armo_bulk_assign_reviews']) || $_GET['armo_bulk_assign_reviews'] !== '1' ) return;
-    if ( ! current_user_can('manage_options') ) wp_die('Unauthorized.');
+function armo_bulk_assign_reviews_to_products()
+{
+    if (!isset($_GET['armo_bulk_assign_reviews']) || $_GET['armo_bulk_assign_reviews'] !== '1')
+        return;
+    if (!current_user_can('manage_options'))
+        wp_die('Unauthorized.');
 
     $products = get_posts(array(
-        'post_type'      => 'product',
+        'post_type' => 'product',
         'posts_per_page' => -1,
-        'post_status'    => 'publish',
-        'fields'         => 'ids',
+        'post_status' => 'publish',
+        'fields' => 'ids',
     ));
-    if ( empty($products) ) wp_die('No products found.');
+    if (empty($products))
+        wp_die('No products found.');
 
     $reviews = new WP_Query(array(
-        'post_type'      => 'reviews',
+        'post_type' => 'reviews',
         'posts_per_page' => -1,
-        'post_status'    => 'publish',
-        'meta_query'     => array(
+        'post_status' => 'publish',
+        'meta_query' => array(
             'relation' => 'OR',
             array('key' => 'linked_product', 'compare' => 'NOT EXISTS'),
             array('key' => 'linked_product', 'value' => '', 'compare' => '='),
             array('key' => 'linked_product', 'value' => '0', 'compare' => '='),
         ),
     ));
-    if ( ! $reviews->have_posts() ) wp_die('No unassigned reviews found.');
+    if (!$reviews->have_posts())
+        wp_die('No unassigned reviews found.');
 
     shuffle($products);
     $product_count = count($products);
@@ -1385,16 +1406,17 @@ function armo_bulk_assign_reviews_to_products() {
 add_action('template_redirect', 'armo_bulk_assign_reviews_to_products');
 
 // Force WYSIWYG tables to be horizontally scrollable via a robust JS wrapper
-add_action('wp_footer', function() {
+add_action('wp_footer', function () {
     ?>
     <style>
         /* 1. Ensure table always takes up full width on desktop */
-        .prose table, 
+        .prose table,
         .woocommerce-product-details__short-description table {
             width: 100% !important;
-            display: table !important; /* Keep it acting like a normal table */
+            display: table !important;
+            /* Keep it acting like a normal table */
         }
-        
+
         /* 2. Override the WYSIWYG inline widths everywhere so it sizes naturally */
         .prose table th,
         .prose table td,
@@ -1405,51 +1427,54 @@ add_action('wp_footer', function() {
 
         /* 3. Force text to not wrap on mobile, which forces the JS wrapper to scroll */
         @media (max-width: 1024px) {
+
             .prose table th,
             .prose table td,
             .woocommerce-product-details__short-description table th,
             .woocommerce-product-details__short-description table td {
                 white-space: nowrap !important;
             }
-            
+
             /* Style the scrollbar on our new wrapper */
             .armo-table-wrapper::-webkit-scrollbar {
                 height: 8px;
                 -webkit-appearance: none;
             }
+
             .armo-table-wrapper::-webkit-scrollbar-track {
-                background: #f1f1f1; 
+                background: #f1f1f1;
                 border-radius: 8px;
             }
+
             .armo-table-wrapper::-webkit-scrollbar-thumb {
-                background: #c1c1c1; 
+                background: #c1c1c1;
                 border-radius: 8px;
             }
         }
     </style>
-    
+
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Find all tables in your content areas
-        var tables = document.querySelectorAll('.prose table, .woocommerce-product-details__short-description table');
-        
-        tables.forEach(function(table) {
-            // Check if it's already wrapped to prevent duplicates
-            if (!table.parentNode.classList.contains('armo-table-wrapper')) {
-                // Create a scrollable wrapper div
-                var wrapper = document.createElement('div');
-                wrapper.className = 'armo-table-wrapper';
-                wrapper.style.overflowX = 'auto';
-                wrapper.style.width = '100%';
-                wrapper.style.WebkitOverflowScrolling = 'touch';
-                wrapper.style.marginBottom = '2rem';
-                
-                // Wrap the table!
-                table.parentNode.insertBefore(wrapper, table);
-                wrapper.appendChild(table);
-            }
+        document.addEventListener('DOMContentLoaded', function () {
+            // Find all tables in your content areas
+            var tables = document.querySelectorAll('.prose table, .woocommerce-product-details__short-description table');
+
+            tables.forEach(function (table) {
+                // Check if it's already wrapped to prevent duplicates
+                if (!table.parentNode.classList.contains('armo-table-wrapper')) {
+                    // Create a scrollable wrapper div
+                    var wrapper = document.createElement('div');
+                    wrapper.className = 'armo-table-wrapper';
+                    wrapper.style.overflowX = 'auto';
+                    wrapper.style.width = '100%';
+                    wrapper.style.WebkitOverflowScrolling = 'touch';
+                    wrapper.style.marginBottom = '2rem';
+
+                    // Wrap the table!
+                    table.parentNode.insertBefore(wrapper, table);
+                    wrapper.appendChild(table);
+                }
+            });
         });
-    });
     </script>
     <?php
 });
@@ -1458,29 +1483,30 @@ add_action('wp_footer', function() {
  * Add custom Open Graph and Twitter meta tags for WhatsApp, Facebook, Instagram
  * This ensures the featured image and correct domain are used when sharing links.
  */
-add_action( 'wp_head', 'armo_custom_social_meta_tags', 1 );
-function armo_custom_social_meta_tags() {
+add_action('wp_head', 'armo_custom_social_meta_tags', 1);
+function armo_custom_social_meta_tags()
+{
     // Only output on single posts or pages
-    if ( is_singular() ) {
+    if (is_singular()) {
         global $post;
-        
+
         $title = get_the_title();
         $url = get_permalink();
         $site_name = get_bloginfo('name');
-        
+
         echo "\n<!-- Custom Social Meta Tags -->\n";
         echo '<meta property="og:title" content="' . esc_attr($title) . '" />' . "\n";
         echo '<meta property="og:type" content="article" />' . "\n";
         echo '<meta property="og:url" content="' . esc_url($url) . '" />' . "\n";
         echo '<meta property="og:site_name" content="' . esc_attr($site_name) . '" />' . "\n";
-        
+
         echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
         echo '<meta name="twitter:title" content="' . esc_attr($title) . '" />' . "\n";
 
         // Featured Image
-        if ( has_post_thumbnail() ) {
-            $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-            if ( $image_url ) {
+        if (has_post_thumbnail()) {
+            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+            if ($image_url) {
                 echo '<meta property="og:image" content="' . esc_url($image_url) . '" />' . "\n";
                 echo '<meta property="og:image:secure_url" content="' . esc_url($image_url) . '" />' . "\n";
                 echo '<meta property="og:image:width" content="1200" />' . "\n";
@@ -1488,18 +1514,18 @@ function armo_custom_social_meta_tags() {
                 echo '<meta name="twitter:image" content="' . esc_url($image_url) . '" />' . "\n";
             }
         }
-        
+
         // Description
         $excerpt = '';
-        if ( has_excerpt() ) {
+        if (has_excerpt()) {
             $excerpt = get_the_excerpt();
-        } elseif ( isset($post->post_content) && !empty($post->post_content) ) {
-            $excerpt = wp_trim_words( $post->post_content, 20, '...' );
+        } elseif (isset($post->post_content) && !empty($post->post_content)) {
+            $excerpt = wp_trim_words($post->post_content, 20, '...');
         }
-        
-        if ( $excerpt ) {
-            echo '<meta property="og:description" content="' . esc_attr( wp_strip_all_tags($excerpt) ) . '" />' . "\n";
-            echo '<meta name="twitter:description" content="' . esc_attr( wp_strip_all_tags($excerpt) ) . '" />' . "\n";
+
+        if ($excerpt) {
+            echo '<meta property="og:description" content="' . esc_attr(wp_strip_all_tags($excerpt)) . '" />' . "\n";
+            echo '<meta name="twitter:description" content="' . esc_attr(wp_strip_all_tags($excerpt)) . '" />' . "\n";
         }
         echo "<!-- End Custom Social Meta Tags -->\n\n";
     }
