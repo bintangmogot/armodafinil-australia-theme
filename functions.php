@@ -1453,3 +1453,54 @@ add_action('wp_footer', function() {
     </script>
     <?php
 });
+
+/**
+ * Add custom Open Graph and Twitter meta tags for WhatsApp, Facebook, Instagram
+ * This ensures the featured image and correct domain are used when sharing links.
+ */
+add_action( 'wp_head', 'armo_custom_social_meta_tags', 1 );
+function armo_custom_social_meta_tags() {
+    // Only output on single posts or pages
+    if ( is_singular() ) {
+        global $post;
+        
+        $title = get_the_title();
+        $url = get_permalink();
+        $site_name = get_bloginfo('name');
+        
+        echo "\n<!-- Custom Social Meta Tags -->\n";
+        echo '<meta property="og:title" content="' . esc_attr($title) . '" />' . "\n";
+        echo '<meta property="og:type" content="article" />' . "\n";
+        echo '<meta property="og:url" content="' . esc_url($url) . '" />' . "\n";
+        echo '<meta property="og:site_name" content="' . esc_attr($site_name) . '" />' . "\n";
+        
+        echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+        echo '<meta name="twitter:title" content="' . esc_attr($title) . '" />' . "\n";
+
+        // Featured Image
+        if ( has_post_thumbnail() ) {
+            $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+            if ( $image_url ) {
+                echo '<meta property="og:image" content="' . esc_url($image_url) . '" />' . "\n";
+                echo '<meta property="og:image:secure_url" content="' . esc_url($image_url) . '" />' . "\n";
+                echo '<meta property="og:image:width" content="1200" />' . "\n";
+                echo '<meta property="og:image:height" content="630" />' . "\n";
+                echo '<meta name="twitter:image" content="' . esc_url($image_url) . '" />' . "\n";
+            }
+        }
+        
+        // Description
+        $excerpt = '';
+        if ( has_excerpt() ) {
+            $excerpt = get_the_excerpt();
+        } elseif ( isset($post->post_content) && !empty($post->post_content) ) {
+            $excerpt = wp_trim_words( $post->post_content, 20, '...' );
+        }
+        
+        if ( $excerpt ) {
+            echo '<meta property="og:description" content="' . esc_attr( wp_strip_all_tags($excerpt) ) . '" />' . "\n";
+            echo '<meta name="twitter:description" content="' . esc_attr( wp_strip_all_tags($excerpt) ) . '" />' . "\n";
+        }
+        echo "<!-- End Custom Social Meta Tags -->\n\n";
+    }
+}
