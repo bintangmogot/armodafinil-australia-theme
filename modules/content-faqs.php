@@ -21,7 +21,7 @@ $faq_id = 'faq-' . uniqid();
                 ?>
                     <details class="bg-gradient-review rounded-xl shadow-sm group overflow-hidden" open>
                         <summary class="cursor-pointer list-none flex justify-between items-center px-6 md:px-8 py-5 hover:bg-[#1a51a3] transition-colors">
-                            <h3 class="font-semibold text-base md:text-lg text-white pr-4 m-0 leading-snug"><?php echo esc_html($question); ?></h3>
+                            <h3 class="font-bold text-base md:text-lg text-white pr-4 m-0 leading-snug"><?php echo esc_html($question); ?></h3>
                             
                             <!-- Plus icon (shown when closed) -->
                             <svg class="w-6 h-6 text-white block group-open:hidden flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
