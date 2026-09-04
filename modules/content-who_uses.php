@@ -1,7 +1,7 @@
 <?php
 /**
  * Layout: Who Uses Armodafinil
- * Fields: heading (text), intro (wysiwyg), users (repeater: title (text), image (image))
+ * Fields: heading (text), intro (wysiwyg), users (repeater: title (text), description (textarea), image (image))
  * Design: Solid blue background, grid of light blue cards (4 cols on desktop, 2 cols on mobile) with white borders.
  */
 
@@ -19,7 +19,7 @@ $intro   = get_sub_field('intro');
                 </h2>
             <?php else : ?>
                 <h2 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-                    Who Uses Armodafinil?
+                    Who Uses Armodafinil in Australia?
                 </h2>
             <?php endif; ?>
 
@@ -29,17 +29,18 @@ $intro   = get_sub_field('intro');
                 </div>
             <?php else : ?>
                 <p class="text-white text-opacity-90 text-base md:text-lg leading-relaxed">
-                    Armodafinil is commonly used by Australians with demanding schedules, including:
+                    Armodafinil is commonly used by Australians with demanding schedules and high-focus needs, including:
                 </p>
             <?php endif; ?>
         </div>
 
         <!-- Cards Grid -->
         <?php if (have_rows('users')) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 <?php while (have_rows('users')) : the_row(); 
-                    $title = get_sub_field('title');
-                    $image = get_sub_field('image');
+                    $title       = get_sub_field('title');
+                    $description = get_sub_field('description') ?: (get_sub_field('text') ?: get_sub_field('content'));
+                    $image       = get_sub_field('image');
 
                     $image_url = '';
                     if ($image) {
@@ -52,75 +53,107 @@ $intro   = get_sub_field('intro');
                         }
                     }
                 ?>
-                    <div class="bg-surface-dark border-2 border-white rounded-2xl p-3 md:p-4 flex flex-col items-center gap-3 text-primary shadow-lg hover:shadow-white/5 hover:scale-[1.02] transition-all duration-300">
-                        <?php if ($title) : ?>
-                            <span class="text-base md:text-lg font-bold text-center leading-snug">
-                                <?php echo esc_html($title); ?>
-                            </span>
-                        <?php endif; ?>
-                        
+                    <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg hover:shadow-white/5 hover:scale-[1.02] transition-all duration-300">
                         <?php if ($image_url) : ?>
                             <div class="w-full aspect-[4/3] overflow-hidden rounded-xl bg-primary/5">
                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover">
                             </div>
                         <?php else : ?>
-                            <div class="w-full aspect-[4/3] bg-gray-200/50 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">
+                            <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">
                                 [ Add Image ]
                             </div>
                         <?php endif; ?>
+
+                        <div class="flex flex-col gap-2 flex-grow">
+                            <?php if ($title) : ?>
+                                <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">
+                                    <?php echo esc_html($title); ?>
+                                </h3>
+                            <?php endif; ?>
+                            
+                            <?php if ($description) : ?>
+                                <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">
+                                    <?php echo esc_html($description); ?>
+                                </p>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 <?php endwhile; ?>
             </div>
         <?php else : ?>
             <!-- Fallback content if ACF fields are empty -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 
                 <!-- Card 1 -->
-                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg">
-                    <span class="text-base md:text-lg font-bold text-center leading-snug">FIFO workers</span>
-                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">[ Image ]</div>
+                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg">
+                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">[ Image ]</div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">Shift Workers & Emergency Staff</h3>
+                        <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">Nurses, emergency doctors, paramedics, and rotating shift workers staying sharp during irregular hours.</p>
+                    </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg">
-                    <span class="text-base md:text-lg font-bold text-center leading-snug">Shift workers</span>
-                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">[ Image ]</div>
+                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg">
+                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">[ Image ]</div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">FIFO & Mine Workers</h3>
+                        <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">Fly-in fly-out personnel managing long shifts, roster rotations, and harsh operational conditions.</p>
+                    </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg">
-                    <span class="text-base md:text-lg font-bold text-center leading-snug">Business owner</span>
-                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">[ Image ]</div>
+                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg">
+                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">[ Image ]</div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">Business Owners & Executives</h3>
+                        <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">Entrepreneurs and corporate leaders requiring sustained cognitive clarity and strategic decision making.</p>
+                    </div>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg">
-                    <span class="text-base md:text-lg font-bold text-center leading-snug">University students</span>
-                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">[ Image ]</div>
+                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg">
+                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">[ Image ]</div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">University & Postgraduate Students</h3>
+                        <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">Academics tackling intensive research, thesis writing, and heavy examination study schedules.</p>
+                    </div>
                 </div>
 
                 <!-- Card 5 -->
-                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg">
-                    <span class="text-base md:text-lg font-bold text-center leading-snug">Designers & creatives</span>
-                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">[ Image ]</div>
+                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg">
+                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">[ Image ]</div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">Designers & Creatives</h3>
+                        <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">Visual artists, architects, and copywriters working through intense creative bursts and deadlines.</p>
+                    </div>
                 </div>
 
                 <!-- Card 6 -->
-                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg">
-                    <span class="text-base md:text-lg font-bold text-center leading-snug">Truck drivers</span>
-                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">[ Image ]</div>
+                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg">
+                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">[ Image ]</div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">Long-Distance Truck Drivers</h3>
+                        <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">Interstate transport drivers maintaining unwavering road vigilance and concentration on long routes.</p>
+                    </div>
                 </div>
 
                 <!-- Card 7 -->
-                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg">
-                    <span class="text-base md:text-lg font-bold text-center leading-snug">Remote workers</span>
-                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">[ Image ]</div>
+                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg">
+                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">[ Image ]</div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">Remote & Digital Workers</h3>
+                        <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">Global freelancers and remote contractors coordinating across multiple international time zones.</p>
+                    </div>
                 </div>
 
                 <!-- Card 8 -->
-                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 flex flex-col items-center gap-3 text-primary shadow-lg">
-                    <span class="text-base md:text-lg font-bold text-center leading-snug">Software developers</span>
-                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-gray-500 italic text-xs">[ Image ]</div>
+                <div class="bg-surface-dark border-2 border-white rounded-2xl p-4 md:p-5 flex flex-col gap-3 text-primary shadow-lg">
+                    <div class="w-full aspect-[4/3] bg-primary/10 rounded-xl flex items-center justify-center text-primary/40 italic text-xs">[ Image ]</div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h3 class="text-base md:text-lg font-bold leading-snug text-primary text-center">Software Developers & Engineers</h3>
+                        <p class="text-xs md:text-sm text-primary/80 leading-relaxed text-center">Programmers seeking deep work flow states for complex problem-solving and bug fixing sprints.</p>
+                    </div>
                 </div>
 
             </div>
