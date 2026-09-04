@@ -10,7 +10,7 @@ $faq_id = 'faq-' . uniqid();
 <section class="py-14 lg:py-16 px-6 lg:px-12 bg-white">
     <div class="max-w-4xl mx-auto">
         <?php if ($faq_title) : ?>
-            <h2 class="text-2xl lg:text-3xl font-bold text-center text-primary mb-10"><?php echo esc_html($faq_title); ?></h2>
+            <h3 class="text-2xl lg:text-3xl font-bold text-center text-primary mb-10"><?php echo esc_html($faq_title); ?></h3>
         <?php endif; ?>
 
         <?php if (have_rows('faqs')) : ?>
