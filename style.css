@@ -35,4 +35,9 @@ p.demo_store > *,
     float: none !important;
     display: inline-block !important;
     margin: 0 !important;
+}
+
+/* Home Page: Drop CTA button by 3mm on mobile and desktop */
+body.home .module-cta-button {
+    margin-top: 3mm !important;
 }

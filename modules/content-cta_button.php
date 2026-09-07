@@ -11,9 +11,9 @@ if (!$button_text) {
 }
 if (!$button_link) {
     $button_link = '#';
-}
+$is_home = is_front_page() || is_home();
 ?>
-<section class="pt-2 pb-8 lg:pt-4 lg:pb-12 bg-transparent flex justify-center">
+<section class="module-cta-button pt-2 pb-8 lg:pt-4 lg:pb-12 bg-transparent flex justify-center"<?php if ($is_home) : ?> style="margin-top: 3mm;"<?php endif; ?>>
     <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center w-full">
         <!-- Mobile Button Wrapper -->
         <div class="block md:hidden">
