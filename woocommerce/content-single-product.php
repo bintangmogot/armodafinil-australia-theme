@@ -99,7 +99,7 @@ function armo_custom_total_price_box()
     if ($product->is_type('variable')) {
         // We will update this dynamically via JS
         echo '<div class="armo-total-price-box mt-0 mb-1 bg-gradient-to-r from-[#FFF6EA] to-[#E1EDFF] border border-[#ff0000] rounded-[5px] p-2 md:p-3">';
-        echo '<div class="text-[11px] md:text-xs text-primary font-semibold mb-0.5">Total Price</div>';
+        echo '<div class="text-[11px] md:text-xs text-primary font-semibold mb-0.5">Total Price (prices in AUD)</div>';
         echo '<div class="text-xl md:text-2xl font-bold text-gray-900" id="armo-dynamic-total">$0.00</div>';
         echo '</div>';
     }
