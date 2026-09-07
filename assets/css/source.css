@@ -345,9 +345,12 @@
     .module-fulltext-content h1 {
         @apply text-3xl lg:text-4xl font-extrabold text-primary mb-5;
     }
-    .module-fulltext-content h2,
-    .module-fulltext-content h3 {
+    .module-fulltext-content h2 {
         @apply text-2xl lg:text-3xl font-bold text-primary mb-4;
+    }
+    .module-fulltext-content h3 {
+        @apply text-4xl lg:text-5xl font-bold text-primary mb-4;
+        margin-top: 8px;
     }
     .module-fulltext-content p {
         @apply text-base lg:text-lg text-[#1E1E1E] leading-relaxed mb-4;
