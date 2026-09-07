@@ -47,6 +47,47 @@ function armo_custom_total_price_box()
         echo '</div>';
     }
 }
+
+// Add "Need Help Placing Your Order?" box under the Add to Cart button
+add_action('woocommerce_after_add_to_cart_button', 'armo_custom_order_help_box', 15);
+function armo_custom_order_help_box()
+{
+    ?>
+    <div class="armo-order-help-box">
+        <div class="help-header">
+            <svg style="width: 17px; height: 17px; color: #00104a; flex-shrink: 0;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Need Help Placing Your Order?</span>
+        </div>
+
+        <div class="help-content">
+            <div class="help-row">
+                <svg style="width: 15px; height: 15px; color: #00104a; flex-shrink: 0;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span class="help-label">Direct Helpline:</span>
+                <a href="tel:0455241294" onclick="event.stopPropagation();" class="help-link">0455 241 294</a>
+            </div>
+
+            <div class="help-row">
+                <svg style="width: 15px; height: 15px; color: #00104a; flex-shrink: 0;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="help-label">Order Support:</span>
+                <a href="mailto:orders@armodafinilaustralia.com.au" onclick="event.stopPropagation();" class="help-link">orders@armodafinilaustralia.com.au</a>
+            </div>
+        </div>
+
+        <div class="help-footer">
+            <svg style="width: 14px; height: 14px; color: #16a34a; flex-shrink: 0;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>Fast responses via call, SMS, or email.</span>
+        </div>
+    </div>
+    <?php
+}
 ?>
 
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('custom-product-layout flex flex-col max-w-7xl mx-auto w-full', $product); ?>>
