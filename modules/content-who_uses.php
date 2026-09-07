@@ -12,7 +12,7 @@ $intro   = get_sub_field('intro');
     <div class="max-w-7xl mx-auto">
         
         <!-- Section Header -->
-        <div class="max-w-3xl mb-12">
+        <div class="max-w-3xl mb-5 md:mb-6">
             <?php if ($heading) : ?>
                 <h2 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight">
                     <?php echo esc_html($heading); ?>
