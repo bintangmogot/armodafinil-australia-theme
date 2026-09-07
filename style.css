@@ -37,11 +37,6 @@ p.demo_store > *,
     margin: 0 !important;
 }
 
-/* Home Page: Drop CTA button by 3mm on mobile and desktop */
-body.home .module-cta-button {
-    margin-top: 3mm !important;
-}
-
 /* Single Product: Order Support Box under Add to Cart */
 .armo-order-help-box {
     margin-top: 14px !important;
@@ -104,4 +99,6 @@ body.home .module-cta-button {
     font-size: 11.5px !important;
     color: #64748b !important;
     line-height: 1.3 !important;
+=======
+>>>>>>> parent of 36cb12e (style: Drop CTA button by 3mm on home page for mobile and desktop)
 }
