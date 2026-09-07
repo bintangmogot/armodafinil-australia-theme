@@ -297,7 +297,7 @@
             <div class="bg-white/90 backdrop-blur-md rounded-2xl px-4 py-2">
                 <?php
                 wp_nav_menu(array(
-                    'theme_location' => 'primary',
+                    'theme_location' => 'mobile',
                     'container' => false,
                     'menu_class' => 'flex flex-col',
                     'fallback_cb' => false,

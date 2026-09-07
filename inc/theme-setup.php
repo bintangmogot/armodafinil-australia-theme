@@ -73,6 +73,7 @@ if ( ! function_exists( 'armo_theme_setup' ) ) :
          */
         register_nav_menus( array(
             'primary'          => __( 'Primary Menu (Header)', 'armodafinil-australia' ),
+            'mobile'           => __( 'Mobile Menu (Header)', 'armodafinil-australia' ),
             'footer'           => __( 'Footer Category Menu', 'armodafinil-australia' ),
             'footer-quick'     => __( 'Footer Quick Links', 'armodafinil-australia' ),
             'footer-important' => __( 'Footer Important Links', 'armodafinil-australia' ),

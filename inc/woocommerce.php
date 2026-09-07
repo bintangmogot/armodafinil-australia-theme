@@ -248,3 +248,41 @@ add_action('woocommerce_single_product_summary', 'armo_mobile_box_close', 32);
 function armo_mobile_box_close() {
     echo '</div>';
 }
+
+/**
+ * Enforce Minimum Order Amount for Free Shipping
+ * Hides Free Shipping if the cart subtotal is less than RM870.
+ */
+add_filter( 'woocommerce_package_rates', 'armo_enforce_free_shipping_minimum', 100, 2 );
+function armo_enforce_free_shipping_minimum( $rates, $package ) {
+    $min_amount = 870;
+    $total = WC()->cart->get_displayed_subtotal();
+
+    $free_shipping_key = false;
+    foreach ( $rates as $rate_id => $rate ) {
+        if ( 'free_shipping' === $rate->method_id ) {
+            $free_shipping_key = $rate_id;
+            break;
+        }
+    }
+
+    if ( $free_shipping_key && $total < $min_amount ) {
+        unset( $rates[ $free_shipping_key ] );
+    }
+
+    return $rates;
+}
+
+/**
+ * Force hide the WooCommerce coupon section on the checkout page using CSS
+ */
+add_action('wp_head', 'armo_hide_checkout_coupon_css_override', 999);
+function armo_hide_checkout_coupon_css_override() {
+    if (is_checkout() && !is_order_received_page()) {
+        echo '<style>
+            .woocommerce-form-coupon-toggle,
+            form.checkout_coupon,
+            .woocommerce-form-coupon { display: none !important; }
+        </style>';
+    }
+}
