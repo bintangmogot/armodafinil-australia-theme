@@ -28,67 +28,10 @@ remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_pr
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 
-// Add Reviews anchor button under the description (excerpt is priority 20, add to cart is 30)
-// We use priority 27 so on mobile it appears AFTER the product image (priority 26)
-add_action('woocommerce_single_product_summary', 'armo_custom_reviews_anchor_button', 27);
+// Reviews anchor button removed per request
 function armo_custom_reviews_anchor_button()
 {
-    global $product;
-    $product_id = $product->get_id();
-
-    // Get total reviews & average for this product to show stars
-    $all_product_reviews = new WP_Query(array(
-        'post_type' => 'reviews',
-        'posts_per_page' => -1,
-        'post_status' => 'publish',
-        'meta_query' => array(
-            array(
-                'key' => 'linked_product',
-                'value' => $product_id,
-                'compare' => '=',
-            ),
-        ),
-    ));
-
-    $total_rating = 0;
-    $valid_ratings = 0;
-    if ($all_product_reviews->have_posts()) {
-        while ($all_product_reviews->have_posts()) {
-            $all_product_reviews->the_post();
-            $r = get_field('rating');
-            if ($r) {
-                $total_rating += intval($r);
-                $valid_ratings++;
-            }
-        }
-        wp_reset_postdata();
-    }
-
-    $average_rating = $valid_ratings > 0 ? round($total_rating / $valid_ratings, 2) : 5.00;
-    $r = intval(round($average_rating));
-
-    echo '<div class="my-2 lg:mt-3 lg:mb-4">';
-    echo '<a href="#product-reviews-section" class="inline-flex flex-col gap-1 lg:gap-1.5 bg-gradient-review hover:bg-secondary-dark text-white px-4 py-3 rounded-lg transition-colors w-full md:w-auto md:max-w-[280px]">';
-    
-    // Top row: Stars and Arrow
-    echo '<div class="flex items-center justify-between w-full">';
-    echo '<div class="flex">';
-    echo '<span class="text-accent text-sm lg:text-base leading-none tracking-widest">' . str_repeat('★', $r) . '</span>';
-    if (5 - $r > 0) {
-        echo '<span class="text-white/30 text-sm lg:text-base leading-none tracking-widest">' . str_repeat('★', 5 - $r) . '</span>';
-    }
-    echo '</div>';
-    echo '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 lg:h-5 lg:w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>';
-    echo '</div>';
-    
-    // Bottom row: Text
-    $rating_display = fmod($average_rating, 1) !== 0.00 ? number_format($average_rating, 2) : number_format($average_rating, 0);
-    echo '<div class="text-xs lg:text-sm leading-snug text-left">';
-    echo '<strong>Rated ' . esc_html($rating_display) . '</strong> out of <strong>5</strong> based on verified customer reviews';
-    echo '</div>';
-    
-    echo '</a>';
-    echo '</div>';
+    return;
 }
 
 // Add "Total Price" box after quantity input, before the add to cart button
