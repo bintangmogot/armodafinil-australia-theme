@@ -27,10 +27,6 @@ $intro   = get_sub_field('intro');
                 <div class="module-who-uses-content text-white text-opacity-90 leading-relaxed max-w-none">
                     <?php echo armo_content($intro); ?>
                 </div>
-            <?php else : ?>
-                <p class="text-white text-opacity-90 text-base md:text-lg leading-relaxed">
-                    Armodafinil is commonly used by Australians with demanding schedules and high-focus needs, including:
-                </p>
             <?php endif; ?>
         </div>
 
