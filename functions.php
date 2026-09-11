@@ -876,7 +876,7 @@ function armo_style_shipping_insurance()
             jQuery(document).ready(function ($) {
                 var isFormatting = false;
                 var observer = null;
-                var target = document.querySelector('.woocommerce-checkout-review-order-table');
+                var target = document.getElementById('order_review') || document.querySelector('.woocommerce-checkout-review-order-table') || document.querySelector('form.checkout');
 
                 function formatInsurance() {
                     if (isFormatting) return;
@@ -890,14 +890,14 @@ function armo_style_shipping_insurance()
                     $('.woocommerce-checkout-review-order-table tfoot tr').each(function () {
                         var $tr = $(this);
                         var $th = $tr.find('th');
-                        if ($th.length && $th.text().indexOf('Shipping Insurance') !== -1) {
+                        if (($th.length && $th.text().indexOf('Shipping Insurance') !== -1) || $tr.hasClass('shipping-insurance')) {
 
                             // Reformat the row to exactly match WooCommerce Shipping row
                             if (!$tr.hasClass('armo-insurance-reformatted')) {
                                 $tr.addClass('armo-insurance-reformatted');
                                 var $td = $tr.find('td');
 
-                                var title = $th.text();
+                                var title = $th.clone().children().remove().end().text().trim() || 'Shipping Insurance';
                                 $th.remove();
                                 $td.attr('colspan', '2');
                                 $td.prepend('<div class="shipping-method-header">' + title + '</div>');
@@ -917,28 +917,72 @@ function armo_style_shipping_insurance()
                                 $labels.each(function () {
                                     var $label = $(this);
 
-                                    // Move tooltip inside
-                                    var $nextTooltip = $label.next('a, .woocommerce-help-tip, .tooltip-icon');
-                                    if ($nextTooltip.length) {
-                                        $label.append($nextTooltip);
+                                    // Extract tooltip text and convert into description subtext
+                                    var $tooltip = $label.find('.woocommerce-help-tip, a.shipping-insurance-terms, .tooltip-icon, [data-tip]').first();
+                                    if (!$tooltip.length) {
+                                        $tooltip = $label.next('.woocommerce-help-tip, .tooltip-icon, [data-tip]').first();
                                     }
 
-                                    // Parse text node for title so CSS can separate price
+                                    var tooltipText = '';
+                                    if ($tooltip.length) {
+                                        tooltipText = $tooltip.attr('data-tip') || $tooltip.attr('title') || $tooltip.attr('aria-label') || $tooltip.data('tip') || '';
+                                        $tooltip.removeAttr('data-tip').removeAttr('title').removeAttr('aria-label');
+                                        $tooltip.remove();
+                                    }
+
+                                    // Fallback for Shipping Insurance description
+                                    if (!tooltipText && $label.text().indexOf('Shipping Insurance') !== -1) {
+                                        tooltipText = 'Protect your order from loss, damage or customs hold ups';
+                                    }
+
+                                    // Wrap label text node(s) in .shipping-title so CSS can cleanly separate title and price
                                     var $input = $label.find('input[type="radio"]');
+                                    $label.contents().filter(function () {
+                                        return this.nodeType === 3 && this.nodeValue.trim().length > 0;
+                                    }).each(function () {
+                                        var text = this.nodeValue.replace(':', '').trim();
+                                        if (text) {
+                                            $(this).replaceWith('<span class="shipping-title">' + text + '</span>');
+                                        }
+                                    });
+
+                                    // If tooltip/description exists, append as span.description inside label (matches shipment section style)
+                                    if (tooltipText && $label.find('.description').length === 0) {
+                                        $label.append('<span class="description">' + tooltipText + '</span>');
+                                    }
+
+                                    // Move into LI: input outside label, exactly matching WooCommerce shipping methods
+                                    var $li = $('<li></li>');
                                     if ($input.length) {
-                                        var textNode = $input[0].nextSibling;
-                                        if (textNode && textNode.nodeType === 3) {
-                                            var text = textNode.nodeValue.replace(':', '').trim();
-                                            if (text) {
-                                                $(textNode).replaceWith(' <span class="shipping-title">' + text + '</span> ');
-                                            }
+                                        var inputVal = $input.val();
+                                        var inputId = $input.attr('id') || ('shipping_insurance_' + (inputVal === '' ? 'none' : inputVal));
+                                        $input.attr('id', inputId);
+                                        $label.attr('for', inputId);
+                                        $li.append($input);
+                                        if ($input.is(':checked')) {
+                                            $li.addClass('is-checked');
                                         }
                                     }
-
-                                    // Move into LI
-                                    var $li = $('<li></li>');
                                     $li.append($label);
                                     $ul.append($li);
+                                });
+
+                                // Allow clicking anywhere on the card to select the radio button
+                                $ul.on('click', 'li', function (e) {
+                                    if (!$(e.target).is('input') && !$(e.target).closest('label').length) {
+                                        var $radio = $(this).find('input[type="radio"]');
+                                        if (!$radio.prop('checked')) {
+                                            $radio.prop('checked', true).trigger('change');
+                                        }
+                                    }
+                                });
+
+                                // Update checked classes and trigger checkout refresh on radio change
+                                $ul.on('change', 'input[type="radio"]', function () {
+                                    $ul.find('li').each(function () {
+                                        $(this).toggleClass('is-checked', $(this).find('input[type="radio"]').is(':checked'));
+                                    });
+                                    $(document.body).trigger('update_checkout');
                                 });
 
                                 // Clear old contents (except the header we just added)
@@ -974,10 +1018,11 @@ function armo_style_shipping_insurance()
                 }
 
                 formatInsurance();
+                $(document.body).on('updated_checkout', formatInsurance);
                 $(document).on('updated_checkout', formatInsurance);
-                setTimeout(formatInsurance, 500);
-                setTimeout(formatInsurance, 1500);
-                setTimeout(formatInsurance, 3000);
+                setTimeout(formatInsurance, 300);
+                setTimeout(formatInsurance, 1000);
+                setTimeout(formatInsurance, 2500);
             });
         </script>
         <?php

@@ -1837,7 +1837,9 @@ input[type="number"] {
     width: 100%;
 }
 #shipping_method li:has(input[type="radio"]:checked),
-.woocommerce-shipping-methods li:has(input[type="radio"]:checked) {
+.woocommerce-shipping-methods li:has(input[type="radio"]:checked),
+#shipping_method li.is-checked,
+.woocommerce-shipping-methods li.is-checked {
     background-color: #f0f9ff !important;
     border-color: #bae6fd !important;
 }
@@ -1915,6 +1917,12 @@ input[type="number"] {
     align-items: center !important;
     justify-content: center !important;
 }
+
+.armo-insurance-reformatted .woocommerce-help-tip,
+.armo-insurance-reformatted .tooltip-icon {
+    display: none !important;
+}
+
 
 /* Wider tooltip box (jQuery TipTip and CSS-only ::after tooltips) */
 #tiptip_holder,
