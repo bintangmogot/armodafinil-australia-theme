@@ -27,7 +27,7 @@ if ( $footer_logistics_hubs === false ) {
 
 $footer_direct_helpline = get_field( 'footer_direct_helpline', 'option' );
 if ( $footer_direct_helpline === false ) {
-    $footer_direct_helpline = '0455 241 294';
+    $footer_direct_helpline = '+61 488 841 833';
 }
 
 $footer_email = get_field( 'footer_email', 'option' );
