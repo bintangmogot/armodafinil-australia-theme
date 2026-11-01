@@ -25,10 +25,7 @@ if ( $footer_logistics_hubs === false ) {
     $footer_logistics_hubs = 'Sydney, Melbourne, Brisbane, Adelaide, Perth, Darwin & Gold Coast - International Dispatch (Drop-shipped directly to consumer under TGA Personal Importation rules)';
 }
 
-$footer_direct_helpline = get_field( 'footer_direct_helpline', 'option' );
-if ( $footer_direct_helpline === false ) {
-    $footer_direct_helpline = '+61 488 841 833';
-}
+$footer_direct_helpline = armo_get_contact_phone();
 
 $footer_email = get_field( 'footer_email', 'option' );
 if ( $footer_email === false ) {

@@ -52,6 +52,8 @@ function armo_custom_total_price_box()
 add_action('woocommerce_after_add_to_cart_button', 'armo_custom_order_help_box', 15);
 function armo_custom_order_help_box()
 {
+    $contact_phone = armo_get_contact_phone();
+    $contact_phone_url = armo_get_contact_tel_url();
     ?>
     <div class="armo-order-help-box">
         <div class="help-header">
@@ -67,7 +69,9 @@ function armo_custom_order_help_box()
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <span class="help-label">Direct Helpline:</span>
-                <a href="tel:+61488841833" onclick="event.stopPropagation();" class="help-link">+61 488 841 833</a>
+                <?php if ($contact_phone && $contact_phone_url): ?>
+                    <a href="<?php echo esc_url($contact_phone_url); ?>" onclick="event.stopPropagation();" class="help-link"><?php echo esc_html($contact_phone); ?></a>
+                <?php endif; ?>
             </div>
 
             <div class="help-row">

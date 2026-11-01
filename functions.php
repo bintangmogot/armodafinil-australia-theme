@@ -49,6 +49,43 @@ define('ARMO_THEME_VERSION', '2.0.0');
 define('ARMO_THEME_DIR', get_stylesheet_directory());
 define('ARMO_THEME_URI', get_stylesheet_directory_uri());
 
+/** Return the editable contact phone, falling back to its ACF field default. */
+function armo_get_contact_phone()
+{
+    $phone = function_exists('get_field') ? get_field('footer_direct_helpline', 'option') : '';
+
+    if ((!is_string($phone) || trim($phone) === '') && function_exists('get_field_object')) {
+        $field = get_field_object('field_footer_direct_helpline', 'option', false);
+        $phone = is_array($field) && isset($field['default_value']) ? $field['default_value'] : '';
+    }
+
+    return is_string($phone) ? trim($phone) : '';
+}
+
+/** Return the configured contact phone as digits suitable for WhatsApp. */
+function armo_get_contact_phone_digits()
+{
+    $digits = preg_replace('/\D+/', '', armo_get_contact_phone());
+
+    if (strpos($digits, '0') === 0) {
+        return '61' . substr($digits, 1);
+    }
+
+    return $digits;
+}
+
+function armo_get_contact_whatsapp_url()
+{
+    $digits = armo_get_contact_phone_digits();
+    return $digits ? 'https://wa.me/' . $digits : '';
+}
+
+function armo_get_contact_tel_url()
+{
+    $digits = armo_get_contact_phone_digits();
+    return $digits ? 'tel:+' . $digits : '';
+}
+
 
 /**
  * Helper function to sanitize content, automatically fix email links (ensuring mailto: prefix),
