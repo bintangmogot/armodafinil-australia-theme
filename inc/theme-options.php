@@ -266,7 +266,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'name'          => 'footer_direct_helpline',
                 'type'          => 'text',
                 'instructions'  => 'Direct helpline number (displayed as-is).',
-                'default_value' => '+61 488 841 833',
+                'default_value' => armo_get_configured_contact_phone(),
             ),
             array(
                 'key'           => 'field_footer_email',

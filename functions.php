@@ -49,29 +49,58 @@ define('ARMO_THEME_VERSION', '2.0.0');
 define('ARMO_THEME_DIR', get_stylesheet_directory());
 define('ARMO_THEME_URI', get_stylesheet_directory_uri());
 
-/** Return the editable contact phone, falling back to its ACF field default. */
+/** Read versioned site settings from the theme's tracked JSON configuration. */
+function armo_get_site_settings_config()
+{
+    static $settings = null;
+
+    if ($settings !== null) {
+        return $settings;
+    }
+
+    $config_path = ARMO_THEME_DIR . '/config/site-settings.json';
+    $config_json = is_readable($config_path) ? file_get_contents($config_path) : false;
+    $settings = is_string($config_json) ? json_decode($config_json, true) : array();
+
+    return is_array($settings) ? $settings : array();
+}
+
+function armo_get_configured_contact_phone()
+{
+    $settings = armo_get_site_settings_config();
+    $phone = isset($settings['contact_phone']) ? $settings['contact_phone'] : '';
+
+    return is_string($phone) ? trim($phone) : '';
+}
+
+/** Return the editable ACF contact phone, falling back to the JSON setting. */
 function armo_get_contact_phone()
 {
     $phone = function_exists('get_field') ? get_field('footer_direct_helpline', 'option') : '';
 
-    if ((!is_string($phone) || trim($phone) === '') && function_exists('get_field_object')) {
-        $field = get_field_object('field_footer_direct_helpline', 'option', false);
-        $phone = is_array($field) && isset($field['default_value']) ? $field['default_value'] : '';
+    if (!is_string($phone) || trim($phone) === '') {
+        $field = function_exists('get_field_object') ? get_field_object('field_footer_direct_helpline', 'option', false) : false;
+        $phone = is_array($field) && !empty($field['default_value']) ? $field['default_value'] : armo_get_configured_contact_phone();
     }
 
     return is_string($phone) ? trim($phone) : '';
 }
 
 /** Return the configured contact phone as digits suitable for WhatsApp. */
-function armo_get_contact_phone_digits()
+function armo_phone_digits($phone)
 {
-    $digits = preg_replace('/\D+/', '', armo_get_contact_phone());
+    $digits = preg_replace('/\D+/', '', (string) $phone);
 
     if (strpos($digits, '0') === 0) {
         return '61' . substr($digits, 1);
     }
 
     return $digits;
+}
+
+function armo_get_contact_phone_digits()
+{
+    return armo_phone_digits(armo_get_contact_phone());
 }
 
 function armo_get_contact_whatsapp_url()
@@ -84,6 +113,54 @@ function armo_get_contact_tel_url()
 {
     $digits = armo_get_contact_phone_digits();
     return $digits ? 'tel:+' . $digits : '';
+}
+
+function armo_get_phone_tel_url($phone)
+{
+    $digits = armo_phone_digits($phone);
+    return $digits ? 'tel:+' . $digits : '';
+}
+
+function armo_populate_contact_module_phone($value, $post_id, $field)
+{
+    $phone = armo_get_contact_phone();
+    return $phone !== '' ? $phone : $value;
+}
+
+if (function_exists('add_filter')) {
+    add_filter('acf/load_value/name=phone', 'armo_populate_contact_module_phone', 20, 3);
+}
+
+/** Sync the JSON source of truth to ACF once whenever its value changes. */
+function armo_sync_contact_phone_from_config()
+{
+    if (!function_exists('update_field') || !function_exists('get_option')) {
+        return;
+    }
+
+    $phone = armo_get_configured_contact_phone();
+    if ($phone === '') {
+        return;
+    }
+
+    $config_hash = hash('sha256', $phone);
+    if (get_option('armo_contact_phone_config_hash') === $config_hash) {
+        return;
+    }
+
+    $current_phone = function_exists('get_field') ? get_field('footer_direct_helpline', 'option') : '';
+    if (!is_string($current_phone) || trim($current_phone) !== $phone) {
+        update_field('field_footer_direct_helpline', $phone, 'option');
+    }
+
+    $saved_phone = function_exists('get_field') ? get_field('footer_direct_helpline', 'option') : '';
+    if (is_string($saved_phone) && trim($saved_phone) === $phone) {
+        update_option('armo_contact_phone_config_hash', $config_hash, false);
+    }
+}
+
+if (function_exists('add_action')) {
+    add_action('acf/init', 'armo_sync_contact_phone_from_config', 20);
 }
 
 

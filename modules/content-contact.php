@@ -5,7 +5,10 @@
  */
 $form = get_sub_field('form');
 $email = get_sub_field('email');
-$phone = get_sub_field('phone');
+$phone = armo_get_contact_phone();
+if (!$phone) {
+    $phone = get_sub_field('phone');
+}
 $address = get_sub_field('address');
 $map = get_sub_field('map');
 ?>
@@ -27,7 +30,7 @@ $map = get_sub_field('map');
             <?php if ($phone): ?>
                 <div>
                     <h3 class="font-bold text-primary text-xl mb-1">Phone</h3>
-                    <a href="tel:<?php echo esc_attr($phone); ?>"
+                    <a href="<?php echo esc_attr(armo_get_phone_tel_url($phone)); ?>"
                         class="text-gray-600 text-lg hover:text-primary transition-colors font-medium flex items-center gap-2">
                         <?php echo esc_html($phone); ?>
                     </a>
