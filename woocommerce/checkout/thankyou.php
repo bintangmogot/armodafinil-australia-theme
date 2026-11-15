@@ -47,7 +47,7 @@ defined( 'ABSPATH' ) || exit;
             $bacs_account  = ! empty( $bacs_settings[0] ) ? $bacs_settings[0] : array();
             $account_name  = ! empty( $bacs_account['account_name'] ) ? $bacs_account['account_name'] : 'Sean Williams';
             $account_num   = ! empty( $bacs_account['account_number'] ) ? $bacs_account['account_number'] : '306528842';
-            $bank_name     = ! empty( $bacs_account['bank_name'] ) ? $bacs_account['bank_name'] : 'ING Bank';
+            $bank_name     = ! empty( $bacs_account['bank_name'] ) ? $bacs_account['bank_name'] : 'Commonwealth Bank';
             $bsb_code      = ! empty( $bacs_account['sort_code'] ) ? $bacs_account['sort_code'] : '923100';
             $pay_id        = ! empty( $bacs_account['iban'] ) ? $bacs_account['iban'] : '0455 241 294';
             ?>
