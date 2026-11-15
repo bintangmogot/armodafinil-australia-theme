@@ -12,7 +12,7 @@
 // Retrieve ACF option values with fallbacks
 $footer_description = get_field( 'footer_text', 'option' );
 if ( $footer_description === false ) {
-    $footer_description = 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via ING Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.';
+    $footer_description = 'Looking to buy Armodafinil online in Australia? Armodafinil Australia provides a secure and trusted platform for premium Armodafinil products with fast Australia-wide delivery. Pay easily via Commonwealth Bank transfer, enjoy discreet shipping, and get reliable service trusted by customers across Sydney, Melbourne, Brisbane, Perth, and beyond.';
 }
 
 $footer_corporate_registry = get_field( 'footer_corporate_registry', 'option' );
