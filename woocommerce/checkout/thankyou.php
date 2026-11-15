@@ -38,46 +38,47 @@ defined( 'ABSPATH' ) || exit;
                 <div class="inline-flex items-center justify-center w-14 h-14 rounded-full border-4 border-green-500 text-green-500 mb-3">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                 </div>
-                <h1 class="text-2xl font-bold text-primary-dark mb-2">Order Confirmed!</h1>
-                <p class="text-sm text-gray-500">Thank you for your order. Please complete your payment using EFT or PayID below.</p>
+                <h1 class="text-2xl font-bold text-primary-dark mb-2"><?php echo esc_html( armo_ck( 'ck_title' ) ); ?></h1>
+                <?php if ( armo_ck( 'ck_intro' ) ) : ?><p class="text-sm text-gray-500"><?php echo esc_html( armo_ck( 'ck_intro' ) ); ?></p><?php endif; ?>
             </div>
 
             <?php
-            $bacs_settings = get_option( 'woocommerce_bacs_accounts' );
-            $bacs_account  = ! empty( $bacs_settings[0] ) ? $bacs_settings[0] : array();
-            $account_name  = ! empty( $bacs_account['account_name'] ) ? $bacs_account['account_name'] : 'Sean Williams';
-            $account_num   = ! empty( $bacs_account['account_number'] ) ? $bacs_account['account_number'] : '306528842';
-            $bank_name     = ! empty( $bacs_account['bank_name'] ) ? $bacs_account['bank_name'] : 'Commonwealth Bank';
-            $bsb_code      = ! empty( $bacs_account['sort_code'] ) ? $bacs_account['sort_code'] : '923100';
-            $pay_id        = ! empty( $bacs_account['iban'] ) ? $bacs_account['iban'] : '0455 241 294';
+            $account_name  = armo_ck( 'ck_account_name' );
+            $account_num   = armo_ck( 'ck_account_number' );
+            $bank_name     = armo_ck( 'ck_bank_name' );
+            $bsb_code      = armo_ck( 'ck_bsb' );
+            $pay_id        = armo_ck( 'ck_payid' );
+            $copy_label    = armo_ck( 'ck_copy_label' );
+            $copied_label  = armo_ck( 'ck_copied_label' );
             ?>
             <!-- Payment Details -->
-            <h3 class="text-sm font-bold text-gray-900 mb-3">Payment Details</h3>
+            <h3 class="text-sm font-bold text-gray-900 mb-3"><?php echo esc_html( armo_ck( 'ck_label_payment_details' ) ); ?></h3>
             <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 sm:p-6 mb-8">
 
+                <?php if ( $pay_id ) : ?>
                 <!-- PayID -->
                 <div class="mb-5">
-                    <div class="text-xs text-gray-400 mb-1">PayID</div>
+                    <div class="text-xs text-gray-400 mb-1"><?php echo esc_html( armo_ck( 'ck_label_payid' ) ); ?></div>
                     <div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between shadow-sm">
                         <span class="text-base font-bold text-gray-900"><?php echo esc_html( $pay_id ); ?></span>
                         <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="<?php echo esc_attr( $pay_id ); ?>">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                            <span>Copy</span>
+                            <span><?php echo esc_html( $copy_label ); ?></span>
                         </button>
                     </div>
                 </div>
-
                 <div class="border-t border-blue-200 my-5"></div>
-                <div class="text-xs text-gray-500 mb-4">Or use bank transfer:</div>
+                <?php endif; ?>
+                <?php if ( armo_ck( 'ck_label_or_transfer' ) ) : ?><div class="text-xs text-gray-500 mb-4"><?php echo esc_html( armo_ck( 'ck_label_or_transfer' ) ); ?></div><?php endif; ?>
 
                 <!-- Account Name / Bank -->
                 <div class="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                        <div class="text-xs text-gray-400 mb-0.5">Account Name</div>
+                        <div class="text-xs text-gray-400 mb-0.5"><?php echo esc_html( armo_ck( 'ck_label_account_name' ) ); ?></div>
                         <div class="font-bold text-sm text-primary-dark"><?php echo esc_html( $account_name ); ?></div>
                     </div>
                     <div class="text-right">
-                        <div class="text-xs text-gray-400 mb-0.5">Bank</div>
+                        <div class="text-xs text-gray-400 mb-0.5"><?php echo esc_html( armo_ck( 'ck_label_bank' ) ); ?></div>
                         <div class="font-bold text-sm text-primary-dark"><?php echo esc_html( $bank_name ); ?></div>
                     </div>
                 </div>
@@ -85,36 +86,36 @@ defined( 'ABSPATH' ) || exit;
                 <!-- Account Number -->
                 <div class="space-y-3">
                     <div>
-                        <div class="text-xs text-gray-400 mb-1">Account Number</div>
+                        <div class="text-xs text-gray-400 mb-1"><?php echo esc_html( armo_ck( 'ck_label_account_number' ) ); ?></div>
                         <div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between shadow-sm">
                             <span class="text-base font-bold text-gray-900"><?php echo esc_html( $account_num ); ?></span>
                             <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="<?php echo esc_attr( $account_num ); ?>">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                                <span>Copy</span>
+                                <span><?php echo esc_html( $copy_label ); ?></span>
                             </button>
                         </div>
                     </div>
 
                     <!-- BSB -->
                     <div>
-                        <div class="text-xs text-gray-400 mb-1">BSB</div>
+                        <div class="text-xs text-gray-400 mb-1"><?php echo esc_html( armo_ck( 'ck_label_bsb' ) ); ?></div>
                         <div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between shadow-sm">
                             <span class="text-base font-bold text-gray-900"><?php echo esc_html( $bsb_code ); ?></span>
                             <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="<?php echo esc_attr( $bsb_code ); ?>">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                                <span>Copy</span>
+                                <span><?php echo esc_html( $copy_label ); ?></span>
                             </button>
                         </div>
                     </div>
 
                     <!-- Amount to Send -->
                     <div>
-                        <div class="text-xs text-gray-400 mb-1">Amount to Send</div>
+                        <div class="text-xs text-gray-400 mb-1"><?php echo esc_html( armo_ck( 'ck_label_amount' ) ); ?></div>
                         <div class="bg-white rounded-lg px-4 py-3 flex items-center justify-between shadow-sm">
                             <span class="text-base font-bold text-blue-600"><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></span>
                             <button type="button" class="copy-btn text-orange-500 hover:text-orange-600 text-xs font-semibold flex items-center gap-1 transition-colors" data-copy="<?php echo esc_attr( $order->get_total() ); ?>">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                                <span>Copy</span>
+                                <span><?php echo esc_html( $copy_label ); ?></span>
                             </button>
                         </div>
                     </div>
@@ -123,22 +124,23 @@ defined( 'ABSPATH' ) || exit;
 
 
             <!-- Order Summary -->
-            <h3 class="text-sm font-bold text-gray-900 mb-3">Order Summary</h3>
+            <h3 class="text-sm font-bold text-gray-900 mb-3"><?php echo esc_html( armo_ck( 'ck_label_summary' ) ); ?></h3>
             <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 mb-8">
                 <div class="flex justify-between items-center mb-2 text-xs text-gray-600">
-                    <span>Order Number:</span>
+                    <span><?php echo esc_html( armo_ck( 'ck_label_order' ) ); ?></span>
                     <span class="font-bold text-blue-700"><?php echo $order->get_order_number(); ?></span>
                 </div>
                 <div class="flex justify-between items-center mb-2 text-xs text-gray-600">
-                    <span>Date:</span>
+                    <span><?php echo esc_html( armo_ck( 'ck_label_date' ) ); ?></span>
                     <span class="font-bold text-blue-700"><?php echo wc_format_datetime( $order->get_date_created() ); ?></span>
                 </div>
                 <div class="flex justify-between items-start mb-3 pb-3 border-b border-blue-200 text-xs text-gray-600">
-                    <span>Payment Method:</span>
+                    <span><?php echo esc_html( armo_ck( 'ck_label_method' ) ); ?></span>
                     <span class="font-bold text-blue-700 text-right"><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></span>
                 </div>
                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start text-xs text-gray-600">
-                    <span class="mb-1 sm:mb-0">Order Contains:</span>
+                    <span class="mb-1 sm:mb-0">
+                    <?php echo esc_html( armo_ck( 'ck_label_contains' ) ); ?></span>
                     <div class="sm:text-right">
                         <?php foreach ( $order->get_items() as $item_id => $item ) : ?>
                             <div class="font-bold text-blue-700 mt-1 sm:mt-0">
@@ -152,7 +154,7 @@ defined( 'ABSPATH' ) || exit;
             <!-- Billing / Shipping Addresses -->
             <div class="flex flex-col sm:flex-row justify-between gap-8 mb-6 text-sm text-gray-700">
                 <div class="flex-1">
-                    <h4 class="font-bold text-gray-900 mb-2 text-base">Billing address</h4>
+                    <h4 class="font-bold text-gray-900 mb-2 text-base"><?php echo esc_html( armo_ck( 'ck_label_billing' ) ); ?></h4>
                     <div class="leading-relaxed">
                         <?php echo wp_kses_post( $order->get_formatted_billing_address() ?: esc_html__( 'N/A', 'woocommerce' ) ); ?>
                         <?php if ( $order->get_billing_phone() ) : ?>
@@ -165,7 +167,7 @@ defined( 'ABSPATH' ) || exit;
                 </div>
                 <?php if ( ! wc_ship_to_billing_address_only() && $order->needs_shipping_address() ) : ?>
                 <div class="flex-1 sm:text-right">
-                    <h4 class="font-bold text-gray-900 mb-2 text-base">Shipping address</h4>
+                    <h4 class="font-bold text-gray-900 mb-2 text-base"><?php echo esc_html( armo_ck( 'ck_label_shipping' ) ); ?></h4>
                     <div class="leading-relaxed">
                         <?php echo wp_kses_post( $order->get_formatted_shipping_address() ?: esc_html__( 'N/A', 'woocommerce' ) ); ?>
                     </div>
@@ -223,7 +225,7 @@ defined( 'ABSPATH' ) || exit;
             <!-- Total Due -->
             <?php if ( isset( $order_totals['order_total'] ) ) : ?>
             <div class="flex justify-between items-center mb-8">
-                <h3 class="text-lg font-bold text-gray-900">Total Due</h3>
+                <h3 class="text-lg font-bold text-gray-900"><?php echo esc_html( armo_ck( 'ck_label_total_due' ) ); ?></h3>
                 <div class="text-2xl font-bold text-blue-600">
                     <?php echo wp_kses_post( $order_totals['order_total']['value'] ); ?>
                 </div>
@@ -233,22 +235,24 @@ defined( 'ABSPATH' ) || exit;
             <!-- Continue Shopping -->
             <div class="text-center mb-10">
                 <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="block w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-10 rounded-xl transition-colors text-base text-center shadow-sm">
-                    Continue Shopping
+                    <?php echo esc_html( armo_ck( 'ck_shop_button' ) ); ?>
                 </a>
             </div>
 
             <!-- Warning -->
+            <?php $note_ship = armo_ck( 'ck_note_shipping' ); $note_ref = armo_ck( 'ck_note_reference' ); ?>
+            <?php if ( $note_ship || $note_ref ) : ?>
             <div class="text-sm text-blue-900 space-y-3 mb-10 mt-10">
-                <p><span class="text-yellow-500 font-bold">⚠ Note</span><br/>
-                The average shipping time is 15-22 days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.</p>
-                <p><span class="text-red-600 font-bold">DO NOT</span> mention anything related to <span class="text-red-600 font-bold">medicine</span> or <span class="text-red-600 font-bold">website</span> name. Just mention your order number.</p>
+                <?php if ( $note_ship ) : ?><p><span class="text-yellow-500 font-bold">&#9888; Note</span><br/><?php echo esc_html( $note_ship ); ?></p><?php endif; ?>
+                <?php if ( $note_ref ) : ?><p><?php echo wp_kses( $note_ref, array( 'span' => array( 'class' => true ), 'strong' => array(), 'br' => array() ) ); ?></p><?php endif; ?>
             </div>
+            <?php endif; ?>
 
             <!-- Payment Methods Images -->
             <div class="flex flex-wrap justify-center items-center gap-4 lg:gap-8 pb-10">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/commonwealth.png' ); ?>" alt="Commonwealth Bank" class="!h-[32px] sm:!h-[40px] object-contain">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/pay-idi.png' ); ?>" alt="PayID" class="!h-[24px] sm:!h-[30px] object-contain">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko-1.jpg' ); ?>" alt="Osko by BPAY" class="!h-[24px] sm:!h-[30px] object-contain">
+                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_bank', 'commonwealth.png' ) ); ?>" alt="Commonwealth Bank" class="!h-[32px] sm:!h-[40px] object-contain">
+                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_payid', 'pay-idi.png' ) ); ?>" alt="PayID" class="!h-[24px] sm:!h-[30px] object-contain">
+                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_osko', 'osko-1.jpg' ) ); ?>" alt="Osko by BPAY" class="!h-[24px] sm:!h-[30px] object-contain">
             </div>
 
             <div style="display:none;">
@@ -273,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navigator.clipboard.writeText(text).then(function() {
                 var span = btn.querySelector('span');
                 var orig = span.innerText;
-                span.innerText = 'Copied!';
+                span.innerText = <?php echo wp_json_encode( $copied_label ?: 'Copied!' ); ?>;
                 btn.classList.replace('text-orange-500', 'text-green-500');
                 setTimeout(function() {
                     span.innerText = orig;
