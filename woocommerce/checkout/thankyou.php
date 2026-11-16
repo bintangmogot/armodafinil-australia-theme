@@ -250,9 +250,9 @@ defined( 'ABSPATH' ) || exit;
 
             <!-- Payment Methods Images -->
             <div class="flex flex-wrap justify-center items-center gap-4 lg:gap-8 pb-10">
-                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_bank', 'commonwealth.png' ) ); ?>" alt="Commonwealth Bank" class="!h-[32px] sm:!h-[40px] object-contain">
-                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_payid', 'pay-idi.png' ) ); ?>" alt="PayID" class="!h-[24px] sm:!h-[30px] object-contain">
-                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_osko', 'osko-1.jpg' ) ); ?>" alt="Osko by BPAY" class="!h-[24px] sm:!h-[30px] object-contain">
+                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_bank', 'commonwealth.png' ) ); ?>" alt="Commonwealth Bank" style="width:130px;height:44px;object-fit:contain;">
+                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_payid', 'pay-idi.png' ) ); ?>" alt="PayID" style="width:130px;height:44px;object-fit:contain;">
+                <img src="<?php echo esc_url( armo_ck_logo_url( 'ck_logo_osko', 'osko-1.jpg' ) ); ?>" alt="Osko by BPAY" style="width:130px;height:44px;object-fit:contain;">
             </div>
 
             <div style="display:none;">
