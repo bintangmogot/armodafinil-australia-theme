@@ -265,8 +265,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 'label'         => 'Direct Helpline',
                 'name'          => 'footer_direct_helpline',
                 'type'          => 'text',
-                'instructions'  => 'Direct helpline number (displayed as-is).',
-                'default_value' => armo_get_configured_contact_phone(),
+                'instructions'  => 'Phone number shown in the header, footer, contact page and product pages. Leave empty to hide the phone everywhere.',
             ),
             array(
                 'key'           => 'field_footer_email',

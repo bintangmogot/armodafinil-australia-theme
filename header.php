@@ -87,23 +87,16 @@
     $header_whatsapp_url = armo_get_contact_whatsapp_url();
     ?>
 
-    <?php $has_announcement = get_field('enable_announcement_bar', 'option'); ?>
-    
-    <?php if ($has_announcement !== false && $has_announcement !== '0'): ?>
+    <?php
+    $has_announcement  = get_field('enable_announcement_bar', 'option');
+    $announcement_text = trim((string) get_field('announcement_text', 'option'));
+    ?>
+
+    <?php if ($has_announcement !== false && $has_announcement !== '0' && $announcement_text !== ''): ?>
     <!-- Top Announcement Bar (Rebuilt from Zero) -->
     <div class="w-full relative z-50 flex items-center justify-center px-4 py-2 sm:py-2.5" data-aos="fade-down" style="background-color: <?php echo esc_attr(get_field('announcement_bg_color', 'option') ?: '#ff0000'); ?>; color: <?php echo esc_attr(get_field('announcement_text_color', 'option') ?: '#ffffff'); ?>;">
         <div class="w-full max-w-7xl mx-auto text-center text-[13px] sm:text-[15px] font-semibold tracking-wide leading-snug px-2">
-            <?php 
-                $announcement = get_field('announcement_text', 'option');
-                if (!$announcement) {
-                    $announcement = sprintf('Free Shipping Orders Over $299 Australia-Wide | Call %s', esc_html($header_contact_phone));
-                }
-                if ($header_contact_phone) {
-                    $announcement = preg_replace('/(?<!\d)(?:\+?61|0)[\d\s().-]{7,}\d(?!\d)/', esc_html($header_contact_phone), $announcement);
-                }
-                
-                echo wp_kses_post($announcement);
-            ?>
+            <?php echo wp_kses_post($announcement_text); ?>
         </div>
     </div>
     <?php endif; ?>

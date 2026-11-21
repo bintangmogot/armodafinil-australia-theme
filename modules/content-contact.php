@@ -5,10 +5,7 @@
  */
 $form = get_sub_field('form');
 $email = get_sub_field('email');
-$phone = armo_get_contact_phone();
-if (!$phone) {
-    $phone = get_sub_field('phone');
-}
+$phone = armo_get_contact_phone(); // Theme Settings > Footer > Contact Info > Direct Helpline; empty hides it
 $address = get_sub_field('address');
 $map = get_sub_field('map');
 ?>
