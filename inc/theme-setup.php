@@ -288,3 +288,20 @@ add_action('admin_init', function() {
         update_option('_armo_feature_bar_populated', 'yes');
     }
 });
+
+/**
+ * Limit the Product Carousel module's "Feature product" Relationship field to 4 products max.
+ */
+add_filter('acf/load_field/name=feature_product', function ($field) {
+    $is_carousel_field = (
+        ($field['key'] ?? '') === 'field_6a3025195d24c'
+        || ($field['parent_layout'] ?? '') === 'layout_6a3024c25d249'
+    );
+    if ($is_carousel_field) {
+        $field['max'] = 4;
+        if (empty($field['instructions'])) {
+            $field['instructions'] = 'Select up to 4 products to display in the 4-column grid.';
+        }
+    }
+    return $field;
+});
