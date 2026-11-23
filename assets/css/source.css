@@ -2111,3 +2111,39 @@ a[class*="bg-accent"]:hover {
 .split-prose-card b {
     @apply text-primary font-semibold;
 }
+
+/* ========================================================== */
+/* INVERTED PROSE ON DARK/BRAND BACKGROUNDS (.prose-invert)   */
+/* ========================================================== */
+.prose.prose-invert h1 {
+    @apply text-white text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mt-0 mb-4;
+}
+
+.prose.prose-invert h2 {
+    @apply text-accent text-xl md:text-2xl font-bold leading-snug mt-4 mb-5;
+}
+
+.prose.prose-invert h3,
+.prose.prose-invert h4 {
+    @apply text-white font-bold;
+}
+
+.prose.prose-invert p,
+.prose.prose-invert ul,
+.prose.prose-invert ol,
+.prose.prose-invert li {
+    @apply text-white/90 text-base md:text-lg leading-relaxed;
+}
+
+.prose.prose-invert > :last-child {
+    @apply mb-0;
+}
+
+.prose.prose-invert strong,
+.prose.prose-invert b {
+    @apply text-white font-semibold;
+}
+
+.prose.prose-invert a {
+    @apply text-accent underline hover:text-white;
+}
