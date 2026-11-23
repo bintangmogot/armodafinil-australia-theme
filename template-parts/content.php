@@ -35,10 +35,40 @@
             </a>
         </h2>
 
-        <!-- Excerpt -->
-        <p class="text-[13px] md:text-sm text-white/90 leading-relaxed line-clamp-3 mb-4">
-            <?php echo wp_trim_words( get_the_excerpt(), 18, '...' ); ?>
-        </p>
+        <!-- Excerpt (supports WP Excerpt, post_content, ACF modules, and AIOSEO description fallback) -->
+        <?php
+        $excerpt_text = trim(wp_strip_all_tags(strip_shortcodes((string) get_the_excerpt())));
+        if ($excerpt_text === '' && function_exists('get_field')) {
+            $post_modules = get_field('modules', get_the_ID());
+            if (is_array($post_modules)) {
+                foreach ($post_modules as $mod) {
+                    if (!is_array($mod)) continue;
+                    foreach (array('content', 'intro_content', 'content_left', 'intro', 'description', 'text') as $text_key) {
+                        if (!empty($mod[$text_key]) && is_string($mod[$text_key])) {
+                            // Prefer paragraph text over headings if headings appear first
+                            $cleaned = preg_replace('/<h[1-6][^>]*>.*?<\/h[1-6]>/is', ' ', $mod[$text_key]);
+                            $candidate = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags(strip_shortcodes((string) $cleaned))));
+                            if ($candidate === '') {
+                                $candidate = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags(strip_shortcodes((string) $mod[$text_key]))));
+                            }
+                            if ($candidate !== '') {
+                                $excerpt_text = $candidate;
+                                break 2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if ($excerpt_text === '') {
+            $excerpt_text = trim(wp_strip_all_tags((string) get_post_meta(get_the_ID(), '_aioseo_description', true)));
+        }
+        ?>
+        <?php if ($excerpt_text !== '') : ?>
+            <p class="text-[13px] md:text-sm text-white/90 leading-relaxed line-clamp-3 mb-4">
+                <?php echo esc_html(wp_trim_words($excerpt_text, 20, '...')); ?>
+            </p>
+        <?php endif; ?>
 
         <!-- Push the footer to the bottom -->
         <div class="mt-auto"></div>
