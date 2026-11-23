@@ -398,25 +398,29 @@ function armo_add_reviews_carousel_layout_to_modules($field)
 add_filter('acf/load_field/name=modules', 'armo_add_reviews_carousel_layout_to_modules');
 
 /**
- * Dynamically register the Reviews Carousel Grid layout inside the ACF Modules flexible content field.
+ * Ensure the Reviews Carousel Grid layout exists in the ACF Modules flexible content field
+ * without overwriting its database-stored sub_fields.
  */
 function armo_add_reviews_carousel_grid_layout_to_modules($field)
 {
-    if (isset($field['layouts'])) {
+    if (isset($field['layouts']) && is_array($field['layouts'])) {
         foreach ($field['layouts'] as &$layout) {
             if (isset($layout['name']) && $layout['name'] === 'reviews_carousel_grid') {
-                $layout['sub_fields'] = array(
-                    array(
-                        'key' => 'field_reviews_carousel_grid_heading',
-                        'label' => 'Heading',
-                        'name' => 'heading',
-                        'type' => 'text',
-                        'default_value' => 'Trusted by Everyday Australian\'s',
-                    ),
-                );
+                if (empty($layout['sub_fields'])) {
+                    $layout['sub_fields'] = array(
+                        array(
+                            'key' => 'field_reviews_carousel_grid_heading',
+                            'label' => 'Heading',
+                            'name' => 'heading',
+                            'type' => 'text',
+                            'default_value' => 'Trusted by Everyday Australians',
+                        ),
+                    );
+                }
                 return $field;
             }
         }
+        unset($layout);
     }
 
     $field['layouts']['layout_reviews_carousel_grid_layout'] = array(
@@ -430,7 +434,7 @@ function armo_add_reviews_carousel_grid_layout_to_modules($field)
                 'label' => 'Heading',
                 'name' => 'heading',
                 'type' => 'text',
-                'default_value' => 'Trusted by Everyday Australian\'s',
+                'default_value' => 'Trusted by Everyday Australians',
             ),
         ),
     );
@@ -438,6 +442,113 @@ function armo_add_reviews_carousel_grid_layout_to_modules($field)
     return $field;
 }
 add_filter('acf/load_field/name=modules', 'armo_add_reviews_carousel_grid_layout_to_modules');
+
+/**
+ * One-time safe DB registration of sub-fields on Reviews Carousel Grid (pickable reviews + built-in CTA button)
+ * and Featured Blog (pickable blog posts). Uses real ACF DB fields via acf_update_field() so existing DB fields
+ * are never shadowed or touched.
+ */
+add_action('admin_init', function () {
+    if (get_option('armo_rev_blog_pickers_v1') === '1') {
+        return;
+    }
+    if (!function_exists('acf_get_field') || !function_exists('acf_update_field')) {
+        return;
+    }
+
+    $modules = acf_get_field('modules');
+    if (empty($modules['ID']) || empty($modules['layouts']) || !is_array($modules['layouts'])) {
+        return;
+    }
+
+    $parent_id = (int) $modules['ID'];
+    $rev_layout_key = '';
+    $blog_layout_key = '';
+    foreach ($modules['layouts'] as $lkey => $layout) {
+        if (($layout['name'] ?? '') === 'reviews_carousel_grid') {
+            $rev_layout_key = $lkey;
+        }
+        if (($layout['name'] ?? '') === 'featured_blog') {
+            $blog_layout_key = $lkey;
+        }
+    }
+
+    $to_add = array();
+    if ($rev_layout_key !== '') {
+        $to_add[] = array(
+            'key' => 'field_reviews_carousel_grid_heading',
+            'label' => 'Heading',
+            'name' => 'heading',
+            'type' => 'text',
+            'default_value' => 'Trusted by Everyday Australians',
+            'parent' => $parent_id,
+            'parent_layout' => $rev_layout_key,
+            'menu_order' => 0,
+        );
+        $to_add[] = array(
+            'key' => 'field_reviews_carousel_grid_selected_reviews',
+            'label' => 'Select Reviews (Optional)',
+            'name' => 'selected_reviews',
+            'type' => 'relationship',
+            'post_type' => array('reviews'),
+            'filters' => array('search'),
+            'elements' => array(),
+            'return_format' => 'id',
+            'instructions' => 'Pick specific reviews in the exact order you want. Leave empty to show the latest 12 general reviews automatically.',
+            'parent' => $parent_id,
+            'parent_layout' => $rev_layout_key,
+            'menu_order' => 1,
+        );
+        $to_add[] = array(
+            'key' => 'field_reviews_carousel_grid_button_text',
+            'label' => 'Button Text (Optional)',
+            'name' => 'button_text',
+            'type' => 'text',
+            'placeholder' => 'Read genuine Aussie reviews',
+            'instructions' => 'Shown directly below the carousel (no separate CTA button module needed). Leave empty to hide.',
+            'wrapper' => array('width' => '50'),
+            'parent' => $parent_id,
+            'parent_layout' => $rev_layout_key,
+            'menu_order' => 2,
+        );
+        $to_add[] = array(
+            'key' => 'field_reviews_carousel_grid_button_link',
+            'label' => 'Button Link',
+            'name' => 'button_link',
+            'type' => 'text',
+            'placeholder' => '/reviews/',
+            'wrapper' => array('width' => '50'),
+            'parent' => $parent_id,
+            'parent_layout' => $rev_layout_key,
+            'menu_order' => 3,
+        );
+    }
+
+    if ($blog_layout_key !== '') {
+        $to_add[] = array(
+            'key' => 'field_featured_blog_selected_posts',
+            'label' => 'Select Blog Posts (Optional)',
+            'name' => 'selected_posts',
+            'type' => 'relationship',
+            'post_type' => array('post'),
+            'filters' => array('search'),
+            'elements' => array('featured_image'),
+            'return_format' => 'id',
+            'instructions' => 'Pick specific blog posts to display in this order. Leave empty to show the latest 3 featured/recent posts automatically.',
+            'parent' => $parent_id,
+            'parent_layout' => $blog_layout_key,
+            'menu_order' => 10,
+        );
+    }
+
+    foreach ($to_add as $sf) {
+        if (!acf_get_field($sf['key'])) {
+            acf_update_field($sf);
+        }
+    }
+
+    update_option('armo_rev_blog_pickers_v1', '1');
+}, 30);
 
 /**
  * Dynamically register the Review Page layout inside the ACF Modules flexible content field.
