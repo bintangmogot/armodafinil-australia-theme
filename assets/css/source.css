@@ -2062,3 +2062,52 @@ a[class*="bg-[#FFC700]"]:hover,
 a[class*="bg-accent"]:hover {
     transform: scale(1.03) !important;
 }
+
+/* ========================================================== */
+/* TWO-COLUMN TEXT SECTION (text_-_12_&_12)                   */
+/* ========================================================== */
+.split-prose-card > h2:empty,
+.split-prose-card > h3:empty,
+.split-prose-card > p:empty {
+    display: none;
+}
+
+.split-prose-card > h2:first-child,
+.split-prose-card > h3:first-child {
+    @apply text-xl lg:text-2xl font-bold text-primary leading-snug mt-0 mb-5 pb-4 border-b border-primary/10;
+}
+
+.split-prose-card > h2:not(:first-child),
+.split-prose-card > h3:not(:first-child) {
+    @apply text-lg lg:text-xl font-bold text-primary leading-snug mt-8 pt-6 mb-3 border-t border-gray-200;
+}
+
+.split-prose-card p {
+    @apply text-[15px] lg:text-base text-gray-700 leading-relaxed mb-4;
+}
+
+.split-prose-card > :last-child {
+    @apply mb-0;
+}
+
+.split-prose-card ul {
+    @apply my-5 space-y-3 bg-[#F8FAFD] rounded-xl p-4 sm:p-5 border border-primary/10;
+}
+
+.split-prose-card ul li {
+    @apply mb-0 text-[15px] lg:text-base text-gray-700 leading-relaxed;
+    padding-left: 1.85rem;
+}
+
+.split-prose-card ul li::before {
+    top: 0.3rem;
+}
+
+.split-prose-card ul li p {
+    @apply mb-0;
+}
+
+.split-prose-card strong,
+.split-prose-card b {
+    @apply text-primary font-semibold;
+}
